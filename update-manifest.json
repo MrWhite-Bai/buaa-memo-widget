@@ -1,21 +1,21 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.2",
   "published_at": "2026-10-20",
   "notes": [
-    "备忘事项分为任务型和事件型，新建时可自由切换。",
-    "任务型保留截止时间，并新增绿色“完成”按钮，可提前结束并记录完成时间。",
-    "事件型必须设置开始时间和结束时间，不显示“完成”按钮，结束后自动进入历史事项。",
-    "电脑端、微信控制页和手机离线版均支持两种事项类型。"
+    "事件型矩形改为按所属星期列居中展示。",
+    "任务型固定矩形改为按星期列居中，不再偏向右侧。",
+    "七天之间的分隔竖线加粗加深，表头和日期区保持一致。",
+    "多个同段时间的任务保持统一中线，不再做横向错位。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-2.0.0-app-patch.zip?ref=main",
-    "sha256": "2ba3671c3939f70b53dfad11019760382602bdbc6eacea64c89d645ac7ba66da",
-    "size": 335957
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-2.1.2-app-patch.zip?ref=main",
+    "sha256": "63d29d721e0e0f139376b58b518dd9e9202a70271cfe9b5d4728dd542f45f49e",
+    "size": 341631
   },
   "mobile": {
-    "version": "2.0.0",
+    "version": "2.1.2",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "fe786e9ec582512ffeaac2ee92ebd8dbcfe6acc84fcd6e6d4b4eeecb88ff4ac0",
+    "sha256": "64605d4bb18c5661eeb646d6d2bc7451963c0b803902d2e8e3d5aa561aab254f",
     "size": 36794
   }
 }

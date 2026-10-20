@@ -4,7 +4,7 @@
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v1.7.0.zip)
+- [Windows 完整版](BUAA-Memo-Windows-v1.8.0.zip)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 
@@ -24,4 +24,4 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 
 ## 当前版本
 
-v1.7.0
+v1.8.0

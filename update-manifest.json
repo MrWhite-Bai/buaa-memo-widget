@@ -17,8 +17,8 @@
   "mobile": {
     "version": "3.4.4",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "4a0eb249f98dd0ba6d145a1cd6cf22b0e260092df8d8df9cb12ffe11ab096934",
-    "size": 87163
+    "sha256": "38e66a995bb66fe755271bfe312a62fa1eefcbb44cb0eea519e0e68db3a72786",
+    "size": 87160
   },
   "android": {
     "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.4.apk?ref=main",

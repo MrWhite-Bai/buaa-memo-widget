@@ -1,26 +1,28 @@
 {
-  "version": "3.4.5",
+  "version": "3.4.6",
   "published_at": "2026-10-20",
   "notes": [
-    "手机版主页移除占地较大的电脑版下载卡片。",
-    "新增“电脑版下载教程”按钮，不再挤占事项列表空间。",
-    "电脑版下载教程、复制链接、系统分享和 Windows 直达下载移入弹窗。",
-    "弹窗支持关闭按钮、点击遮罩关闭和 Android 返回键关闭。"
+    "手机版启动并联网后自动检查最新版本。",
+    "手机版恢复网络、回到前台以及每分钟都会重新检查版本状态。",
+    "电脑版启动后会立即检查，并在运行期间定时复查。",
+    "检测到新版本后，“检查更新”按钮改为高对比的“可以更新”。",
+    "检查只读取公开版本清单，不会在后台自动下载或安装。",
+    "点击“可以更新”后仍按平台登录流程获取安装包。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.5-app-patch.zip?ref=main",
-    "sha256": "af3add0e27dd0aa64a59b750a7529c80a6145e35c98fb2a15a81ae9a7cd99d14",
-    "size": 914107
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.6-app-patch.zip?ref=main",
+    "sha256": "13a531b6b3ad99027149e8d97ba15c9cde3e503d84849db321151f0143f0801f",
+    "size": 972699
   },
   "mobile": {
-    "version": "3.4.5",
+    "version": "3.4.6",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "e39081050118b751b88f217e9a3602b2dfeceef1bdbdb10d3e37297141c5205f",
-    "size": 88707
+    "sha256": "5ed4c604e8b6196e935710612f3d7899e75d717940a555745b783942a436db9c",
+    "size": 92444
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.5.apk?ref=main",
-    "sha256": "3284c47b4ab6c60009fcf67dfdc398582fdf594dcea34f6bcc459513f9069100",
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.6.apk?ref=main",
+    "sha256": "ad7cecc833bfc1854bf2c78142bd21225731466d15b26a1fab558b9721beb586",
     "size": 62113
   }
 }

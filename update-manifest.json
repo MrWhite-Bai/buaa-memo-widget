@@ -1,28 +1,29 @@
 {
-  "version": "3.4.6",
+  "version": "3.4.7",
   "published_at": "2026-10-20",
   "notes": [
-    "手机版启动并联网后自动检查最新版本。",
-    "手机版恢复网络、回到前台以及每分钟都会重新检查版本状态。",
-    "电脑版启动后会立即检查，并在运行期间定时复查。",
-    "检测到新版本后，“检查更新”按钮改为高对比的“可以更新”。",
-    "检查只读取公开版本清单，不会在后台自动下载或安装。",
-    "点击“可以更新”后仍按平台登录流程获取安装包。"
+    "修复手机版顶部 BUAA 图标与系统通知栏重合的问题。",
+    "新建和编辑事项新增“提前通知”模块。",
+    "提前时间支持分钟、小时和天三种单位。",
+    "提醒方式支持通知栏、响铃和振动，可任意组合。",
+    "Android 使用系统闹钟在后台定时触发提醒，App 关闭后仍可生效。",
+    "手机重启后会自动重新安排尚未到期的提醒。",
+    "删除、完成或结束后会自动取消对应提醒。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.6-app-patch.zip?ref=main",
-    "sha256": "13a531b6b3ad99027149e8d97ba15c9cde3e503d84849db321151f0143f0801f",
-    "size": 972699
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.7-app-patch.zip?ref=main",
+    "sha256": "0819ec7dfde8f098b93a04c8dc4517f62281e0af2c92e8288b0f6f69ed97a2ec",
+    "size": 1043793
   },
   "mobile": {
-    "version": "3.4.6",
+    "version": "3.4.7",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "5ed4c604e8b6196e935710612f3d7899e75d717940a555745b783942a436db9c",
-    "size": 92444
+    "sha256": "50337ca119b684d35630c66a366932398e82807279daa51782a69e83de696874",
+    "size": 101042
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.6.apk?ref=main",
-    "sha256": "ad7cecc833bfc1854bf2c78142bd21225731466d15b26a1fab558b9721beb586",
-    "size": 62113
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.7.apk?ref=main",
+    "sha256": "54e1edf07fc622dccdb39042662b4c8435ad3fa8cae04c86f11293b8d7f2eff4",
+    "size": 70305
   }
 }

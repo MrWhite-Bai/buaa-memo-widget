@@ -4,9 +4,9 @@
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v3.4.6.zip)
-- [macOS 浏览器版](BUAA-Memo-macOS-v3.4.6.zip)
-- [Android APK](BUAA-Memo-Android-v3.4.6.apk)
+- [Windows 完整版](BUAA-Memo-Windows-v3.4.7.zip)
+- [macOS 浏览器版](BUAA-Memo-macOS-v3.4.7.zip)
+- [Android APK](BUAA-Memo-Android-v3.4.7.apk)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 
@@ -36,6 +36,10 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 手机版主页提供“电脑版下载”区域，可复制下载链接或通过系统分享发送到电脑。
 在电脑浏览器打开链接并登录平台后，即可下载 Windows 或 macOS 版本。
 
+新建手机事项时可设置提前通知，时间单位支持分钟、小时和天，提醒方式支持
+通知栏、响铃和振动，并可任意组合。提醒由 Android 系统定时器执行，App
+关闭后仍然有效；手机重启后会自动重新安排尚未到期的提醒。
+
 手机周视图采用竖屏三列课程表，今天、明天和后天的 `00:00–23:59`
 会在同一屏幕内完整显示，无需上下或左右滚动。
 
@@ -46,4 +50,4 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 
 ## 当前版本
 
-v3.4.6
+v3.4.7

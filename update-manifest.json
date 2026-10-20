@@ -1,29 +1,29 @@
 {
-  "version": "3.4.7",
+  "version": "3.4.8",
   "published_at": "2026-10-20",
   "notes": [
-    "修复手机版顶部 BUAA 图标与系统通知栏重合的问题。",
-    "新建和编辑事项新增“提前通知”模块。",
-    "提前时间支持分钟、小时和天三种单位。",
-    "提醒方式支持通知栏、响铃和振动，可任意组合。",
-    "Android 使用系统闹钟在后台定时触发提醒，App 关闭后仍可生效。",
-    "手机重启后会自动重新安排尚未到期的提醒。",
-    "删除、完成或结束后会自动取消对应提醒。"
+    "手机版自动检查更新改为优先读取学业支持中心国内平台。",
+    "Android 通过原生网络桥读取版本，避免网页跨域和 GitHub 访问失败。",
+    "手机端首次需要在 App 内登录一次国内平台，之后会保留登录状态并自动检查。",
+    "电脑版自动检查更新也优先读取国内平台，GitHub 仅作为备用来源。",
+    "更新按钮会明确显示“正在检查”“已是最新版”“可以更新”“需登录检查”或“检查失败”。",
+    "检查失败时点击按钮会重新检查，并仍可直接打开国内平台手动下载。",
+    "保留现有事项、图片、设备配对、同步令牌和提前通知数据。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.7-app-patch.zip?ref=main",
-    "sha256": "0819ec7dfde8f098b93a04c8dc4517f62281e0af2c92e8288b0f6f69ed97a2ec",
-    "size": 1043793
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.8-app-patch.zip?ref=main",
+    "sha256": "de560bace558cecef8d5b1fef92e147c94fc9253fe20b1b1d5829fc7debb1759",
+    "size": 1114806
   },
   "mobile": {
-    "version": "3.4.7",
+    "version": "3.4.8",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "50337ca119b684d35630c66a366932398e82807279daa51782a69e83de696874",
-    "size": 101042
+    "sha256": "bf644bb7587a1a238496d4895579e8d0a3009e614978e1cd5e7e9836a6872a9f",
+    "size": 107994
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.7.apk?ref=main",
-    "sha256": "54e1edf07fc622dccdb39042662b4c8435ad3fa8cae04c86f11293b8d7f2eff4",
-    "size": 70305
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.8.apk?ref=main",
+    "sha256": "3e66cc5c74a4f019d2e159941bd6b3c62dff50070caf66c5d69b95eeb98ef22a",
+    "size": 74401
   }
 }

@@ -1,0 +1,21 @@
+{
+  "version": "1.6.0",
+  "published_at": "2026-10-20",
+  "notes": [
+    "电脑端新增“检查更新”按钮，可下载并安装最新版。",
+    "升级包下载后进行 SHA-256 校验，保留现有备忘录数据。",
+    "手机离线版新增更新检查，可下载最新版离线 HTML。",
+    "更新信息统一从 GitHub 仓库的版本清单读取。"
+  ],
+  "desktop": {
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-1.6.0-app-patch.zip?ref=main",
+    "sha256": "34dcebcbaf2a4c66464c13abd3fd5fdbe78e1ccfb5d1354be769bd053acb978f",
+    "size": 96022
+  },
+  "mobile": {
+    "version": "1.6.0",
+    "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
+    "sha256": "2afee84fd4107fde77c1abb7a976f483a121ada6c827ee11c1b8f1a2c15d4104",
+    "size": 29965
+  }
+}

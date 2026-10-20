@@ -1,0 +1,1024 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a3b75">
+  <meta name="buaa-version" content="__BUAA_APP_VERSION__">
+  <title>BUAA 备忘倒计时</title>
+  <style>
+    :root {
+      --navy: #0a3b75;
+      --blue: #1e66d0;
+      --blue-soft: #eaf2ff;
+      --bg: #edf3f9;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #68758a;
+      --border: #d9e2ed;
+      --danger: #c94141;
+      --danger-soft: #fdeeee;
+      --warning: #b8650b;
+      --warning-soft: #fff3e3;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html { background: var(--bg); }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei UI", sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 8;
+      padding: 22px 18px 20px;
+      color: white;
+      background: linear-gradient(145deg, #08366d 0%, #1557b0 100%);
+      border-radius: 0 0 26px 26px;
+      box-shadow: 0 8px 24px rgba(12, 56, 112, .18);
+    }
+
+    .brand {
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 750;
+      letter-spacing: .5px;
+    }
+
+    .tagline {
+      margin-top: 7px;
+      color: #c8daf4;
+      font-size: 12px;
+      letter-spacing: .4px;
+    }
+
+    .status {
+      margin-top: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      color: #eaf3ff;
+      font-size: 11px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7bf0b5;
+      box-shadow: 0 0 0 4px rgba(123,240,181,.13);
+    }
+
+    .status.offline .status-dot {
+      background: #ffb3b3;
+      box-shadow: 0 0 0 4px rgba(255,179,179,.13);
+    }
+
+    main {
+      width: min(100%, 720px);
+      margin: 0 auto;
+      padding: 20px 16px 116px;
+    }
+
+    .summary {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 2px 2px 13px;
+    }
+
+    .summary h1 {
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .offline-box {
+      margin-bottom: 15px;
+      border: 1px solid #d8e5f5;
+      border-radius: 16px;
+      padding: 14px;
+      background: linear-gradient(145deg, #ffffff, #f2f7ff);
+    }
+
+    .offline-box strong {
+      display: block;
+      color: var(--navy);
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .offline-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .offline-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .offline-download {
+      display: inline-block;
+      border-radius: 10px;
+      padding: 8px 12px;
+      background: var(--blue-soft);
+      color: var(--blue-dark, #144eaa);
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .sync-address {
+      min-width: 0;
+      color: #6d7e94;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 9px;
+      line-height: 1.4;
+      word-break: break-all;
+    }
+
+    .count {
+      background: #dce9fa;
+      color: #144eaa;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .update-check {
+      margin-left: auto;
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 11px;
+      background: #e4edf8;
+      color: #405674;
+      font: inherit;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 15px 15px 13px 18px;
+      box-shadow: 0 5px 18px rgba(27, 63, 112, .055);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--blue);
+    }
+
+    .card.urgent::before { background: var(--warning); }
+    .card.expired::before { background: var(--danger); }
+
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .card-title {
+      flex: 1;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .badge {
+      flex: 0 0 auto;
+      margin-top: 1px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #144eaa;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .card.urgent .badge {
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .card.expired .badge {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .note {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: 68px 1fr;
+      gap: 5px 4px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #edf1f6;
+      align-items: baseline;
+    }
+
+    .meta-label {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .remaining {
+      color: var(--blue);
+      font-size: 18px;
+      font-weight: 750;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: .1px;
+    }
+
+    .card.urgent .remaining { color: var(--warning); }
+    .card.expired .remaining { color: var(--danger); }
+
+    .deadline {
+      color: #45556b;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .action-btn {
+      border: 0;
+      border-radius: 9px;
+      padding: 6px 11px;
+      background: #eef4fb;
+      color: #144eaa;
+      font-size: 11px;
+      font-weight: 650;
+    }
+
+    .action-btn.delete {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .empty {
+      text-align: center;
+      padding: 65px 20px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .empty-clock {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: white;
+      border: 1px solid #d6e4f5;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      font-size: 34px;
+    }
+
+    .fab {
+      position: fixed;
+      z-index: 10;
+      left: 50%;
+      bottom: max(20px, env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      width: min(calc(100% - 34px), 520px);
+      border: 0;
+      border-radius: 15px;
+      padding: 14px 20px;
+      background: var(--blue);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: 0 10px 28px rgba(30, 102, 208, .30);
+    }
+
+    .overlay {
+      position: fixed;
+      z-index: 30;
+      inset: 0;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      background: rgba(7, 22, 43, .45);
+      padding: 16px;
+    }
+
+    .overlay.show { display: flex; }
+
+    .sheet {
+      width: min(100%, 560px);
+      max-height: 91vh;
+      overflow-y: auto;
+      background: #f8fafd;
+      border-radius: 22px 22px 16px 16px;
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(0, 20, 50, .25);
+    }
+
+    .sheet h2 {
+      margin: 0 0 17px;
+      font-size: 19px;
+    }
+
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: white;
+      color: var(--text);
+      padding: 11px 12px;
+      font: inherit;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(30,102,208,.10);
+    }
+
+    .field textarea {
+      min-height: 82px;
+      resize: vertical;
+    }
+
+    .datetime {
+      display: grid;
+      grid-template-columns: 1.35fr .8fr;
+      gap: 9px;
+    }
+
+    .sheet-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .sheet-actions button {
+      flex: 1;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px;
+      font: inherit;
+      font-weight: 700;
+    }
+
+    .cancel { background: #e9eef5; color: var(--muted); }
+    .save { background: var(--blue); color: white; }
+
+    .toast {
+      position: fixed;
+      z-index: 50;
+      left: 50%;
+      bottom: 88px;
+      transform: translate(-50%, 16px);
+      max-width: calc(100% - 40px);
+      border-radius: 12px;
+      padding: 10px 15px;
+      background: #16263d;
+      color: white;
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: .22s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">BUAA</div>
+    <div class="tagline">离线手机版 · 本地保存 · 自动更新</div>
+    <div class="status" id="status">
+      <span class="status-dot"></span>
+      <span id="statusText">正在连接电脑</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="offline-box">
+      <strong>让备忘录在电脑关机时也能用</strong>
+      <p>下载离线手机版后，用手机浏览器打开并保留文件。离线新增的内容会先存在手机上，电脑下次上线并连接同一 Wi-Fi 后自动双向合并。</p>
+      <div class="offline-actions">
+        <a class="offline-download" href="offline" download="BUAA-Memo-Offline.html">下载离线手机版</a>
+        <span class="sync-address">同步地址：<span id="syncAddress"></span></span>
+      </div>
+    </section>
+
+    <div class="summary">
+      <h1>事项清单</h1>
+      <span class="count" id="count">0 项</span>
+      <button class="update-check" id="checkUpdateBtn" type="button">检查更新</button>
+    </div>
+    <div class="list" id="list"></div>
+  </main>
+
+  <button class="fab" id="addBtn">＋ 新建事项</button>
+
+  <div class="overlay" id="overlay">
+    <div class="sheet">
+      <h2 id="formTitle">新建事项</h2>
+      <form id="memoForm">
+        <div class="field">
+          <label for="title">事项名称</label>
+          <input id="title" maxlength="80" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label>终止时间</label>
+          <div class="datetime">
+            <input id="date" type="date" required>
+            <input id="time" type="time" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="note">备注（可选）</label>
+          <textarea id="note" maxlength="1000"></textarea>
+        </div>
+        <div class="sheet-actions">
+          <button class="cancel" type="button" id="cancelBtn">取消</button>
+          <button class="save" type="submit">保存并同步</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>window.BUAA_BOOTSTRAP = {"syncWsUrl": "", "syncHttpUrl": "", "seedRecords": [], "mobileVersion": "1.6.0", "updateManifestUrl": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/update-manifest.json?ref=main"};</script>
+<script>
+(() => {
+  "use strict";
+
+  const bootstrap = window.BUAA_BOOTSTRAP || {};
+  const STORAGE_KEY = "buaa_memo_records_v2";
+  const SYNC_URL_KEY = "buaa_memo_sync_url_v2";
+
+  const listEl = document.getElementById("list");
+  const countEl = document.getElementById("count");
+  const statusEl = document.getElementById("status");
+  const statusText = document.getElementById("statusText");
+  const overlay = document.getElementById("overlay");
+  const form = document.getElementById("memoForm");
+  const formTitle = document.getElementById("formTitle");
+  const titleInput = document.getElementById("title");
+  const dateInput = document.getElementById("date");
+  const timeInput = document.getElementById("time");
+  const noteInput = document.getElementById("note");
+  const toastEl = document.getElementById("toast");
+  const checkUpdateBtn = document.getElementById("checkUpdateBtn");
+
+  document.querySelector(".offline-box")?.remove();
+
+  let records = [];
+  let editingId = null;
+  let syncing = false;
+  let toastTimer = null;
+  let syncUrl =
+    localStorage.getItem(SYNC_URL_KEY) || bootstrap.syncWsUrl || "";
+  if (bootstrap.syncWsUrl && !localStorage.getItem(SYNC_URL_KEY)) {
+    localStorage.setItem(SYNC_URL_KEY, bootstrap.syncWsUrl);
+  }
+
+  function nextRevision(record = null) {
+    return Math.max(Date.now(), Number(record?.rev || 0) + 1);
+  }
+
+  function mergeRecords(...groups) {
+    const byId = new Map();
+    for (const group of groups) {
+      for (const record of Array.isArray(group) ? group : []) {
+        if (!record || !record.id) continue;
+        const normalized = {
+          ...record,
+          id: String(record.id),
+          rev: Number(record.rev || 0),
+          deleted: Boolean(record.deleted),
+        };
+        const existing = byId.get(normalized.id);
+        if (!existing || normalized.rev >= Number(existing.rev || 0)) {
+          byId.set(normalized.id, normalized);
+        }
+      }
+    }
+    return [...byId.values()];
+  }
+
+  function persist() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      return true;
+    } catch {
+      showToast("浏览器未允许本地保存，请更换浏览器打开");
+      return false;
+    }
+  }
+
+  function loadRecords() {
+    let localRecords = [];
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      localRecords = raw ? JSON.parse(raw) : [];
+    } catch {
+      localRecords = [];
+    }
+    records = mergeRecords(localRecords, bootstrap.seedRecords || []);
+    persist();
+  }
+
+  function activeRecords() {
+    return records.filter(record => !record.deleted);
+  }
+
+  function localDateValue(date) {
+    const pad = value => String(value).padStart(2, "0");
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+  }
+
+  function defaultDeadline() {
+    const value = new Date(Date.now() + 24 * 60 * 60 * 1000);
+    value.setHours(18, 0, 0, 0);
+    dateInput.value = localDateValue(value);
+    timeInput.value = "18:00";
+  }
+
+  function formatRemaining(deadlineText) {
+    const seconds = Math.floor(
+      (new Date(deadlineText).getTime() - Date.now()) / 1000
+    );
+    if (!Number.isFinite(seconds)) return "时间无效";
+    if (seconds <= 0) return "已到期";
+    const days = Math.floor(seconds / 86400);
+    const hours = Math.floor((seconds % 86400) / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    const pad = value => String(value).padStart(2, "0");
+    return days > 0
+      ? `${String(days).padStart(2, "0")} 天 ${pad(hours)}:${pad(minutes)}:${pad(secs)}`
+      : `${pad(hours)}:${pad(minutes)}:${pad(secs)}`;
+  }
+
+  function statusOf(deadlineText) {
+    const seconds = (new Date(deadlineText).getTime() - Date.now()) / 1000;
+    if (seconds <= 0) return ["expired", "已到期"];
+    if (seconds <= 86400) return ["urgent", "24 小时内"];
+    return ["", "进行中"];
+  }
+
+  function formatDeadline(deadlineText) {
+    const value = new Date(deadlineText);
+    const pad = number => String(number).padStart(2, "0");
+    return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}  ${pad(value.getHours())}:${pad(value.getMinutes())}`;
+  }
+
+  function showToast(message) {
+    toastEl.textContent = message;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2300);
+  }
+
+  function setConnectionStatus(online) {
+    statusEl.classList.toggle("offline", !online);
+    statusText.textContent = online
+      ? "已连接电脑 · 已同步"
+      : "离线模式 · 数据已保存在本机";
+  }
+
+  function render() {
+    const memos = activeRecords();
+    memos.sort((left, right) => {
+      const leftTime = new Date(left.deadline).getTime();
+      const rightTime = new Date(right.deadline).getTime();
+      const now = Date.now();
+      const leftActive = leftTime > now ? 0 : 1;
+      const rightActive = rightTime > now ? 0 : 1;
+      return leftActive - rightActive || leftTime - rightTime;
+    });
+
+    countEl.textContent = `${memos.length} 项`;
+    listEl.replaceChildren();
+
+    if (!memos.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.innerHTML =
+        '<div class="empty-clock">◷</div>还没有事项<br>现在可以先离线记录，联网后自动同步';
+      listEl.appendChild(empty);
+      return;
+    }
+
+    for (const memo of memos) {
+      const [stateClass, badgeText] = statusOf(memo.deadline);
+      const card = document.createElement("article");
+      card.className = `card ${stateClass}`.trim();
+      card.dataset.id = memo.id;
+
+      const head = document.createElement("div");
+      head.className = "card-head";
+      const title = document.createElement("h2");
+      title.className = "card-title";
+      title.textContent = memo.title || "未命名事项";
+      const badge = document.createElement("span");
+      badge.className = "badge";
+      badge.textContent = badgeText;
+      head.append(title, badge);
+      card.appendChild(head);
+
+      if (memo.note) {
+        const note = document.createElement("div");
+        note.className = "note";
+        note.textContent = memo.note;
+        card.appendChild(note);
+      }
+
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      const remainingLabel = document.createElement("span");
+      remainingLabel.className = "meta-label";
+      remainingLabel.textContent = "剩余时间";
+      const remaining = document.createElement("span");
+      remaining.className = "remaining";
+      remaining.dataset.deadline = memo.deadline;
+      remaining.textContent = formatRemaining(memo.deadline);
+      const deadlineLabel = document.createElement("span");
+      deadlineLabel.className = "meta-label";
+      deadlineLabel.textContent = "终止时间";
+      const deadline = document.createElement("span");
+      deadline.className = "deadline";
+      deadline.textContent = formatDeadline(memo.deadline);
+      meta.append(remainingLabel, remaining, deadlineLabel, deadline);
+      card.appendChild(meta);
+
+      const actions = document.createElement("div");
+      actions.className = "actions";
+      const editButton = document.createElement("button");
+      editButton.className = "action-btn";
+      editButton.textContent = "编辑";
+      editButton.addEventListener("click", () => openEditor(memo.id));
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "action-btn delete";
+      deleteButton.textContent = "删除";
+      deleteButton.addEventListener("click", () => deleteMemo(memo.id));
+      actions.append(editButton, deleteButton);
+      card.appendChild(actions);
+      listEl.appendChild(card);
+    }
+  }
+
+  function updateCountdowns() {
+    document.querySelectorAll(".remaining[data-deadline]").forEach(element => {
+      element.textContent = formatRemaining(element.dataset.deadline);
+    });
+    document.querySelectorAll(".card").forEach(card => {
+      const memo = records.find(record => record.id === card.dataset.id);
+      if (!memo) return;
+      const [stateClass, badgeText] = statusOf(memo.deadline);
+      card.classList.remove("urgent", "expired");
+      if (stateClass) card.classList.add(stateClass);
+      const badge = card.querySelector(".badge");
+      if (badge) badge.textContent = badgeText;
+    });
+  }
+
+  function openEditor(memoId = null) {
+    editingId = memoId;
+    const memo = memoId
+      ? records.find(record => record.id === memoId && !record.deleted)
+      : null;
+    formTitle.textContent = memo ? "编辑事项" : "新建事项";
+    titleInput.value = memo ? memo.title : "";
+    noteInput.value = memo ? (memo.note || "") : "";
+    if (memo) {
+      const value = new Date(memo.deadline);
+      dateInput.value = localDateValue(value);
+      timeInput.value = `${String(value.getHours()).padStart(2, "0")}:${String(value.getMinutes()).padStart(2, "0")}`;
+    } else {
+      defaultDeadline();
+    }
+    overlay.classList.add("show");
+    setTimeout(() => titleInput.focus(), 80);
+  }
+
+  function closeEditor() {
+    overlay.classList.remove("show");
+    editingId = null;
+  }
+
+  function deleteMemo(memoId) {
+    const memo = records.find(record => record.id === memoId);
+    if (!memo || !confirm(`确定删除「${memo.title}」吗？`)) return;
+    memo.deleted = true;
+    memo.rev = nextRevision(memo);
+    memo.updated_at = new Date().toISOString();
+    persist();
+    render();
+    showToast("已删除，联网后同步");
+    syncNow();
+  }
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const title = titleInput.value.trim();
+    if (!title) {
+      showToast("请填写事项名称");
+      return;
+    }
+    if (!dateInput.value || !timeInput.value) {
+      showToast("请选择终止时间");
+      return;
+    }
+    const deadline = `${dateInput.value}T${timeInput.value}:00`;
+    if (new Date(deadline).getTime() <= Date.now()) {
+      showToast("终止时间需要晚于现在");
+      return;
+    }
+
+    const now = new Date().toISOString();
+    let memo = editingId
+      ? records.find(record => record.id === editingId)
+      : null;
+    if (memo) {
+      memo.title = title;
+      memo.note = noteInput.value.trim();
+      memo.deadline = deadline;
+      memo.deleted = false;
+      memo.rev = nextRevision(memo);
+      memo.updated_at = now;
+    } else {
+      memo = {
+        id:
+          crypto.randomUUID?.() ||
+          `m-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        title,
+        note: noteInput.value.trim(),
+        deadline,
+        created_at: now,
+        updated_at: now,
+        rev: nextRevision(),
+        deleted: false,
+        image: null,
+      };
+      records.push(memo);
+    }
+    persist();
+    closeEditor();
+    render();
+    showToast("已保存到手机，联网后自动同步");
+    syncNow();
+  });
+
+  function syncViaWebSocket() {
+    return new Promise(resolve => {
+      if (!syncUrl) {
+        resolve(false);
+        return;
+      }
+      let settled = false;
+      let socket;
+      let timer;
+      const finish = ok => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        try {
+          socket?.close();
+        } catch {}
+        resolve(ok);
+      };
+      try {
+        socket = new WebSocket(syncUrl);
+      } catch {
+        resolve(false);
+        return;
+      }
+      timer = setTimeout(() => finish(false), 4500);
+      socket.onopen = () => {
+        socket.send(JSON.stringify({ type: "sync", records }));
+      };
+      socket.onmessage = event => {
+        try {
+          const payload = JSON.parse(event.data);
+          if (payload.type !== "synced" || !Array.isArray(payload.records)) {
+            finish(false);
+            return;
+          }
+          records = mergeRecords(records, payload.records);
+          persist();
+          render();
+          finish(true);
+        } catch {
+          finish(false);
+        }
+      };
+      socket.onerror = () => finish(false);
+      socket.onclose = () => finish(false);
+    });
+  }
+
+  function deriveHttpUrl() {
+    try {
+      const url = new URL(syncUrl);
+      const token = url.pathname.split("/").filter(Boolean).pop();
+      if (!token) return "";
+      return `${url.protocol === "wss:" ? "https:" : "http:"}//${url.host}/t/${token}/api/sync`;
+    } catch {
+      return bootstrap.syncHttpUrl || "";
+    }
+  }
+
+  async function syncViaHttp() {
+    const target = deriveHttpUrl();
+    if (!target) return false;
+    try {
+      const response = await fetch(target, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ records }),
+      });
+      const payload = await response.json();
+      if (!response.ok || !Array.isArray(payload.records)) return false;
+      records = mergeRecords(records, payload.records);
+      persist();
+      render();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  async function syncNow() {
+    if (syncing) return;
+    syncing = true;
+    let online = false;
+    try {
+      online = await syncViaWebSocket();
+      if (!online) online = await syncViaHttp();
+    } finally {
+      syncing = false;
+      setConnectionStatus(online);
+      setTimeout(syncNow, online ? 3000 : 9000);
+    }
+  }
+
+  statusEl.style.cursor = "pointer";
+  statusEl.title = "点击设置电脑同步地址";
+  statusEl.addEventListener("click", () => {
+    const value = prompt(
+      "输入电脑“微信控制”窗口中显示的离线同步地址：",
+      syncUrl
+    );
+    if (value && value.trim()) {
+      syncUrl = value.trim();
+      localStorage.setItem(SYNC_URL_KEY, syncUrl);
+      syncNow();
+    }
+  });
+
+  document.getElementById("addBtn").addEventListener("click", () => openEditor());
+  document.getElementById("cancelBtn").addEventListener("click", closeEditor);
+  overlay.addEventListener("click", event => {
+    if (event.target === overlay) closeEditor();
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) syncNow();
+  });
+
+  function compareVersions(left, right) {
+    const parse = value =>
+      String(value).replace(/^v/i, "").split(".").map(Number);
+    const a = parse(left);
+    const b = parse(right);
+    const length = Math.max(a.length, b.length);
+    for (let index = 0; index < length; index += 1) {
+      const difference = (a[index] || 0) - (b[index] || 0);
+      if (difference) return difference;
+    }
+    return 0;
+  }
+
+  async function checkMobileUpdate() {
+    if (!checkUpdateBtn) return;
+    const manifestUrl =
+      bootstrap.updateManifestUrl ||
+      "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/update-manifest.json?ref=main";
+    const currentVersion = bootstrap.mobileVersion || "0.0.0";
+    checkUpdateBtn.disabled = true;
+    checkUpdateBtn.textContent = "检查中…";
+    try {
+      const response = await fetch(`${manifestUrl}?t=${Date.now()}`, {
+        cache: "no-store",
+      });
+      if (!response.ok) throw new Error("无法获取版本信息");
+      let manifest = await response.json();
+      if (manifest.content && manifest.encoding === "base64") {
+        const binary = atob(manifest.content.replace(/\s/g, ""));
+        const bytes = Uint8Array.from(binary, character => character.charCodeAt(0));
+        manifest = JSON.parse(new TextDecoder().decode(bytes));
+      }
+      if (compareVersions(manifest.version, currentVersion) <= 0) {
+        showToast(`已是最新版本 v${currentVersion}`);
+        return;
+      }
+      const notes = Array.isArray(manifest.notes)
+        ? manifest.notes.map(item => `• ${item}`).join("\n")
+        : "";
+      const install = confirm(
+        `发现新版本 v${manifest.version}\n\n${notes}\n\n` +
+          "下载后将得到最新离线版 HTML。请用新文件替换旧文件并保持原文件名不变，本机事项数据会保留。"
+      );
+      if (!install) return;
+      const mobile = manifest.mobile || {};
+      if (!mobile.offline_html_url) {
+        throw new Error("更新清单缺少手机版下载地址");
+      }
+      checkUpdateBtn.textContent = "下载中…";
+      const fileResponse = await fetch(mobile.offline_html_url, {
+        cache: "no-store",
+        headers: { Accept: "application/vnd.github.raw" },
+      });
+      if (!fileResponse.ok) throw new Error("下载失败");
+      const html = await fileResponse.text();
+      const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "BUAA-Memo-Offline.html";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(link.href), 2000);
+      showToast("已下载最新离线版，请打开新文件替换旧版");
+    } catch (error) {
+      showToast(error.message || "检查更新失败");
+    } finally {
+      checkUpdateBtn.disabled = false;
+      checkUpdateBtn.textContent = "检查更新";
+    }
+  }
+
+  checkUpdateBtn?.addEventListener("click", checkMobileUpdate);
+
+  loadRecords();
+  render();
+  setConnectionStatus(false);
+  setInterval(updateCountdowns, 1000);
+  syncNow();
+})();
+
+</script>
+</body>
+</html>

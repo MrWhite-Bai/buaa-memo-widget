@@ -9,8 +9,8 @@
   ],
   "desktop": {
     "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-1.9.0-app-patch.zip?ref=main",
-    "sha256": "394cde460183c484ba2a8c20b7a6b30a6e69ff931baecd1dee10991cd753e136",
-    "size": 298948
+    "sha256": "9ff1d444f64c438015e57c2184f8d65592936ea00711e82699ab66e53abcf93e",
+    "size": 330211
   },
   "mobile": {
     "version": "1.9.0",

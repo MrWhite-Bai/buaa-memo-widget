@@ -5,6 +5,7 @@
 ## 下载
 
 - [Windows 完整版](BUAA-Memo-Windows-v1.9.0.zip)
+- [macOS 浏览器版](BUAA-Memo-macOS-v1.9.0.zip)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 

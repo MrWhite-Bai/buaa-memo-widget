@@ -1,21 +1,21 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "published_at": "2026-10-20",
   "notes": [
-    "主页面新增“扫码下载”按钮。",
-    "新增电脑版二维码，扫码打开 GitHub 下载页。",
-    "新增手机版二维码，可直接下载当前电脑生成的最新离线 HTML。",
-    "二维码页面支持复制下载地址。"
+    "主页面新增独立的“版本与更新”栏。",
+    "检查更新改为蓝色主按钮，更容易发现。",
+    "更新日志改为带箭头的文字按钮，并显示当前版本号。",
+    "底部状态栏只保留自动保存状态和时钟。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-1.8.0-app-patch.zip?ref=main",
-    "sha256": "d3afe64d8d9f9368d23d2c8f6f7b52da2a6fcdff6761d3b0e7c7170e767f7dac",
-    "size": 275143
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-1.9.0-app-patch.zip?ref=main",
+    "sha256": "394cde460183c484ba2a8c20b7a6b30a6e69ff931baecd1dee10991cd753e136",
+    "size": 298948
   },
   "mobile": {
-    "version": "1.8.0",
+    "version": "1.9.0",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "7f3f3414a200fc2f8bc5ef8452ada6cf4f3cc97246ffb083ac098cf50e05e3d1",
+    "sha256": "5599545962098a7b4f0190a0d9ebfd35800c140e240fd6cf4eb28e98fc9e8443",
     "size": 29965
   }
 }

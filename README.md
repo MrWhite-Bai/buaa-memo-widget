@@ -1,12 +1,12 @@
 # BUAA 备忘倒计时
 
-一个带倒计时、图片附件、微信扫码控制和离线同步的 Windows 桌面备忘录。
+一个带倒计时、图片附件和手机独立版的 Windows 桌面备忘录。
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v3.4.3.zip)
-- [macOS 浏览器版](BUAA-Memo-macOS-v3.4.3.zip)
-- [Android APK](BUAA-Memo-Android-v3.4.3.apk)
+- [Windows 完整版](BUAA-Memo-Windows-v3.4.4.zip)
+- [macOS 浏览器版](BUAA-Memo-macOS-v3.4.4.zip)
+- [Android APK](BUAA-Memo-Android-v3.4.4.apk)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 
@@ -30,6 +30,9 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 在手机 App 点击“同步”并记下 6 位配对码，再输入电脑端。未配对设备会收到
 401 拒绝。
 
+手机版主页提供“电脑版下载”区域，可复制下载链接或通过系统分享发送到电脑。
+在电脑浏览器打开链接并登录平台后，即可下载 Windows 或 macOS 版本。
+
 手机周视图采用竖屏三列课程表，今天、明天和后天的 `00:00–23:59`
 会在同一屏幕内完整显示，无需上下或左右滚动。
 
@@ -40,4 +43,4 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 
 ## 当前版本
 
-v3.4.3
+v3.4.4

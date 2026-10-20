@@ -1,27 +1,28 @@
 {
-  "version": "3.4.3",
+  "version": "3.4.4",
   "published_at": "2026-10-20",
   "notes": [
-    "手机 Android 版的下载二维码改为互联网平台地址。",
-    "下载手机版不再要求手机与电脑连接同一 Wi-Fi 或热点。",
-    "打开下载窗口不再依赖电脑端的局域网同步服务。",
-    "登录平台后可在项目 5 的“版本下载”中获取最新版 APK。",
-    "同一 Wi-Fi 要求仅保留给手机与电脑之间的数据同步。"
+    "移除电脑端“微信控制”入口及其局域网网页控制服务。",
+    "手机 APP 下载窗口只保留手机版二维码，不再显示电脑版二维码。",
+    "手机版主页新增电脑版下载教程。",
+    "支持复制电脑版下载链接，并可通过微信、QQ、邮件等发送到电脑。",
+    "提供电脑版下载页面和 Windows 安装包直达链接。",
+    "下载电脑版不要求手机与电脑连接同一 Wi-Fi。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.3-app-patch.zip?ref=main",
-    "sha256": "97cfdf7daf2f5eb488c5b1b544787919ece34f68db6f1c09d5f846b0b489b60e",
-    "size": 802074
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.4-app-patch.zip?ref=main",
+    "sha256": "0c5470ba1dcbdd68df77d5f5cd08e2a0e1ed5208c6f5c78e12110608a9e7144f",
+    "size": 858226
   },
   "mobile": {
-    "version": "3.4.3",
+    "version": "3.4.4",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "183412b3170b4eccb3bf7f648c2d34873e0a9e763803fb1c1c7cde409faeb67b",
-    "size": 81113
+    "sha256": "4a0eb249f98dd0ba6d145a1cd6cf22b0e260092df8d8df9cb12ffe11ab096934",
+    "size": 87163
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.3.apk?ref=main",
-    "sha256": "4be225b0c61650d451859085db296a44e25f35184ef5d711a75f9391cc6bb2c0",
-    "size": 58017
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.4.apk?ref=main",
+    "sha256": "29e552f2fd3e82ddd6b42cd3dd6cd2cfe90f6acc88f48bd49fa45bd69cb8c3d9",
+    "size": 62113
   }
 }

@@ -150,6 +150,84 @@
       word-break: break-all;
     }
 
+    .desktop-download-box {
+      margin-bottom: 15px;
+      border: 1px solid #d8e5f5;
+      border-radius: 16px;
+      padding: 14px;
+      background: #fff;
+      box-shadow: 0 7px 22px rgba(20, 78, 170, .07);
+    }
+
+    .desktop-download-box h2 {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 15px;
+    }
+
+    .desktop-download-box p,
+    .desktop-download-box li {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .desktop-download-box p { margin: 0; }
+
+    .desktop-download-box ol {
+      margin: 9px 0 11px;
+      padding-left: 20px;
+    }
+
+    .desktop-download-page {
+      display: block;
+      padding: 9px 10px;
+      border-radius: 10px;
+      background: #f2f6fc;
+      color: #315f96;
+      font: 700 10px ui-monospace, Menlo, Consolas, monospace;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+      text-decoration: none;
+    }
+
+    .desktop-download-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .desktop-download-actions button {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 8px;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #copyDesktopLinkBtn {
+      background: #e7f0ff;
+      color: #1758ad;
+    }
+
+    #shareDesktopLinkBtn {
+      background: #155dcc;
+      color: white;
+    }
+
+    .desktop-direct-download {
+      display: block;
+      margin-top: 9px;
+      color: #176b4b;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: underline;
+    }
+
     .count {
       background: #dce9fa;
       color: #144eaa;
@@ -707,7 +785,7 @@
 <body>
   <header>
     <div class="brand">BUAA</div>
-    <div class="tagline">离线手机版 · 本地保存 · 自动更新</div>
+    <div class="tagline">备忘录 · 手机版</div>
     <div class="status" id="status">
       <span class="status-dot"></span>
       <span id="statusText">正在连接电脑</span>
@@ -730,9 +808,25 @@
       <button class="sync-button" id="syncBtn" type="button">同步</button>
       <button class="mini-action" id="historyBtn" type="button">历史 0</button>
       <button class="mini-action" id="weekBtn" type="button">周视图</button>
-      <button class="mini-action" id="versionBtn" type="button">v3.4.3</button>
+      <button class="mini-action" id="versionBtn" type="button">v3.4.4</button>
       <button class="update-check" id="checkUpdateBtn" type="button">检查更新</button>
     </div>
+
+    <section class="desktop-download-box">
+      <h2>电脑版下载</h2>
+      <p>手机版安装完成后，可以把下面这个固定链接发送到电脑，不需要让两台设备连接同一 Wi-Fi。</p>
+      <ol>
+        <li>点击“复制下载链接”或“发送到电脑”。</li>
+        <li>通过微信、QQ、邮件等把链接发到电脑。</li>
+        <li>在电脑浏览器打开链接并登录平台，在“版本下载”中选择 Windows 版。</li>
+      </ol>
+      <a class="desktop-download-page" id="desktopDownloadPageLink" href="https://cysyforum.muzermat.online/cy-platform/projects/5" target="_blank" rel="noopener noreferrer">https://cysyforum.muzermat.online/cy-platform/projects/5</a>
+      <div class="desktop-download-actions">
+        <button type="button" id="copyDesktopLinkBtn">复制下载链接</button>
+        <button type="button" id="shareDesktopLinkBtn">发送到电脑</button>
+      </div>
+      <a class="desktop-direct-download" id="directDesktopDownload" href="https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v3.4.4/BUAA-Memo-Windows-v3.4.4.zip" target="_blank" rel="noopener noreferrer">直接下载 Windows 完整版</a>
+    </section>
     <div class="list" id="list"></div>
   </main>
 
@@ -881,7 +975,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <script>window.BUAA_BOOTSTRAP = {"syncWsUrl": "", "syncHttpUrl": "", "seedRecords": [], "mobileVersion": "3.4.3", "updateManifestUrl": "https://cysyforum.muzermat.online/cy-platform/projects/5", "cloudSyncUrl": "", "cloudPublishableKey": "", "cloudVaultKey": "", "changelog": {"current_version": "3.4.3", "entries": [{"version": "3.4.3", "date": "2026-10-20", "title": "手机版互联网扫码下载", "changes": ["手机 Android 版的下载二维码改为互联网平台地址。", "下载手机版不再要求手机与电脑连接同一 Wi-Fi 或热点。", "打开下载窗口不再依赖电脑端的局域网同步服务。", "登录平台后可在项目 5 的“版本下载”中获取最新版 APK。", "同一 Wi-Fi 要求仅保留给手机与电脑之间的数据同步。"]}, {"version": "3.4.2", "date": "2026-10-20", "title": "平台登录后检查更新", "changes": ["手机版和电脑版的检查更新统一改为打开“学业支持中心开源平台”项目 5。", "未登录用户会先进入平台登录页，登录后才能查看和下载最新版。", "取消对 GitHub API 的更新检查，避免请求限流导致无法获取版本信息。", "插件不会保存或上传平台用户名和密码。", "最新版安装包统一从平台项目的“版本下载”区域获取。"]}, {"version": "3.4.1", "date": "2026-10-20", "title": "手机一屏查看三天全时段", "changes": ["手机周视图自动压缩为当前屏幕可用高度。", "今天、明天和后天的 00:00 到 23:59 可在同一竖屏中同时查看。", "课程表不再需要上下滚动，三列日期和全部时间点一次完整显示。", "首个时间标签显示 00:00，最后一个时间标签显示 23:59。", "任务和事件仍按准确时间、准确日期列定位。", "继续使用高 DPI 绘制，保持竖屏文字和网格清晰。"]}, {"version": "3.4.0", "date": "2026-10-20", "title": "手机竖屏三日课程表", "changes": ["手机周视图取消自动横屏，始终使用竖屏展示。", "每次连续展示今天、明天和后天三个完整日期列。", "纵向滚动可查看三天内 00:00 到 24:00 的所有时段。", "新增前三天、今天和后三天快速切换按钮。", "日期表头固定显示，滚动到任何时段都能确认星期和日期。", "消除课程表横向溢出，三天内容无需左右拖动。", "高 DPI 绘图和放大字号继续保留。"]}, {"version": "3.3.1", "date": "2026-10-20", "title": "高分辨率手机周视图", "changes": ["手机周视图 Canvas 根据设备像素比创建高分辨率缓冲区。", "高 DPI 手机最高使用 3 倍像素密度绘制，避免拉伸模糊。", "同步放大星期、日期、时间和事项文字。", "横屏旋转和窗口尺寸变化后会重新按像素比绘制。"]}, {"version": "3.3.0", "date": "2026-10-20", "title": "手机日志与横屏周视图", "changes": ["将电脑版完整更新日志直接嵌入手机安装包，解决日志空白。", "更新日志改为版本标题、日期和内容分层排版。", "日志窗口增加固定顶部栏和独立滚动区域。", "打开手机周视图时自动切换横屏，退出后恢复竖屏。", "周视图根据横屏宽度重新计算七天列宽。"]}, {"version": "3.2.0", "date": "2026-10-20", "title": "手机端完整功能", "changes": ["手机端新增历史事项页面，历史事项只能删除。", "手机端新增七天课程表式周视图。", "手机端新增图片选择、压缩、预览和大图查看。", "手机图片可与电脑端双向同步，电脑图片也会推送到手机。", "手机端新增版本号、完整更新日志和检查更新按钮。", "两端同步按钮改为高对比主按钮，更容易发现。"]}, {"version": "3.1.0", "date": "2026-10-20", "title": "设备配对与访问控制", "changes": ["Android App 生成唯一设备 ID 和 6 位配对码。", "电脑首次连接手机时必须输入配对码。", "手机验证配对码后发放长期同步令牌。", "同步和读取接口必须携带有效令牌，否则返回 401。", "连续输错配对码会临时限频，降低暴力尝试风险。", "手机同步教程页面显示当前设备地址和配对码。"]}, {"version": "3.0.0", "date": "2026-10-20", "title": "Android 原生同步版", "changes": ["新增可独立安装的 Android APK，手机无需电脑即可打开和编辑事项。", "Android App 使用前台服务提供局域网同步接口。", "电脑端通过 UDP 自动发现同一 Wi-Fi 或手机热点中的 App。", "电脑和手机同时在线时双向同步，离线时各自保存。", "默认关闭云端同步，不再持续消耗腾讯云资源点。", "电脑端“手机APP”二维码可直接从局域网下载 APK。"]}, {"version": "2.3.0", "date": "2026-10-20", "title": "增量云同步", "changes": ["云端新增变更日志，每次只返回上次同步之后发生变化的记录。", "客户端只上传版本号发生变化的事项，不再重复上传整份清单。", "后台同步由每 4 秒改为每 5 分钟，减少云资源消耗。", "新增、修改、完成或删除事项后仍会立即触发同步。", "云同步状态文字可点击，用于手动立即刷新。"]}, {"version": "2.2.0", "date": "2026-10-20", "title": "独立手机端云同步", "changes": ["电脑端和手机端分别保存本地数据，两端均可独立离线使用。", "使用腾讯云开发国内节点同步，电脑关机时手机端仍可操作。", "两端同时联网时按版本号自动增量合并，并保留删除记录。", "手机端提供固定网址，可添加到主屏幕作为独立应用打开。", "电脑端通过“手机独立版”二维码自动绑定同一同步码。", "新增云同步连接状态显示，失败时继续使用本地数据。"]}, {"version": "2.1.2", "date": "2026-10-20", "title": "周视图对齐优化", "changes": ["事件型矩形改为按所属星期列居中展示。", "任务型固定矩形改为按星期列居中，不再偏向右侧。", "七天之间的分隔竖线加粗加深，表头和日期区保持一致。", "多个同段时间的任务保持统一中线，不再做横向错位。"]}, {"version": "2.1.1", "date": "2026-10-20", "title": "周视图更易读", "changes": ["放大周视图中的事项标题、星期和日期时间字号。", "任务型事项的固定矩形由 46×26 放大到 88×36。", "默认窗口更宽，为事件标题和任务块留出更多空间。", "任务块可显示更多标题文字，点击仍可查看完整内容。"]}, {"version": "2.1.0", "date": "2026-10-20", "title": "本周事项表", "changes": ["主页面新增“周视图”按钮，以周一到周日课程表展示进行中的事项。", "事件型事项按开始和结束时间绘制矩形，矩形高度与持续时间一致。", "任务型事项使用固定大小矩形，矩形水平中线对准截止时间。", "支持重叠事件自动分栏、跨天事件拆分、上一周和下一周切换。", "周视图中点击事项色块可查看完整时间与备注。"]}, {"version": "2.0.0", "date": "2026-10-20", "title": "任务与事件", "changes": ["备忘事项分为任务型和事件型，新建时可自由切换。", "任务型保留截止时间，并新增绿色“完成”按钮，可提前结束并记录完成时间。", "事件型必须设置开始时间和结束时间，不显示“完成”按钮，结束后自动进入历史事项。", "电脑端、微信控制页和手机离线版均支持两种事项类型。"]}, {"version": "1.9.0", "date": "2026-10-20", "title": "更新入口更醒目", "changes": ["主页面新增独立的“版本与更新”栏。", "检查更新改为蓝色主按钮，更容易发现。", "更新日志改为带箭头的文字按钮，并显示当前版本号。", "底部状态栏只保留自动保存状态和时钟。"]}, {"version": "1.8.0", "date": "2026-10-20", "title": "扫码获取版本", "changes": ["主页面新增“扫码下载”按钮。", "新增电脑版二维码，扫码打开 GitHub 下载页。", "新增手机版二维码，可直接下载当前电脑生成的最新离线 HTML。", "二维码页面支持复制下载地址。", "新增无需安装 Python 的 macOS 浏览器应用包。"]}, {"version": "1.7.0", "date": "2026-10-20", "title": "历史事项", "changes": ["主页面新增带数量的“历史事项”按钮。", "已过期事项会自动移入历史事项，不再占用主列表。", "历史页面只能删除事项，不提供编辑或修改入口。", "删除历史事项后，主页面数量和历史列表会同步刷新。"]}, {"version": "1.6.0", "date": "2026-10-20", "title": "在线检查更新", "changes": ["电脑端新增“检查更新”按钮，可下载并安装最新版。", "升级包下载后进行 SHA-256 校验，保留现有备忘录数据。", "手机离线版新增更新检查，可下载最新版离线 HTML。", "更新信息统一从 GitHub 仓库的版本清单读取。"]}, {"version": "1.5.0", "date": "2026-10-20", "title": "版本更新日志", "changes": ["新增版本更新日志页面。", "底部显示当前版本号，点击即可查看历史调整内容。", "更新记录独立保存在 changelog.json，方便后续版本继续追加。"]}, {"version": "1.4.0", "date": "2026-10-20", "title": "修复月历卡死", "changes": ["修复点击“打开月历”后窗口无法绘制、界面像死机的问题。", "月历改为正常可绘制的独立窗口。", "保留 Esc 关闭和日期选择功能。"]}, {"version": "1.3.0", "date": "2026-10-20", "title": "离线优先与双向同步", "changes": ["新增手机离线版，电脑关机时也能新增、编辑和删除事项。", "手机数据先保存在本机浏览器，电脑恢复在线后自动同步。", "加入版本号与删除记录，避免已删除事项被重新加回来。", "电脑启动时自动开启同步服务。"]}, {"version": "1.2.0", "date": "2026-10-20", "title": "微信控制", "changes": ["新增“微信控制”入口和扫码控制页。", "支持在手机上新增、编辑、删除事项。", "手机和电脑在同一个 Wi-Fi 时可实时同步。", "增加随机访问令牌和局域网访问限制。"]}, {"version": "1.1.0", "date": "2026-10-20", "title": "自由选择终止时间", "changes": ["新增月历日期选择器，可选择任意未来日期。", "新增小时、分钟独立选择框。", "保留手动输入日期和快捷时间选项。"]}, {"version": "1.0.0", "date": "2026-10-19", "title": "初始版本", "changes": ["完成 BUAA 备忘倒计时桌面插件。", "支持新增、删除事项，显示剩余时间和终止时间。", "临近截止自动变色，过期事项单独提示。", "支持图片附件、窗口置顶和本地自动保存。"]}]}};</script>
+  <script>window.BUAA_BOOTSTRAP = {"syncWsUrl": "", "syncHttpUrl": "", "seedRecords": [], "mobileVersion": "3.4.4", "updateManifestUrl": "https://cysyforum.muzermat.online/cy-platform/projects/5", "desktopDownloadUrl": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Windows-v3.4.4.zip?ref=main", "cloudSyncUrl": "", "cloudPublishableKey": "", "cloudVaultKey": "", "changelog": {"current_version": "3.4.4", "entries": [{"version": "3.4.4", "date": "2026-10-20", "title": "手机端提供电脑版下载教程", "changes": ["移除电脑端“微信控制”入口及其局域网网页控制服务。", "手机 APP 下载窗口只保留手机版二维码，不再显示电脑版二维码。", "手机版主页新增电脑版下载教程。", "支持复制电脑版下载链接，并可通过微信、QQ、邮件等发送到电脑。", "提供电脑版下载页面和 Windows 安装包直达链接。", "下载电脑版不要求手机与电脑连接同一 Wi-Fi。"]}, {"version": "3.4.3", "date": "2026-10-20", "title": "手机版互联网扫码下载", "changes": ["手机 Android 版的下载二维码改为互联网平台地址。", "下载手机版不再要求手机与电脑连接同一 Wi-Fi 或热点。", "打开下载窗口不再依赖电脑端的局域网同步服务。", "登录平台后可在项目 5 的“版本下载”中获取最新版 APK。", "同一 Wi-Fi 要求仅保留给手机与电脑之间的数据同步。"]}, {"version": "3.4.2", "date": "2026-10-20", "title": "平台登录后检查更新", "changes": ["手机版和电脑版的检查更新统一改为打开“学业支持中心开源平台”项目 5。", "未登录用户会先进入平台登录页，登录后才能查看和下载最新版。", "取消对 GitHub API 的更新检查，避免请求限流导致无法获取版本信息。", "插件不会保存或上传平台用户名和密码。", "最新版安装包统一从平台项目的“版本下载”区域获取。"]}, {"version": "3.4.1", "date": "2026-10-20", "title": "手机一屏查看三天全时段", "changes": ["手机周视图自动压缩为当前屏幕可用高度。", "今天、明天和后天的 00:00 到 23:59 可在同一竖屏中同时查看。", "课程表不再需要上下滚动，三列日期和全部时间点一次完整显示。", "首个时间标签显示 00:00，最后一个时间标签显示 23:59。", "任务和事件仍按准确时间、准确日期列定位。", "继续使用高 DPI 绘制，保持竖屏文字和网格清晰。"]}, {"version": "3.4.0", "date": "2026-10-20", "title": "手机竖屏三日课程表", "changes": ["手机周视图取消自动横屏，始终使用竖屏展示。", "每次连续展示今天、明天和后天三个完整日期列。", "纵向滚动可查看三天内 00:00 到 24:00 的所有时段。", "新增前三天、今天和后三天快速切换按钮。", "日期表头固定显示，滚动到任何时段都能确认星期和日期。", "消除课程表横向溢出，三天内容无需左右拖动。", "高 DPI 绘图和放大字号继续保留。"]}, {"version": "3.3.1", "date": "2026-10-20", "title": "高分辨率手机周视图", "changes": ["手机周视图 Canvas 根据设备像素比创建高分辨率缓冲区。", "高 DPI 手机最高使用 3 倍像素密度绘制，避免拉伸模糊。", "同步放大星期、日期、时间和事项文字。", "横屏旋转和窗口尺寸变化后会重新按像素比绘制。"]}, {"version": "3.3.0", "date": "2026-10-20", "title": "手机日志与横屏周视图", "changes": ["将电脑版完整更新日志直接嵌入手机安装包，解决日志空白。", "更新日志改为版本标题、日期和内容分层排版。", "日志窗口增加固定顶部栏和独立滚动区域。", "打开手机周视图时自动切换横屏，退出后恢复竖屏。", "周视图根据横屏宽度重新计算七天列宽。"]}, {"version": "3.2.0", "date": "2026-10-20", "title": "手机端完整功能", "changes": ["手机端新增历史事项页面，历史事项只能删除。", "手机端新增七天课程表式周视图。", "手机端新增图片选择、压缩、预览和大图查看。", "手机图片可与电脑端双向同步，电脑图片也会推送到手机。", "手机端新增版本号、完整更新日志和检查更新按钮。", "两端同步按钮改为高对比主按钮，更容易发现。"]}, {"version": "3.1.0", "date": "2026-10-20", "title": "设备配对与访问控制", "changes": ["Android App 生成唯一设备 ID 和 6 位配对码。", "电脑首次连接手机时必须输入配对码。", "手机验证配对码后发放长期同步令牌。", "同步和读取接口必须携带有效令牌，否则返回 401。", "连续输错配对码会临时限频，降低暴力尝试风险。", "手机同步教程页面显示当前设备地址和配对码。"]}, {"version": "3.0.0", "date": "2026-10-20", "title": "Android 原生同步版", "changes": ["新增可独立安装的 Android APK，手机无需电脑即可打开和编辑事项。", "Android App 使用前台服务提供局域网同步接口。", "电脑端通过 UDP 自动发现同一 Wi-Fi 或手机热点中的 App。", "电脑和手机同时在线时双向同步，离线时各自保存。", "默认关闭云端同步，不再持续消耗腾讯云资源点。", "电脑端“手机APP”二维码可直接从局域网下载 APK。"]}, {"version": "2.3.0", "date": "2026-10-20", "title": "增量云同步", "changes": ["云端新增变更日志，每次只返回上次同步之后发生变化的记录。", "客户端只上传版本号发生变化的事项，不再重复上传整份清单。", "后台同步由每 4 秒改为每 5 分钟，减少云资源消耗。", "新增、修改、完成或删除事项后仍会立即触发同步。", "云同步状态文字可点击，用于手动立即刷新。"]}, {"version": "2.2.0", "date": "2026-10-20", "title": "独立手机端云同步", "changes": ["电脑端和手机端分别保存本地数据，两端均可独立离线使用。", "使用腾讯云开发国内节点同步，电脑关机时手机端仍可操作。", "两端同时联网时按版本号自动增量合并，并保留删除记录。", "手机端提供固定网址，可添加到主屏幕作为独立应用打开。", "电脑端通过“手机独立版”二维码自动绑定同一同步码。", "新增云同步连接状态显示，失败时继续使用本地数据。"]}, {"version": "2.1.2", "date": "2026-10-20", "title": "周视图对齐优化", "changes": ["事件型矩形改为按所属星期列居中展示。", "任务型固定矩形改为按星期列居中，不再偏向右侧。", "七天之间的分隔竖线加粗加深，表头和日期区保持一致。", "多个同段时间的任务保持统一中线，不再做横向错位。"]}, {"version": "2.1.1", "date": "2026-10-20", "title": "周视图更易读", "changes": ["放大周视图中的事项标题、星期和日期时间字号。", "任务型事项的固定矩形由 46×26 放大到 88×36。", "默认窗口更宽，为事件标题和任务块留出更多空间。", "任务块可显示更多标题文字，点击仍可查看完整内容。"]}, {"version": "2.1.0", "date": "2026-10-20", "title": "本周事项表", "changes": ["主页面新增“周视图”按钮，以周一到周日课程表展示进行中的事项。", "事件型事项按开始和结束时间绘制矩形，矩形高度与持续时间一致。", "任务型事项使用固定大小矩形，矩形水平中线对准截止时间。", "支持重叠事件自动分栏、跨天事件拆分、上一周和下一周切换。", "周视图中点击事项色块可查看完整时间与备注。"]}, {"version": "2.0.0", "date": "2026-10-20", "title": "任务与事件", "changes": ["备忘事项分为任务型和事件型，新建时可自由切换。", "任务型保留截止时间，并新增绿色“完成”按钮，可提前结束并记录完成时间。", "事件型必须设置开始时间和结束时间，不显示“完成”按钮，结束后自动进入历史事项。", "电脑端、微信控制页和手机离线版均支持两种事项类型。"]}, {"version": "1.9.0", "date": "2026-10-20", "title": "更新入口更醒目", "changes": ["主页面新增独立的“版本与更新”栏。", "检查更新改为蓝色主按钮，更容易发现。", "更新日志改为带箭头的文字按钮，并显示当前版本号。", "底部状态栏只保留自动保存状态和时钟。"]}, {"version": "1.8.0", "date": "2026-10-20", "title": "扫码获取版本", "changes": ["主页面新增“扫码下载”按钮。", "新增电脑版二维码，扫码打开 GitHub 下载页。", "新增手机版二维码，可直接下载当前电脑生成的最新离线 HTML。", "二维码页面支持复制下载地址。", "新增无需安装 Python 的 macOS 浏览器应用包。"]}, {"version": "1.7.0", "date": "2026-10-20", "title": "历史事项", "changes": ["主页面新增带数量的“历史事项”按钮。", "已过期事项会自动移入历史事项，不再占用主列表。", "历史页面只能删除事项，不提供编辑或修改入口。", "删除历史事项后，主页面数量和历史列表会同步刷新。"]}, {"version": "1.6.0", "date": "2026-10-20", "title": "在线检查更新", "changes": ["电脑端新增“检查更新”按钮，可下载并安装最新版。", "升级包下载后进行 SHA-256 校验，保留现有备忘录数据。", "手机离线版新增更新检查，可下载最新版离线 HTML。", "更新信息统一从 GitHub 仓库的版本清单读取。"]}, {"version": "1.5.0", "date": "2026-10-20", "title": "版本更新日志", "changes": ["新增版本更新日志页面。", "底部显示当前版本号，点击即可查看历史调整内容。", "更新记录独立保存在 changelog.json，方便后续版本继续追加。"]}, {"version": "1.4.0", "date": "2026-10-20", "title": "修复月历卡死", "changes": ["修复点击“打开月历”后窗口无法绘制、界面像死机的问题。", "月历改为正常可绘制的独立窗口。", "保留 Esc 关闭和日期选择功能。"]}, {"version": "1.3.0", "date": "2026-10-20", "title": "离线优先与双向同步", "changes": ["新增手机离线版，电脑关机时也能新增、编辑和删除事项。", "手机数据先保存在本机浏览器，电脑恢复在线后自动同步。", "加入版本号与删除记录，避免已删除事项被重新加回来。", "电脑启动时自动开启同步服务。"]}, {"version": "1.2.0", "date": "2026-10-20", "title": "微信控制", "changes": ["新增“微信控制”入口和扫码控制页。", "支持在手机上新增、编辑、删除事项。", "手机和电脑在同一个 Wi-Fi 时可实时同步。", "增加随机访问令牌和局域网访问限制。"]}, {"version": "1.1.0", "date": "2026-10-20", "title": "自由选择终止时间", "changes": ["新增月历日期选择器，可选择任意未来日期。", "新增小时、分钟独立选择框。", "保留手动输入日期和快捷时间选项。"]}, {"version": "1.0.0", "date": "2026-10-19", "title": "初始版本", "changes": ["完成 BUAA 备忘倒计时桌面插件。", "支持新增、删除事项，显示剩余时间和终止时间。", "临近截止自动变色，过期事项单独提示。", "支持图片附件、窗口置顶和本地自动保存。"]}]}};</script>
 <script>
 (() => {
   "use strict";
@@ -894,6 +988,10 @@
   const CLOUD_PUSH_REV_KEY = "buaa_memo_cloud_push_rev_v1";
   const UPDATE_PORTAL_URL =
     "https://cysyforum.muzermat.online/cy-platform/projects/5";
+  const DESKTOP_DOWNLOAD_URL =
+    bootstrap.desktopDownloadUrl ||
+    "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/" +
+      "v3.4.4/BUAA-Memo-Windows-v3.4.4.zip";
 
   const listEl = document.getElementById("list");
   const countEl = document.getElementById("count");
@@ -938,6 +1036,12 @@
   const noteInput = document.getElementById("note");
   const toastEl = document.getElementById("toast");
   const checkUpdateBtn = document.getElementById("checkUpdateBtn");
+  const desktopDownloadPageLink = document.getElementById(
+    "desktopDownloadPageLink"
+  );
+  const directDesktopDownload = document.getElementById("directDesktopDownload");
+  const copyDesktopLinkBtn = document.getElementById("copyDesktopLinkBtn");
+  const shareDesktopLinkBtn = document.getElementById("shareDesktopLinkBtn");
   const nativeBridge = window.AndroidMemo || null;
 
   document.querySelector(".offline-box")?.remove();
@@ -2119,6 +2223,61 @@
     return 0;
   }
 
+  function desktopDownloadMessage() {
+    return (
+      "BUAA 备忘电脑版下载\n\n" +
+      `下载页面：${UPDATE_PORTAL_URL}\n` +
+      `Windows 安装包：${DESKTOP_DOWNLOAD_URL}\n\n` +
+      "在电脑浏览器打开链接并登录平台，然后在“版本下载”中选择 Windows 版。"
+    );
+  }
+
+  async function copyText(text) {
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {}
+    }
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    let copied = false;
+    try {
+      copied = document.execCommand("copy");
+    } catch {}
+    textarea.remove();
+    return copied;
+  }
+
+  async function copyDesktopDownloadLink() {
+    const copied = await copyText(desktopDownloadMessage());
+    showToast(
+      copied
+        ? "电脑版下载链接已复制，可发送到电脑"
+        : "复制失败，请长按下载页面地址手动复制"
+    );
+  }
+
+  async function shareDesktopDownloadLink() {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "BUAA 备忘电脑版",
+          text: desktopDownloadMessage(),
+          url: UPDATE_PORTAL_URL,
+        });
+        return;
+      } catch (error) {
+        if (error?.name === "AbortError") return;
+      }
+    }
+    await copyDesktopDownloadLink();
+  }
+
   function checkMobileUpdate() {
     if (!checkUpdateBtn) return;
     const proceed = confirm(
@@ -2136,6 +2295,14 @@
   }
 
   checkUpdateBtn?.addEventListener("click", checkMobileUpdate);
+  copyDesktopLinkBtn?.addEventListener("click", copyDesktopDownloadLink);
+  shareDesktopLinkBtn?.addEventListener("click", shareDesktopDownloadLink);
+  if (desktopDownloadPageLink) {
+    desktopDownloadPageLink.href = UPDATE_PORTAL_URL;
+  }
+  if (directDesktopDownload) {
+    directDesktopDownload.href = DESKTOP_DOWNLOAD_URL;
+  }
 
   window.BUAAReloadRecords = () => {
     loadRecords();

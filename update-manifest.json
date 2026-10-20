@@ -1,21 +1,21 @@
 {
-  "version": "1.9.0",
+  "version": "2.0.0",
   "published_at": "2026-10-20",
   "notes": [
-    "主页面新增独立的“版本与更新”栏。",
-    "检查更新改为蓝色主按钮，更容易发现。",
-    "更新日志改为带箭头的文字按钮，并显示当前版本号。",
-    "底部状态栏只保留自动保存状态和时钟。"
+    "备忘事项分为任务型和事件型，新建时可自由切换。",
+    "任务型保留截止时间，并新增绿色“完成”按钮，可提前结束并记录完成时间。",
+    "事件型必须设置开始时间和结束时间，不显示“完成”按钮，结束后自动进入历史事项。",
+    "电脑端、微信控制页和手机离线版均支持两种事项类型。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-1.9.0-app-patch.zip?ref=main",
-    "sha256": "9ff1d444f64c438015e57c2184f8d65592936ea00711e82699ab66e53abcf93e",
-    "size": 330211
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-2.0.0-app-patch.zip?ref=main",
+    "sha256": "2ba3671c3939f70b53dfad11019760382602bdbc6eacea64c89d645ac7ba66da",
+    "size": 335957
   },
   "mobile": {
-    "version": "1.9.0",
+    "version": "2.0.0",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "5599545962098a7b4f0190a0d9ebfd35800c140e240fd6cf4eb28e98fc9e8443",
-    "size": 29965
+    "sha256": "fe786e9ec582512ffeaac2ee92ebd8dbcfe6acc84fcd6e6d4b4eeecb88ff4ac0",
+    "size": 36794
   }
 }

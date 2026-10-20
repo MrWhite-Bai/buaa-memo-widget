@@ -1,27 +1,27 @@
 {
-  "version": "3.4.2",
+  "version": "3.4.3",
   "published_at": "2026-10-20",
   "notes": [
-    "手机版和电脑版的检查更新统一改为打开“学业支持中心开源平台”项目 5。",
-    "未登录用户会先进入平台登录页，登录后才能查看和下载最新版。",
-    "取消对 GitHub API 的更新检查，避免请求限流导致无法获取版本信息。",
-    "插件不会保存或上传平台用户名和密码。",
-    "最新版安装包统一从平台项目的“版本下载”区域获取。"
+    "手机 Android 版的下载二维码改为互联网平台地址。",
+    "下载手机版不再要求手机与电脑连接同一 Wi-Fi 或热点。",
+    "打开下载窗口不再依赖电脑端的局域网同步服务。",
+    "登录平台后可在项目 5 的“版本下载”中获取最新版 APK。",
+    "同一 Wi-Fi 要求仅保留给手机与电脑之间的数据同步。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.2-app-patch.zip?ref=main",
-    "sha256": "e8c5a82dd1e99bfea314327724f2631c517f0359e9b3d15667ff87cbaa8a8c0c",
-    "size": 748143
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.3-app-patch.zip?ref=main",
+    "sha256": "97cfdf7daf2f5eb488c5b1b544787919ece34f68db6f1c09d5f846b0b489b60e",
+    "size": 802074
   },
   "mobile": {
-    "version": "3.4.2",
+    "version": "3.4.3",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "4cbc19ffd1a3b987eaa4fb51b8ddb6dcf7b673eec1936423ab35c53139dfc24f",
-    "size": 80642
+    "sha256": "183412b3170b4eccb3bf7f648c2d34873e0a9e763803fb1c1c7cde409faeb67b",
+    "size": 81113
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.2.apk?ref=main",
-    "sha256": "590a9ac66fc082b09a9f8bdaf50594b09b7c966b69eafe3e7d8057ad34c73595",
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.3.apk?ref=main",
+    "sha256": "4be225b0c61650d451859085db296a44e25f35184ef5d711a75f9391cc6bb2c0",
     "size": 58017
   }
 }

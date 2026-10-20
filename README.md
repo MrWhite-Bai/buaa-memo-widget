@@ -4,9 +4,9 @@
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v3.4.1.zip)
-- [macOS 浏览器版](BUAA-Memo-macOS-v3.4.1.zip)
-- [Android APK](BUAA-Memo-Android-v3.4.1.apk)
+- [Windows 完整版](BUAA-Memo-Windows-v3.4.2.zip)
+- [macOS 浏览器版](BUAA-Memo-macOS-v3.4.2.zip)
+- [Android APK](BUAA-Memo-Android-v3.4.2.apk)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 
@@ -14,8 +14,9 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 
 ## 更新方式
 
-电脑端点击窗口底部的“检查更新”。程序会读取本仓库中的
-`update-manifest.json`，校验升级包后自动更新并重启。
+手机端或电脑端点击“检查更新”后，会打开“学业支持中心开源平台”
+的项目 5。未登录时需先登录平台，登录后在“版本下载”中获取最新版。
+插件不会保存或上传平台账号与密码。
 
 旧版手机离线 HTML 仍可作为备用方案。
 
@@ -36,4 +37,4 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 
 ## 当前版本
 
-v3.4.1
+v3.4.2

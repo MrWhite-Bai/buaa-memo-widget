@@ -1,28 +1,27 @@
 {
-  "version": "3.4.1",
+  "version": "3.4.2",
   "published_at": "2026-10-20",
   "notes": [
-    "手机周视图自动压缩为当前屏幕可用高度。",
-    "今天、明天和后天的 00:00 到 23:59 可在同一竖屏中同时查看。",
-    "课程表不再需要上下滚动，三列日期和全部时间点一次完整显示。",
-    "首个时间标签显示 00:00，最后一个时间标签显示 23:59。",
-    "任务和事件仍按准确时间、准确日期列定位。",
-    "继续使用高 DPI 绘制，保持竖屏文字和网格清晰。"
+    "手机版和电脑版的检查更新统一改为打开“学业支持中心开源平台”项目 5。",
+    "未登录用户会先进入平台登录页，登录后才能查看和下载最新版。",
+    "取消对 GitHub API 的更新检查，避免请求限流导致无法获取版本信息。",
+    "插件不会保存或上传平台用户名和密码。",
+    "最新版安装包统一从平台项目的“版本下载”区域获取。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.1-app-patch.zip?ref=main",
-    "sha256": "60f7b0962febfeb574bb2d98e0a37d352121d204bb86cd4197c99e5fe0820f59",
-    "size": 694743
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.2-app-patch.zip?ref=main",
+    "sha256": "e8c5a82dd1e99bfea314327724f2631c517f0359e9b3d15667ff87cbaa8a8c0c",
+    "size": 748143
   },
   "mobile": {
-    "version": "3.4.1",
+    "version": "3.4.2",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "2ae19e4fd4ac0c2b104ffc2158b6ba96f18ef4451ca2ae540dcad955db5eb969",
-    "size": 82372
+    "sha256": "4cbc19ffd1a3b987eaa4fb51b8ddb6dcf7b673eec1936423ab35c53139dfc24f",
+    "size": 80642
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.1.apk?ref=main",
-    "sha256": "e22307ecdf5886d759a92cbf3f48c5557dba43fc5149575bcb271ae15af92f3d",
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.2.apk?ref=main",
+    "sha256": "590a9ac66fc082b09a9f8bdaf50594b09b7c966b69eafe3e7d8057ad34c73595",
     "size": 58017
   }
 }

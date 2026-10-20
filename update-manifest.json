@@ -1,21 +1,21 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "published_at": "2026-10-20",
   "notes": [
-    "电脑端新增“检查更新”按钮，可下载并安装最新版。",
-    "升级包下载后进行 SHA-256 校验，保留现有备忘录数据。",
-    "手机离线版新增更新检查，可下载最新版离线 HTML。",
-    "更新信息统一从 GitHub 仓库的版本清单读取。"
+    "主页面新增带数量的“历史事项”按钮。",
+    "已过期事项会自动移入历史事项，不再占用主列表。",
+    "历史页面只能删除事项，不提供编辑或修改入口。",
+    "删除历史事项后，主页面数量和历史列表会同步刷新。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-1.6.0-app-patch.zip?ref=main",
-    "sha256": "34dcebcbaf2a4c66464c13abd3fd5fdbe78e1ccfb5d1354be769bd053acb978f",
-    "size": 96022
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-1.7.0-app-patch.zip?ref=main",
+    "sha256": "47ca28a4c13577218ce0227926186a979fa3e878af1fddee29642d3739ff1cd7",
+    "size": 261302
   },
   "mobile": {
-    "version": "1.6.0",
+    "version": "1.7.0",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "2afee84fd4107fde77c1abb7a976f483a121ada6c827ee11c1b8f1a2c15d4104",
+    "sha256": "865bb0ee52638958f5c27411d73f8b73ddae04431c0a8ebb1bc519a44460746d",
     "size": 29965
   }
 }

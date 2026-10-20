@@ -1,0 +1,25 @@
+{
+  "name": "BUAA 备忘",
+  "short_name": "BUAA备忘",
+  "description": "独立运行、离线保存并自动云同步的备忘录",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EDF3F9",
+  "theme_color": "#0A3B75",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

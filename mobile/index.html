@@ -565,6 +565,23 @@
     </div>
   </div>
 
+  <div class="overlay" id="syncOverlay">
+    <div class="sheet" style="max-width:440px">
+      <h2>连接云同步</h2>
+      <p class="form-hint" style="font-size:12px;margin:0 0 14px">
+        在电脑端点击“手机独立版”，把页面中生成的同步码粘贴到这里。绑定后，电脑关机时手机仍可独立记录。
+      </p>
+      <div class="field">
+        <label for="syncCodeInput">云同步码</label>
+        <input id="syncCodeInput" autocomplete="off" placeholder="粘贴电脑端显示的同步码">
+      </div>
+      <div class="sheet-actions">
+        <button class="cancel" type="button" id="syncCancelBtn">取消</button>
+        <button class="save" type="button" id="syncSaveBtn">保存并同步</button>
+      </div>
+    </div>
+  </div>
+
   <div class="toast" id="toast"></div>
 
   <script>window.BUAA_BOOTSTRAP = {"syncWsUrl": "", "syncHttpUrl": "", "seedRecords": [], "mobileVersion": "2.2.0", "updateManifestUrl": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/update-manifest.json?ref=main", "cloudSyncUrl": "https://buaa-memo-sync-d1g43mqwr3af89959.api.tcloudbasegateway.com/v1/rdb/rest/rpc/sync_memos", "cloudPublishableKey": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjRiNzlmMjU0LTdmNTgtNGI5My04ODgxLTMzMzg1MjY0ZGY4ZCJ9.eyJpc3MiOiJodHRwczovL2J1YWEtbWVtby1zeW5jLWQxZzQzbXF3cjNhZjg5OTU5LmFwLXNoYW5naGFpLnRjYi1hcGkudGVuY2VudGNsb3VkYXBpLmNvbSIsInN1YiI6ImFub24iLCJhdWQiOiJidWFhLW1lbW8tc3luYy1kMWc0M21xd3IzYWY4OTk1OSIsImV4cCI6NDA5NjE2Njc5OCwiaWF0IjoxNzkyNDgzNTk4LCJub25jZSI6IkhPNkxzMUhGUzVXQTZFY0NfZzNhUXciLCJhdF9oYXNoIjoiSE82THMxSEZTNVdBNkVjQ19nM2FRdyIsIm5hbWUiOiJBbm9ueW1vdXMiLCJzY29wZSI6ImFub255bW91cyIsInByb2plY3RfaWQiOiJidWFhLW1lbW8tc3luYy1kMWc0M21xd3IzYWY4OTk1OSIsIm1ldGEiOnsicGxhdGZvcm0iOiJQdWJsaXNoYWJsZUtleSJ9LCJyb2xlIjoiYW5vbiIsImlzX2Fub255bW91cyI6dHJ1ZSwiYXBwX21ldGFkYXRhIjp7InByb3ZpZGVyIjoiYW5vbnltb3VzIiwicHJvdmlkZXJzIjpbImFub255bW91cyJdfSwidXNlcl9tZXRhZGF0YSI6eyJuYW1lIjoiQW5vbnltb3VzIn0sInVzZXJfdHlwZSI6IiIsImNsaWVudF90eXBlIjoiY2xpZW50X3VzZXIiLCJpc19zeXN0ZW1fYWRtaW4iOmZhbHNlfQ.Zw1yXez9wAXxpg4-vkfvTTb_2DFG8orblYaeKETNuqefXu9COr24lqdZCKSfezumOF8vnaxaQ7ceY1ZMgLAE8gX2BSjRu2UltZGS-cX7aJnwJNdrzHprGmBI8i0VEu9lgBQnP1IJrf3Y3-n706SzuiXEoMKNeKBU2itA2lkZROjkn5nmEKT8OY_PxA4MOqFK-2LVH6Arz_1jqEy64m_VpZN8x_M_004RQ8_yUfKi1hH_ZB-pKmG6T1iR2GNQ73sWDF-yAcAgh9mtr_IZGHYaWBTvnd8rzLG0FTClRdI42bSAI8USDnTWHwc5JH4kKAWtOC9i63XcGh48MDLShlCMHA", "cloudVaultKey": ""};</script>
@@ -582,6 +599,8 @@
   const statusEl = document.getElementById("status");
   const statusText = document.getElementById("statusText");
   const overlay = document.getElementById("overlay");
+  const syncOverlay = document.getElementById("syncOverlay");
+  const syncCodeInput = document.getElementById("syncCodeInput");
   const form = document.getElementById("memoForm");
   const formTitle = document.getElementById("formTitle");
   const titleInput = document.getElementById("title");
@@ -624,12 +643,15 @@
   }
 
   const hashParams = new URLSearchParams(location.hash.replace(/^#/, ""));
+  const searchParams = new URLSearchParams(location.search);
+  const searchVault = normalizeVaultKey(searchParams.get("vault"));
   const hashVault = normalizeVaultKey(hashParams.get("vault"));
-  if (hashVault) {
-    cloudVaultKey = hashVault;
+  const linkedVault = hashVault || searchVault;
+  if (linkedVault) {
+    cloudVaultKey = linkedVault;
     localStorage.setItem(CLOUD_VAULT_KEY, cloudVaultKey);
     try {
-      history.replaceState(null, "", location.pathname + location.search);
+      history.replaceState(null, "", location.pathname);
     } catch {}
   }
 
@@ -1164,15 +1186,28 @@
   statusEl.style.cursor = "pointer";
   statusEl.title = "点击输入云同步码";
   statusEl.addEventListener("click", () => {
-    const value = prompt(
-      "输入电脑端“手机独立版”页面显示的云同步码：",
-      cloudVaultKey
-    );
-    const normalized = normalizeVaultKey(value);
+    syncCodeInput.value = cloudVaultKey;
+    syncOverlay.classList.add("show");
+    setTimeout(() => syncCodeInput.focus(), 80);
+  });
+  document.getElementById("syncCancelBtn").addEventListener("click", () => {
+    syncOverlay.classList.remove("show");
+  });
+  document.getElementById("syncSaveBtn").addEventListener("click", () => {
+    const normalized = normalizeVaultKey(syncCodeInput.value);
     if (normalized.length >= 20) {
       cloudVaultKey = normalized;
       localStorage.setItem(CLOUD_VAULT_KEY, cloudVaultKey);
+      syncOverlay.classList.remove("show");
+      showToast("同步码已保存");
       syncNow();
+    } else {
+      showToast("同步码格式不正确");
+    }
+  });
+  syncOverlay.addEventListener("click", event => {
+    if (event.target === syncOverlay) {
+      syncOverlay.classList.remove("show");
     }
   });
 

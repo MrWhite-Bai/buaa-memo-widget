@@ -1,29 +1,29 @@
 {
-  "version": "3.4.8",
+  "version": "3.4.9",
   "published_at": "2026-10-20",
   "notes": [
-    "手机版自动检查更新改为优先读取学业支持中心国内平台。",
-    "Android 通过原生网络桥读取版本，避免网页跨域和 GitHub 访问失败。",
-    "手机端首次需要在 App 内登录一次国内平台，之后会保留登录状态并自动检查。",
-    "电脑版自动检查更新也优先读取国内平台，GitHub 仅作为备用来源。",
-    "更新按钮会明确显示“正在检查”“已是最新版”“可以更新”“需登录检查”或“检查失败”。",
-    "检查失败时点击按钮会重新检查，并仍可直接打开国内平台手动下载。",
-    "保留现有事项、图片、设备配对、同步令牌和提前通知数据。"
+    "事项主页继续作为第一个界面，新增独立的第二个“分组”界面。",
+    "支持新建、编辑和删除分组，并可设置分组名称和简介。",
+    "编辑分组时可以勾选已有事项加入分组，也可取消勾选移出分组。",
+    "新建或编辑事项时可以选择所属分组，也可以选择不分组。",
+    "删除分组不会删除组内事项，事项会自动变为未分组。",
+    "分组记录随现有局域网和离线同步一起更新，电脑和手机均可查看。",
+    "原有倒计时、任务完成、事件、图片、提前通知和同步功能保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.8-app-patch.zip?ref=main",
-    "sha256": "de560bace558cecef8d5b1fef92e147c94fc9253fe20b1b1d5829fc7debb1759",
-    "size": 1114806
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.9-app-patch.zip?ref=main",
+    "sha256": "268a402b4bacbde1294f19d61710c6b0e9ca5911d77d1f3a56510e9dec42fd19",
+    "size": 1195194
   },
   "mobile": {
-    "version": "3.4.8",
+    "version": "3.4.9",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "bf644bb7587a1a238496d4895579e8d0a3009e614978e1cd5e7e9836a6872a9f",
-    "size": 107994
+    "sha256": "287c91d8951d688f312657c199b42bdb75966fe2d9c4ccc355eec46fd4526b64",
+    "size": 126702
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.8.apk?ref=main",
-    "sha256": "3e66cc5c74a4f019d2e159941bd6b3c62dff50070caf66c5d69b95eeb98ef22a",
-    "size": 74401
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.9.apk?ref=main",
+    "sha256": "92f93778b5bc2b213eeab7a4a0e30897ea5b721d503115b39eeea278d3994e5d",
+    "size": 78497
   }
 }

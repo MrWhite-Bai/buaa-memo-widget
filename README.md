@@ -4,9 +4,9 @@
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v3.4.8.zip)
-- [macOS 浏览器版](BUAA-Memo-macOS-v3.4.8.zip)
-- [Android APK](BUAA-Memo-Android-v3.4.8.apk)
+- [Windows 完整版](BUAA-Memo-Windows-v3.4.9.zip)
+- [macOS 浏览器版](BUAA-Memo-macOS-v3.4.9.zip)
+- [Android APK](BUAA-Memo-Android-v3.4.9.apk)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 
@@ -23,6 +23,13 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 检查失败时可以点按钮重试，也可以直接打开国内平台手动下载。
 
 旧版手机离线 HTML 仍可作为备用方案。
+
+## 事项分组
+
+事项主页是第一个界面，“分组”是第二个界面。可以新建、编辑和删除
+分组，并为分组设置名称和简介。编辑分组时可以勾选已有事项加入分组，
+新建或编辑事项时也可以直接选择所属分组。删除分组不会删除事项，
+组内事项会保留并自动变为未分组。
 
 ## Android 独立运行
 
@@ -51,4 +58,4 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 
 ## 当前版本
 
-v3.4.8
+v3.4.9

@@ -85,8 +85,11 @@
     main {
       width: min(100%, 720px);
       margin: 0 auto;
-      padding: 20px 16px 116px;
+      padding: 20px 16px 184px;
     }
+
+    .page { display: none; }
+    .page.active { display: block; }
 
     .summary {
       display: flex;
@@ -551,7 +554,7 @@
       position: fixed;
       z-index: 10;
       left: 50%;
-      bottom: max(20px, env(safe-area-inset-bottom));
+      bottom: calc(74px + max(8px, env(safe-area-inset-bottom)));
       transform: translateX(-50%);
       width: min(calc(100% - 34px), 520px);
       border: 0;
@@ -562,6 +565,162 @@
       font-size: 15px;
       font-weight: 700;
       box-shadow: 0 10px 28px rgba(30, 102, 208, .30);
+    }
+
+    .page-nav {
+      position: fixed;
+      z-index: 20;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 9px 16px max(9px, env(safe-area-inset-bottom));
+      background: rgba(248, 251, 255, .97);
+      border-top: 1px solid #d6e2f0;
+      box-shadow: 0 -8px 26px rgba(24, 57, 96, .10);
+      backdrop-filter: blur(14px);
+    }
+
+    .page-nav button {
+      min-height: 46px;
+      border: 0;
+      border-radius: 13px;
+      background: transparent;
+      color: #60748e;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .page-nav button.active {
+      background: linear-gradient(135deg, #0b5fd2, #168a73);
+      color: white;
+      box-shadow: 0 6px 16px rgba(20, 94, 197, .23);
+    }
+
+    .group-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .group-card {
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: white;
+      padding: 16px;
+      box-shadow: 0 5px 18px rgba(27, 63, 112, .055);
+    }
+
+    .group-card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .group-card h2 {
+      flex: 1;
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .group-count {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 3px 9px;
+      background: #e6f2ff;
+      color: #155ab4;
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .group-description {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .group-items {
+      display: grid;
+      gap: 6px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #edf1f6;
+    }
+
+    .group-item-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      color: #344b66;
+      font-size: 12px;
+    }
+
+    .group-item-line::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #5b8fd8;
+    }
+
+    .group-empty-items {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .group-card .actions { margin-top: 12px; }
+
+    .memo-group-chip {
+      display: inline-flex;
+      margin-top: 8px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      background: #e9f1ff;
+      color: #235eae;
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .group-choice-list {
+      display: grid;
+      gap: 7px;
+      max-height: 255px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 9px;
+      background: white;
+    }
+
+    .group-choice {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 35px;
+      border-radius: 8px;
+      padding: 6px 8px;
+      background: #f7fafe;
+      color: #344b66;
+      font-size: 12px;
+    }
+
+    .group-choice input {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: var(--blue);
+    }
+
+    .group-choice-meta {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 10px;
     }
 
     .overlay {
@@ -601,6 +760,7 @@
     }
 
     .field input,
+    .field select,
     .field textarea {
       width: 100%;
       border: 1px solid var(--border);
@@ -613,6 +773,7 @@
     }
 
     .field input:focus,
+    .field select:focus,
     .field textarea:focus {
       border-color: var(--blue);
       box-shadow: 0 0 0 3px rgba(30,102,208,.10);
@@ -915,6 +1076,7 @@
   </header>
 
   <main>
+    <section class="page active" id="memosPage">
     <section class="offline-box">
       <strong>让备忘录在电脑关机时也能用</strong>
       <p>下载离线手机版后，用手机浏览器打开并保留文件。离线新增的内容会先存在手机上，电脑下次上线并连接同一 Wi-Fi 后自动双向合并。</p>
@@ -930,12 +1092,30 @@
       <button class="sync-button" id="syncBtn" type="button">同步</button>
       <button class="mini-action" id="historyBtn" type="button">历史 0</button>
       <button class="mini-action" id="weekBtn" type="button">周视图</button>
-      <button class="mini-action" id="versionBtn" type="button">v3.4.8</button>
+      <button class="mini-action" id="versionBtn" type="button">v3.4.9</button>
       <button class="update-check checking" id="checkUpdateBtn" type="button">正在检查</button>
       <button class="mini-action" id="desktopDownloadBtn" type="button">电脑版下载教程</button>
     </div>
     <div class="list" id="list"></div>
+    </section>
+
+    <section class="page" id="groupsPage">
+      <div class="summary">
+        <h1>分组</h1>
+        <span class="count" id="groupCount">0 组</span>
+        <button class="mini-action" id="newGroupBtn" type="button">＋ 新建分组</button>
+      </div>
+      <div class="form-hint" style="margin:0 2px 14px">
+        分组只用于整理事项，不会改变事项的截止时间或完成状态。
+      </div>
+      <div class="group-list" id="groupList"></div>
+    </section>
   </main>
+
+  <nav class="page-nav" aria-label="页面切换">
+    <button class="active" id="memosTabBtn" type="button">事项</button>
+    <button id="groupsTabBtn" type="button">分组</button>
+  </nav>
 
   <button class="fab" id="addBtn">＋ 新建事项</button>
 
@@ -953,6 +1133,12 @@
             <button type="button" id="taskTypeBtn" class="active">任务型 · 可完成</button>
             <button type="button" id="eventTypeBtn">事件型 · 有起止</button>
           </div>
+        </div>
+        <div class="field">
+          <label for="memoGroup">所属分组（可选）</label>
+          <select id="memoGroup">
+            <option value="">不分组</option>
+          </select>
         </div>
         <div class="field" id="taskFields">
           <label>截止时间</label>
@@ -1013,6 +1199,31 @@
         <div class="sheet-actions">
           <button class="cancel" type="button" id="cancelBtn">取消</button>
           <button class="save" type="submit">保存并同步</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="overlay" id="groupOverlay">
+    <div class="sheet">
+      <h2 id="groupFormTitle">新建分组</h2>
+      <form id="groupForm">
+        <div class="field">
+          <label for="groupName">分组名称</label>
+          <input id="groupName" maxlength="40" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label for="groupIntro">分组简介</label>
+          <textarea id="groupIntro" maxlength="500" placeholder="这个分组用于整理什么？"></textarea>
+        </div>
+        <div class="field">
+          <label>添加已有事项</label>
+          <div class="group-choice-list" id="groupMemoChoices"></div>
+          <div class="form-hint">勾选的事项会加入这个分组；取消勾选会移出该分组，不会删除事项。</div>
+        </div>
+        <div class="sheet-actions">
+          <button class="cancel" type="button" id="groupCancelBtn">取消</button>
+          <button class="save" type="submit">保存分组</button>
         </div>
       </form>
     </div>
@@ -1089,7 +1300,7 @@
           <button type="button" id="copyDesktopLinkBtn">复制下载链接</button>
           <button type="button" id="shareDesktopLinkBtn">发送到电脑</button>
         </div>
-        <a class="desktop-direct-download" id="directDesktopDownload" href="https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v3.4.8/BUAA-Memo-Windows-v3.4.8.zip" target="_blank" rel="noopener noreferrer">直接下载 Windows 完整版</a>
+        <a class="desktop-direct-download" id="directDesktopDownload" href="https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v3.4.9/BUAA-Memo-Windows-v3.4.9.zip" target="_blank" rel="noopener noreferrer">直接下载 Windows 完整版</a>
       </section>
     </div>
   </div>
@@ -1131,7 +1342,7 @@
 
   <div class="toast" id="toast"></div>
 
-  <script>window.BUAA_BOOTSTRAP = {"syncWsUrl": "", "syncHttpUrl": "", "seedRecords": [], "mobileVersion": "3.4.8", "updateManifestUrl": "https://cysyforum.muzermat.online/cy-platform/projects/5", "liveUpdateManifestUrl": "https://raw.githubusercontent.com/MrWhite-Bai/buaa-memo-widget/main/update-manifest.json", "desktopDownloadUrl": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v3.4.8/BUAA-Memo-Windows-v3.4.8.zip", "cloudSyncUrl": "", "cloudPublishableKey": "", "cloudVaultKey": "", "changelog": {"current_version": "3.4.8", "entries": [{"version": "3.4.8", "date": "2026-10-20", "title": "国内平台版本检测与明确状态", "changes": ["手机版自动检查更新改为优先读取学业支持中心国内平台。", "Android 通过原生网络桥读取版本，避免网页跨域和 GitHub 访问失败。", "手机端首次需要在 App 内登录一次国内平台，之后会保留登录状态并自动检查。", "电脑版自动检查更新也优先读取国内平台，GitHub 仅作为备用来源。", "更新按钮会明确显示“正在检查”“已是最新版”“可以更新”“需登录检查”或“检查失败”。", "检查失败时点击按钮会重新检查，并仍可直接打开国内平台手动下载。", "保留现有事项、图片、设备配对、同步令牌和提前通知数据。"]}, {"version": "3.4.7", "date": "2026-10-20", "title": "安全区域与提前通知", "changes": ["修复手机版顶部 BUAA 图标与系统通知栏重合的问题。", "新建和编辑事项新增“提前通知”模块。", "提前时间支持分钟、小时和天三种单位。", "提醒方式支持通知栏、响铃和振动，可任意组合。", "Android 使用系统闹钟在后台定时触发提醒，App 关闭后仍可生效。", "手机重启后会自动重新安排尚未到期的提醒。", "删除、完成或结束后会自动取消对应提醒。"]}, {"version": "3.4.6", "date": "2026-10-20", "title": "联网实时检查与更新提示", "changes": ["手机版启动并联网后自动检查最新版本。", "手机版恢复网络、回到前台以及每分钟都会重新检查版本状态。", "电脑版启动后会立即检查，并在运行期间定时复查。", "检测到新版本后，“检查更新”按钮改为高对比的“可以更新”。", "检查只读取公开版本清单，不会在后台自动下载或安装。", "点击“可以更新”后仍按平台登录流程获取安装包。"]}, {"version": "3.4.5", "date": "2026-10-20", "title": "电脑版教程改为弹窗入口", "changes": ["手机版主页移除占地较大的电脑版下载卡片。", "新增“电脑版下载教程”按钮，不再挤占事项列表空间。", "电脑版下载教程、复制链接、系统分享和 Windows 直达下载移入弹窗。", "弹窗支持关闭按钮、点击遮罩关闭和 Android 返回键关闭。"]}, {"version": "3.4.4", "date": "2026-10-20", "title": "手机端提供电脑版下载教程", "changes": ["移除电脑端“微信控制”入口及其局域网网页控制服务。", "手机 APP 下载窗口只保留手机版二维码，不再显示电脑版二维码。", "手机版主页新增电脑版下载教程。", "支持复制电脑版下载链接，并可通过微信、QQ、邮件等发送到电脑。", "提供电脑版下载页面和 Windows 安装包直达链接。", "下载电脑版不要求手机与电脑连接同一 Wi-Fi。"]}, {"version": "3.4.3", "date": "2026-10-20", "title": "手机版互联网扫码下载", "changes": ["手机 Android 版的下载二维码改为互联网平台地址。", "下载手机版不再要求手机与电脑连接同一 Wi-Fi 或热点。", "打开下载窗口不再依赖电脑端的局域网同步服务。", "登录平台后可在项目 5 的“版本下载”中获取最新版 APK。", "同一 Wi-Fi 要求仅保留给手机与电脑之间的数据同步。"]}, {"version": "3.4.2", "date": "2026-10-20", "title": "平台登录后检查更新", "changes": ["手机版和电脑版的检查更新统一改为打开“学业支持中心开源平台”项目 5。", "未登录用户会先进入平台登录页，登录后才能查看和下载最新版。", "取消对 GitHub API 的更新检查，避免请求限流导致无法获取版本信息。", "插件不会保存或上传平台用户名和密码。", "最新版安装包统一从平台项目的“版本下载”区域获取。"]}, {"version": "3.4.1", "date": "2026-10-20", "title": "手机一屏查看三天全时段", "changes": ["手机周视图自动压缩为当前屏幕可用高度。", "今天、明天和后天的 00:00 到 23:59 可在同一竖屏中同时查看。", "课程表不再需要上下滚动，三列日期和全部时间点一次完整显示。", "首个时间标签显示 00:00，最后一个时间标签显示 23:59。", "任务和事件仍按准确时间、准确日期列定位。", "继续使用高 DPI 绘制，保持竖屏文字和网格清晰。"]}, {"version": "3.4.0", "date": "2026-10-20", "title": "手机竖屏三日课程表", "changes": ["手机周视图取消自动横屏，始终使用竖屏展示。", "每次连续展示今天、明天和后天三个完整日期列。", "纵向滚动可查看三天内 00:00 到 24:00 的所有时段。", "新增前三天、今天和后三天快速切换按钮。", "日期表头固定显示，滚动到任何时段都能确认星期和日期。", "消除课程表横向溢出，三天内容无需左右拖动。", "高 DPI 绘图和放大字号继续保留。"]}, {"version": "3.3.1", "date": "2026-10-20", "title": "高分辨率手机周视图", "changes": ["手机周视图 Canvas 根据设备像素比创建高分辨率缓冲区。", "高 DPI 手机最高使用 3 倍像素密度绘制，避免拉伸模糊。", "同步放大星期、日期、时间和事项文字。", "横屏旋转和窗口尺寸变化后会重新按像素比绘制。"]}, {"version": "3.3.0", "date": "2026-10-20", "title": "手机日志与横屏周视图", "changes": ["将电脑版完整更新日志直接嵌入手机安装包，解决日志空白。", "更新日志改为版本标题、日期和内容分层排版。", "日志窗口增加固定顶部栏和独立滚动区域。", "打开手机周视图时自动切换横屏，退出后恢复竖屏。", "周视图根据横屏宽度重新计算七天列宽。"]}, {"version": "3.2.0", "date": "2026-10-20", "title": "手机端完整功能", "changes": ["手机端新增历史事项页面，历史事项只能删除。", "手机端新增七天课程表式周视图。", "手机端新增图片选择、压缩、预览和大图查看。", "手机图片可与电脑端双向同步，电脑图片也会推送到手机。", "手机端新增版本号、完整更新日志和检查更新按钮。", "两端同步按钮改为高对比主按钮，更容易发现。"]}, {"version": "3.1.0", "date": "2026-10-20", "title": "设备配对与访问控制", "changes": ["Android App 生成唯一设备 ID 和 6 位配对码。", "电脑首次连接手机时必须输入配对码。", "手机验证配对码后发放长期同步令牌。", "同步和读取接口必须携带有效令牌，否则返回 401。", "连续输错配对码会临时限频，降低暴力尝试风险。", "手机同步教程页面显示当前设备地址和配对码。"]}, {"version": "3.0.0", "date": "2026-10-20", "title": "Android 原生同步版", "changes": ["新增可独立安装的 Android APK，手机无需电脑即可打开和编辑事项。", "Android App 使用前台服务提供局域网同步接口。", "电脑端通过 UDP 自动发现同一 Wi-Fi 或手机热点中的 App。", "电脑和手机同时在线时双向同步，离线时各自保存。", "默认关闭云端同步，不再持续消耗腾讯云资源点。", "电脑端“手机APP”二维码可直接从局域网下载 APK。"]}, {"version": "2.3.0", "date": "2026-10-20", "title": "增量云同步", "changes": ["云端新增变更日志，每次只返回上次同步之后发生变化的记录。", "客户端只上传版本号发生变化的事项，不再重复上传整份清单。", "后台同步由每 4 秒改为每 5 分钟，减少云资源消耗。", "新增、修改、完成或删除事项后仍会立即触发同步。", "云同步状态文字可点击，用于手动立即刷新。"]}, {"version": "2.2.0", "date": "2026-10-20", "title": "独立手机端云同步", "changes": ["电脑端和手机端分别保存本地数据，两端均可独立离线使用。", "使用腾讯云开发国内节点同步，电脑关机时手机端仍可操作。", "两端同时联网时按版本号自动增量合并，并保留删除记录。", "手机端提供固定网址，可添加到主屏幕作为独立应用打开。", "电脑端通过“手机独立版”二维码自动绑定同一同步码。", "新增云同步连接状态显示，失败时继续使用本地数据。"]}, {"version": "2.1.2", "date": "2026-10-20", "title": "周视图对齐优化", "changes": ["事件型矩形改为按所属星期列居中展示。", "任务型固定矩形改为按星期列居中，不再偏向右侧。", "七天之间的分隔竖线加粗加深，表头和日期区保持一致。", "多个同段时间的任务保持统一中线，不再做横向错位。"]}, {"version": "2.1.1", "date": "2026-10-20", "title": "周视图更易读", "changes": ["放大周视图中的事项标题、星期和日期时间字号。", "任务型事项的固定矩形由 46×26 放大到 88×36。", "默认窗口更宽，为事件标题和任务块留出更多空间。", "任务块可显示更多标题文字，点击仍可查看完整内容。"]}, {"version": "2.1.0", "date": "2026-10-20", "title": "本周事项表", "changes": ["主页面新增“周视图”按钮，以周一到周日课程表展示进行中的事项。", "事件型事项按开始和结束时间绘制矩形，矩形高度与持续时间一致。", "任务型事项使用固定大小矩形，矩形水平中线对准截止时间。", "支持重叠事件自动分栏、跨天事件拆分、上一周和下一周切换。", "周视图中点击事项色块可查看完整时间与备注。"]}, {"version": "2.0.0", "date": "2026-10-20", "title": "任务与事件", "changes": ["备忘事项分为任务型和事件型，新建时可自由切换。", "任务型保留截止时间，并新增绿色“完成”按钮，可提前结束并记录完成时间。", "事件型必须设置开始时间和结束时间，不显示“完成”按钮，结束后自动进入历史事项。", "电脑端、微信控制页和手机离线版均支持两种事项类型。"]}, {"version": "1.9.0", "date": "2026-10-20", "title": "更新入口更醒目", "changes": ["主页面新增独立的“版本与更新”栏。", "检查更新改为蓝色主按钮，更容易发现。", "更新日志改为带箭头的文字按钮，并显示当前版本号。", "底部状态栏只保留自动保存状态和时钟。"]}, {"version": "1.8.0", "date": "2026-10-20", "title": "扫码获取版本", "changes": ["主页面新增“扫码下载”按钮。", "新增电脑版二维码，扫码打开 GitHub 下载页。", "新增手机版二维码，可直接下载当前电脑生成的最新离线 HTML。", "二维码页面支持复制下载地址。", "新增无需安装 Python 的 macOS 浏览器应用包。"]}, {"version": "1.7.0", "date": "2026-10-20", "title": "历史事项", "changes": ["主页面新增带数量的“历史事项”按钮。", "已过期事项会自动移入历史事项，不再占用主列表。", "历史页面只能删除事项，不提供编辑或修改入口。", "删除历史事项后，主页面数量和历史列表会同步刷新。"]}, {"version": "1.6.0", "date": "2026-10-20", "title": "在线检查更新", "changes": ["电脑端新增“检查更新”按钮，可下载并安装最新版。", "升级包下载后进行 SHA-256 校验，保留现有备忘录数据。", "手机离线版新增更新检查，可下载最新版离线 HTML。", "更新信息统一从 GitHub 仓库的版本清单读取。"]}, {"version": "1.5.0", "date": "2026-10-20", "title": "版本更新日志", "changes": ["新增版本更新日志页面。", "底部显示当前版本号，点击即可查看历史调整内容。", "更新记录独立保存在 changelog.json，方便后续版本继续追加。"]}, {"version": "1.4.0", "date": "2026-10-20", "title": "修复月历卡死", "changes": ["修复点击“打开月历”后窗口无法绘制、界面像死机的问题。", "月历改为正常可绘制的独立窗口。", "保留 Esc 关闭和日期选择功能。"]}, {"version": "1.3.0", "date": "2026-10-20", "title": "离线优先与双向同步", "changes": ["新增手机离线版，电脑关机时也能新增、编辑和删除事项。", "手机数据先保存在本机浏览器，电脑恢复在线后自动同步。", "加入版本号与删除记录，避免已删除事项被重新加回来。", "电脑启动时自动开启同步服务。"]}, {"version": "1.2.0", "date": "2026-10-20", "title": "微信控制", "changes": ["新增“微信控制”入口和扫码控制页。", "支持在手机上新增、编辑、删除事项。", "手机和电脑在同一个 Wi-Fi 时可实时同步。", "增加随机访问令牌和局域网访问限制。"]}, {"version": "1.1.0", "date": "2026-10-20", "title": "自由选择终止时间", "changes": ["新增月历日期选择器，可选择任意未来日期。", "新增小时、分钟独立选择框。", "保留手动输入日期和快捷时间选项。"]}, {"version": "1.0.0", "date": "2026-10-19", "title": "初始版本", "changes": ["完成 BUAA 备忘倒计时桌面插件。", "支持新增、删除事项，显示剩余时间和终止时间。", "临近截止自动变色，过期事项单独提示。", "支持图片附件、窗口置顶和本地自动保存。"]}]}};</script>
+  <script>window.BUAA_BOOTSTRAP = {"syncWsUrl": "", "syncHttpUrl": "", "seedRecords": [], "mobileVersion": "3.4.9", "updateManifestUrl": "https://cysyforum.muzermat.online/cy-platform/projects/5", "liveUpdateManifestUrl": "https://raw.githubusercontent.com/MrWhite-Bai/buaa-memo-widget/main/update-manifest.json", "desktopDownloadUrl": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v3.4.9/BUAA-Memo-Windows-v3.4.9.zip", "cloudSyncUrl": "", "cloudPublishableKey": "", "cloudVaultKey": "", "changelog": {"current_version": "3.4.9", "entries": [{"version": "3.4.9", "date": "2026-10-20", "title": "事项分组与独立分组页面", "changes": ["事项主页继续作为第一个界面，新增独立的第二个“分组”界面。", "支持新建、编辑和删除分组，并可设置分组名称和简介。", "编辑分组时可以勾选已有事项加入分组，也可取消勾选移出分组。", "新建或编辑事项时可以选择所属分组，也可以选择不分组。", "删除分组不会删除组内事项，事项会自动变为未分组。", "分组记录随现有局域网和离线同步一起更新，电脑和手机均可查看。", "原有倒计时、任务完成、事件、图片、提前通知和同步功能保持不变。"]}, {"version": "3.4.8", "date": "2026-10-20", "title": "国内平台版本检测与明确状态", "changes": ["手机版自动检查更新改为优先读取学业支持中心国内平台。", "Android 通过原生网络桥读取版本，避免网页跨域和 GitHub 访问失败。", "手机端首次需要在 App 内登录一次国内平台，之后会保留登录状态并自动检查。", "电脑版自动检查更新也优先读取国内平台，GitHub 仅作为备用来源。", "更新按钮会明确显示“正在检查”“已是最新版”“可以更新”“需登录检查”或“检查失败”。", "检查失败时点击按钮会重新检查，并仍可直接打开国内平台手动下载。", "保留现有事项、图片、设备配对、同步令牌和提前通知数据。"]}, {"version": "3.4.7", "date": "2026-10-20", "title": "安全区域与提前通知", "changes": ["修复手机版顶部 BUAA 图标与系统通知栏重合的问题。", "新建和编辑事项新增“提前通知”模块。", "提前时间支持分钟、小时和天三种单位。", "提醒方式支持通知栏、响铃和振动，可任意组合。", "Android 使用系统闹钟在后台定时触发提醒，App 关闭后仍可生效。", "手机重启后会自动重新安排尚未到期的提醒。", "删除、完成或结束后会自动取消对应提醒。"]}, {"version": "3.4.6", "date": "2026-10-20", "title": "联网实时检查与更新提示", "changes": ["手机版启动并联网后自动检查最新版本。", "手机版恢复网络、回到前台以及每分钟都会重新检查版本状态。", "电脑版启动后会立即检查，并在运行期间定时复查。", "检测到新版本后，“检查更新”按钮改为高对比的“可以更新”。", "检查只读取公开版本清单，不会在后台自动下载或安装。", "点击“可以更新”后仍按平台登录流程获取安装包。"]}, {"version": "3.4.5", "date": "2026-10-20", "title": "电脑版教程改为弹窗入口", "changes": ["手机版主页移除占地较大的电脑版下载卡片。", "新增“电脑版下载教程”按钮，不再挤占事项列表空间。", "电脑版下载教程、复制链接、系统分享和 Windows 直达下载移入弹窗。", "弹窗支持关闭按钮、点击遮罩关闭和 Android 返回键关闭。"]}, {"version": "3.4.4", "date": "2026-10-20", "title": "手机端提供电脑版下载教程", "changes": ["移除电脑端“微信控制”入口及其局域网网页控制服务。", "手机 APP 下载窗口只保留手机版二维码，不再显示电脑版二维码。", "手机版主页新增电脑版下载教程。", "支持复制电脑版下载链接，并可通过微信、QQ、邮件等发送到电脑。", "提供电脑版下载页面和 Windows 安装包直达链接。", "下载电脑版不要求手机与电脑连接同一 Wi-Fi。"]}, {"version": "3.4.3", "date": "2026-10-20", "title": "手机版互联网扫码下载", "changes": ["手机 Android 版的下载二维码改为互联网平台地址。", "下载手机版不再要求手机与电脑连接同一 Wi-Fi 或热点。", "打开下载窗口不再依赖电脑端的局域网同步服务。", "登录平台后可在项目 5 的“版本下载”中获取最新版 APK。", "同一 Wi-Fi 要求仅保留给手机与电脑之间的数据同步。"]}, {"version": "3.4.2", "date": "2026-10-20", "title": "平台登录后检查更新", "changes": ["手机版和电脑版的检查更新统一改为打开“学业支持中心开源平台”项目 5。", "未登录用户会先进入平台登录页，登录后才能查看和下载最新版。", "取消对 GitHub API 的更新检查，避免请求限流导致无法获取版本信息。", "插件不会保存或上传平台用户名和密码。", "最新版安装包统一从平台项目的“版本下载”区域获取。"]}, {"version": "3.4.1", "date": "2026-10-20", "title": "手机一屏查看三天全时段", "changes": ["手机周视图自动压缩为当前屏幕可用高度。", "今天、明天和后天的 00:00 到 23:59 可在同一竖屏中同时查看。", "课程表不再需要上下滚动，三列日期和全部时间点一次完整显示。", "首个时间标签显示 00:00，最后一个时间标签显示 23:59。", "任务和事件仍按准确时间、准确日期列定位。", "继续使用高 DPI 绘制，保持竖屏文字和网格清晰。"]}, {"version": "3.4.0", "date": "2026-10-20", "title": "手机竖屏三日课程表", "changes": ["手机周视图取消自动横屏，始终使用竖屏展示。", "每次连续展示今天、明天和后天三个完整日期列。", "纵向滚动可查看三天内 00:00 到 24:00 的所有时段。", "新增前三天、今天和后三天快速切换按钮。", "日期表头固定显示，滚动到任何时段都能确认星期和日期。", "消除课程表横向溢出，三天内容无需左右拖动。", "高 DPI 绘图和放大字号继续保留。"]}, {"version": "3.3.1", "date": "2026-10-20", "title": "高分辨率手机周视图", "changes": ["手机周视图 Canvas 根据设备像素比创建高分辨率缓冲区。", "高 DPI 手机最高使用 3 倍像素密度绘制，避免拉伸模糊。", "同步放大星期、日期、时间和事项文字。", "横屏旋转和窗口尺寸变化后会重新按像素比绘制。"]}, {"version": "3.3.0", "date": "2026-10-20", "title": "手机日志与横屏周视图", "changes": ["将电脑版完整更新日志直接嵌入手机安装包，解决日志空白。", "更新日志改为版本标题、日期和内容分层排版。", "日志窗口增加固定顶部栏和独立滚动区域。", "打开手机周视图时自动切换横屏，退出后恢复竖屏。", "周视图根据横屏宽度重新计算七天列宽。"]}, {"version": "3.2.0", "date": "2026-10-20", "title": "手机端完整功能", "changes": ["手机端新增历史事项页面，历史事项只能删除。", "手机端新增七天课程表式周视图。", "手机端新增图片选择、压缩、预览和大图查看。", "手机图片可与电脑端双向同步，电脑图片也会推送到手机。", "手机端新增版本号、完整更新日志和检查更新按钮。", "两端同步按钮改为高对比主按钮，更容易发现。"]}, {"version": "3.1.0", "date": "2026-10-20", "title": "设备配对与访问控制", "changes": ["Android App 生成唯一设备 ID 和 6 位配对码。", "电脑首次连接手机时必须输入配对码。", "手机验证配对码后发放长期同步令牌。", "同步和读取接口必须携带有效令牌，否则返回 401。", "连续输错配对码会临时限频，降低暴力尝试风险。", "手机同步教程页面显示当前设备地址和配对码。"]}, {"version": "3.0.0", "date": "2026-10-20", "title": "Android 原生同步版", "changes": ["新增可独立安装的 Android APK，手机无需电脑即可打开和编辑事项。", "Android App 使用前台服务提供局域网同步接口。", "电脑端通过 UDP 自动发现同一 Wi-Fi 或手机热点中的 App。", "电脑和手机同时在线时双向同步，离线时各自保存。", "默认关闭云端同步，不再持续消耗腾讯云资源点。", "电脑端“手机APP”二维码可直接从局域网下载 APK。"]}, {"version": "2.3.0", "date": "2026-10-20", "title": "增量云同步", "changes": ["云端新增变更日志，每次只返回上次同步之后发生变化的记录。", "客户端只上传版本号发生变化的事项，不再重复上传整份清单。", "后台同步由每 4 秒改为每 5 分钟，减少云资源消耗。", "新增、修改、完成或删除事项后仍会立即触发同步。", "云同步状态文字可点击，用于手动立即刷新。"]}, {"version": "2.2.0", "date": "2026-10-20", "title": "独立手机端云同步", "changes": ["电脑端和手机端分别保存本地数据，两端均可独立离线使用。", "使用腾讯云开发国内节点同步，电脑关机时手机端仍可操作。", "两端同时联网时按版本号自动增量合并，并保留删除记录。", "手机端提供固定网址，可添加到主屏幕作为独立应用打开。", "电脑端通过“手机独立版”二维码自动绑定同一同步码。", "新增云同步连接状态显示，失败时继续使用本地数据。"]}, {"version": "2.1.2", "date": "2026-10-20", "title": "周视图对齐优化", "changes": ["事件型矩形改为按所属星期列居中展示。", "任务型固定矩形改为按星期列居中，不再偏向右侧。", "七天之间的分隔竖线加粗加深，表头和日期区保持一致。", "多个同段时间的任务保持统一中线，不再做横向错位。"]}, {"version": "2.1.1", "date": "2026-10-20", "title": "周视图更易读", "changes": ["放大周视图中的事项标题、星期和日期时间字号。", "任务型事项的固定矩形由 46×26 放大到 88×36。", "默认窗口更宽，为事件标题和任务块留出更多空间。", "任务块可显示更多标题文字，点击仍可查看完整内容。"]}, {"version": "2.1.0", "date": "2026-10-20", "title": "本周事项表", "changes": ["主页面新增“周视图”按钮，以周一到周日课程表展示进行中的事项。", "事件型事项按开始和结束时间绘制矩形，矩形高度与持续时间一致。", "任务型事项使用固定大小矩形，矩形水平中线对准截止时间。", "支持重叠事件自动分栏、跨天事件拆分、上一周和下一周切换。", "周视图中点击事项色块可查看完整时间与备注。"]}, {"version": "2.0.0", "date": "2026-10-20", "title": "任务与事件", "changes": ["备忘事项分为任务型和事件型，新建时可自由切换。", "任务型保留截止时间，并新增绿色“完成”按钮，可提前结束并记录完成时间。", "事件型必须设置开始时间和结束时间，不显示“完成”按钮，结束后自动进入历史事项。", "电脑端、微信控制页和手机离线版均支持两种事项类型。"]}, {"version": "1.9.0", "date": "2026-10-20", "title": "更新入口更醒目", "changes": ["主页面新增独立的“版本与更新”栏。", "检查更新改为蓝色主按钮，更容易发现。", "更新日志改为带箭头的文字按钮，并显示当前版本号。", "底部状态栏只保留自动保存状态和时钟。"]}, {"version": "1.8.0", "date": "2026-10-20", "title": "扫码获取版本", "changes": ["主页面新增“扫码下载”按钮。", "新增电脑版二维码，扫码打开 GitHub 下载页。", "新增手机版二维码，可直接下载当前电脑生成的最新离线 HTML。", "二维码页面支持复制下载地址。", "新增无需安装 Python 的 macOS 浏览器应用包。"]}, {"version": "1.7.0", "date": "2026-10-20", "title": "历史事项", "changes": ["主页面新增带数量的“历史事项”按钮。", "已过期事项会自动移入历史事项，不再占用主列表。", "历史页面只能删除事项，不提供编辑或修改入口。", "删除历史事项后，主页面数量和历史列表会同步刷新。"]}, {"version": "1.6.0", "date": "2026-10-20", "title": "在线检查更新", "changes": ["电脑端新增“检查更新”按钮，可下载并安装最新版。", "升级包下载后进行 SHA-256 校验，保留现有备忘录数据。", "手机离线版新增更新检查，可下载最新版离线 HTML。", "更新信息统一从 GitHub 仓库的版本清单读取。"]}, {"version": "1.5.0", "date": "2026-10-20", "title": "版本更新日志", "changes": ["新增版本更新日志页面。", "底部显示当前版本号，点击即可查看历史调整内容。", "更新记录独立保存在 changelog.json，方便后续版本继续追加。"]}, {"version": "1.4.0", "date": "2026-10-20", "title": "修复月历卡死", "changes": ["修复点击“打开月历”后窗口无法绘制、界面像死机的问题。", "月历改为正常可绘制的独立窗口。", "保留 Esc 关闭和日期选择功能。"]}, {"version": "1.3.0", "date": "2026-10-20", "title": "离线优先与双向同步", "changes": ["新增手机离线版，电脑关机时也能新增、编辑和删除事项。", "手机数据先保存在本机浏览器，电脑恢复在线后自动同步。", "加入版本号与删除记录，避免已删除事项被重新加回来。", "电脑启动时自动开启同步服务。"]}, {"version": "1.2.0", "date": "2026-10-20", "title": "微信控制", "changes": ["新增“微信控制”入口和扫码控制页。", "支持在手机上新增、编辑、删除事项。", "手机和电脑在同一个 Wi-Fi 时可实时同步。", "增加随机访问令牌和局域网访问限制。"]}, {"version": "1.1.0", "date": "2026-10-20", "title": "自由选择终止时间", "changes": ["新增月历日期选择器，可选择任意未来日期。", "新增小时、分钟独立选择框。", "保留手动输入日期和快捷时间选项。"]}, {"version": "1.0.0", "date": "2026-10-19", "title": "初始版本", "changes": ["完成 BUAA 备忘倒计时桌面插件。", "支持新增、删除事项，显示剩余时间和终止时间。", "临近截止自动变色，过期事项单独提示。", "支持图片附件、窗口置顶和本地自动保存。"]}]}};</script>
 <script>
 (() => {
   "use strict";
@@ -1147,7 +1358,7 @@
   const DESKTOP_DOWNLOAD_URL =
     bootstrap.desktopDownloadUrl ||
     "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/" +
-      "v3.4.8/BUAA-Memo-Windows-v3.4.8.zip";
+      "v3.4.9/BUAA-Memo-Windows-v3.4.9.zip";
   const CURRENT_MOBILE_VERSION = bootstrap.mobileVersion || "0.0.0";
   const LIVE_UPDATE_MANIFEST_URLS = [
     "https://raw.githubusercontent.com/MrWhite-Bai/" +
@@ -1161,6 +1372,20 @@
   const statusEl = document.getElementById("status");
   const statusText = document.getElementById("statusText");
   const overlay = document.getElementById("overlay");
+  const memosPage = document.getElementById("memosPage");
+  const groupsPage = document.getElementById("groupsPage");
+  const memosTabBtn = document.getElementById("memosTabBtn");
+  const groupsTabBtn = document.getElementById("groupsTabBtn");
+  const groupCount = document.getElementById("groupCount");
+  const groupList = document.getElementById("groupList");
+  const newGroupBtn = document.getElementById("newGroupBtn");
+  const groupOverlay = document.getElementById("groupOverlay");
+  const groupForm = document.getElementById("groupForm");
+  const groupFormTitle = document.getElementById("groupFormTitle");
+  const groupNameInput = document.getElementById("groupName");
+  const groupIntroInput = document.getElementById("groupIntro");
+  const groupMemoChoices = document.getElementById("groupMemoChoices");
+  const groupCancelBtn = document.getElementById("groupCancelBtn");
   const syncOverlay = document.getElementById("syncOverlay");
   const syncCodeInput = document.getElementById("syncCodeInput");
   const syncBtn = document.getElementById("syncBtn");
@@ -1186,6 +1411,7 @@
   const form = document.getElementById("memoForm");
   const formTitle = document.getElementById("formTitle");
   const titleInput = document.getElementById("title");
+  const memoGroup = document.getElementById("memoGroup");
   const dateInput = document.getElementById("date");
   const timeInput = document.getElementById("time");
   const startDateInput = document.getElementById("startDate");
@@ -1225,6 +1451,8 @@
 
   let records = [];
   let editingId = null;
+  let editingGroupId = null;
+  let activePage = "memos";
   let editorType = "task";
   let syncing = false;
   let toastTimer = null;
@@ -1363,7 +1591,33 @@
     return result;
   }
 
+  function isGroupRecord(record) {
+    return record?.record_kind === "group";
+  }
+
+  function groupRecords() {
+    return records
+      .filter(record => !record.deleted && isGroupRecord(record))
+      .sort((left, right) =>
+        String(left.title || "").localeCompare(String(right.title || ""), "zh-CN")
+      );
+  }
+
+  function memoRecords() {
+    return records.filter(record => !record.deleted && !isGroupRecord(record));
+  }
+
+  function groupById(groupId) {
+    return records.find(
+      record =>
+        record.id === groupId &&
+        !record.deleted &&
+        isGroupRecord(record)
+    );
+  }
+
   function isHistorical(record) {
+    if (isGroupRecord(record)) return false;
     if (isCompleted(record)) return true;
     const deadline = new Date(record.deadline).getTime();
     return Number.isFinite(deadline) && deadline <= Date.now();
@@ -1411,12 +1665,22 @@
   }
 
   function activeRecords() {
-    return records.filter(record => !record.deleted && !isHistorical(record));
+    return records.filter(
+      record =>
+        !record.deleted &&
+        !isGroupRecord(record) &&
+        !isHistorical(record)
+    );
   }
 
   function historyRecords() {
     return records
-      .filter(record => !record.deleted && isHistorical(record))
+      .filter(
+        record =>
+          !record.deleted &&
+          !isGroupRecord(record) &&
+          isHistorical(record)
+      )
       .sort((left, right) => {
         const leftTime = new Date(left.completed_at || left.deadline || 0).getTime();
         const rightTime = new Date(right.completed_at || right.deadline || 0).getTime();
@@ -1562,6 +1826,7 @@
   function scheduleMemoReminder(memo) {
     if (!memo || !nativeBridge?.scheduleReminder) return;
     if (
+      isGroupRecord(memo) ||
       !memo.reminder_enabled ||
       memo.deleted ||
       isCompleted(memo) ||
@@ -1645,6 +1910,7 @@
   }
 
   function render() {
+    if (activePage === "groups") renderGroups();
     const memos = activeRecords();
     memos.sort((left, right) => {
       const leftTime = new Date(left.deadline).getTime();
@@ -1691,6 +1957,14 @@
         note.className = "note";
         note.textContent = memo.note;
         card.appendChild(note);
+      }
+
+      const memoGroupRecord = groupById(memo.group_id);
+      if (memoGroupRecord) {
+        const groupChip = document.createElement("span");
+        groupChip.className = "memo-group-chip";
+        groupChip.textContent = `分组 · ${memoGroupRecord.title}`;
+        card.appendChild(groupChip);
       }
 
       if (memo.image_data) {
@@ -1759,6 +2033,206 @@
     }
   }
 
+  function refreshMemoGroupOptions(selectedId = "") {
+    const current = selectedId || memoGroup.value;
+    memoGroup.replaceChildren();
+    const none = document.createElement("option");
+    none.value = "";
+    none.textContent = "不分组";
+    memoGroup.appendChild(none);
+    for (const group of groupRecords()) {
+      const option = document.createElement("option");
+      option.value = group.id;
+      option.textContent = group.title;
+      memoGroup.appendChild(option);
+    }
+    memoGroup.value = groupById(current) ? current : "";
+  }
+
+  function setPage(page) {
+    activePage = page === "groups" ? "groups" : "memos";
+    memosPage.classList.toggle("active", activePage === "memos");
+    groupsPage.classList.toggle("active", activePage === "groups");
+    memosTabBtn.classList.toggle("active", activePage === "memos");
+    groupsTabBtn.classList.toggle("active", activePage === "groups");
+    const addButton = document.getElementById("addBtn");
+    addButton.textContent =
+      activePage === "groups" ? "＋ 新建分组" : "＋ 新建事项";
+    if (activePage === "groups") renderGroups();
+  }
+
+  function renderGroups() {
+    const groups = groupRecords();
+    groupCount.textContent = `${groups.length} 组`;
+    groupList.replaceChildren();
+    if (!groups.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.innerHTML =
+        '<div class="empty-clock">▦</div>还没有分组<br>新建分组后，可把已有事项加入其中';
+      groupList.appendChild(empty);
+      return;
+    }
+    for (const group of groups) {
+      const items = memoRecords()
+        .filter(memo => memo.group_id === group.id)
+        .sort((left, right) => {
+          const leftTime = new Date(left.deadline || 0).getTime();
+          const rightTime = new Date(right.deadline || 0).getTime();
+          return leftTime - rightTime;
+        });
+      const card = document.createElement("article");
+      card.className = "group-card";
+
+      const head = document.createElement("div");
+      head.className = "group-card-head";
+      const title = document.createElement("h2");
+      title.textContent = group.title || "未命名分组";
+      const count = document.createElement("span");
+      count.className = "group-count";
+      count.textContent = `${items.length} 项`;
+      head.append(title, count);
+      card.appendChild(head);
+
+      if (group.note) {
+        const intro = document.createElement("p");
+        intro.className = "group-description";
+        intro.textContent = group.note;
+        card.appendChild(intro);
+      }
+
+      const itemBox = document.createElement("div");
+      itemBox.className = "group-items";
+      if (!items.length) {
+        const text = document.createElement("div");
+        text.className = "group-empty-items";
+        text.textContent = "暂无事项，可在编辑分组时添加。";
+        itemBox.appendChild(text);
+      } else {
+        for (const memo of items.slice(0, 6)) {
+          const line = document.createElement("div");
+          line.className = "group-item-line";
+          const typeText = isEvent(memo)
+            ? "事件"
+            : isCompleted(memo)
+              ? "已完成"
+              : isHistorical(memo)
+                ? "历史"
+                : "任务";
+          line.textContent = `${memo.title || "未命名事项"} · ${typeText}`;
+          itemBox.appendChild(line);
+        }
+        if (items.length > 6) {
+          const more = document.createElement("div");
+          more.className = "group-empty-items";
+          more.textContent = `还有 ${items.length - 6} 项`;
+          itemBox.appendChild(more);
+        }
+      }
+      card.appendChild(itemBox);
+
+      const actions = document.createElement("div");
+      actions.className = "actions";
+      const edit = document.createElement("button");
+      edit.className = "action-btn";
+      edit.textContent = "编辑分组";
+      edit.addEventListener("click", () => openGroupEditor(group.id));
+      const remove = document.createElement("button");
+      remove.className = "action-btn delete";
+      remove.textContent = "删除分组";
+      remove.addEventListener("click", () => deleteGroup(group.id));
+      actions.append(edit, remove);
+      card.appendChild(actions);
+      groupList.appendChild(card);
+    }
+  }
+
+  function openGroupEditor(groupId = null) {
+    editingGroupId = groupId;
+    const group = groupId
+      ? records.find(
+          record =>
+            record.id === groupId &&
+            !record.deleted &&
+            isGroupRecord(record)
+        )
+      : null;
+    groupFormTitle.textContent = group ? "编辑分组" : "新建分组";
+    groupNameInput.value = group ? group.title : "";
+    groupIntroInput.value = group ? (group.note || "") : "";
+    groupMemoChoices.replaceChildren();
+    const memos = memoRecords().sort((left, right) =>
+      String(left.title || "").localeCompare(String(right.title || ""), "zh-CN")
+    );
+    if (!memos.length) {
+      const empty = document.createElement("div");
+      empty.className = "group-empty-items";
+      empty.textContent = "目前没有可添加的事项";
+      groupMemoChoices.appendChild(empty);
+    } else {
+      for (const memo of memos) {
+        const label = document.createElement("label");
+        label.className = "group-choice";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = memo.id;
+        checkbox.checked = Boolean(group && memo.group_id === group.id);
+        const text = document.createElement("span");
+        text.textContent = memo.title || "未命名事项";
+        const meta = document.createElement("span");
+        meta.className = "group-choice-meta";
+        meta.textContent = isCompleted(memo)
+          ? "已完成"
+          : isHistorical(memo)
+            ? "历史"
+            : isEvent(memo)
+              ? "事件"
+              : "任务";
+        label.append(checkbox, text, meta);
+        groupMemoChoices.appendChild(label);
+      }
+    }
+    groupOverlay.classList.add("show");
+    setTimeout(() => groupNameInput.focus(), 80);
+  }
+
+  function closeGroupEditor() {
+    groupOverlay.classList.remove("show");
+    editingGroupId = null;
+  }
+
+  function deleteGroup(groupId) {
+    const group = records.find(
+      record =>
+        record.id === groupId &&
+        !record.deleted &&
+        isGroupRecord(record)
+    );
+    if (
+      !group ||
+      !confirm(
+        `确定删除分组「${group.title}」吗？组内事项不会被删除，只会变成未分组。`
+      )
+    ) {
+      return;
+    }
+    const now = new Date().toISOString();
+    group.deleted = true;
+    group.rev = nextRevision(group);
+    group.updated_at = now;
+    for (const memo of memoRecords()) {
+      if (memo.group_id !== groupId) continue;
+      memo.group_id = null;
+      memo.rev = nextRevision(memo);
+      memo.updated_at = now;
+    }
+    persist();
+    render();
+    renderGroups();
+    showToast("分组已删除，组内事项已保留");
+    syncNow();
+  }
+
   function updateCountdowns() {
     document.querySelectorAll(".remaining[data-deadline]").forEach(element => {
       element.textContent = formatRemaining(element.dataset.deadline);
@@ -1788,6 +2262,7 @@
     formTitle.textContent = memo ? "编辑事项" : "新建事项";
     titleInput.value = memo ? memo.title : "";
     noteInput.value = memo ? (memo.note || "") : "";
+    refreshMemoGroupOptions(memo?.group_id || "");
     setEditingImage(memo ? memo.image_data : null);
     setEditorType(memo && isEvent(memo) ? "event" : "task");
     const reminderMinutes = Math.max(
@@ -2023,7 +2498,12 @@
     }
 
     const weekEnd = new Date(weekStart.getTime() + 3 * 86400000);
-    for (const memo of records.filter(item => !item.deleted && !isHistorical(item))) {
+    for (const memo of records.filter(
+      item =>
+        !item.deleted &&
+        !isGroupRecord(item) &&
+        !isHistorical(item)
+    )) {
       const end = new Date(memo.deadline);
       if (isEvent(memo)) {
         const start = new Date(memo.start_at);
@@ -2192,6 +2672,9 @@
       showToast("提前通知时间已经过去，请缩短提前时间");
       return;
     }
+    const selectedGroupId = groupById(memoGroup.value)
+      ? memoGroup.value
+      : null;
 
     const now = new Date().toISOString();
     let memo = editingId
@@ -2203,6 +2686,7 @@
       memo.item_type = editorType;
       memo.start_at = startAt;
       memo.deadline = deadline;
+      memo.group_id = selectedGroupId;
       memo.reminder_enabled = reminderEnabled.checked;
       memo.reminder_minutes = reminderMinutes;
       memo.reminder_modes = reminderModes;
@@ -2227,6 +2711,7 @@
         item_type: editorType,
         start_at: startAt,
         deadline,
+        group_id: selectedGroupId,
         completed: false,
         completed_at: null,
         reminder_enabled: reminderEnabled.checked,
@@ -2246,6 +2731,80 @@
     closeEditor();
     render();
     showToast("已保存到手机，联网后自动同步");
+    syncNow();
+  });
+
+  groupForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const name = groupNameInput.value.trim();
+    const intro = groupIntroInput.value.trim();
+    if (!name) {
+      showToast("请填写分组名称");
+      return;
+    }
+    const duplicate = groupRecords().find(
+      group =>
+        group.id !== editingGroupId &&
+        String(group.title || "").trim().toLocaleLowerCase("zh-CN") ===
+          name.toLocaleLowerCase("zh-CN")
+    );
+    if (duplicate) {
+      showToast("已经有同名分组，请换一个名称");
+      return;
+    }
+
+    const now = new Date().toISOString();
+    let group = editingGroupId
+      ? records.find(
+          record =>
+            record.id === editingGroupId &&
+            !record.deleted &&
+            isGroupRecord(record)
+        )
+      : null;
+    if (group) {
+      group.title = name;
+      group.note = intro;
+      group.rev = nextRevision(group);
+      group.updated_at = now;
+    } else {
+      group = {
+        id:
+          crypto.randomUUID?.() ||
+          `g-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        record_kind: "group",
+        title: name,
+        note: intro,
+        created_at: now,
+        updated_at: now,
+        rev: nextRevision(),
+        deleted: false,
+      };
+      records.push(group);
+    }
+
+    const selectedIds = new Set(
+      [...groupMemoChoices.querySelectorAll('input[type="checkbox"]:checked')]
+        .map(input => input.value)
+    );
+    for (const memo of memoRecords()) {
+      const shouldBelongToGroup = selectedIds.has(memo.id);
+      if (shouldBelongToGroup && memo.group_id !== group.id) {
+        memo.group_id = group.id;
+        memo.rev = nextRevision(memo);
+        memo.updated_at = now;
+      } else if (!shouldBelongToGroup && memo.group_id === group.id) {
+        memo.group_id = null;
+        memo.rev = nextRevision(memo);
+        memo.updated_at = now;
+      }
+    }
+    persist();
+    closeGroupEditor();
+    render();
+    setPage("groups");
+    renderGroups();
+    showToast("分组已保存，联网后自动同步");
     syncNow();
   });
 
@@ -2517,7 +3076,20 @@
     }
   });
 
-  document.getElementById("addBtn").addEventListener("click", () => openEditor());
+  document.getElementById("addBtn").addEventListener("click", () => {
+    if (activePage === "groups") {
+      openGroupEditor();
+    } else {
+      openEditor();
+    }
+  });
+  memosTabBtn.addEventListener("click", () => setPage("memos"));
+  groupsTabBtn.addEventListener("click", () => setPage("groups"));
+  newGroupBtn.addEventListener("click", () => openGroupEditor());
+  groupCancelBtn.addEventListener("click", closeGroupEditor);
+  groupOverlay.addEventListener("click", event => {
+    if (event.target === groupOverlay) closeGroupEditor();
+  });
   document.getElementById("cancelBtn").addEventListener("click", closeEditor);
   overlay.addEventListener("click", event => {
     if (event.target === overlay) closeEditor();
@@ -2870,6 +3442,7 @@
     }
     for (const element of [
       historyOverlay,
+      groupOverlay,
       desktopDownloadOverlay,
       changelogOverlay,
       imageViewerOverlay,
@@ -2894,6 +3467,7 @@
   }
   loadRecords();
   render();
+  setPage("memos");
   setConnectionStatus(false);
   setInterval(updateCountdowns, 1000);
   setInterval(render, 30000);

@@ -91,6 +91,7 @@
     .summary {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 9px;
       margin: 2px 2px 13px;
     }
@@ -159,7 +160,7 @@
     }
 
     .update-check {
-      margin-left: auto;
+      margin-left: 6px;
       border: 0;
       border-radius: 999px;
       padding: 6px 11px;
@@ -168,6 +169,111 @@
       font: inherit;
       font-size: 10px;
       font-weight: 700;
+    }
+
+    .sync-button {
+      margin-left: auto;
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 17px;
+      background: linear-gradient(135deg, #0b63f6 0%, #00a982 100%);
+      color: white;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .4px;
+      box-shadow: 0 6px 16px rgba(0, 105, 200, .28);
+    }
+
+    .mini-action {
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: #e8eef6;
+      color: #405674;
+      font: inherit;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .version-history-entry {
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: white;
+      padding: 12px;
+      border-left: 4px solid var(--blue);
+    }
+
+    .version-entry-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .version-history-entry h3 {
+      margin: 0 0 4px;
+      font-size: 14px;
+    }
+
+    .version-history-entry time {
+      color: var(--muted);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .version-history-entry ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.72;
+    }
+
+    #changelogOverlay .sheet {
+      width: min(100%, 620px);
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 18px;
+      border-radius: 20px;
+    }
+
+    #changelogOverlay .week-toolbar {
+      position: sticky;
+      top: -18px;
+      z-index: 2;
+      margin: -18px -18px 12px;
+      padding: 18px;
+      background: rgba(248, 250, 253, .97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .history-row {
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 12px;
+      background: white;
+    }
+
+    .history-row h3 {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .history-meta {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .history-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
     }
 
     .list {
@@ -460,6 +566,121 @@
     .cancel { background: #e9eef5; color: var(--muted); }
     .save { background: var(--blue); color: white; }
 
+    .week-sheet {
+      width: min(100%, 1160px);
+      height: min(92vh, 900px);
+      height: min(92dvh, 900px);
+      max-height: none;
+      display: flex;
+      flex-direction: column;
+      padding: 14px;
+    }
+
+    .week-toolbar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 9px;
+    }
+
+    .week-toolbar h2 {
+      flex: 1 0 100%;
+      margin: 0;
+    }
+
+    .week-toolbar button {
+      border: 0;
+      border-radius: 9px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      padding: 7px 9px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .week-table {
+      min-height: 0;
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+    }
+
+    #weekHeaderCanvas,
+    #weekCanvas {
+      display: block;
+      max-width: none;
+    }
+
+    #weekHeaderCanvas {
+      flex: 0 0 54px;
+      height: 54px;
+      border-bottom: 1px solid var(--border);
+      background: white;
+    }
+
+    .week-scroll {
+      min-width: 0;
+      min-height: 0;
+      flex: 1;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      overscroll-behavior: contain;
+      background: white;
+    }
+
+    .image-preview {
+      display: none;
+      max-width: 100%;
+      max-height: 180px;
+      margin-top: 8px;
+      border-radius: 11px;
+      object-fit: contain;
+      background: #eef3f9;
+    }
+
+    .card-image {
+      display: block;
+      width: 100%;
+      max-height: 220px;
+      margin-top: 9px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #eef3f9;
+    }
+
+    .viewer-image {
+      display: block;
+      max-width: 100%;
+      max-height: 78vh;
+      margin: 0 auto;
+      border-radius: 14px;
+    }
+
+    .sheet ol {
+      margin: 8px 0 14px;
+      padding-left: 21px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .sync-guide-address {
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: white;
+      padding: 11px 12px;
+      color: var(--navy);
+      font: 700 12px ui-monospace, Menlo, Consolas, monospace;
+      word-break: break-all;
+    }
+
     .toast {
       position: fixed;
       z-index: 50;
@@ -506,6 +727,10 @@
     <div class="summary">
       <h1>事项清单</h1>
       <span class="count" id="count">0 项</span>
+      <button class="sync-button" id="syncBtn" type="button">同步</button>
+      <button class="mini-action" id="historyBtn" type="button">历史 0</button>
+      <button class="mini-action" id="weekBtn" type="button">周视图</button>
+      <button class="mini-action" id="versionBtn" type="button">v3.4.1</button>
       <button class="update-check" id="checkUpdateBtn" type="button">检查更新</button>
     </div>
     <div class="list" id="list"></div>
@@ -552,6 +777,12 @@
           <label for="note">备注（可选）</label>
           <textarea id="note" maxlength="1000"></textarea>
         </div>
+        <div class="field">
+          <label for="imageInput">图片（可选）</label>
+          <input id="imageInput" type="file" accept="image/png,image/jpeg,image/bmp,image/gif">
+          <img class="image-preview" id="imagePreview" alt="图片预览">
+          <button class="mini-action" id="removeImageBtn" type="button" style="display:none;margin-top:8px">移除图片</button>
+        </div>
         <div class="sheet-actions">
           <button class="cancel" type="button" id="cancelBtn">取消</button>
           <button class="save" type="submit">保存并同步</button>
@@ -560,9 +791,97 @@
     </div>
   </div>
 
+  <div class="overlay" id="syncOverlay">
+    <div class="sheet" style="max-width:440px">
+      <h2>连接云同步</h2>
+      <p class="form-hint" style="font-size:12px;margin:0 0 14px">
+        在电脑端点击“手机独立版”，把页面中生成的同步码粘贴到这里。绑定后，电脑关机时手机仍可独立记录。
+      </p>
+      <div class="field">
+        <label for="syncCodeInput">云同步码</label>
+        <input id="syncCodeInput" autocomplete="off" placeholder="粘贴电脑端显示的同步码">
+      </div>
+      <div class="sheet-actions">
+        <button class="cancel" type="button" id="syncCancelBtn">取消</button>
+        <button class="save" type="button" id="syncSaveBtn">保存并同步</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="syncTutorialOverlay">
+    <div class="sheet" style="max-width:460px">
+      <h2>手机与电脑同步教程</h2>
+      <ol>
+        <li>手机和电脑连接同一 Wi-Fi，或让电脑连接手机热点。</li>
+        <li>打开手机 App，并允许通知，保持同步服务运行。</li>
+        <li>在电脑端点击底部的“同步”按钮。</li>
+        <li>电脑首次连接时，输入下方显示的 6 位配对码。</li>
+        <li>如果电脑没有自动发现手机，点击“同步”后输入上方显示的 IP。</li>
+        <li>两端修改会自动合并，各自离线时仍可继续使用。</li>
+      </ol>
+      <div class="field">
+        <label>手机同步地址</label>
+        <div class="sync-guide-address" id="syncGuideAddress">正在读取…</div>
+        <label style="margin-top:10px">电脑首次配对码</label>
+        <div class="sync-guide-address" id="syncGuideCode">正在读取…</div>
+      </div>
+      <div class="sheet-actions">
+        <button class="save" type="button" id="syncTutorialClose">知道了</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="historyOverlay">
+    <div class="sheet" style="max-width:620px">
+      <div class="week-toolbar">
+        <h2>历史事项</h2>
+        <button type="button" id="historyCloseBtn">关闭</button>
+      </div>
+      <div class="form-hint" style="font-size:12px;margin-bottom:12px">
+        已完成、已过期和已结束事项只能删除，不能修改。
+      </div>
+      <div id="historyList"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="weekOverlay">
+    <div class="sheet week-sheet">
+      <div class="week-toolbar">
+        <h2 id="weekTitle">连续三天事项表</h2>
+        <button type="button" id="weekPrevBtn">前三天</button>
+        <button type="button" id="weekTodayBtn">今天</button>
+        <button type="button" id="weekNextBtn">后三天</button>
+        <button type="button" id="weekCloseBtn">关闭</button>
+      </div>
+      <div class="week-table">
+        <canvas id="weekHeaderCanvas" width="980" height="54"></canvas>
+        <div class="week-scroll">
+          <canvas id="weekCanvas" width="980" height="1152"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="changelogOverlay">
+    <div class="sheet" style="max-width:560px">
+      <div class="week-toolbar">
+        <h2>版本更新日志</h2>
+        <button type="button" id="changelogCloseBtn">关闭</button>
+      </div>
+      <div id="changelogList"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="imageViewerOverlay">
+    <div class="sheet" style="max-width:1050px;background:#172033">
+      <button type="button" id="imageViewerCloseBtn" class="mini-action" style="float:right">关闭</button>
+      <img class="viewer-image" id="imageViewerImage" alt="事项图片">
+    </div>
+  </div>
+
   <div class="toast" id="toast"></div>
 
-  <script>window.BUAA_BOOTSTRAP = {"syncWsUrl": "", "syncHttpUrl": "", "seedRecords": [], "mobileVersion": "2.1.2", "updateManifestUrl": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/update-manifest.json?ref=main"};</script>
+  <script>window.BUAA_BOOTSTRAP = {"syncWsUrl": "", "syncHttpUrl": "", "seedRecords": [], "mobileVersion": "3.4.1", "updateManifestUrl": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/update-manifest.json?ref=main", "cloudSyncUrl": "", "cloudPublishableKey": "", "cloudVaultKey": "", "changelog": {"current_version": "3.4.1", "entries": [{"version": "3.4.1", "date": "2026-10-20", "title": "手机一屏查看三天全时段", "changes": ["手机周视图自动压缩为当前屏幕可用高度。", "今天、明天和后天的 00:00 到 23:59 可在同一竖屏中同时查看。", "课程表不再需要上下滚动，三列日期和全部时间点一次完整显示。", "首个时间标签显示 00:00，最后一个时间标签显示 23:59。", "任务和事件仍按准确时间、准确日期列定位。", "继续使用高 DPI 绘制，保持竖屏文字和网格清晰。"]}, {"version": "3.4.0", "date": "2026-10-20", "title": "手机竖屏三日课程表", "changes": ["手机周视图取消自动横屏，始终使用竖屏展示。", "每次连续展示今天、明天和后天三个完整日期列。", "纵向滚动可查看三天内 00:00 到 24:00 的所有时段。", "新增前三天、今天和后三天快速切换按钮。", "日期表头固定显示，滚动到任何时段都能确认星期和日期。", "消除课程表横向溢出，三天内容无需左右拖动。", "高 DPI 绘图和放大字号继续保留。"]}, {"version": "3.3.1", "date": "2026-10-20", "title": "高分辨率手机周视图", "changes": ["手机周视图 Canvas 根据设备像素比创建高分辨率缓冲区。", "高 DPI 手机最高使用 3 倍像素密度绘制，避免拉伸模糊。", "同步放大星期、日期、时间和事项文字。", "横屏旋转和窗口尺寸变化后会重新按像素比绘制。"]}, {"version": "3.3.0", "date": "2026-10-20", "title": "手机日志与横屏周视图", "changes": ["将电脑版完整更新日志直接嵌入手机安装包，解决日志空白。", "更新日志改为版本标题、日期和内容分层排版。", "日志窗口增加固定顶部栏和独立滚动区域。", "打开手机周视图时自动切换横屏，退出后恢复竖屏。", "周视图根据横屏宽度重新计算七天列宽。"]}, {"version": "3.2.0", "date": "2026-10-20", "title": "手机端完整功能", "changes": ["手机端新增历史事项页面，历史事项只能删除。", "手机端新增七天课程表式周视图。", "手机端新增图片选择、压缩、预览和大图查看。", "手机图片可与电脑端双向同步，电脑图片也会推送到手机。", "手机端新增版本号、完整更新日志和检查更新按钮。", "两端同步按钮改为高对比主按钮，更容易发现。"]}, {"version": "3.1.0", "date": "2026-10-20", "title": "设备配对与访问控制", "changes": ["Android App 生成唯一设备 ID 和 6 位配对码。", "电脑首次连接手机时必须输入配对码。", "手机验证配对码后发放长期同步令牌。", "同步和读取接口必须携带有效令牌，否则返回 401。", "连续输错配对码会临时限频，降低暴力尝试风险。", "手机同步教程页面显示当前设备地址和配对码。"]}, {"version": "3.0.0", "date": "2026-10-20", "title": "Android 原生同步版", "changes": ["新增可独立安装的 Android APK，手机无需电脑即可打开和编辑事项。", "Android App 使用前台服务提供局域网同步接口。", "电脑端通过 UDP 自动发现同一 Wi-Fi 或手机热点中的 App。", "电脑和手机同时在线时双向同步，离线时各自保存。", "默认关闭云端同步，不再持续消耗腾讯云资源点。", "电脑端“手机APP”二维码可直接从局域网下载 APK。"]}, {"version": "2.3.0", "date": "2026-10-20", "title": "增量云同步", "changes": ["云端新增变更日志，每次只返回上次同步之后发生变化的记录。", "客户端只上传版本号发生变化的事项，不再重复上传整份清单。", "后台同步由每 4 秒改为每 5 分钟，减少云资源消耗。", "新增、修改、完成或删除事项后仍会立即触发同步。", "云同步状态文字可点击，用于手动立即刷新。"]}, {"version": "2.2.0", "date": "2026-10-20", "title": "独立手机端云同步", "changes": ["电脑端和手机端分别保存本地数据，两端均可独立离线使用。", "使用腾讯云开发国内节点同步，电脑关机时手机端仍可操作。", "两端同时联网时按版本号自动增量合并，并保留删除记录。", "手机端提供固定网址，可添加到主屏幕作为独立应用打开。", "电脑端通过“手机独立版”二维码自动绑定同一同步码。", "新增云同步连接状态显示，失败时继续使用本地数据。"]}, {"version": "2.1.2", "date": "2026-10-20", "title": "周视图对齐优化", "changes": ["事件型矩形改为按所属星期列居中展示。", "任务型固定矩形改为按星期列居中，不再偏向右侧。", "七天之间的分隔竖线加粗加深，表头和日期区保持一致。", "多个同段时间的任务保持统一中线，不再做横向错位。"]}, {"version": "2.1.1", "date": "2026-10-20", "title": "周视图更易读", "changes": ["放大周视图中的事项标题、星期和日期时间字号。", "任务型事项的固定矩形由 46×26 放大到 88×36。", "默认窗口更宽，为事件标题和任务块留出更多空间。", "任务块可显示更多标题文字，点击仍可查看完整内容。"]}, {"version": "2.1.0", "date": "2026-10-20", "title": "本周事项表", "changes": ["主页面新增“周视图”按钮，以周一到周日课程表展示进行中的事项。", "事件型事项按开始和结束时间绘制矩形，矩形高度与持续时间一致。", "任务型事项使用固定大小矩形，矩形水平中线对准截止时间。", "支持重叠事件自动分栏、跨天事件拆分、上一周和下一周切换。", "周视图中点击事项色块可查看完整时间与备注。"]}, {"version": "2.0.0", "date": "2026-10-20", "title": "任务与事件", "changes": ["备忘事项分为任务型和事件型，新建时可自由切换。", "任务型保留截止时间，并新增绿色“完成”按钮，可提前结束并记录完成时间。", "事件型必须设置开始时间和结束时间，不显示“完成”按钮，结束后自动进入历史事项。", "电脑端、微信控制页和手机离线版均支持两种事项类型。"]}, {"version": "1.9.0", "date": "2026-10-20", "title": "更新入口更醒目", "changes": ["主页面新增独立的“版本与更新”栏。", "检查更新改为蓝色主按钮，更容易发现。", "更新日志改为带箭头的文字按钮，并显示当前版本号。", "底部状态栏只保留自动保存状态和时钟。"]}, {"version": "1.8.0", "date": "2026-10-20", "title": "扫码获取版本", "changes": ["主页面新增“扫码下载”按钮。", "新增电脑版二维码，扫码打开 GitHub 下载页。", "新增手机版二维码，可直接下载当前电脑生成的最新离线 HTML。", "二维码页面支持复制下载地址。", "新增无需安装 Python 的 macOS 浏览器应用包。"]}, {"version": "1.7.0", "date": "2026-10-20", "title": "历史事项", "changes": ["主页面新增带数量的“历史事项”按钮。", "已过期事项会自动移入历史事项，不再占用主列表。", "历史页面只能删除事项，不提供编辑或修改入口。", "删除历史事项后，主页面数量和历史列表会同步刷新。"]}, {"version": "1.6.0", "date": "2026-10-20", "title": "在线检查更新", "changes": ["电脑端新增“检查更新”按钮，可下载并安装最新版。", "升级包下载后进行 SHA-256 校验，保留现有备忘录数据。", "手机离线版新增更新检查，可下载最新版离线 HTML。", "更新信息统一从 GitHub 仓库的版本清单读取。"]}, {"version": "1.5.0", "date": "2026-10-20", "title": "版本更新日志", "changes": ["新增版本更新日志页面。", "底部显示当前版本号，点击即可查看历史调整内容。", "更新记录独立保存在 changelog.json，方便后续版本继续追加。"]}, {"version": "1.4.0", "date": "2026-10-20", "title": "修复月历卡死", "changes": ["修复点击“打开月历”后窗口无法绘制、界面像死机的问题。", "月历改为正常可绘制的独立窗口。", "保留 Esc 关闭和日期选择功能。"]}, {"version": "1.3.0", "date": "2026-10-20", "title": "离线优先与双向同步", "changes": ["新增手机离线版，电脑关机时也能新增、编辑和删除事项。", "手机数据先保存在本机浏览器，电脑恢复在线后自动同步。", "加入版本号与删除记录，避免已删除事项被重新加回来。", "电脑启动时自动开启同步服务。"]}, {"version": "1.2.0", "date": "2026-10-20", "title": "微信控制", "changes": ["新增“微信控制”入口和扫码控制页。", "支持在手机上新增、编辑、删除事项。", "手机和电脑在同一个 Wi-Fi 时可实时同步。", "增加随机访问令牌和局域网访问限制。"]}, {"version": "1.1.0", "date": "2026-10-20", "title": "自由选择终止时间", "changes": ["新增月历日期选择器，可选择任意未来日期。", "新增小时、分钟独立选择框。", "保留手动输入日期和快捷时间选项。"]}, {"version": "1.0.0", "date": "2026-10-19", "title": "初始版本", "changes": ["完成 BUAA 备忘倒计时桌面插件。", "支持新增、删除事项，显示剩余时间和终止时间。", "临近截止自动变色，过期事项单独提示。", "支持图片附件、窗口置顶和本地自动保存。"]}]}};</script>
 <script>
 (() => {
   "use strict";
@@ -570,12 +889,37 @@
   const bootstrap = window.BUAA_BOOTSTRAP || {};
   const STORAGE_KEY = "buaa_memo_records_v2";
   const SYNC_URL_KEY = "buaa_memo_sync_url_v2";
+  const CLOUD_VAULT_KEY = "buaa_memo_cloud_vault_v1";
+  const CLOUD_CURSOR_KEY = "buaa_memo_cloud_cursor_v1";
+  const CLOUD_PUSH_REV_KEY = "buaa_memo_cloud_push_rev_v1";
 
   const listEl = document.getElementById("list");
   const countEl = document.getElementById("count");
   const statusEl = document.getElementById("status");
   const statusText = document.getElementById("statusText");
   const overlay = document.getElementById("overlay");
+  const syncOverlay = document.getElementById("syncOverlay");
+  const syncCodeInput = document.getElementById("syncCodeInput");
+  const syncBtn = document.getElementById("syncBtn");
+  const syncTutorialOverlay = document.getElementById("syncTutorialOverlay");
+  const syncGuideAddress = document.getElementById("syncGuideAddress");
+  const syncGuideCode = document.getElementById("syncGuideCode");
+  const historyBtn = document.getElementById("historyBtn");
+  const weekBtn = document.getElementById("weekBtn");
+  const versionBtn = document.getElementById("versionBtn");
+  const historyOverlay = document.getElementById("historyOverlay");
+  const historyList = document.getElementById("historyList");
+  const weekOverlay = document.getElementById("weekOverlay");
+  const weekHeaderCanvas = document.getElementById("weekHeaderCanvas");
+  const weekCanvas = document.getElementById("weekCanvas");
+  const weekTitle = document.getElementById("weekTitle");
+  const changelogOverlay = document.getElementById("changelogOverlay");
+  const changelogList = document.getElementById("changelogList");
+  const imageViewerOverlay = document.getElementById("imageViewerOverlay");
+  const imageViewerImage = document.getElementById("imageViewerImage");
+  const imageInput = document.getElementById("imageInput");
+  const imagePreview = document.getElementById("imagePreview");
+  const removeImageBtn = document.getElementById("removeImageBtn");
   const form = document.getElementById("memoForm");
   const formTitle = document.getElementById("formTitle");
   const titleInput = document.getElementById("title");
@@ -592,6 +936,7 @@
   const noteInput = document.getElementById("note");
   const toastEl = document.getElementById("toast");
   const checkUpdateBtn = document.getElementById("checkUpdateBtn");
+  const nativeBridge = window.AndroidMemo || null;
 
   document.querySelector(".offline-box")?.remove();
 
@@ -600,11 +945,95 @@
   let editorType = "task";
   let syncing = false;
   let toastTimer = null;
+  let editingImageData = null;
+  let weekStart = dayStartOf(new Date());
+  let changelogEntries = null;
+  let renderedHistoryCount = 0;
   let syncUrl =
     localStorage.getItem(SYNC_URL_KEY) || bootstrap.syncWsUrl || "";
   if (bootstrap.syncWsUrl && !localStorage.getItem(SYNC_URL_KEY)) {
     localStorage.setItem(SYNC_URL_KEY, bootstrap.syncWsUrl);
   }
+  const cloudSyncUrl = bootstrap.cloudSyncUrl || "";
+  const cloudPublishableKey = bootstrap.cloudPublishableKey || "";
+  let cloudVaultKey =
+    localStorage.getItem(CLOUD_VAULT_KEY) || bootstrap.cloudVaultKey || "";
+  let recordsStorageKey = cloudVaultKey
+    ? `${STORAGE_KEY}:${cloudVaultKey}`
+    : STORAGE_KEY;
+  let cloudCursor = 0;
+  let cloudPushRev = 0;
+
+  function cloudCursorKey() {
+    return cloudVaultKey
+      ? `${CLOUD_CURSOR_KEY}:${cloudVaultKey}`
+      : CLOUD_CURSOR_KEY;
+  }
+
+  function cloudPushKey() {
+    return cloudVaultKey
+      ? `${CLOUD_PUSH_REV_KEY}:${cloudVaultKey}`
+      : CLOUD_PUSH_REV_KEY;
+  }
+
+  function loadCloudProgress() {
+    cloudCursor = Number(localStorage.getItem(cloudCursorKey()) || 0) || 0;
+    cloudPushRev =
+      Number(localStorage.getItem(cloudPushKey()) || 0) || 0;
+  }
+
+  function saveCloudProgress() {
+    localStorage.setItem(cloudCursorKey(), String(cloudCursor));
+    localStorage.setItem(cloudPushKey(), String(cloudPushRev));
+  }
+
+  function resetCloudProgress() {
+    cloudCursor = 0;
+    cloudPushRev = 0;
+    saveCloudProgress();
+  }
+
+  function normalizeVaultKey(value) {
+    const raw = String(value || "").trim();
+    if (!raw) return "";
+    const match = raw.match(/[?&#]vault=([A-Za-z0-9_-]{20,})/);
+    return match ? match[1] : raw;
+  }
+
+  function switchCloudVault(nextVault) {
+    const normalized = normalizeVaultKey(nextVault);
+    if (!normalized || normalized === cloudVaultKey) {
+      return false;
+    }
+    const previousVault = cloudVaultKey;
+    const unpairedRecords = previousVault
+      ? ""
+      : localStorage.getItem(STORAGE_KEY) || "";
+    cloudVaultKey = normalized;
+    recordsStorageKey = `${STORAGE_KEY}:${cloudVaultKey}`;
+    if (unpairedRecords && !localStorage.getItem(recordsStorageKey)) {
+      localStorage.setItem(recordsStorageKey, unpairedRecords);
+    }
+    if (previousVault) {
+      records = [];
+    }
+    localStorage.setItem(CLOUD_VAULT_KEY, cloudVaultKey);
+    resetCloudProgress();
+    return true;
+  }
+
+  const hashParams = new URLSearchParams(location.hash.replace(/^#/, ""));
+  const searchParams = new URLSearchParams(location.search);
+  const searchVault = normalizeVaultKey(searchParams.get("vault"));
+  const hashVault = normalizeVaultKey(hashParams.get("vault"));
+  const linkedVault = hashVault || searchVault;
+  if (linkedVault) {
+    switchCloudVault(linkedVault);
+    try {
+      history.replaceState(null, "", location.pathname);
+    } catch {}
+  }
+  loadCloudProgress();
 
   function nextRevision(record = null) {
     return Math.max(Date.now(), Number(record?.rev || 0) + 1);
@@ -630,9 +1059,36 @@
     return [...byId.values()];
   }
 
+  function mondayOf(value) {
+    const result = new Date(value);
+    result.setHours(0, 0, 0, 0);
+    const offset = (result.getDay() + 6) % 7;
+    result.setDate(result.getDate() - offset);
+    return result;
+  }
+
+  function dayStartOf(value) {
+    const result = new Date(value);
+    result.setHours(0, 0, 0, 0);
+    return result;
+  }
+
+  function isHistorical(record) {
+    if (isCompleted(record)) return true;
+    const deadline = new Date(record.deadline).getTime();
+    return Number.isFinite(deadline) && deadline <= Date.now();
+  }
+
   function persist() {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+      if (nativeBridge) {
+        const saved = nativeBridge.writeRecords(JSON.stringify(records));
+        if (!saved) {
+          showToast("Android 本地保存失败");
+        }
+        return saved;
+      }
+      localStorage.setItem(recordsStorageKey, JSON.stringify(records));
       return true;
     } catch {
       showToast("浏览器未允许本地保存，请更换浏览器打开");
@@ -641,9 +1097,19 @@
   }
 
   function loadRecords() {
+    if (nativeBridge) {
+      try {
+        const raw = nativeBridge.readRecords();
+        const loaded = raw ? JSON.parse(raw) : [];
+        records = Array.isArray(loaded) ? loaded : [];
+      } catch {
+        records = [];
+      }
+      return;
+    }
     let localRecords = [];
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(recordsStorageKey);
       localRecords = raw ? JSON.parse(raw) : [];
     } catch {
       localRecords = [];
@@ -653,7 +1119,17 @@
   }
 
   function activeRecords() {
-    return records.filter(record => !record.deleted && !isCompleted(record));
+    return records.filter(record => !record.deleted && !isHistorical(record));
+  }
+
+  function historyRecords() {
+    return records
+      .filter(record => !record.deleted && isHistorical(record))
+      .sort((left, right) => {
+        const leftTime = new Date(left.completed_at || left.deadline || 0).getTime();
+        const rightTime = new Date(right.completed_at || right.deadline || 0).getTime();
+        return rightTime - leftTime;
+      });
   }
 
   function localDateValue(date) {
@@ -676,6 +1152,47 @@
     startTimeInput.value = `${String(start.getHours()).padStart(2, "0")}:${String(start.getMinutes()).padStart(2, "0")}`;
     endDateInput.value = localDateValue(end);
     endTimeInput.value = `${String(end.getHours()).padStart(2, "0")}:${String(end.getMinutes()).padStart(2, "0")}`;
+  }
+
+  function setEditingImage(dataUrl) {
+    editingImageData = dataUrl || null;
+    if (editingImageData) {
+      imagePreview.src = editingImageData;
+      imagePreview.style.display = "block";
+      removeImageBtn.style.display = "inline-block";
+    } else {
+      imagePreview.removeAttribute("src");
+      imagePreview.style.display = "none";
+      removeImageBtn.style.display = "none";
+      imageInput.value = "";
+    }
+  }
+
+  async function compressImageFile(file) {
+    const source = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+    const image = await new Promise((resolve, reject) => {
+      const element = new Image();
+      element.onload = () => resolve(element);
+      element.onerror = reject;
+      element.src = source;
+    });
+    const maxWidth = 900;
+    const maxHeight = 600;
+    const scale = Math.min(
+      1,
+      maxWidth / image.naturalWidth,
+      maxHeight / image.naturalHeight
+    );
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+    canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+    canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL("image/png");
   }
 
   function isEvent(memo) {
@@ -738,10 +1255,23 @@
   }
 
   function setConnectionStatus(online) {
+    if (nativeBridge) {
+      statusEl.classList.remove("offline");
+      try {
+        const info = JSON.parse(nativeBridge.getDeviceInfo() || "{}");
+        statusText.textContent =
+          `手机同步已开启 · ${info.ip}:${info.port}`;
+      } catch {
+        statusText.textContent = "手机同步已开启";
+      }
+      return;
+    }
     statusEl.classList.toggle("offline", !online);
     statusText.textContent = online
-      ? "已连接电脑 · 已同步"
-      : "离线模式 · 数据已保存在本机";
+      ? "云同步已连接 · 数据已更新"
+      : cloudVaultKey
+        ? "离线模式 · 数据已保存在本机"
+        : "未连接同步 · 点击输入同步码";
   }
 
   function render() {
@@ -756,6 +1286,8 @@
     });
 
     countEl.textContent = `${memos.length} 项`;
+    renderedHistoryCount = historyRecords().length;
+    historyBtn.textContent = `历史 ${renderedHistoryCount}`;
     listEl.replaceChildren();
 
     if (!memos.length) {
@@ -789,6 +1321,18 @@
         note.className = "note";
         note.textContent = memo.note;
         card.appendChild(note);
+      }
+
+      if (memo.image_data) {
+        const image = document.createElement("img");
+        image.className = "card-image";
+        image.src = memo.image_data;
+        image.alt = memo.title || "事项图片";
+        image.addEventListener("click", () => {
+          imageViewerImage.src = memo.image_data;
+          imageViewerOverlay.classList.add("show");
+        });
+        card.appendChild(image);
       }
 
       const meta = document.createElement("div");
@@ -861,6 +1405,9 @@
         badge.textContent = `${isEvent(memo) ? "事件" : "任务"} · ${badgeText}`;
       }
     });
+    if (historyRecords().length !== renderedHistoryCount) {
+      render();
+    }
   }
 
   function openEditor(memoId = null) {
@@ -871,6 +1418,7 @@
     formTitle.textContent = memo ? "编辑事项" : "新建事项";
     titleInput.value = memo ? memo.title : "";
     noteInput.value = memo ? (memo.note || "") : "";
+    setEditingImage(memo ? memo.image_data : null);
     setEditorType(memo && isEvent(memo) ? "event" : "task");
     if (memo) {
       const value = new Date(memo.deadline);
@@ -895,6 +1443,7 @@
   function closeEditor() {
     overlay.classList.remove("show");
     editingId = null;
+    setEditingImage(null);
   }
 
   function deleteMemo(memoId) {
@@ -922,6 +1471,282 @@
     render();
     showToast("任务已完成，联网后自动同步");
     syncNow();
+  }
+
+  function renderHistory() {
+    historyList.replaceChildren();
+    const items = historyRecords();
+    if (!items.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = "暂无历史事项";
+      historyList.appendChild(empty);
+      return;
+    }
+    for (const memo of items) {
+      const row = document.createElement("article");
+      row.className = "history-row";
+      const title = document.createElement("h3");
+      title.textContent = memo.title || "未命名事项";
+      row.appendChild(title);
+      const meta = document.createElement("div");
+      meta.className = "history-meta";
+      if (isEvent(memo)) {
+        meta.textContent =
+          `事件 · 开始 ${formatDeadline(memo.start_at)} · 结束 ${formatDeadline(memo.deadline)}`;
+      } else if (isCompleted(memo)) {
+        meta.textContent =
+          `任务 · 已完成于 ${memo.completed_at ? formatDeadline(memo.completed_at) : "未知"}\n截止 ${formatDeadline(memo.deadline)}`;
+      } else {
+        meta.textContent = `任务 · 已过期 ${formatDeadline(memo.deadline)}`;
+      }
+      row.appendChild(meta);
+      if (memo.image_data) {
+        const image = document.createElement("img");
+        image.className = "card-image";
+        image.src = memo.image_data;
+        row.appendChild(image);
+      }
+      const actions = document.createElement("div");
+      actions.className = "history-actions";
+      const remove = document.createElement("button");
+      remove.className = "action-btn delete";
+      remove.textContent = "删除";
+      remove.addEventListener("click", () => {
+        deleteMemo(memo.id);
+        renderHistory();
+      });
+      actions.appendChild(remove);
+      row.appendChild(actions);
+      historyList.appendChild(row);
+    }
+  }
+
+  function openHistory() {
+    renderHistory();
+    historyOverlay.classList.add("show");
+  }
+
+  function drawWeekView() {
+    const headerContext = weekHeaderCanvas.getContext("2d");
+    const context = weekCanvas.getContext("2d");
+    const scroller = weekOverlay.querySelector(".week-scroll");
+    const width = Math.max(280, Math.floor(scroller?.clientWidth || 340));
+    const axisWidth = width < 350 ? 42 : 48;
+    const headerHeight = 54;
+    const dayWidth = (width - axisWidth) / 3;
+    const totalHeight = Math.max(1, Math.floor((scroller?.clientHeight || 576) - 1));
+    const hourHeight = totalHeight / 24;
+    const pixelRatio = Math.min(3, Math.max(1, window.devicePixelRatio || 1));
+
+    weekHeaderCanvas.style.width = `${width}px`;
+    weekHeaderCanvas.style.height = `${headerHeight}px`;
+    weekHeaderCanvas.width = Math.round(width * pixelRatio);
+    weekHeaderCanvas.height = Math.round(headerHeight * pixelRatio);
+    headerContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    headerContext.imageSmoothingEnabled = true;
+    headerContext.imageSmoothingQuality = "high";
+
+    weekCanvas.style.width = `${width}px`;
+    weekCanvas.style.height = `${totalHeight}px`;
+    weekCanvas.width = Math.round(width * pixelRatio);
+    weekCanvas.height = Math.round(totalHeight * pixelRatio);
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = "high";
+    context.fillStyle = "#ffffff";
+    context.fillRect(0, 0, width, totalHeight);
+    headerContext.fillStyle = "#ffffff";
+    headerContext.fillRect(0, 0, width, headerHeight);
+    weekTitle.textContent =
+      `连续三天 · ${localDateValue(weekStart)} — ${localDateValue(new Date(weekStart.getTime() + 2 * 86400000))}`;
+
+    const weekdays = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
+    const today = new Date();
+    for (let index = 0; index < 3; index++) {
+      const date = new Date(weekStart.getTime() + index * 86400000);
+      const x = axisWidth + index * dayWidth;
+      const isToday = localDateValue(date) === localDateValue(today);
+      const dayBackground = isToday ? "#eaf3ff" : "#ffffff";
+      context.fillStyle = dayBackground;
+      context.fillRect(x, 0, dayWidth, totalHeight);
+      headerContext.fillStyle = dayBackground;
+      headerContext.fillRect(x, 0, dayWidth, headerHeight);
+
+      headerContext.fillStyle = isToday ? "#1e66d0" : "#172033";
+      headerContext.font = "bold 15px sans-serif";
+      headerContext.textAlign = "center";
+      headerContext.fillText(weekdays[(date.getDay() + 6) % 7], x + dayWidth / 2, 22);
+      headerContext.font = "12px sans-serif";
+      headerContext.fillText(
+        `${String(date.getMonth() + 1).padStart(2, "0")}/${String(date.getDate()).padStart(2, "0")}`,
+        x + dayWidth / 2,
+        42
+      );
+
+      context.strokeStyle = "#afc1d6";
+      context.lineWidth = 2;
+      context.beginPath();
+      context.moveTo(x, 0);
+      context.lineTo(x, totalHeight);
+      context.stroke();
+      headerContext.strokeStyle = "#afc1d6";
+      headerContext.lineWidth = 2;
+      headerContext.beginPath();
+      headerContext.moveTo(x, 0);
+      headerContext.lineTo(x, headerHeight);
+      headerContext.stroke();
+    }
+    context.strokeStyle = "#afc1d6";
+    context.beginPath();
+    context.moveTo(width - 1, 0);
+    context.lineTo(width - 1, totalHeight);
+    context.stroke();
+    headerContext.strokeStyle = "#afc1d6";
+    headerContext.beginPath();
+    headerContext.moveTo(width - 1, 0);
+    headerContext.lineTo(width - 1, headerHeight);
+    headerContext.stroke();
+
+    for (let hour = 0; hour <= 24; hour++) {
+      const y = hour * hourHeight;
+      context.strokeStyle = hour % 6 === 0 ? "#c4d1e0" : "#e8eef6";
+      context.lineWidth = hour % 6 === 0 ? 2 : 1;
+      context.beginPath();
+      context.moveTo(axisWidth, y);
+      context.lineTo(width, y);
+      context.stroke();
+      const labelInterval = hourHeight < 14 ? 6 : hourHeight < 20 ? 3 : 2;
+      if (hour % labelInterval === 0 || hour === 24) {
+        context.fillStyle = "#6d7d91";
+        context.textAlign = "right";
+        context.font = hour % 6 === 0 ? "bold 11px sans-serif" : "11px sans-serif";
+        const labelY = hour === 0 ? y + 11 : hour === 24 ? y - 5 : y + 4;
+        context.fillText(
+          hour === 24 ? "23:59" : `${String(hour).padStart(2, "0")}:00`,
+          axisWidth - 7,
+          labelY
+        );
+      }
+    }
+
+    const weekEnd = new Date(weekStart.getTime() + 3 * 86400000);
+    for (const memo of records.filter(item => !item.deleted && !isHistorical(item))) {
+      const end = new Date(memo.deadline);
+      if (isEvent(memo)) {
+        const start = new Date(memo.start_at);
+        for (let index = 0; index < 3; index++) {
+          const dayStart = new Date(weekStart.getTime() + index * 86400000);
+          const dayEnd = new Date(dayStart.getTime() + 86400000);
+          const begin = Math.max(start.getTime(), dayStart.getTime());
+          const finish = Math.min(end.getTime(), dayEnd.getTime());
+          if (finish <= begin) continue;
+          const x = axisWidth + index * dayWidth + 4;
+          const y = ((begin - dayStart.getTime()) / 3600000) * hourHeight;
+          const bottom = ((finish - dayStart.getTime()) / 3600000) * hourHeight;
+          context.fillStyle = "#d7e8ff";
+          context.strokeStyle = "#6e9ed9";
+          context.fillRect(x, y, dayWidth - 8, Math.max(3, bottom - y));
+          context.strokeRect(x, y, dayWidth - 8, Math.max(3, bottom - y));
+          if (bottom - y >= 22) {
+            context.fillStyle = "#174a8c";
+            context.textAlign = "left";
+            context.font = "bold 11px sans-serif";
+            context.fillText(memo.title || "事件", x + 3, y + 14, dayWidth - 14);
+          }
+        }
+      } else if (end >= weekStart && end < weekEnd) {
+        const index = Math.floor((end.getTime() - weekStart.getTime()) / 86400000);
+        const dayStart = new Date(weekStart.getTime() + index * 86400000);
+        const taskWidth = Math.min(60, dayWidth - 10);
+        const taskHeight = Math.max(20, Math.min(26, hourHeight));
+        const x = axisWidth + index * dayWidth + (dayWidth - taskWidth) / 2;
+        const center = ((end.getTime() - dayStart.getTime()) / 3600000) * hourHeight;
+        context.fillStyle = "#e3f6ec";
+        context.strokeStyle = "#247a55";
+        context.fillRect(x, center - taskHeight / 2, taskWidth, taskHeight);
+        context.strokeRect(x, center - taskHeight / 2, taskWidth, taskHeight);
+        context.fillStyle = "#176344";
+        context.textAlign = "center";
+        context.font = "bold 11px sans-serif";
+        context.fillText(memo.title || "任务", x + taskWidth / 2, center + 4, taskWidth - 8);
+      }
+    }
+
+    const now = new Date();
+    const todayIndex = Math.floor(
+      (new Date(localDateValue(now)).getTime() - weekStart.getTime()) / 86400000
+    );
+    if (todayIndex >= 0 && todayIndex < 3) {
+      const y = ((now.getHours() * 60 + now.getMinutes()) / 60) * hourHeight;
+      context.strokeStyle = "#d64a4a";
+      context.lineWidth = 2;
+      context.beginPath();
+      context.moveTo(axisWidth + todayIndex * dayWidth + 2, y);
+      context.lineTo(axisWidth + (todayIndex + 1) * dayWidth - 2, y);
+      context.stroke();
+    }
+  }
+
+  function openWeekView() {
+    nativeBridge?.setLandscape?.(false);
+    weekStart = dayStartOf(new Date());
+    weekOverlay.classList.add("show");
+    setTimeout(() => {
+      drawWeekView();
+    }, 80);
+  }
+
+  function shiftWeek(days) {
+    weekStart = new Date(weekStart.getTime() + days * 86400000);
+    drawWeekView();
+  }
+
+  function closeWeekView() {
+    weekOverlay.classList.remove("show");
+    nativeBridge?.setLandscape?.(false);
+  }
+
+  async function openChangelog() {
+    if (!changelogEntries && bootstrap.changelog) {
+      changelogEntries = bootstrap.changelog;
+    }
+    if (!changelogEntries) {
+      try {
+        const response = await fetch("./changelog.json", { cache: "no-store" });
+        if (response.ok) {
+          changelogEntries = await response.json();
+        }
+      } catch {}
+    }
+    if (!changelogEntries) {
+      changelogEntries = {
+        current_version: bootstrap.mobileVersion || "3.1.0",
+        entries: [],
+      };
+    }
+    versionBtn.textContent = `v${changelogEntries.current_version || "3.1.0"}`;
+    changelogList.replaceChildren();
+    for (const entry of changelogEntries.entries || []) {
+      const card = document.createElement("article");
+      card.className = "version-history-entry";
+      const head = document.createElement("div");
+      head.className = "version-entry-head";
+      const title = document.createElement("h3");
+      title.textContent = `v${entry.version} · ${entry.title || "版本更新"}`;
+      const time = document.createElement("time");
+      time.textContent = entry.date || "";
+      head.append(title, time);
+      const list = document.createElement("ul");
+      for (const change of entry.changes || []) {
+        const item = document.createElement("li");
+        item.textContent = change;
+        list.appendChild(item);
+      }
+      card.append(head, list);
+      changelogList.appendChild(card);
+    }
+    changelogOverlay.classList.add("show");
   }
 
   form.addEventListener("submit", event => {
@@ -967,6 +1792,7 @@
       memo.item_type = editorType;
       memo.start_at = startAt;
       memo.deadline = deadline;
+      memo.image_data = editingImageData;
       if (editorType === "event") {
         memo.completed = false;
         memo.completed_at = null;
@@ -986,6 +1812,7 @@
         deadline,
         completed: false,
         completed_at: null,
+        image_data: editingImageData,
         created_at: now,
         updated_at: now,
         rev: nextRevision(),
@@ -1003,6 +1830,20 @@
 
   taskTypeBtn.addEventListener("click", () => setEditorType("task"));
   eventTypeBtn.addEventListener("click", () => setEditorType("event"));
+  imageInput.addEventListener("change", async () => {
+    const file = imageInput.files?.[0];
+    if (!file) {
+      setEditingImage(null);
+      return;
+    }
+    try {
+      setEditingImage(await compressImageFile(file));
+    } catch {
+      showToast("图片读取失败");
+      setEditingImage(null);
+    }
+  });
+  removeImageBtn.addEventListener("click", () => setEditingImage(null));
 
   function syncViaWebSocket() {
     return new Promise(resolve => {
@@ -1052,6 +1893,56 @@
     });
   }
 
+  async function syncViaCloud() {
+    if (!cloudSyncUrl || !cloudPublishableKey || !cloudVaultKey) {
+      return false;
+    }
+    try {
+      const outgoing = records.filter(
+        record => Number(record.rev || 0) > cloudPushRev
+      );
+      const outgoingMax = outgoing.reduce(
+        (maximum, record) => Math.max(maximum, Number(record.rev || 0)),
+        cloudPushRev
+      );
+      const response = await fetch(cloudSyncUrl, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${cloudPublishableKey}`,
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          p_vault_key: cloudVaultKey,
+          p_since: cloudCursor,
+          p_records: outgoing,
+        }),
+      });
+      if (!response.ok) return false;
+      const payload = await response.json();
+      const incoming = Array.isArray(payload)
+        ? payload
+        : Array.isArray(payload.records)
+          ? payload.records
+          : [];
+      if (!Array.isArray(incoming)) return false;
+      if (outgoingMax > cloudPushRev) {
+        cloudPushRev = outgoingMax;
+      }
+      const nextCursor = Number(payload?.cursor || cloudCursor);
+      if (Number.isFinite(nextCursor) && nextCursor >= cloudCursor) {
+        cloudCursor = nextCursor;
+      }
+      saveCloudProgress();
+      records = mergeRecords(records, incoming);
+      persist();
+      render();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   function deriveHttpUrl() {
     try {
       const url = new URL(syncUrl);
@@ -1084,30 +1975,123 @@
   }
 
   async function syncNow() {
+    if (nativeBridge) {
+      setConnectionStatus(true);
+      setTimeout(syncNow, 5000);
+      return;
+    }
     if (syncing) return;
     syncing = true;
     let online = false;
     try {
-      online = await syncViaWebSocket();
+      online = await syncViaCloud();
+      if (!online) online = await syncViaWebSocket();
       if (!online) online = await syncViaHttp();
     } finally {
       syncing = false;
       setConnectionStatus(online);
-      setTimeout(syncNow, online ? 3000 : 9000);
+      setTimeout(syncNow, online ? 300000 : 600000);
     }
   }
 
   statusEl.style.cursor = "pointer";
-  statusEl.title = "点击设置电脑同步地址";
+  statusEl.title = "点击输入云同步码";
   statusEl.addEventListener("click", () => {
-    const value = prompt(
-      "输入电脑“微信控制”窗口中显示的离线同步地址：",
-      syncUrl
-    );
-    if (value && value.trim()) {
-      syncUrl = value.trim();
-      localStorage.setItem(SYNC_URL_KEY, syncUrl);
+    if (nativeBridge) {
+      try {
+        const info = JSON.parse(nativeBridge.getDeviceInfo() || "{}");
+        nativeBridge.showToast(`电脑请连接 ${info.ip}:${info.port}`);
+      } catch {
+        nativeBridge.showToast("同步服务正在启动");
+      }
+      return;
+    }
+    syncCodeInput.value = cloudVaultKey;
+    syncOverlay.classList.add("show");
+    setTimeout(() => syncCodeInput.focus(), 80);
+  });
+  document.getElementById("syncCancelBtn").addEventListener("click", () => {
+    syncOverlay.classList.remove("show");
+  });
+  document.getElementById("syncSaveBtn").addEventListener("click", () => {
+    const normalized = normalizeVaultKey(syncCodeInput.value);
+    if (normalized.length >= 20) {
+      const changed = switchCloudVault(normalized);
+      if (changed) {
+        loadRecords();
+        render();
+      }
+      syncOverlay.classList.remove("show");
+      showToast("同步码已保存");
       syncNow();
+    } else {
+      showToast("同步码格式不正确");
+    }
+  });
+  syncOverlay.addEventListener("click", event => {
+    if (event.target === syncOverlay) {
+      syncOverlay.classList.remove("show");
+    }
+  });
+  syncBtn.addEventListener("click", () => {
+    if (nativeBridge) {
+      try {
+        const info = JSON.parse(nativeBridge.getDeviceInfo() || "{}");
+        syncGuideAddress.textContent = `${info.ip}:${info.port}`;
+        syncGuideCode.textContent = info.pairing_code || "正在生成";
+      } catch {
+        syncGuideAddress.textContent = "同步服务正在启动";
+        syncGuideCode.textContent = "正在生成";
+      }
+      nativeBridge.requestSync?.();
+      syncTutorialOverlay.classList.add("show");
+      return;
+    }
+    showToast("正在同步…");
+    syncNow();
+  });
+  document.getElementById("syncTutorialClose").addEventListener("click", () => {
+    syncTutorialOverlay.classList.remove("show");
+  });
+  syncTutorialOverlay.addEventListener("click", event => {
+    if (event.target === syncTutorialOverlay) {
+      syncTutorialOverlay.classList.remove("show");
+    }
+  });
+  historyBtn.addEventListener("click", openHistory);
+  document.getElementById("historyCloseBtn").addEventListener("click", () => {
+    historyOverlay.classList.remove("show");
+  });
+  historyOverlay.addEventListener("click", event => {
+    if (event.target === historyOverlay) historyOverlay.classList.remove("show");
+  });
+  weekBtn.addEventListener("click", openWeekView);
+  document.getElementById("weekPrevBtn").addEventListener("click", () => shiftWeek(-3));
+  document.getElementById("weekNextBtn").addEventListener("click", () => shiftWeek(3));
+  document.getElementById("weekTodayBtn").addEventListener("click", () => {
+    weekStart = dayStartOf(new Date());
+    drawWeekView();
+  });
+  document.getElementById("weekCloseBtn").addEventListener("click", closeWeekView);
+  weekOverlay.addEventListener("click", event => {
+    if (event.target === weekOverlay) closeWeekView();
+  });
+  versionBtn.addEventListener("click", openChangelog);
+  document.getElementById("changelogCloseBtn").addEventListener("click", () => {
+    changelogOverlay.classList.remove("show");
+  });
+  changelogOverlay.addEventListener("click", event => {
+    if (event.target === changelogOverlay) changelogOverlay.classList.remove("show");
+  });
+  document.getElementById("imageViewerCloseBtn").addEventListener("click", () => {
+    imageViewerOverlay.classList.remove("show");
+  });
+  imageViewerOverlay.addEventListener("click", event => {
+    if (event.target === imageViewerOverlay) imageViewerOverlay.classList.remove("show");
+  });
+  window.addEventListener("resize", () => {
+    if (weekOverlay.classList.contains("show")) {
+      drawWeekView();
     }
   });
 
@@ -1160,10 +2144,18 @@
         ? manifest.notes.map(item => `• ${item}`).join("\n")
         : "";
       const install = confirm(
-        `发现新版本 v${manifest.version}\n\n${notes}\n\n` +
-          "下载后将得到最新离线版 HTML。请用新文件替换旧文件并保持原文件名不变，本机事项数据会保留。"
+        nativeBridge
+          ? `发现新版本 v${manifest.version}\n\n${notes}\n\n是否打开 GitHub 下载新版 APK？`
+          : `发现新版本 v${manifest.version}\n\n${notes}\n\n` +
+              "下载后将得到最新离线版 HTML。请用新文件替换旧文件并保持原文件名不变，本机事项数据会保留。"
       );
       if (!install) return;
+      if (nativeBridge?.openUrl) {
+        nativeBridge.openUrl(
+          "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/latest"
+        );
+        return;
+      }
       const mobile = manifest.mobile || {};
       if (!mobile.offline_html_url) {
         throw new Error("更新清单缺少手机版下载地址");
@@ -1194,10 +2186,43 @@
 
   checkUpdateBtn?.addEventListener("click", checkMobileUpdate);
 
+  window.BUAAReloadRecords = () => {
+    loadRecords();
+    render();
+  };
+  window.BUAACloseTopOverlay = () => {
+    if (weekOverlay.classList.contains("show")) {
+      closeWeekView();
+      return true;
+    }
+    for (const element of [
+      historyOverlay,
+      changelogOverlay,
+      imageViewerOverlay,
+      syncTutorialOverlay,
+      syncOverlay,
+      overlay
+    ]) {
+      if (element.classList.contains("show")) {
+        if (element === overlay) {
+          closeEditor();
+        } else {
+          element.classList.remove("show");
+        }
+        return true;
+      }
+    }
+    return false;
+  };
+
+  if (bootstrap.mobileVersion) {
+    versionBtn.textContent = `v${bootstrap.mobileVersion}`;
+  }
   loadRecords();
   render();
   setConnectionStatus(false);
   setInterval(updateCountdowns, 1000);
+  setInterval(render, 30000);
   syncNow();
 })();
 

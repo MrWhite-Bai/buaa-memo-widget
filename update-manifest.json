@@ -1,21 +1,28 @@
 {
-  "version": "2.1.2",
+  "version": "3.4.1",
   "published_at": "2026-10-20",
   "notes": [
-    "事件型矩形改为按所属星期列居中展示。",
-    "任务型固定矩形改为按星期列居中，不再偏向右侧。",
-    "七天之间的分隔竖线加粗加深，表头和日期区保持一致。",
-    "多个同段时间的任务保持统一中线，不再做横向错位。"
+    "手机周视图自动压缩为当前屏幕可用高度。",
+    "今天、明天和后天的 00:00 到 23:59 可在同一竖屏中同时查看。",
+    "课程表不再需要上下滚动，三列日期和全部时间点一次完整显示。",
+    "首个时间标签显示 00:00，最后一个时间标签显示 23:59。",
+    "任务和事件仍按准确时间、准确日期列定位。",
+    "继续使用高 DPI 绘制，保持竖屏文字和网格清晰。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-2.1.2-app-patch.zip?ref=main",
-    "sha256": "63d29d721e0e0f139376b58b518dd9e9202a70271cfe9b5d4728dd542f45f49e",
-    "size": 341631
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.1-app-patch.zip?ref=main",
+    "sha256": "60f7b0962febfeb574bb2d98e0a37d352121d204bb86cd4197c99e5fe0820f59",
+    "size": 694743
   },
   "mobile": {
-    "version": "2.1.2",
+    "version": "3.4.1",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "64605d4bb18c5661eeb646d6d2bc7451963c0b803902d2e8e3d5aa561aab254f",
-    "size": 36794
+    "sha256": "2ae19e4fd4ac0c2b104ffc2158b6ba96f18ef4451ca2ae540dcad955db5eb969",
+    "size": 82372
+  },
+  "android": {
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.1.apk?ref=main",
+    "sha256": "e22307ecdf5886d759a92cbf3f48c5557dba43fc5149575bcb271ae15af92f3d",
+    "size": 58017
   }
 }

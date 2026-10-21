@@ -1,29 +1,32 @@
 {
-  "version": "3.5.4",
+  "version": "3.5.5",
   "published_at": "2026-10-21",
   "notes": [
-    "手机版检测到“可以更新”后，点击一次即可在 App 内自动下载最新 Android 安装包。",
-    "更新包优先从国内平台镜像获取，并自动校验登录状态、镜像状态和 APK 文件有效性。",
-    "下载进度直接显示在更新按钮中，下载完成后自动打开系统安装器。",
-    "首次更新只需允许一次“安装未知应用”，授权返回 App 后会自动继续安装流程。",
-    "移除局域网同步服务的前台通知，并清理旧版本留下的同步通知及通知渠道。",
-    "通知栏只保留用户主动设置的事项提醒，不再显示同步成功或同步服务通知。",
-    "更新仍采用覆盖安装，原有事项、分组、图片、提醒音量和同步令牌保持不变。"
+    "Android 会读取手机实际的状态栏、刘海区域和底部系统导航栏高度，并传给页面自动避让。",
+    "手机版新增“排版设置”，可分别开启或关闭顶部、底部自动避让。",
+    "顶部和底部留白均可继续用滑杆微调，适配不同品牌和系统样式。",
+    "事项与分组导航可选择固定在屏幕底部，或随页面滚动到内容末尾。",
+    "新建事项按钮可选择右下角圆形、底部大按钮或页面内按钮。",
+    "默认改用右下角圆形按钮，避免大按钮遮挡事项卡片。",
+    "排版设置保存在本机，之后打开 App 会继续使用用户选择。",
+    "修复电脑版首次点击“周视图”时窗口无法打开的问题。",
+    "电脑版周视图已打开时会正确刷新并置顶，不会重复创建窗口。",
+    "原有事项、分组、图片、提前通知、同步和更新功能保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.5.4-app-patch.zip?ref=main",
-    "sha256": "b349fba4cce98fb97eca366c9b7605623f9c9242268496a2a2b70b13f19d3d07",
-    "size": 563887
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.5.5-app-patch.zip?ref=main",
+    "sha256": "8195aa59a2d33ca7c6b9bf46c65e7accb3c09b4e4dbd913120527e36d42e97c7",
+    "size": 571358
   },
   "mobile": {
-    "version": "3.5.4",
+    "version": "3.5.5",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "186134f963497386384170ac4706dcacf70e8b4b32311a55df5f297468a4a485",
-    "size": 144201
+    "sha256": "3dede0baca5e1a4e9896a67c6505711ee0cc5e36f4c3b72a5d9386992936c6ce",
+    "size": 161493
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.5.4.apk?ref=main",
-    "sha256": "c1d07f495e4db32c4e726b0a94762802434379d19be5214456a8433bd0cbdb6c",
-    "size": 308016
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.5.5.apk?ref=main",
+    "sha256": "dab4ca5b563dc37e9e65efbdeaacf0c4f106867ed92902ad199fb4ff471eb578",
+    "size": 312112
   }
 }

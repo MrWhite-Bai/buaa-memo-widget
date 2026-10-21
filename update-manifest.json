@@ -1,32 +1,30 @@
 {
-  "version": "3.5.5",
+  "version": "4.0.0",
   "published_at": "2026-10-21",
   "notes": [
-    "Android 会读取手机实际的状态栏、刘海区域和底部系统导航栏高度，并传给页面自动避让。",
-    "手机版新增“排版设置”，可分别开启或关闭顶部、底部自动避让。",
-    "顶部和底部留白均可继续用滑杆微调，适配不同品牌和系统样式。",
-    "事项与分组导航可选择固定在屏幕底部，或随页面滚动到内容末尾。",
-    "新建事项按钮可选择右下角圆形、底部大按钮或页面内按钮。",
-    "默认改用右下角圆形按钮，避免大按钮遮挡事项卡片。",
-    "排版设置保存在本机，之后打开 App 会继续使用用户选择。",
-    "修复电脑版首次点击“周视图”时窗口无法打开的问题。",
-    "电脑版周视图已打开时会正确刷新并置顶，不会重复创建窗口。",
-    "原有事项、分组、图片、提前通知、同步和更新功能保持不变。"
+    "电脑版和手机版应用显示名称统一升级为“BUAA浮光”。",
+    "电脑主窗口、各类子窗口、手机页面标题和提醒通知同步使用新名称。",
+    "Windows、Android、macOS、浏览器和 PWA 图标统一替换为海面月光与 B 字样图案。",
+    "Windows 启动程序更名为“BUAA浮光.exe”，并嵌入新应用图标。",
+    "Android 安装包显示名称、桌面图标和圆形图标同步更新。",
+    "macOS 应用名称升级为“BUAA浮光.app”，系统图标同步替换。",
+    "内部包名和 BUAA-Memo 发布文件名保持不变，确保覆盖安装和数据兼容。",
+    "原有事项、分组、图片、提醒、同步令牌和排版设置保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.5.5-app-patch.zip?ref=main",
-    "sha256": "8195aa59a2d33ca7c6b9bf46c65e7accb3c09b4e4dbd913120527e36d42e97c7",
-    "size": 571358
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.0.0-app-patch.zip?ref=main",
+    "sha256": "309dcda84ccfa25935c32d37c62a192cba00e9054ddc663d9338f72fb5217269",
+    "size": 2517030
   },
   "mobile": {
-    "version": "3.5.5",
+    "version": "4.0.0",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "3dede0baca5e1a4e9896a67c6505711ee0cc5e36f4c3b72a5d9386992936c6ce",
-    "size": 161493
+    "sha256": "6bd503cfcf848b22d91d14ec378501a59cf56bda9a9e203532a3a4fe4852c5e5",
+    "size": 162286
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.5.5.apk?ref=main",
-    "sha256": "dab4ca5b563dc37e9e65efbdeaacf0c4f106867ed92902ad199fb4ff471eb578",
-    "size": 312112
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.0.0.apk?ref=main",
+    "sha256": "192e0d0e13ad66befebe6d50f4a6587e53c461218905eab9a123d334f724751c",
+    "size": 906032
   }
 }

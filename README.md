@@ -1,16 +1,16 @@
-# BUAA 备忘倒计时
+# BUAA浮光
 
-一个带倒计时、图片附件和手机独立版的 Windows 桌面备忘录。
+一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v3.5.5.zip)
-- [macOS 浏览器版](BUAA-Memo-macOS-v3.5.5.zip)
-- [Android APK](BUAA-Memo-Android-v3.5.5.apk)
+- [Windows 完整版](BUAA-Memo-Windows-v4.0.0.zip)
+- [macOS 浏览器版](BUAA-Memo-macOS-v4.0.0.zip)
+- [Android APK](BUAA-Memo-Android-v4.0.0.apk)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 
-Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
+Windows 版解压后双击 `BUAA浮光.exe` 运行，不需要安装 Python。
 
 ## 更新方式
 
@@ -70,4 +70,4 @@ v3.5.2 起，弹窗只负责显示通知，响铃改为内置的柔和双水滴�
 
 ## 当前版本
 
-v3.5.5
+v4.0.0

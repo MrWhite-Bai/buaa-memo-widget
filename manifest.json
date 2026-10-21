@@ -1,0 +1,31 @@
+{
+  "name": "BUAA浮光",
+  "short_name": "BUAA浮光",
+  "description": "独立运行、离线保存并可同步到电脑的备忘录",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#DCECF4",
+  "theme_color": "#002FA7",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

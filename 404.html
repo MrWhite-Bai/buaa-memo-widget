@@ -1,0 +1,4927 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#002fa7">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BUAA浮光">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+  <meta name="buaa-version" content="__BUAA_APP_VERSION__">
+  <title>BUAA浮光</title>
+  <style>
+    :root {
+      --navy: #002fa7;
+      --blue: #4c87ad;
+      --blue-soft: #e2f1f7;
+      --bg: #dcebf3;
+      --surface: rgba(255, 252, 242, .94);
+      --text: #203746;
+      --muted: #667e8d;
+      --border: #c7dde7;
+      --danger: #b95b63;
+      --danger-soft: #f8e9ea;
+      --warning: #a66f32;
+      --warning-soft: #faf0df;
+      --native-safe-top: env(safe-area-inset-top, 0px);
+      --native-safe-bottom: env(safe-area-inset-bottom, 0px);
+      --native-safe-left: env(safe-area-inset-left, 0px);
+      --native-safe-right: env(safe-area-inset-right, 0px);
+      --safe-top-effective: var(--native-safe-top);
+      --safe-bottom-effective: var(--native-safe-bottom);
+      --safe-left-effective: var(--native-safe-left);
+      --safe-right-effective: var(--native-safe-right);
+      --layout-top-extra: 0px;
+      --layout-bottom-extra: 0px;
+      --fixed-nav-reserve: 74px;
+      --content-controls-reserve: 112px;
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: rgba(205, 228, 235, .52); }
+    ::-webkit-scrollbar-thumb {
+      border: 3px solid rgba(205, 228, 235, .52);
+      border-radius: 999px;
+      background: rgba(43, 107, 137, .58);
+    }
+    html { background: #dcecf4; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #d7e9f1 0%, #edf6f7 45%, #d5e9ef 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei UI", sans-serif;
+      min-height: 100vh;
+      padding-left: var(--safe-left-effective);
+      padding-right: var(--safe-right-effective);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .river-scene {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background:
+        url("river-material-v3.jpg") center 54% / cover no-repeat,
+        linear-gradient(180deg, #cfe4ed, #a8cedb);
+    }
+
+    .river-scene::before {
+      content: "";
+      position: absolute;
+      inset: -4%;
+      background:
+        url("river-material-v3.jpg") 53% 58% / cover no-repeat;
+      opacity: .20;
+      mix-blend-mode: soft-light;
+      will-change: transform;
+      animation: riverCurrent 34s ease-in-out infinite alternate;
+    }
+
+    .river-scene::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 82% 15%, rgba(255, 233, 164, .28), transparent 31%),
+        linear-gradient(
+          180deg,
+          rgba(236, 247, 249, .92) 0%,
+          rgba(244, 250, 247, .70) 22%,
+          rgba(218, 237, 240, .34) 58%,
+          rgba(150, 200, 216, .43) 100%
+        );
+    }
+
+    @keyframes riverCurrent {
+      0% { transform: translate3d(-1.4%, 0, 0) scale(1.015); }
+      100% { transform: translate3d(1.5%, -1.1%, 0) scale(1.045); }
+    }
+
+    body.safe-top-off { --safe-top-effective: 0px; }
+    body.safe-bottom-off { --safe-bottom-effective: 0px; }
+    body.safe-left-off { --safe-left-effective: 0px; }
+    body.safe-right-off { --safe-right-effective: 0px; }
+    body[data-fab-mode="large"] { --content-controls-reserve: 172px; }
+    body[data-fab-mode="compact"] { --content-controls-reserve: 115px; }
+    body[data-fab-mode="inline"] { --content-controls-reserve: 26px; }
+    body[data-nav-mode="flow"] { --content-controls-reserve: 26px; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 8;
+      overflow: hidden;
+      isolation: isolate;
+      padding:
+        calc(var(--safe-top-effective) + var(--layout-top-extra) + 14px)
+        18px
+        15px;
+      color: #fff8df;
+      background:
+        linear-gradient(180deg, rgba(0, 35, 126, .10), rgba(0, 28, 96, .42)),
+        url("starry-sky-v2.jpg") center 38% / cover no-repeat,
+        #002fa7;
+      border-radius: 0;
+      box-shadow:
+        0 1px 0 rgba(94, 153, 177, .52),
+        0 10px 26px rgba(0, 35, 119, .20);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: -5%;
+      z-index: -1;
+      background:
+        url("starry-sky-v2.jpg") 52% 38% / cover no-repeat;
+      opacity: .22;
+      mix-blend-mode: screen;
+      will-change: transform, opacity;
+      animation: skyCurrent 27s ease-in-out infinite alternate;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(0, 28, 94, .46), transparent 54%),
+        linear-gradient(
+          180deg,
+          transparent 55%,
+          rgba(2, 37, 112, .22) 74%,
+          rgba(102, 164, 184, .48) 90%,
+          rgba(213, 234, 240, .94) 100%
+        );
+    }
+
+    @keyframes skyCurrent {
+      0% { transform: translate3d(-1.1%, -0.4%, 0) scale(1.01); opacity: .16; }
+      100% { transform: translate3d(1.2%, 0.5%, 0) scale(1.04); opacity: .30; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .river-scene::before,
+      header::before {
+        animation: none;
+      }
+    }
+
+    @media (min-width: 700px) {
+      header {
+        padding-left: calc((100% - 720px) / 2 + 18px);
+        padding-right: calc((100% - 720px) / 2 + 18px);
+      }
+
+      .page-nav {
+        left: 50%;
+        right: auto;
+        bottom: 12px;
+        width: min(calc(100% - 40px), 720px);
+        transform: translateX(-50%);
+        border: 1px solid rgba(213, 227, 234, .92);
+        border-radius: 19px;
+        padding: 9px 12px;
+        background: rgba(248, 252, 252, .94);
+      }
+
+      .fab {
+        left: min(calc(50% + 300px), calc(100vw - 70px));
+        bottom: 92px;
+      }
+
+      body[data-desktop-surface="true"] .offline-box,
+      body[data-desktop-surface="true"] #desktopDownloadBtn {
+        display: none;
+      }
+    }
+
+    header .brand,
+    header .tagline,
+    header .status {
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand {
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 750;
+      letter-spacing: .5px;
+      text-shadow: 0 2px 12px rgba(0, 24, 84, .62);
+    }
+
+    .tagline {
+      margin-top: 7px;
+      color: #dfeaff;
+      font-size: 12px;
+      letter-spacing: .4px;
+      text-shadow: 0 1px 8px rgba(0, 24, 84, .72);
+    }
+
+    .status {
+      margin-top: 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      color: #f4f8ff;
+      font-size: 11px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.10);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7bf0b5;
+      box-shadow: 0 0 0 4px rgba(123,240,181,.13);
+    }
+
+    .status.offline .status-dot {
+      background: #ffb3b3;
+      box-shadow: 0 0 0 4px rgba(255,179,179,.13);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 720px);
+      margin: 0 auto;
+      padding:
+        20px
+        16px
+        calc(
+          var(--content-controls-reserve) +
+          var(--safe-bottom-effective) +
+          var(--layout-bottom-extra)
+        );
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .summary {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 2px 2px 13px;
+    }
+
+    .summary h1 {
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .offline-box {
+      margin-bottom: 15px;
+      border: 1px solid #d8e5f5;
+      border-radius: 16px;
+      padding: 14px;
+      background: linear-gradient(145deg, #ffffff, #f2f7ff);
+    }
+
+    .offline-box strong {
+      display: block;
+      color: var(--navy);
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .offline-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .offline-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .offline-download {
+      display: inline-block;
+      border-radius: 10px;
+      padding: 8px 12px;
+      background: var(--blue-soft);
+      color: var(--blue-dark, #144eaa);
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .sync-address {
+      min-width: 0;
+      color: #6d7e94;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 9px;
+      line-height: 1.4;
+      word-break: break-all;
+    }
+
+    .desktop-download-box {
+      margin-bottom: 15px;
+      border: 1px solid #d8e5f5;
+      border-radius: 16px;
+      padding: 14px;
+      background: #fff;
+      box-shadow: 0 7px 22px rgba(20, 78, 170, .07);
+    }
+
+    .desktop-download-box h2 {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 15px;
+    }
+
+    .desktop-download-box p,
+    .desktop-download-box li {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .desktop-download-box p { margin: 0; }
+
+    .desktop-download-box ol {
+      margin: 9px 0 11px;
+      padding-left: 20px;
+    }
+
+    .desktop-download-page {
+      display: block;
+      padding: 9px 10px;
+      border-radius: 10px;
+      background: #f2f6fc;
+      color: #315f96;
+      font: 700 10px ui-monospace, Menlo, Consolas, monospace;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+      text-decoration: none;
+    }
+
+    .desktop-download-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .desktop-download-actions button {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 8px;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #copyDesktopLinkBtn {
+      background: #e7f0ff;
+      color: #1758ad;
+    }
+
+    #shareDesktopLinkBtn {
+      background: #155dcc;
+      color: white;
+    }
+
+    .desktop-direct-download {
+      display: block;
+      margin-top: 9px;
+      color: #176b4b;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    .count {
+      background: #dce9fa;
+      color: #144eaa;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .update-check {
+      margin-left: 6px;
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 11px;
+      background: #e4edf8;
+      color: #405674;
+      font: inherit;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .update-check.update-available {
+      background: linear-gradient(135deg, #ff9b21, #ef5b2a);
+      color: white;
+      box-shadow: 0 0 0 3px rgba(239, 91, 42, .16), 0 7px 18px rgba(211, 65, 23, .24);
+      animation: updatePulse 1.8s ease-in-out infinite;
+    }
+
+    .update-check.is-latest {
+      background: linear-gradient(135deg, #24a66f, #16794f);
+      color: white;
+      box-shadow: 0 0 0 3px rgba(36, 166, 111, .14);
+    }
+
+    .update-check.check-failed {
+      background: linear-gradient(135deg, #d84a4a, #a82d2d);
+      color: white;
+      box-shadow: 0 0 0 3px rgba(216, 74, 74, .14);
+    }
+
+    .update-check.login-required {
+      background: linear-gradient(135deg, #f1a321, #cb7212);
+      color: white;
+      box-shadow: 0 0 0 3px rgba(241, 163, 33, .16);
+    }
+
+    .update-check.checking {
+      opacity: .82;
+      cursor: progress;
+    }
+
+    @keyframes updatePulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .sync-button {
+      margin-left: auto;
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 17px;
+      background: linear-gradient(135deg, #0b63f6 0%, #00a982 100%);
+      color: white;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .4px;
+      box-shadow: 0 6px 16px rgba(0, 105, 200, .28);
+    }
+
+    .mini-action {
+      border: 0;
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: #e8eef6;
+      color: #405674;
+      font: inherit;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .layout-settings-card {
+      display: grid;
+      gap: 12px;
+    }
+
+    .layout-setting-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      background: white;
+    }
+
+    .layout-setting-row strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+
+    .layout-setting-row span {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .layout-setting-row input[type="checkbox"] {
+      width: 21px;
+      height: 21px;
+      margin: 0;
+      accent-color: var(--blue);
+      flex: 0 0 auto;
+    }
+
+    .layout-range-row {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      background: white;
+    }
+
+    .layout-range-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 9px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .layout-range-head output {
+      color: var(--blue);
+    }
+
+    .layout-range-row input[type="range"] {
+      width: 100%;
+      margin: 0;
+      accent-color: var(--blue);
+    }
+
+    .layout-select-row {
+      display: grid;
+      gap: 6px;
+    }
+
+    .layout-select-row label {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .layout-select-row select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 11px 12px;
+      background: white;
+      color: var(--text);
+      font: inherit;
+    }
+
+    .layout-system-info {
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #eaf2ff;
+      color: #315f96;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .layout-settings-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 9px;
+      margin-top: 3px;
+    }
+
+    .layout-settings-actions button {
+      border: 0;
+      border-radius: 12px;
+      padding: 12px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    #layoutResetBtn {
+      background: #e8eef6;
+      color: #405674;
+    }
+
+    #layoutSettingsDoneBtn {
+      background: var(--blue);
+      color: white;
+    }
+
+    .version-history-entry {
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: white;
+      padding: 12px;
+      border-left: 4px solid var(--blue);
+    }
+
+    .version-entry-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .version-history-entry h3 {
+      margin: 0 0 4px;
+      font-size: 14px;
+    }
+
+    .version-history-entry time {
+      color: var(--muted);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .version-history-entry ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.72;
+    }
+
+    #changelogOverlay .sheet {
+      width: min(100%, 620px);
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 18px;
+      border-radius: 20px;
+    }
+
+    #changelogOverlay .week-toolbar {
+      position: sticky;
+      top: -18px;
+      z-index: 2;
+      margin: -18px -18px 12px;
+      padding: 18px;
+      background: rgba(248, 250, 253, .97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .history-row {
+      margin-bottom: 10px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 12px;
+      background: white;
+    }
+
+    .history-row h3 {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .history-meta {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .history-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
+    }
+
+    .list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 15px 15px 13px 18px;
+      box-shadow: 0 8px 26px rgba(54, 106, 133, .11);
+      contain: layout paint style;
+    }
+
+    .card.sinking-ghost {
+      position: fixed;
+      z-index: 25;
+      margin: 0;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    .card.sinking {
+      pointer-events: none;
+      animation: cardSink 920ms cubic-bezier(.4, 0, .2, 1) forwards;
+      transform-origin: center 75%;
+    }
+
+    .card.sinking::after {
+      content: "";
+      position: absolute;
+      left: 9%;
+      right: 9%;
+      bottom: -2px;
+      height: 24px;
+      border: 2px solid rgba(100, 164, 192, .70);
+      border-radius: 50%;
+      animation: waterRipple 980ms ease-out forwards;
+    }
+
+    @keyframes cardSink {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        filter: blur(0);
+      }
+      38% {
+        transform: translateY(10px) scale(.985);
+        opacity: .92;
+        filter: blur(.25px);
+      }
+      100% {
+        transform: translateY(96px) scale(.90);
+        opacity: 0;
+        filter: blur(3px);
+      }
+    }
+
+    @keyframes waterRipple {
+      0% { transform: scale(.28); opacity: 0; }
+      25% { opacity: .85; }
+      100% { transform: scale(1.45); opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card.sinking {
+        animation-duration: 180ms;
+      }
+      .card.sinking::after {
+        animation: none;
+      }
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--blue);
+    }
+
+    .card.urgent::before { background: var(--warning); }
+    .card.expired::before { background: var(--danger); }
+    .card.pending::before { background: #5f7fa8; }
+
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .card-title {
+      flex: 1;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .badge {
+      flex: 0 0 auto;
+      margin-top: 1px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #144eaa;
+      padding: 3px 8px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .card.urgent .badge {
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .card.expired .badge {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .card.pending .badge {
+      background: #edf2f9;
+      color: #526984;
+    }
+
+    .note {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: 68px 1fr;
+      gap: 5px 4px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #edf1f6;
+      align-items: baseline;
+    }
+
+    .meta-label {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .remaining {
+      color: var(--blue);
+      font-size: 18px;
+      font-weight: 750;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: .1px;
+    }
+
+    .card.urgent .remaining { color: var(--warning); }
+    .card.expired .remaining { color: var(--danger); }
+
+    .deadline {
+      color: #45556b;
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .action-btn {
+      border: 0;
+      border-radius: 9px;
+      padding: 6px 11px;
+      background: #eef4fb;
+      color: #144eaa;
+      font-size: 11px;
+      font-weight: 650;
+    }
+
+    .action-btn.delete {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .action-btn.complete {
+      background: #e7f7ef;
+      color: #237b55;
+    }
+
+    .empty {
+      width: min(100%, 360px);
+      margin: 4px auto 0;
+      text-align: center;
+      padding: 46px 20px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      border: 1px solid rgba(199, 221, 231, .82);
+      border-radius: 18px;
+      background: rgba(255, 252, 242, .90);
+      box-shadow: 0 8px 26px rgba(34, 91, 121, .10);
+    }
+
+    .empty-clock {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: white;
+      border: 1px solid #d6e4f5;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      font-size: 34px;
+    }
+
+    .fab {
+      position: fixed;
+      z-index: 10;
+      left: 50%;
+      right: auto;
+      bottom: calc(
+        var(--fixed-nav-reserve) +
+        var(--safe-bottom-effective) +
+        var(--layout-bottom-extra) +
+        10px
+      );
+      transform: translateX(-50%);
+      width: min(calc(100% - 34px), 520px);
+      border: 0;
+      border-radius: 15px;
+      padding: 14px 20px;
+      background: var(--blue);
+      color: white;
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: 0 10px 28px rgba(30, 102, 208, .30);
+    }
+
+    body[data-fab-mode="compact"] .fab {
+      left: auto;
+      right: calc(20px + var(--safe-right-effective));
+      bottom: calc(
+        var(--fixed-nav-reserve) +
+        var(--safe-bottom-effective) +
+        var(--layout-bottom-extra) +
+        8px
+      );
+      transform: none;
+      width: 58px;
+      height: 58px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 0;
+      box-shadow: 0 8px 22px rgba(30, 102, 208, .32);
+    }
+
+    body[data-fab-mode="compact"] .fab::after {
+      content: "＋";
+      font-size: 29px;
+      font-weight: 500;
+      line-height: 1;
+    }
+
+    body[data-fab-mode="inline"] .fab {
+      position: relative;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      transform: none;
+      display: block;
+      width: min(calc(100% - 32px), 520px);
+      margin: 0 auto;
+    }
+
+    body[data-nav-mode="fixed"][data-fab-mode="inline"] .fab {
+      margin-bottom: calc(
+        var(--fixed-nav-reserve) +
+        var(--safe-bottom-effective) +
+        var(--layout-bottom-extra) +
+        10px
+      );
+    }
+
+    body[data-nav-mode="flow"] .fab {
+      bottom: calc(
+        var(--safe-bottom-effective) +
+        var(--layout-bottom-extra) +
+        16px
+      );
+    }
+
+    .page-nav {
+      position: fixed;
+      z-index: 20;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding:
+        9px
+        16px
+        calc(
+          9px +
+          var(--safe-bottom-effective) +
+          var(--layout-bottom-extra)
+        );
+      background: rgba(248, 251, 255, .97);
+      border-top: 1px solid #d6e2f0;
+      box-shadow: 0 -8px 26px rgba(24, 57, 96, .10);
+      backdrop-filter: blur(14px);
+    }
+
+    body[data-nav-mode="flow"] .page-nav {
+      position: relative;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      width: min(calc(100% - 24px), 720px);
+      margin: 0 auto calc(16px + var(--safe-bottom-effective));
+      border: 1px solid #d6e2f0;
+      border-radius: 18px;
+    }
+
+    .page-nav button {
+      min-height: 46px;
+      border: 0;
+      border-radius: 13px;
+      background: transparent;
+      color: #60748e;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .page-nav button.active {
+      background: linear-gradient(135deg, #0b5fd2, #168a73);
+      color: white;
+      box-shadow: 0 6px 16px rgba(20, 94, 197, .23);
+    }
+
+    .group-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .group-card {
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: white;
+      padding: 16px;
+      box-shadow: 0 5px 18px rgba(27, 63, 112, .055);
+    }
+
+    .group-card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .group-card h2 {
+      flex: 1;
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .group-count {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 3px 9px;
+      background: #e6f2ff;
+      color: #155ab4;
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .group-description {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .group-items {
+      display: grid;
+      gap: 6px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid #edf1f6;
+    }
+
+    .group-item-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      color: #344b66;
+      font-size: 12px;
+    }
+
+    .group-item-line::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #5b8fd8;
+    }
+
+    .group-empty-items {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .group-card .actions { margin-top: 12px; }
+
+    .group-detail-summary {
+      margin: -4px 0 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .group-detail-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .group-detail-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+      padding: 13px;
+    }
+
+    .group-detail-card h3 {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .group-detail-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+    }
+
+    .group-detail-head h3 { flex: 1; }
+
+    .group-detail-state {
+      flex: 0 0 auto;
+      border-radius: 999px;
+      padding: 3px 8px;
+      background: #e9f1ff;
+      color: #235eae;
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .group-detail-state.completed {
+      background: #e7f7ef;
+      color: #237b55;
+    }
+
+    .group-detail-state.expired {
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .group-detail-note {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+    }
+
+    .group-detail-meta {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 5px;
+      margin-top: 9px;
+      color: #45556b;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .group-detail-meta span:nth-child(odd) {
+      color: var(--muted);
+    }
+
+    .group-detail-image {
+      display: block;
+      width: 100%;
+      max-height: 180px;
+      margin-top: 9px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: #eef3f9;
+    }
+
+    .group-detail-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 9px;
+    }
+
+    .memo-group-chip {
+      display: inline-flex;
+      margin-top: 8px;
+      border-radius: 999px;
+      padding: 3px 9px;
+      background: #e9f1ff;
+      color: #235eae;
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .group-choice-list {
+      display: grid;
+      gap: 7px;
+      max-height: 255px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 9px;
+      background: white;
+    }
+
+    .group-choice {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 35px;
+      border-radius: 8px;
+      padding: 6px 8px;
+      background: #f7fafe;
+      color: #344b66;
+      font-size: 12px;
+    }
+
+    .group-choice input {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: var(--blue);
+    }
+
+    .group-choice-meta {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .overlay {
+      position: fixed;
+      z-index: 30;
+      inset: 0;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      background: rgba(7, 22, 43, .45);
+      padding:
+        calc(16px + var(--safe-top-effective))
+        16px
+        calc(16px + var(--safe-bottom-effective));
+    }
+
+    .overlay.show { display: flex; }
+
+    .sheet {
+      width: min(100%, 560px);
+      max-height: 91vh;
+      overflow-y: auto;
+      background: #f8fafd;
+      border-radius: 22px 22px 16px 16px;
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(0, 20, 50, .25);
+    }
+
+    .sheet h2 {
+      margin: 0 0 17px;
+      font-size: 19px;
+    }
+
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: white;
+      color: var(--text);
+      padding: 11px 12px;
+      font: inherit;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(30,102,208,.10);
+    }
+
+    .field textarea {
+      min-height: 82px;
+      resize: vertical;
+    }
+
+    .datetime {
+      display: grid;
+      grid-template-columns: 1.35fr .8fr;
+      gap: 9px;
+    }
+
+    .type-switch {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .type-switch button {
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 10px 8px;
+      background: white;
+      color: var(--muted);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .type-switch button.active {
+      border-color: var(--blue);
+      background: var(--blue-soft);
+      color: #144eaa;
+    }
+
+    .reminder-card {
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: #f8fbff;
+      padding: 12px;
+    }
+
+    .reminder-switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .reminder-switch-row input {
+      width: 22px;
+      height: 22px;
+      margin: 0;
+      accent-color: var(--blue);
+    }
+
+    .reminder-options {
+      margin-top: 11px;
+      padding-top: 10px;
+      border-top: 1px solid #dde8f5;
+    }
+
+    .reminder-time-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .reminder-time-row span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .reminder-time-row input,
+    .reminder-time-row select {
+      min-width: 0;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: white;
+      padding: 8px;
+      color: var(--text);
+      font: inherit;
+      font-size: 12px;
+    }
+
+    .reminder-time-row input { width: 76px; }
+
+    .reminder-modes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .reminder-mode {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      min-height: 36px;
+      border: 1px solid #d8e4f2;
+      border-radius: 9px;
+      background: white;
+      color: #425b79;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .reminder-mode input {
+      margin: 0;
+      accent-color: var(--blue);
+    }
+
+    .reminder-test-btn {
+      width: 100%;
+      margin-top: 9px;
+      border: 0;
+      border-radius: 9px;
+      padding: 9px;
+      background: #dbeafe;
+      color: #174f9c;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 750;
+    }
+
+    .reminder-volume-row {
+      display: grid;
+      grid-template-columns: auto 1fr 42px;
+      align-items: center;
+      gap: 8px;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .reminder-volume-row input {
+      width: 100%;
+      accent-color: var(--blue);
+    }
+
+    .reminder-volume-row output {
+      color: var(--blue);
+      font-weight: 750;
+      text-align: right;
+    }
+
+    .reminder-hint {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .hidden { display: none !important; }
+
+    .form-hint {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.55;
+    }
+
+    .sheet-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .sheet-actions button {
+      flex: 1;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px;
+      font: inherit;
+      font-weight: 700;
+    }
+
+    .cancel { background: #e9eef5; color: var(--muted); }
+    .save { background: var(--blue); color: white; }
+
+    .week-sheet {
+      width: min(100%, 1160px);
+      height: min(92vh, 900px);
+      height: min(92dvh, 900px);
+      max-height: none;
+      display: flex;
+      flex-direction: column;
+      padding: 14px;
+    }
+
+    .week-toolbar {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 9px;
+    }
+
+    .week-toolbar h2 {
+      flex: 1 0 100%;
+      margin: 0;
+    }
+
+    .week-toolbar button {
+      border: 0;
+      border-radius: 9px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      padding: 7px 9px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .week-table {
+      min-height: 0;
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+    }
+
+    #weekHeaderCanvas,
+    #weekCanvas {
+      display: block;
+      max-width: none;
+    }
+
+    #weekHeaderCanvas {
+      flex: 0 0 54px;
+      height: 54px;
+      border-bottom: 1px solid var(--border);
+      background: white;
+    }
+
+    .week-scroll {
+      min-width: 0;
+      min-height: 0;
+      flex: 1;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      overscroll-behavior: contain;
+      background: white;
+    }
+
+    .image-preview {
+      display: none;
+      max-width: 100%;
+      max-height: 180px;
+      margin-top: 8px;
+      border-radius: 11px;
+      object-fit: contain;
+      background: #eef3f9;
+    }
+
+    .card-image {
+      display: block;
+      width: 100%;
+      max-height: 220px;
+      margin-top: 9px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #eef3f9;
+    }
+
+    .viewer-image {
+      display: block;
+      max-width: 100%;
+      max-height: 78vh;
+      margin: 0 auto;
+      border-radius: 14px;
+    }
+
+    .sheet ol {
+      margin: 8px 0 14px;
+      padding-left: 21px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .sync-guide-address {
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      background: white;
+      padding: 11px 12px;
+      color: var(--navy);
+      font: 700 12px ui-monospace, Menlo, Consolas, monospace;
+      word-break: break-all;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 50;
+      left: 50%;
+      bottom: calc(
+        92px +
+        var(--safe-bottom-effective) +
+        var(--layout-bottom-extra)
+      );
+      transform: translate(-50%, 16px);
+      max-width: calc(100% - 40px);
+      border-radius: 12px;
+      padding: 10px 15px;
+      background: #16263d;
+      color: white;
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: .22s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    @media (min-width: 700px) {
+      .page-nav {
+        left: 50%;
+        right: auto;
+        bottom: 12px;
+        width: min(calc(100% - 40px), 720px);
+        transform: translateX(-50%);
+        border: 1px solid rgba(213, 227, 234, .92);
+        border-radius: 19px;
+        padding: 9px 12px;
+        background: rgba(248, 252, 252, .94);
+      }
+
+      .fab {
+        left: min(calc(50% + 300px), calc(100vw - 70px));
+        bottom: 92px;
+      }
+    }
+
+    .ios-install-hint {
+      position: fixed;
+      z-index: 35;
+      left: 14px;
+      right: 14px;
+      bottom: calc(82px + var(--safe-bottom-effective));
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, .64);
+      border-radius: 16px;
+      background: rgba(2, 45, 143, .92);
+      color: white;
+      box-shadow: 0 12px 34px rgba(4, 34, 104, .30);
+      backdrop-filter: blur(10px);
+    }
+
+    .ios-install-hint[hidden] { display: none; }
+    .ios-install-hint p {
+      flex: 1;
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .ios-install-hint button {
+      flex: 0 0 auto;
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 10px;
+      padding: 7px 10px;
+      background: rgba(255, 255, 255, .14);
+      color: white;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body data-fab-mode="compact" data-nav-mode="fixed">
+  <div class="river-scene" aria-hidden="true"></div>
+  <header>
+    <div class="brand">BUAA浮光</div>
+    <div class="tagline">浮光跃金，静影沉璧</div>
+    <div class="status" id="status">
+      <span class="status-dot"></span>
+      <span id="statusText">正在连接电脑</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="page active" id="memosPage">
+    <section class="offline-box">
+      <strong>让备忘录在电脑关机时也能用</strong>
+      <p>下载离线手机版后，用手机浏览器打开并保留文件。离线新增的内容会先存在手机上，电脑下次上线并连接同一 Wi-Fi 后自动双向合并。</p>
+      <div class="offline-actions">
+        <a class="offline-download" href="offline" download="BUAA-Memo-Offline.html">下载离线手机版</a>
+        <span class="sync-address">同步地址：<span id="syncAddress"></span></span>
+      </div>
+    </section>
+
+    <div class="summary">
+      <h1>事项清单</h1>
+      <span class="count" id="count">0 项</span>
+      <button class="sync-button" id="syncBtn" type="button">同步</button>
+      <button class="mini-action" id="historyBtn" type="button">历史 0</button>
+      <button class="mini-action" id="weekBtn" type="button">周视图</button>
+      <button class="mini-action" id="versionBtn" type="button">v4.1.0</button>
+      <button class="update-check checking" id="checkUpdateBtn" type="button">正在检查</button>
+      <button class="mini-action" id="desktopDownloadBtn" type="button">电脑版下载教程</button>
+      <button class="mini-action" id="layoutSettingsBtn" type="button" hidden>排版设置</button>
+    </div>
+    <div class="list" id="list"></div>
+    </section>
+
+    <section class="page" id="groupsPage">
+      <div class="summary">
+        <h1>分组</h1>
+        <span class="count" id="groupCount">0 组</span>
+        <button class="mini-action" id="newGroupBtn" type="button">＋ 新建分组</button>
+      </div>
+      <div class="form-hint" style="margin:0 2px 14px">
+        分组只用于整理事项，不会改变事项的截止时间或完成状态。
+      </div>
+      <div class="group-list" id="groupList"></div>
+    </section>
+  </main>
+
+  <button class="fab" id="addBtn" aria-label="新建事项">＋ 新建事项</button>
+
+  <nav class="page-nav" aria-label="页面切换">
+    <button class="active" id="memosTabBtn" type="button">事项</button>
+    <button id="groupsTabBtn" type="button">分组</button>
+  </nav>
+
+  <div class="overlay" id="overlay">
+    <div class="sheet">
+      <h2 id="formTitle">新建事项</h2>
+      <form id="memoForm">
+        <div class="field">
+          <label for="title">事项名称</label>
+          <input id="title" maxlength="80" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label>事项类型</label>
+          <div class="type-switch">
+            <button type="button" id="taskTypeBtn" class="active">任务型 · 可完成</button>
+            <button type="button" id="eventTypeBtn">事件型 · 有起止</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="memoGroup">所属分组（可选）</label>
+          <select id="memoGroup">
+            <option value="">不分组</option>
+          </select>
+        </div>
+        <div class="field" id="taskFields">
+          <label>截止时间</label>
+          <div class="datetime">
+            <input id="date" type="date">
+            <input id="time" type="time">
+          </div>
+        </div>
+        <div class="field hidden" id="eventFields">
+          <label>开始时间</label>
+          <div class="datetime">
+            <input id="startDate" type="date">
+            <input id="startTime" type="time">
+          </div>
+          <label style="margin-top:10px">结束时间</label>
+          <div class="datetime">
+            <input id="endDate" type="date">
+            <input id="endTime" type="time">
+          </div>
+          <div class="form-hint">事件没有“完成”按钮，结束时间到达后自动进入电脑端历史事项。</div>
+        </div>
+        <div class="field">
+          <label>提前通知</label>
+          <div class="reminder-card">
+            <label class="reminder-switch-row" for="reminderEnabled">
+              <span>开启提前通知</span>
+              <input id="reminderEnabled" type="checkbox">
+            </label>
+            <div class="reminder-options hidden" id="reminderOptions">
+              <div class="reminder-time-row">
+                <span>提前</span>
+                <input id="reminderAmount" type="number" min="1" max="999" value="15" inputmode="numeric">
+                <select id="reminderUnit">
+                  <option value="minutes">分钟</option>
+                  <option value="hours">小时</option>
+                  <option value="days">天</option>
+                </select>
+              </div>
+              <div class="reminder-modes">
+                <label class="reminder-mode"><input id="reminderNotify" type="checkbox" checked>通知栏</label>
+                <label class="reminder-mode"><input id="reminderSound" type="checkbox">响铃</label>
+                <label class="reminder-mode"><input id="reminderVibrate" type="checkbox">振动</label>
+              </div>
+              <div class="reminder-volume-row">
+                <span>提醒音量</span>
+                <input id="reminderVolume" type="range" min="10" max="100" step="5" value="100">
+                <output id="reminderVolumeValue">100%</output>
+              </div>
+              <button class="reminder-test-btn" id="testReminderBtn" type="button">测试当前提醒（3 秒后触发）</button>
+              <div class="reminder-hint">任务按截止时间提醒，事件按开始时间提醒。至少选择一种提醒方式。</div>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="note">备注（可选）</label>
+          <textarea id="note" maxlength="1000"></textarea>
+        </div>
+        <div class="field">
+          <label for="imageInput">图片（可选）</label>
+          <input id="imageInput" type="file" accept="image/png,image/jpeg,image/bmp,image/gif">
+          <img class="image-preview" id="imagePreview" alt="图片预览">
+          <button class="mini-action" id="removeImageBtn" type="button" style="display:none;margin-top:8px">移除图片</button>
+        </div>
+        <div class="sheet-actions">
+          <button class="cancel" type="button" id="cancelBtn">取消</button>
+          <button class="save" type="submit">保存并同步</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="overlay" id="groupOverlay">
+    <div class="sheet">
+      <h2 id="groupFormTitle">新建分组</h2>
+      <form id="groupForm">
+        <div class="field">
+          <label for="groupName">分组名称</label>
+          <input id="groupName" maxlength="40" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label for="groupIntro">分组简介</label>
+          <textarea id="groupIntro" maxlength="500" placeholder="这个分组用于整理什么？"></textarea>
+        </div>
+        <div class="field">
+          <label>添加已有事项</label>
+          <div class="group-choice-list" id="groupMemoChoices"></div>
+          <div class="form-hint">勾选的事项会加入这个分组；取消勾选会移出该分组，不会删除事项。</div>
+        </div>
+        <div class="sheet-actions">
+          <button class="cancel" type="button" id="groupCancelBtn">取消</button>
+          <button class="save" type="submit">保存分组</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="overlay" id="groupDetailOverlay">
+    <div class="sheet" style="max-width:680px">
+      <div class="week-toolbar">
+        <h2 id="groupDetailTitle">分组事项</h2>
+        <button type="button" id="groupDetailCloseBtn">关闭</button>
+      </div>
+      <div class="group-detail-summary" id="groupDetailIntro"></div>
+      <div class="group-detail-list" id="groupDetailList"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="syncOverlay">
+    <div class="sheet" style="max-width:440px">
+      <h2>连接云同步</h2>
+      <p class="form-hint" style="font-size:12px;margin:0 0 14px">
+        在电脑端点击“手机独立版”，把页面中生成的同步码粘贴到这里。绑定后，电脑关机时手机仍可独立记录。
+      </p>
+      <div class="field">
+        <label for="syncCodeInput">云同步码</label>
+        <input id="syncCodeInput" autocomplete="off" placeholder="粘贴电脑端显示的同步码">
+      </div>
+      <div class="sheet-actions">
+        <button class="cancel" type="button" id="syncCancelBtn">取消</button>
+        <button class="save" type="button" id="syncSaveBtn">保存并同步</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="syncTutorialOverlay">
+    <div class="sheet" style="max-width:460px">
+      <h2>手机与电脑同步教程</h2>
+      <ol>
+        <li>手机和电脑连接同一 Wi-Fi，或让电脑连接手机热点。</li>
+        <li>打开手机 App，并允许通知，保持同步服务运行。</li>
+        <li>在电脑端点击底部的“同步”按钮。</li>
+        <li>电脑首次连接时，输入下方显示的 6 位配对码。</li>
+        <li>如果电脑没有自动发现手机，点击“同步”后输入上方显示的 IP。</li>
+        <li>两端修改会自动合并，各自离线时仍可继续使用。</li>
+      </ol>
+      <div class="field">
+        <label>手机同步地址</label>
+        <div class="sync-guide-address" id="syncGuideAddress">正在读取…</div>
+        <label style="margin-top:10px">电脑首次配对码</label>
+        <div class="sync-guide-address" id="syncGuideCode">正在读取…</div>
+      </div>
+      <div class="sheet-actions">
+        <button class="save" type="button" id="syncTutorialClose">知道了</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="historyOverlay">
+    <div class="sheet" style="max-width:620px">
+      <div class="week-toolbar">
+        <h2>历史事项</h2>
+        <button type="button" id="historyCloseBtn">关闭</button>
+      </div>
+      <div class="form-hint" style="font-size:12px;margin-bottom:12px">
+        已完成、已过期和已结束事项只能删除，不能修改。
+      </div>
+      <div id="historyList"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="desktopDownloadOverlay">
+    <div class="sheet" style="max-width:520px">
+      <div class="week-toolbar">
+        <h2>电脑版下载教程</h2>
+        <button type="button" id="desktopDownloadCloseBtn">关闭</button>
+      </div>
+      <section class="desktop-download-box" style="margin-bottom:0;box-shadow:none">
+        <p>下载电脑版不要求手机与电脑连接同一 Wi-Fi。请把下面的固定链接发送到电脑。</p>
+        <ol>
+          <li>点击“复制下载链接”或“发送到电脑”。</li>
+          <li>通过微信、QQ、邮件等把链接发送到电脑。</li>
+          <li>在电脑浏览器打开链接并登录平台，选择 Windows 或 macOS 版本。</li>
+        </ol>
+        <a class="desktop-download-page" id="desktopDownloadPageLink" href="https://cysyforum.muzermat.online/cy-platform/projects/5" target="_blank" rel="noopener noreferrer">https://cysyforum.muzermat.online/cy-platform/projects/5</a>
+        <div class="desktop-download-actions">
+          <button type="button" id="copyDesktopLinkBtn">复制下载链接</button>
+          <button type="button" id="shareDesktopLinkBtn">发送到电脑</button>
+        </div>
+        <a class="desktop-direct-download" id="directDesktopDownload" href="https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.0/BUAA-Memo-Windows-v4.1.0.zip" target="_blank" rel="noopener noreferrer">直接下载 Windows 完整版</a>
+      </section>
+    </div>
+  </div>
+
+  <div class="overlay" id="weekOverlay">
+    <div class="sheet week-sheet">
+      <div class="week-toolbar">
+        <h2 id="weekTitle">连续三天事项表</h2>
+        <button type="button" id="weekPrevBtn">前三天</button>
+        <button type="button" id="weekTodayBtn">今天</button>
+        <button type="button" id="weekNextBtn">后三天</button>
+        <button type="button" id="weekCloseBtn">关闭</button>
+      </div>
+      <div class="week-table">
+        <canvas id="weekHeaderCanvas" width="980" height="54"></canvas>
+        <div class="week-scroll">
+          <canvas id="weekCanvas" width="980" height="1152"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay" id="changelogOverlay">
+    <div class="sheet" style="max-width:560px">
+      <div class="week-toolbar">
+        <h2>版本更新日志</h2>
+        <button type="button" id="changelogCloseBtn">关闭</button>
+      </div>
+      <div id="changelogList"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="imageViewerOverlay">
+    <div class="sheet" style="max-width:1050px;background:#172033">
+      <button type="button" id="imageViewerCloseBtn" class="mini-action" style="float:right">关闭</button>
+      <img class="viewer-image" id="imageViewerImage" alt="事项图片">
+    </div>
+  </div>
+
+  <div class="overlay" id="layoutSettingsOverlay" hidden>
+    <div class="sheet" style="max-width:520px">
+      <div class="week-toolbar">
+        <h2>手机排版设置</h2>
+        <button type="button" id="layoutSettingsCloseBtn">关闭</button>
+      </div>
+      <div class="layout-settings-card">
+        <div class="layout-system-info" id="layoutSystemInfo">
+          正在读取系统安全区域…
+        </div>
+
+        <label class="layout-setting-row" for="layoutSafeTop">
+          <div>
+            <strong>自动避让顶部状态栏</strong>
+            <span>避免 BUAA 与时间、信号和通知图标重合</span>
+          </div>
+          <input id="layoutSafeTop" type="checkbox" checked>
+        </label>
+
+        <label class="layout-setting-row" for="layoutSafeBottom">
+          <div>
+            <strong>自动避让底部系统按钮</strong>
+            <span>避免事项、分组导航与返回键、主屏幕键重合</span>
+          </div>
+          <input id="layoutSafeBottom" type="checkbox" checked>
+        </label>
+
+        <div class="layout-range-row">
+          <div class="layout-range-head">
+            <span>顶部额外留白</span>
+            <output id="layoutTopExtraValue">0 px</output>
+          </div>
+          <input id="layoutTopExtra" type="range" min="0" max="48" step="2" value="0">
+        </div>
+
+        <div class="layout-range-row">
+          <div class="layout-range-head">
+            <span>底部额外留白</span>
+            <output id="layoutBottomExtraValue">0 px</output>
+          </div>
+          <input id="layoutBottomExtra" type="range" min="0" max="64" step="2" value="0">
+        </div>
+
+        <div class="layout-select-row">
+          <label for="layoutNavMode">事项 / 分组导航</label>
+          <select id="layoutNavMode">
+            <option value="fixed">固定在屏幕底部</option>
+            <option value="flow">随页面滚动到末尾</option>
+          </select>
+        </div>
+
+        <div class="layout-select-row">
+          <label for="layoutFabMode">新建事项按钮</label>
+          <select id="layoutFabMode">
+            <option value="compact">右下角圆形按钮（推荐）</option>
+            <option value="large">底部大按钮</option>
+            <option value="inline">放在页面内容中</option>
+          </select>
+        </div>
+
+        <div class="layout-settings-actions">
+          <button type="button" id="layoutResetBtn">恢复默认</button>
+          <button type="button" id="layoutSettingsDoneBtn">完成</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ios-install-hint" id="iosInstallHint" hidden>
+    <p>iPhone 安装：点击 Safari 的“分享”，再选择“添加到主屏幕”。</p>
+    <button type="button" id="iosInstallDismiss">知道了</button>
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>window.BUAA_BOOTSTRAP = {"syncWsUrl": "", "syncHttpUrl": "", "seedRecords": [], "mobileVersion": "4.1.2", "updateManifestUrl": "https://cysyforum.muzermat.online/cy-platform/projects/5", "liveUpdateManifestUrl": "https://raw.githubusercontent.com/MrWhite-Bai/buaa-memo-widget/main/update-manifest.json", "desktopDownloadUrl": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/BUAA-Memo-Windows-v4.1.2.zip", "cloudSyncUrl": "", "cloudPublishableKey": "", "cloudVaultKey": "", "changelog": {"current_version": "4.1.2", "entries": [{"version": "4.1.2", "date": "2026-10-21", "title": "锁屏亮屏提醒", "changes": ["手机版提前通知在锁屏和熄屏状态下也能触发。", "提醒触发时会短时点亮屏幕，并显示全屏提醒卡片。", "全屏提醒卡片可直接关闭，也可以跳转到 BUAA浮光查看事项。", "通知栏提醒改为闹钟级高优先级，并在锁屏界面公开显示事项名称。", "首次启用提前通知时会引导开启精确闹钟权限和全屏提醒权限。", "保留原有通知栏、响铃、振动组合以及独立提醒音量设置。"]}, {"version": "4.1.1", "date": "2026-10-21", "title": "连续江面视觉与 24 小时归档", "changes": ["手机版顶部改为克莱因蓝星夜，夜空与江面之间使用清晰的渐变水平分界。", "江面背景改用连续的莫奈睡莲水面素材，完整覆盖事项列表和卡片之间的空白。", "事项卡片保持原有奶油白配色和操作布局，阅读性与可点击区域不变。", "电脑版改用与手机一致的一体化桌面界面，去掉原先割裂的水带和工具栏。", "电脑版窗口扩大为适合桌面使用的宽屏布局，事项列表与顶部内容居中对齐。", "事项到期后先在主页面保留 24 小时，并实时显示距离归档的剩余时间。", "到期满 24 小时后自动进入历史事项；主动完成的任务仍会立即归档。", "到期后 24 小时内的任务仍可手动点击“完成”。", "修复点击“完成”后偶尔无响应的问题，完成状态会先保存和同步，再播放松水动画。", "减少背景重绘并启用图片延迟加载，改善低性能手机打开和滚动时的流畅度。", "原有分组、图片、提醒、同步、更新检查与周视图功能保持不变。"]}, {"version": "4.1.0", "date": "2026-10-21", "title": "浮光水色与完成沉没动效", "changes": ["电脑版和手机版整体配色升级为淡蓝水面、柔光与简化印象派风格。", "电脑版卡片、导航和背景改用低饱和海蓝色与米白水面配色。", "手机版加入淡蓝水波纹理、柔光渐变和半透明水面卡片。", "电脑版首页标语改为“浮光跃金，静影沉璧”。", "手机版首页标语同步改为“浮光跃金，静影沉璧”。", "点击任务型事项的“完成”后，卡片会向下漂移、逐渐褪成水色并缩小消失。", "完成动画同时显示扩散水波涟漪，并播放柔和的水滴入水声。", "电脑端使用内置水滴入水 WAV，手机端使用本地合成的低频水滴与水波声音。", "完成时间、历史事项、多端同步和原有事项数据保持不变。"]}, {"version": "4.0.0", "date": "2026-10-21", "title": "BUAA浮光品牌升级", "changes": ["电脑版和手机版应用显示名称统一升级为“BUAA浮光”。", "电脑主窗口、各类子窗口、手机页面标题和提醒通知同步使用新名称。", "Windows、Android、macOS、浏览器和 PWA 图标统一替换为海面月光与 B 字样图案。", "Windows 启动程序更名为“BUAA浮光.exe”，并嵌入新应用图标。", "Android 安装包显示名称、桌面图标和圆形图标同步更新。", "macOS 应用名称升级为“BUAA浮光.app”，系统图标同步替换。", "内部包名和 BUAA-Memo 发布文件名保持不变，确保覆盖安装和数据兼容。", "原有事项、分组、图片、提醒、同步令牌和排版设置保持不变。"]}, {"version": "3.5.5", "date": "2026-10-21", "title": "手机排版自定义与系统安全区适配", "changes": ["Android 会读取手机实际的状态栏、刘海区域和底部系统导航栏高度，并传给页面自动避让。", "手机版新增“排版设置”，可分别开启或关闭顶部、底部自动避让。", "顶部和底部留白均可继续用滑杆微调，适配不同品牌和系统样式。", "事项与分组导航可选择固定在屏幕底部，或随页面滚动到内容末尾。", "新建事项按钮可选择右下角圆形、底部大按钮或页面内按钮。", "默认改用右下角圆形按钮，避免大按钮遮挡事项卡片。", "排版设置保存在本机，之后打开 App 会继续使用用户选择。", "修复电脑版首次点击“周视图”时窗口无法打开的问题。", "电脑版周视图已打开时会正确刷新并置顶，不会重复创建窗口。", "原有事项、分组、图片、提前通知、同步和更新功能保持不变。"]}, {"version": "3.5.4", "date": "2026-10-21", "title": "一键下载更新与通知栏精简", "changes": ["手机版检测到“可以更新”后，点击一次即可在 App 内自动下载最新 Android 安装包。", "更新包优先从国内平台镜像获取，并自动校验登录状态、镜像状态和 APK 文件有效性。", "下载进度直接显示在更新按钮中，下载完成后自动打开系统安装器。", "首次更新只需允许一次“安装未知应用”，授权返回 App 后会自动继续安装流程。", "移除局域网同步服务的前台通知，并清理旧版本留下的同步通知及通知渠道。", "通知栏只保留用户主动设置的事项提醒，不再显示同步成功或同步服务通知。", "更新仍采用覆盖安装，原有事项、分组、图片、提醒音量和同步令牌保持不变。"]}, {"version": "3.5.3", "date": "2026-10-21", "title": "双水滴提醒与独立音量", "changes": ["提醒铃声改为柔和的双水滴滴落音效。", "水滴音效使用系统闹钟音频通道播放。", "新建和编辑事项时可在插件内部单独设置提醒音量，范围为 10% 到 100%。", "提醒音量会随事项保存并在多端同步。", "“测试当前提醒”会按设置的音量、响铃和振动方式执行。", "原有提醒时间、事项和分组数据保持不变。"]}, {"version": "3.5.2", "date": "2026-10-21", "title": "咳嗽两声提醒与闹钟级振动", "changes": ["提醒铃声改为内置的“咳嗽两声”音效。", "咳嗽音效使用系统闹钟音频通道播放。", "响铃改为使用 MediaPlayer 直接播放内置音频。", "振动改用闹钟用途属性，并延长为三段振动。", "在支持振动用途属性的系统上优先使用闹钟振动通道。", "保留“测试当前提醒”按钮，安装后可直接验证声音和振动。", "原有提醒时间、事项和分组数据保持不变。"]}, {"version": "3.5.1", "date": "2026-10-21", "title": "提醒声音与振动修复", "changes": ["弹窗提醒现在只负责显示通知，不再依赖通知渠道播放声音和振动。", "响铃由 App 直接播放默认通知铃声，振动由 App 直接触发。", "使用新的弹窗通知渠道，避免旧渠道被系统静音后继续影响提醒。", "通知栏、响铃、振动仍可任意组合使用。", "新建或编辑事项的提前通知区域新增“测试当前提醒”按钮。", "点击测试按钮后会在 3 秒后按当前勾选方式触发一次提醒。", "原有准时闹钟、事项和分组数据保持不变。"]}, {"version": "3.5.0", "date": "2026-10-21", "title": "分组事项详情", "changes": ["每个分组新增“查看事项”入口，可打开该分组的完整事项详情。", "分组详情显示组内全部事项，包括进行中、已完成和已过期事项。", "每个事项显示任务或事件类型、当前状态、剩余时间、起止时间和备注。", "分组内有图片的事项可在详情中查看原图。", "手机端可从分组详情直接编辑仍在进行中的事项。", "电脑端新增对应的分组事项详情窗口，并会随数据变化刷新。", "原有分组管理、事项倒计时、同步和提前通知功能保持不变。"]}, {"version": "3.4.9", "date": "2026-10-20", "title": "事项分组与独立分组页面", "changes": ["事项主页继续作为第一个界面，新增独立的第二个“分组”界面。", "支持新建、编辑和删除分组，并可设置分组名称和简介。", "编辑分组时可以勾选已有事项加入分组，也可取消勾选移出分组。", "新建或编辑事项时可以选择所属分组，也可以选择不分组。", "删除分组不会删除组内事项，事项会自动变为未分组。", "分组记录随现有局域网和离线同步一起更新，电脑和手机均可查看。", "原有倒计时、任务完成、事件、图片、提前通知和同步功能保持不变。"]}, {"version": "3.4.8", "date": "2026-10-20", "title": "国内平台版本检测与明确状态", "changes": ["手机版自动检查更新改为优先读取学业支持中心国内平台。", "Android 通过原生网络桥读取版本，避免网页跨域和 GitHub 访问失败。", "手机端首次需要在 App 内登录一次国内平台，之后会保留登录状态并自动检查。", "电脑版自动检查更新也优先读取国内平台，GitHub 仅作为备用来源。", "更新按钮会明确显示“正在检查”“已是最新版”“可以更新”“需登录检查”或“检查失败”。", "检查失败时点击按钮会重新检查，并仍可直接打开国内平台手动下载。", "保留现有事项、图片、设备配对、同步令牌和提前通知数据。"]}, {"version": "3.4.7", "date": "2026-10-20", "title": "安全区域与提前通知", "changes": ["修复手机版顶部 BUAA 图标与系统通知栏重合的问题。", "新建和编辑事项新增“提前通知”模块。", "提前时间支持分钟、小时和天三种单位。", "提醒方式支持通知栏、响铃和振动，可任意组合。", "Android 使用系统闹钟在后台定时触发提醒，App 关闭后仍可生效。", "手机重启后会自动重新安排尚未到期的提醒。", "删除、完成或结束后会自动取消对应提醒。"]}, {"version": "3.4.6", "date": "2026-10-20", "title": "联网实时检查与更新提示", "changes": ["手机版启动并联网后自动检查最新版本。", "手机版恢复网络、回到前台以及每分钟都会重新检查版本状态。", "电脑版启动后会立即检查，并在运行期间定时复查。", "检测到新版本后，“检查更新”按钮改为高对比的“可以更新”。", "检查只读取公开版本清单，不会在后台自动下载或安装。", "点击“可以更新”后仍按平台登录流程获取安装包。"]}, {"version": "3.4.5", "date": "2026-10-20", "title": "电脑版教程改为弹窗入口", "changes": ["手机版主页移除占地较大的电脑版下载卡片。", "新增“电脑版下载教程”按钮，不再挤占事项列表空间。", "电脑版下载教程、复制链接、系统分享和 Windows 直达下载移入弹窗。", "弹窗支持关闭按钮、点击遮罩关闭和 Android 返回键关闭。"]}, {"version": "3.4.4", "date": "2026-10-20", "title": "手机端提供电脑版下载教程", "changes": ["移除电脑端“微信控制”入口及其局域网网页控制服务。", "手机 APP 下载窗口只保留手机版二维码，不再显示电脑版二维码。", "手机版主页新增电脑版下载教程。", "支持复制电脑版下载链接，并可通过微信、QQ、邮件等发送到电脑。", "提供电脑版下载页面和 Windows 安装包直达链接。", "下载电脑版不要求手机与电脑连接同一 Wi-Fi。"]}, {"version": "3.4.3", "date": "2026-10-20", "title": "手机版互联网扫码下载", "changes": ["手机 Android 版的下载二维码改为互联网平台地址。", "下载手机版不再要求手机与电脑连接同一 Wi-Fi 或热点。", "打开下载窗口不再依赖电脑端的局域网同步服务。", "登录平台后可在项目 5 的“版本下载”中获取最新版 APK。", "同一 Wi-Fi 要求仅保留给手机与电脑之间的数据同步。"]}, {"version": "3.4.2", "date": "2026-10-20", "title": "平台登录后检查更新", "changes": ["手机版和电脑版的检查更新统一改为打开“学业支持中心开源平台”项目 5。", "未登录用户会先进入平台登录页，登录后才能查看和下载最新版。", "取消对 GitHub API 的更新检查，避免请求限流导致无法获取版本信息。", "插件不会保存或上传平台用户名和密码。", "最新版安装包统一从平台项目的“版本下载”区域获取。"]}, {"version": "3.4.1", "date": "2026-10-20", "title": "手机一屏查看三天全时段", "changes": ["手机周视图自动压缩为当前屏幕可用高度。", "今天、明天和后天的 00:00 到 23:59 可在同一竖屏中同时查看。", "课程表不再需要上下滚动，三列日期和全部时间点一次完整显示。", "首个时间标签显示 00:00，最后一个时间标签显示 23:59。", "任务和事件仍按准确时间、准确日期列定位。", "继续使用高 DPI 绘制，保持竖屏文字和网格清晰。"]}, {"version": "3.4.0", "date": "2026-10-20", "title": "手机竖屏三日课程表", "changes": ["手机周视图取消自动横屏，始终使用竖屏展示。", "每次连续展示今天、明天和后天三个完整日期列。", "纵向滚动可查看三天内 00:00 到 24:00 的所有时段。", "新增前三天、今天和后三天快速切换按钮。", "日期表头固定显示，滚动到任何时段都能确认星期和日期。", "消除课程表横向溢出，三天内容无需左右拖动。", "高 DPI 绘图和放大字号继续保留。"]}, {"version": "3.3.1", "date": "2026-10-20", "title": "高分辨率手机周视图", "changes": ["手机周视图 Canvas 根据设备像素比创建高分辨率缓冲区。", "高 DPI 手机最高使用 3 倍像素密度绘制，避免拉伸模糊。", "同步放大星期、日期、时间和事项文字。", "横屏旋转和窗口尺寸变化后会重新按像素比绘制。"]}, {"version": "3.3.0", "date": "2026-10-20", "title": "手机日志与横屏周视图", "changes": ["将电脑版完整更新日志直接嵌入手机安装包，解决日志空白。", "更新日志改为版本标题、日期和内容分层排版。", "日志窗口增加固定顶部栏和独立滚动区域。", "打开手机周视图时自动切换横屏，退出后恢复竖屏。", "周视图根据横屏宽度重新计算七天列宽。"]}, {"version": "3.2.0", "date": "2026-10-20", "title": "手机端完整功能", "changes": ["手机端新增历史事项页面，历史事项只能删除。", "手机端新增七天课程表式周视图。", "手机端新增图片选择、压缩、预览和大图查看。", "手机图片可与电脑端双向同步，电脑图片也会推送到手机。", "手机端新增版本号、完整更新日志和检查更新按钮。", "两端同步按钮改为高对比主按钮，更容易发现。"]}, {"version": "3.1.0", "date": "2026-10-20", "title": "设备配对与访问控制", "changes": ["Android App 生成唯一设备 ID 和 6 位配对码。", "电脑首次连接手机时必须输入配对码。", "手机验证配对码后发放长期同步令牌。", "同步和读取接口必须携带有效令牌，否则返回 401。", "连续输错配对码会临时限频，降低暴力尝试风险。", "手机同步教程页面显示当前设备地址和配对码。"]}, {"version": "3.0.0", "date": "2026-10-20", "title": "Android 原生同步版", "changes": ["新增可独立安装的 Android APK，手机无需电脑即可打开和编辑事项。", "Android App 使用前台服务提供局域网同步接口。", "电脑端通过 UDP 自动发现同一 Wi-Fi 或手机热点中的 App。", "电脑和手机同时在线时双向同步，离线时各自保存。", "默认关闭云端同步，不再持续消耗腾讯云资源点。", "电脑端“手机APP”二维码可直接从局域网下载 APK。"]}, {"version": "2.3.0", "date": "2026-10-20", "title": "增量云同步", "changes": ["云端新增变更日志，每次只返回上次同步之后发生变化的记录。", "客户端只上传版本号发生变化的事项，不再重复上传整份清单。", "后台同步由每 4 秒改为每 5 分钟，减少云资源消耗。", "新增、修改、完成或删除事项后仍会立即触发同步。", "云同步状态文字可点击，用于手动立即刷新。"]}, {"version": "2.2.0", "date": "2026-10-20", "title": "独立手机端云同步", "changes": ["电脑端和手机端分别保存本地数据，两端均可独立离线使用。", "使用腾讯云开发国内节点同步，电脑关机时手机端仍可操作。", "两端同时联网时按版本号自动增量合并，并保留删除记录。", "手机端提供固定网址，可添加到主屏幕作为独立应用打开。", "电脑端通过“手机独立版”二维码自动绑定同一同步码。", "新增云同步连接状态显示，失败时继续使用本地数据。"]}, {"version": "2.1.2", "date": "2026-10-20", "title": "周视图对齐优化", "changes": ["事件型矩形改为按所属星期列居中展示。", "任务型固定矩形改为按星期列居中，不再偏向右侧。", "七天之间的分隔竖线加粗加深，表头和日期区保持一致。", "多个同段时间的任务保持统一中线，不再做横向错位。"]}, {"version": "2.1.1", "date": "2026-10-20", "title": "周视图更易读", "changes": ["放大周视图中的事项标题、星期和日期时间字号。", "任务型事项的固定矩形由 46×26 放大到 88×36。", "默认窗口更宽，为事件标题和任务块留出更多空间。", "任务块可显示更多标题文字，点击仍可查看完整内容。"]}, {"version": "2.1.0", "date": "2026-10-20", "title": "本周事项表", "changes": ["主页面新增“周视图”按钮，以周一到周日课程表展示进行中的事项。", "事件型事项按开始和结束时间绘制矩形，矩形高度与持续时间一致。", "任务型事项使用固定大小矩形，矩形水平中线对准截止时间。", "支持重叠事件自动分栏、跨天事件拆分、上一周和下一周切换。", "周视图中点击事项色块可查看完整时间与备注。"]}, {"version": "2.0.0", "date": "2026-10-20", "title": "任务与事件", "changes": ["备忘事项分为任务型和事件型，新建时可自由切换。", "任务型保留截止时间，并新增绿色“完成”按钮，可提前结束并记录完成时间。", "事件型必须设置开始时间和结束时间，不显示“完成”按钮，结束后自动进入历史事项。", "电脑端、微信控制页和手机离线版均支持两种事项类型。"]}, {"version": "1.9.0", "date": "2026-10-20", "title": "更新入口更醒目", "changes": ["主页面新增独立的“版本与更新”栏。", "检查更新改为蓝色主按钮，更容易发现。", "更新日志改为带箭头的文字按钮，并显示当前版本号。", "底部状态栏只保留自动保存状态和时钟。"]}, {"version": "1.8.0", "date": "2026-10-20", "title": "扫码获取版本", "changes": ["主页面新增“扫码下载”按钮。", "新增电脑版二维码，扫码打开 GitHub 下载页。", "新增手机版二维码，可直接下载当前电脑生成的最新离线 HTML。", "二维码页面支持复制下载地址。", "新增无需安装 Python 的 macOS 浏览器应用包。"]}, {"version": "1.7.0", "date": "2026-10-20", "title": "历史事项", "changes": ["主页面新增带数量的“历史事项”按钮。", "已过期事项会自动移入历史事项，不再占用主列表。", "历史页面只能删除事项，不提供编辑或修改入口。", "删除历史事项后，主页面数量和历史列表会同步刷新。"]}, {"version": "1.6.0", "date": "2026-10-20", "title": "在线检查更新", "changes": ["电脑端新增“检查更新”按钮，可下载并安装最新版。", "升级包下载后进行 SHA-256 校验，保留现有备忘录数据。", "手机离线版新增更新检查，可下载最新版离线 HTML。", "更新信息统一从 GitHub 仓库的版本清单读取。"]}, {"version": "1.5.0", "date": "2026-10-20", "title": "版本更新日志", "changes": ["新增版本更新日志页面。", "底部显示当前版本号，点击即可查看历史调整内容。", "更新记录独立保存在 changelog.json，方便后续版本继续追加。"]}, {"version": "1.4.0", "date": "2026-10-20", "title": "修复月历卡死", "changes": ["修复点击“打开月历”后窗口无法绘制、界面像死机的问题。", "月历改为正常可绘制的独立窗口。", "保留 Esc 关闭和日期选择功能。"]}, {"version": "1.3.0", "date": "2026-10-20", "title": "离线优先与双向同步", "changes": ["新增手机离线版，电脑关机时也能新增、编辑和删除事项。", "手机数据先保存在本机浏览器，电脑恢复在线后自动同步。", "加入版本号与删除记录，避免已删除事项被重新加回来。", "电脑启动时自动开启同步服务。"]}, {"version": "1.2.0", "date": "2026-10-20", "title": "微信控制", "changes": ["新增“微信控制”入口和扫码控制页。", "支持在手机上新增、编辑、删除事项。", "手机和电脑在同一个 Wi-Fi 时可实时同步。", "增加随机访问令牌和局域网访问限制。"]}, {"version": "1.1.0", "date": "2026-10-20", "title": "自由选择终止时间", "changes": ["新增月历日期选择器，可选择任意未来日期。", "新增小时、分钟独立选择框。", "保留手动输入日期和快捷时间选项。"]}, {"version": "1.0.0", "date": "2026-10-19", "title": "初始版本", "changes": ["完成 BUAA 备忘倒计时桌面插件。", "支持新增、删除事项，显示剩余时间和终止时间。", "临近截止自动变色，过期事项单独提示。", "支持图片附件、窗口置顶和本地自动保存。"]}]}};</script>
+<script>
+(() => {
+  "use strict";
+
+  const bootstrap = window.BUAA_BOOTSTRAP || {};
+  const STORAGE_KEY = "buaa_memo_records_v2";
+  const SYNC_URL_KEY = "buaa_memo_sync_url_v2";
+  const CLOUD_VAULT_KEY = "buaa_memo_cloud_vault_v1";
+  const CLOUD_CURSOR_KEY = "buaa_memo_cloud_cursor_v1";
+  const CLOUD_PUSH_REV_KEY = "buaa_memo_cloud_push_rev_v1";
+  const HISTORY_GRACE_MS = 24 * 60 * 60 * 1000;
+  const UPDATE_PORTAL_URL =
+    "https://cysyforum.muzermat.online/cy-platform/projects/5";
+  const DESKTOP_DOWNLOAD_URL =
+    bootstrap.desktopDownloadUrl ||
+    "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/" +
+      "v4.1.0/BUAA-Memo-Windows-v4.1.0.zip";
+  const CURRENT_MOBILE_VERSION = bootstrap.mobileVersion || "0.0.0";
+  const LIVE_UPDATE_MANIFEST_URLS = [
+    "https://raw.githubusercontent.com/MrWhite-Bai/" +
+      "buaa-memo-widget/main/update-manifest.json",
+    "https://cdn.jsdelivr.net/gh/MrWhite-Bai/" +
+      "buaa-memo-widget@main/update-manifest.json",
+  ].filter(Boolean);
+
+  const listEl = document.getElementById("list");
+  const countEl = document.getElementById("count");
+  const statusEl = document.getElementById("status");
+  const statusText = document.getElementById("statusText");
+  const overlay = document.getElementById("overlay");
+  const memosPage = document.getElementById("memosPage");
+  const groupsPage = document.getElementById("groupsPage");
+  const memosTabBtn = document.getElementById("memosTabBtn");
+  const groupsTabBtn = document.getElementById("groupsTabBtn");
+  const groupCount = document.getElementById("groupCount");
+  const groupList = document.getElementById("groupList");
+  const newGroupBtn = document.getElementById("newGroupBtn");
+  const groupOverlay = document.getElementById("groupOverlay");
+  const groupForm = document.getElementById("groupForm");
+  const groupFormTitle = document.getElementById("groupFormTitle");
+  const groupNameInput = document.getElementById("groupName");
+  const groupIntroInput = document.getElementById("groupIntro");
+  const groupMemoChoices = document.getElementById("groupMemoChoices");
+  const groupCancelBtn = document.getElementById("groupCancelBtn");
+  const groupDetailOverlay = document.getElementById("groupDetailOverlay");
+  const groupDetailTitle = document.getElementById("groupDetailTitle");
+  const groupDetailIntro = document.getElementById("groupDetailIntro");
+  const groupDetailList = document.getElementById("groupDetailList");
+  const groupDetailCloseBtn = document.getElementById("groupDetailCloseBtn");
+  const syncOverlay = document.getElementById("syncOverlay");
+  const syncCodeInput = document.getElementById("syncCodeInput");
+  const syncBtn = document.getElementById("syncBtn");
+  const syncTutorialOverlay = document.getElementById("syncTutorialOverlay");
+  const syncGuideAddress = document.getElementById("syncGuideAddress");
+  const syncGuideCode = document.getElementById("syncGuideCode");
+  const historyBtn = document.getElementById("historyBtn");
+  const weekBtn = document.getElementById("weekBtn");
+  const versionBtn = document.getElementById("versionBtn");
+  const historyOverlay = document.getElementById("historyOverlay");
+  const historyList = document.getElementById("historyList");
+  const weekOverlay = document.getElementById("weekOverlay");
+  const weekHeaderCanvas = document.getElementById("weekHeaderCanvas");
+  const weekCanvas = document.getElementById("weekCanvas");
+  const weekTitle = document.getElementById("weekTitle");
+  const changelogOverlay = document.getElementById("changelogOverlay");
+  const changelogList = document.getElementById("changelogList");
+  const imageViewerOverlay = document.getElementById("imageViewerOverlay");
+  const imageViewerImage = document.getElementById("imageViewerImage");
+  const imageInput = document.getElementById("imageInput");
+  const imagePreview = document.getElementById("imagePreview");
+  const removeImageBtn = document.getElementById("removeImageBtn");
+  const form = document.getElementById("memoForm");
+  const formTitle = document.getElementById("formTitle");
+  const titleInput = document.getElementById("title");
+  const memoGroup = document.getElementById("memoGroup");
+  const dateInput = document.getElementById("date");
+  const timeInput = document.getElementById("time");
+  const startDateInput = document.getElementById("startDate");
+  const startTimeInput = document.getElementById("startTime");
+  const endDateInput = document.getElementById("endDate");
+  const endTimeInput = document.getElementById("endTime");
+  const taskFields = document.getElementById("taskFields");
+  const eventFields = document.getElementById("eventFields");
+  const taskTypeBtn = document.getElementById("taskTypeBtn");
+  const eventTypeBtn = document.getElementById("eventTypeBtn");
+  const reminderEnabled = document.getElementById("reminderEnabled");
+  const reminderOptions = document.getElementById("reminderOptions");
+  const reminderAmount = document.getElementById("reminderAmount");
+  const reminderUnit = document.getElementById("reminderUnit");
+  const reminderNotify = document.getElementById("reminderNotify");
+  const reminderSound = document.getElementById("reminderSound");
+  const reminderVibrate = document.getElementById("reminderVibrate");
+  const reminderVolume = document.getElementById("reminderVolume");
+  const reminderVolumeValue = document.getElementById("reminderVolumeValue");
+  const testReminderBtn = document.getElementById("testReminderBtn");
+  const noteInput = document.getElementById("note");
+  const toastEl = document.getElementById("toast");
+  const checkUpdateBtn = document.getElementById("checkUpdateBtn");
+  const layoutSettingsBtn = document.getElementById("layoutSettingsBtn");
+  const layoutSettingsOverlay = document.getElementById(
+    "layoutSettingsOverlay"
+  );
+  const layoutSettingsCloseBtn = document.getElementById(
+    "layoutSettingsCloseBtn"
+  );
+  const layoutSettingsDoneBtn = document.getElementById(
+    "layoutSettingsDoneBtn"
+  );
+  const layoutResetBtn = document.getElementById("layoutResetBtn");
+  const layoutSafeTop = document.getElementById("layoutSafeTop");
+  const layoutSafeBottom = document.getElementById("layoutSafeBottom");
+  const layoutTopExtra = document.getElementById("layoutTopExtra");
+  const layoutBottomExtra = document.getElementById("layoutBottomExtra");
+  const layoutTopExtraValue = document.getElementById(
+    "layoutTopExtraValue"
+  );
+  const layoutBottomExtraValue = document.getElementById(
+    "layoutBottomExtraValue"
+  );
+  const layoutNavMode = document.getElementById("layoutNavMode");
+  const layoutFabMode = document.getElementById("layoutFabMode");
+  const layoutSystemInfo = document.getElementById("layoutSystemInfo");
+  const iosInstallHint = document.getElementById("iosInstallHint");
+  const iosInstallDismiss = document.getElementById("iosInstallDismiss");
+  const desktopDownloadPageLink = document.getElementById(
+    "desktopDownloadPageLink"
+  );
+  const directDesktopDownload = document.getElementById("directDesktopDownload");
+  const copyDesktopLinkBtn = document.getElementById("copyDesktopLinkBtn");
+  const shareDesktopLinkBtn = document.getElementById("shareDesktopLinkBtn");
+  const desktopDownloadBtn = document.getElementById("desktopDownloadBtn");
+  const desktopDownloadOverlay = document.getElementById(
+    "desktopDownloadOverlay"
+  );
+  const desktopDownloadCloseBtn = document.getElementById(
+    "desktopDownloadCloseBtn"
+  );
+  const nativeBridge = window.AndroidMemo || null;
+
+  document.querySelector(".offline-box")?.remove();
+
+  let records = [];
+  let editingId = null;
+  let editingGroupId = null;
+  let activeGroupDetailId = null;
+  let activePage = "memos";
+  let editorType = "task";
+  let syncing = false;
+  let toastTimer = null;
+  let editingImageData = null;
+  let weekStart = dayStartOf(new Date());
+  let changelogEntries = null;
+  let renderedHistoryCount = 0;
+  let latestRemoteVersion = "";
+  let liveUpdateAvailable = false;
+  let updateCheckState = "checking";
+  let updateDownloadVersion = "";
+  let updateDownloadPercent = 0;
+  let updateInstallWaiting = false;
+  let liveUpdateTimer = null;
+  let versionCheckPromise = null;
+  let nativeUpdateResolution = null;
+  let nativeUpdateTimer = null;
+  const LAYOUT_SETTINGS_KEY = "buaa_mobile_layout_v1";
+  const DEFAULT_LAYOUT_SETTINGS = Object.freeze({
+    safeTop: true,
+    safeBottom: true,
+    topExtra: 0,
+    bottomExtra: 0,
+    navMode: "fixed",
+    fabMode: "compact",
+  });
+  let layoutSettings = { ...DEFAULT_LAYOUT_SETTINGS };
+  let nativeSystemInsets = {
+    top: null,
+    bottom: null,
+    left: null,
+    right: null,
+  };
+  let syncUrl =
+    localStorage.getItem(SYNC_URL_KEY) || bootstrap.syncWsUrl || "";
+  if (bootstrap.syncWsUrl && !localStorage.getItem(SYNC_URL_KEY)) {
+    localStorage.setItem(SYNC_URL_KEY, bootstrap.syncWsUrl);
+  }
+  const cloudSyncUrl = bootstrap.cloudSyncUrl || "";
+  const cloudPublishableKey = bootstrap.cloudPublishableKey || "";
+  let cloudVaultKey =
+    localStorage.getItem(CLOUD_VAULT_KEY) || bootstrap.cloudVaultKey || "";
+  let recordsStorageKey = cloudVaultKey
+    ? `${STORAGE_KEY}:${cloudVaultKey}`
+    : STORAGE_KEY;
+  let cloudCursor = 0;
+  let cloudPushRev = 0;
+
+  function cloudCursorKey() {
+    return cloudVaultKey
+      ? `${CLOUD_CURSOR_KEY}:${cloudVaultKey}`
+      : CLOUD_CURSOR_KEY;
+  }
+
+  function cloudPushKey() {
+    return cloudVaultKey
+      ? `${CLOUD_PUSH_REV_KEY}:${cloudVaultKey}`
+      : CLOUD_PUSH_REV_KEY;
+  }
+
+  function loadCloudProgress() {
+    cloudCursor = Number(localStorage.getItem(cloudCursorKey()) || 0) || 0;
+    cloudPushRev =
+      Number(localStorage.getItem(cloudPushKey()) || 0) || 0;
+  }
+
+  function saveCloudProgress() {
+    localStorage.setItem(cloudCursorKey(), String(cloudCursor));
+    localStorage.setItem(cloudPushKey(), String(cloudPushRev));
+  }
+
+  function resetCloudProgress() {
+    cloudCursor = 0;
+    cloudPushRev = 0;
+    saveCloudProgress();
+  }
+
+  function normalizeVaultKey(value) {
+    const raw = String(value || "").trim();
+    if (!raw) return "";
+    const match = raw.match(/[?&#]vault=([A-Za-z0-9_-]{20,})/);
+    return match ? match[1] : raw;
+  }
+
+  function switchCloudVault(nextVault) {
+    const normalized = normalizeVaultKey(nextVault);
+    if (!normalized || normalized === cloudVaultKey) {
+      return false;
+    }
+    const previousVault = cloudVaultKey;
+    const unpairedRecords = previousVault
+      ? ""
+      : localStorage.getItem(STORAGE_KEY) || "";
+    cloudVaultKey = normalized;
+    recordsStorageKey = `${STORAGE_KEY}:${cloudVaultKey}`;
+    if (unpairedRecords && !localStorage.getItem(recordsStorageKey)) {
+      localStorage.setItem(recordsStorageKey, unpairedRecords);
+    }
+    if (previousVault) {
+      records = [];
+    }
+    localStorage.setItem(CLOUD_VAULT_KEY, cloudVaultKey);
+    resetCloudProgress();
+    return true;
+  }
+
+  const hashParams = new URLSearchParams(location.hash.replace(/^#/, ""));
+  const searchParams = new URLSearchParams(location.search);
+  const searchVault = normalizeVaultKey(searchParams.get("vault"));
+  const hashVault = normalizeVaultKey(hashParams.get("vault"));
+  const linkedVault = hashVault || searchVault;
+  if (linkedVault) {
+    switchCloudVault(linkedVault);
+    try {
+      history.replaceState(null, "", location.pathname);
+    } catch {}
+  }
+  loadCloudProgress();
+
+  function nextRevision(record = null) {
+    return Math.max(Date.now(), Number(record?.rev || 0) + 1);
+  }
+
+  function mergeRecords(...groups) {
+    const byId = new Map();
+    for (const group of groups) {
+      for (const record of Array.isArray(group) ? group : []) {
+        if (!record || !record.id) continue;
+        const normalized = {
+          ...record,
+          id: String(record.id),
+          rev: Number(record.rev || 0),
+          deleted: Boolean(record.deleted),
+        };
+        const existing = byId.get(normalized.id);
+        if (!existing || normalized.rev >= Number(existing.rev || 0)) {
+          byId.set(normalized.id, normalized);
+        }
+      }
+    }
+    return [...byId.values()];
+  }
+
+  function mondayOf(value) {
+    const result = new Date(value);
+    result.setHours(0, 0, 0, 0);
+    const offset = (result.getDay() + 6) % 7;
+    result.setDate(result.getDate() - offset);
+    return result;
+  }
+
+  function dayStartOf(value) {
+    const result = new Date(value);
+    result.setHours(0, 0, 0, 0);
+    return result;
+  }
+
+  function isGroupRecord(record) {
+    return record?.record_kind === "group";
+  }
+
+  function groupRecords() {
+    return records
+      .filter(record => !record.deleted && isGroupRecord(record))
+      .sort((left, right) =>
+        String(left.title || "").localeCompare(String(right.title || ""), "zh-CN")
+      );
+  }
+
+  function memoRecords() {
+    return records.filter(record => !record.deleted && !isGroupRecord(record));
+  }
+
+  function groupById(groupId) {
+    return records.find(
+      record =>
+        record.id === groupId &&
+        !record.deleted &&
+        isGroupRecord(record)
+    );
+  }
+
+  function isHistorical(record) {
+    if (isGroupRecord(record)) return false;
+    if (isCompleted(record)) return true;
+    const deadline = new Date(record.deadline).getTime();
+    return (
+      Number.isFinite(deadline) &&
+      deadline + HISTORY_GRACE_MS <= Date.now()
+    );
+  }
+
+  function persist() {
+    try {
+      if (nativeBridge) {
+        const saved = nativeBridge.writeRecords(JSON.stringify(records));
+        if (!saved) {
+          showToast("Android 本地保存失败");
+        }
+        if (saved) queueReminderReschedule();
+        return saved;
+      }
+      localStorage.setItem(recordsStorageKey, JSON.stringify(records));
+      queueReminderReschedule();
+      return true;
+    } catch {
+      showToast("浏览器未允许本地保存，请更换浏览器打开");
+      return false;
+    }
+  }
+
+  function loadRecords() {
+    if (nativeBridge) {
+      try {
+        const raw = nativeBridge.readRecords();
+        const loaded = raw ? JSON.parse(raw) : [];
+        records = Array.isArray(loaded) ? loaded : [];
+      } catch {
+        records = [];
+      }
+      return;
+    }
+    let localRecords = [];
+    try {
+      const raw = localStorage.getItem(recordsStorageKey);
+      localRecords = raw ? JSON.parse(raw) : [];
+    } catch {
+      localRecords = [];
+    }
+    records = mergeRecords(localRecords, bootstrap.seedRecords || []);
+    persist();
+  }
+
+  function activeRecords() {
+    return records.filter(
+      record =>
+        !record.deleted &&
+        !isGroupRecord(record) &&
+        !isHistorical(record)
+    );
+  }
+
+  function historyRecords() {
+    return records
+      .filter(
+        record =>
+          !record.deleted &&
+          !isGroupRecord(record) &&
+          isHistorical(record)
+      )
+      .sort((left, right) => {
+        const leftTime = new Date(left.completed_at || left.deadline || 0).getTime();
+        const rightTime = new Date(right.completed_at || right.deadline || 0).getTime();
+        return rightTime - leftTime;
+      });
+  }
+
+  function localDateValue(date) {
+    const pad = value => String(value).padStart(2, "0");
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+  }
+
+  function defaultDeadline() {
+    const value = new Date(Date.now() + 24 * 60 * 60 * 1000);
+    value.setHours(18, 0, 0, 0);
+    dateInput.value = localDateValue(value);
+    timeInput.value = "18:00";
+  }
+
+  function defaultEventTimes() {
+    const start = new Date(Date.now() + 60 * 60 * 1000);
+    start.setSeconds(0, 0);
+    const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+    startDateInput.value = localDateValue(start);
+    startTimeInput.value = `${String(start.getHours()).padStart(2, "0")}:${String(start.getMinutes()).padStart(2, "0")}`;
+    endDateInput.value = localDateValue(end);
+    endTimeInput.value = `${String(end.getHours()).padStart(2, "0")}:${String(end.getMinutes()).padStart(2, "0")}`;
+  }
+
+  function setEditingImage(dataUrl) {
+    editingImageData = dataUrl || null;
+    if (editingImageData) {
+      imagePreview.src = editingImageData;
+      imagePreview.style.display = "block";
+      removeImageBtn.style.display = "inline-block";
+    } else {
+      imagePreview.removeAttribute("src");
+      imagePreview.style.display = "none";
+      removeImageBtn.style.display = "none";
+      imageInput.value = "";
+    }
+  }
+
+  async function compressImageFile(file) {
+    const source = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+    const image = await new Promise((resolve, reject) => {
+      const element = new Image();
+      element.onload = () => resolve(element);
+      element.onerror = reject;
+      element.src = source;
+    });
+    const maxWidth = 900;
+    const maxHeight = 600;
+    const scale = Math.min(
+      1,
+      maxWidth / image.naturalWidth,
+      maxHeight / image.naturalHeight
+    );
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
+    canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
+    canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL("image/png");
+  }
+
+  function isEvent(memo) {
+    return memo?.item_type === "event";
+  }
+
+  function isCompleted(memo) {
+    return Boolean(memo?.completed || memo?.completed_at);
+  }
+
+  function formatRemaining(deadlineText) {
+    const deadline = new Date(deadlineText).getTime();
+    const seconds = Math.floor((deadline - Date.now()) / 1000);
+    if (!Number.isFinite(seconds)) return "时间无效";
+    if (seconds <= 0) {
+      const archiveSeconds = Math.floor(
+        (deadline + HISTORY_GRACE_MS - Date.now()) / 1000
+      );
+      if (archiveSeconds <= 0) return "已归档";
+      const archiveHours = Math.floor(archiveSeconds / 3600);
+      const archiveMinutes = Math.floor((archiveSeconds % 3600) / 60);
+      const archiveSecondsPart = archiveSeconds % 60;
+      const pad = value => String(value).padStart(2, "0");
+      return `已到期 · ${pad(archiveHours)}:${pad(archiveMinutes)}:${pad(archiveSecondsPart)} 后归档`;
+    }
+    const days = Math.floor(seconds / 86400);
+    const hours = Math.floor((seconds % 86400) / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    const pad = value => String(value).padStart(2, "0");
+    return days > 0
+      ? `${String(days).padStart(2, "0")} 天 ${pad(hours)}:${pad(minutes)}:${pad(secs)}`
+      : `${pad(hours)}:${pad(minutes)}:${pad(secs)}`;
+  }
+
+  function statusOf(memo) {
+    const seconds = (new Date(memo.deadline).getTime() - Date.now()) / 1000;
+    if (seconds <= 0) return ["expired", isEvent(memo) ? "已结束" : "已到期"];
+    if (isEvent(memo)) {
+      const start = new Date(memo.start_at).getTime();
+      if (Number.isFinite(start) && Date.now() < start) {
+        return ["pending", "待开始"];
+      }
+    }
+    if (seconds <= 86400) return ["urgent", "进行中"];
+    return ["", "进行中"];
+  }
+
+  function setEditorType(type) {
+    editorType = type === "event" ? "event" : "task";
+    const isTask = editorType === "task";
+    taskFields.classList.toggle("hidden", !isTask);
+    eventFields.classList.toggle("hidden", isTask);
+    taskTypeBtn.classList.toggle("active", isTask);
+    eventTypeBtn.classList.toggle("active", !isTask);
+  }
+
+  function reminderMinutesValue() {
+    const amount = Math.max(1, Number(reminderAmount.value) || 1);
+    const multiplier = {
+      minutes: 1,
+      hours: 60,
+      days: 1440,
+    }[reminderUnit.value] || 1;
+    return Math.round(amount * multiplier);
+  }
+
+  function reminderModesValue() {
+    return [
+      reminderNotify.checked ? "notification" : null,
+      reminderSound.checked ? "sound" : null,
+      reminderVibrate.checked ? "vibration" : null,
+    ].filter(Boolean);
+  }
+
+  function reminderVolumePercent() {
+    return Math.max(
+      10,
+      Math.min(100, Math.round(Number(reminderVolume.value) || 100))
+    );
+  }
+
+  function updateReminderVolumeLabel() {
+    reminderVolumeValue.textContent = `${reminderVolumePercent()}%`;
+  }
+
+  function updateReminderOptionsVisibility() {
+    reminderOptions.classList.toggle("hidden", !reminderEnabled.checked);
+  }
+
+  function cancelMemoReminder(memo) {
+    nativeBridge?.cancelReminder?.(memo.id);
+  }
+
+  function scheduleMemoReminder(memo) {
+    if (!memo || !nativeBridge?.scheduleReminder) return;
+    if (
+      isGroupRecord(memo) ||
+      !memo.reminder_enabled ||
+      memo.deleted ||
+      isCompleted(memo) ||
+      isHistorical(memo)
+    ) {
+      cancelMemoReminder(memo);
+      return;
+    }
+    const anchor = new Date(isEvent(memo) ? memo.start_at : memo.deadline);
+    const reminderAt = new Date(
+      anchor.getTime() - Number(memo.reminder_minutes || 0) * 60000
+    );
+    if (
+      !Number.isFinite(reminderAt.getTime()) ||
+      reminderAt.getTime() <= Date.now()
+    ) {
+      cancelMemoReminder(memo);
+      return;
+    }
+    const modes = Array.isArray(memo.reminder_modes)
+      ? memo.reminder_modes
+      : [];
+    if (!modes.length) {
+      cancelMemoReminder(memo);
+      return;
+    }
+    nativeBridge.scheduleReminder(
+      memo.id,
+      reminderAt.getTime(),
+      memo.title || "BUAA浮光提醒",
+      memo.note || (isEvent(memo) ? "事件即将开始" : "任务即将截止"),
+      modes.includes("notification"),
+      modes.includes("sound"),
+      modes.includes("vibration"),
+      Math.max(0.1, Math.min(1, Number(memo.reminder_volume || 100) / 100))
+    );
+  }
+
+  function rescheduleAllReminders() {
+    for (const memo of records) scheduleMemoReminder(memo);
+  }
+
+  function queueReminderReschedule() {
+    clearTimeout(queueReminderReschedule.timer);
+    queueReminderReschedule.timer = setTimeout(
+      rescheduleAllReminders,
+      350
+    );
+  }
+
+  function formatDeadline(deadlineText) {
+    const value = new Date(deadlineText);
+    const pad = number => String(number).padStart(2, "0");
+    return `${value.getFullYear()}-${pad(value.getMonth() + 1)}-${pad(value.getDate())}  ${pad(value.getHours())}:${pad(value.getMinutes())}`;
+  }
+
+  function showToast(message) {
+    toastEl.textContent = message;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2300);
+  }
+
+  function clampLayoutNumber(value, minimum, maximum, fallback = 0) {
+    const number = Number(value);
+    if (!Number.isFinite(number)) return fallback;
+    return Math.max(minimum, Math.min(maximum, Math.round(number)));
+  }
+
+  function normalizeLayoutSettings(value) {
+    const source = value && typeof value === "object" ? value : {};
+    return {
+      safeTop: source.safeTop !== false,
+      safeBottom: source.safeBottom !== false,
+      topExtra: clampLayoutNumber(source.topExtra, 0, 48, 0),
+      bottomExtra: clampLayoutNumber(source.bottomExtra, 0, 64, 0),
+      navMode: source.navMode === "flow" ? "flow" : "fixed",
+      fabMode: ["large", "inline", "compact"].includes(source.fabMode)
+        ? source.fabMode
+        : "compact",
+    };
+  }
+
+  function loadLayoutSettings() {
+    try {
+      layoutSettings = normalizeLayoutSettings(
+        JSON.parse(localStorage.getItem(LAYOUT_SETTINGS_KEY) || "{}")
+      );
+    } catch {
+      layoutSettings = { ...DEFAULT_LAYOUT_SETTINGS };
+    }
+  }
+
+  function saveLayoutSettings() {
+    localStorage.setItem(
+      LAYOUT_SETTINGS_KEY,
+      JSON.stringify(layoutSettings)
+    );
+  }
+
+  function syncLayoutControls() {
+    if (!layoutSafeTop) return;
+    layoutSafeTop.checked = layoutSettings.safeTop;
+    layoutSafeBottom.checked = layoutSettings.safeBottom;
+    layoutTopExtra.value = String(layoutSettings.topExtra);
+    layoutBottomExtra.value = String(layoutSettings.bottomExtra);
+    layoutTopExtraValue.textContent = `${layoutSettings.topExtra} px`;
+    layoutBottomExtraValue.textContent = `${layoutSettings.bottomExtra} px`;
+    layoutNavMode.value = layoutSettings.navMode;
+    layoutFabMode.value = layoutSettings.fabMode;
+  }
+
+  function applyLayoutSettings() {
+    const root = document.documentElement;
+    if (nativeSystemInsets.top !== null) {
+      root.style.setProperty(
+        "--native-safe-top",
+        `${nativeSystemInsets.top}px`
+      );
+    }
+    if (nativeSystemInsets.bottom !== null) {
+      root.style.setProperty(
+        "--native-safe-bottom",
+        `${nativeSystemInsets.bottom}px`
+      );
+    }
+    if (nativeSystemInsets.left !== null) {
+      root.style.setProperty(
+        "--native-safe-left",
+        `${nativeSystemInsets.left}px`
+      );
+    }
+    if (nativeSystemInsets.right !== null) {
+      root.style.setProperty(
+        "--native-safe-right",
+        `${nativeSystemInsets.right}px`
+      );
+    }
+    root.style.setProperty(
+      "--layout-top-extra",
+      `${layoutSettings.topExtra}px`
+    );
+    root.style.setProperty(
+      "--layout-bottom-extra",
+      `${layoutSettings.bottomExtra}px`
+    );
+    document.body.classList.toggle(
+      "safe-top-off",
+      !layoutSettings.safeTop
+    );
+    document.body.classList.toggle(
+      "safe-bottom-off",
+      !layoutSettings.safeBottom
+    );
+    document.body.dataset.navMode = layoutSettings.navMode;
+    document.body.dataset.fabMode = layoutSettings.fabMode;
+    document.getElementById("addBtn")?.setAttribute(
+      "aria-label",
+      activePage === "groups" ? "新建分组" : "新建事项"
+    );
+    if (layoutSystemInfo) {
+      const topText =
+        nativeSystemInsets.top === null
+          ? "浏览器自动值"
+          : `${nativeSystemInsets.top} px`;
+      const bottomText =
+        nativeSystemInsets.bottom === null
+          ? "浏览器自动值"
+          : `${nativeSystemInsets.bottom} px`;
+      layoutSystemInfo.textContent =
+        `检测到顶部安全区：${topText}；底部安全区：${bottomText}。` +
+        `自动避让${layoutSettings.safeTop ? "已开启" : "已关闭"}（顶部）、` +
+        `${layoutSettings.safeBottom ? "已开启" : "已关闭"}（底部）。`;
+    }
+    syncLayoutControls();
+  }
+
+  function updateLayoutSettingsFromControls() {
+    layoutSettings = normalizeLayoutSettings({
+      safeTop: layoutSafeTop.checked,
+      safeBottom: layoutSafeBottom.checked,
+      topExtra: layoutTopExtra.value,
+      bottomExtra: layoutBottomExtra.value,
+      navMode: layoutNavMode.value,
+      fabMode: layoutFabMode.value,
+    });
+    saveLayoutSettings();
+    applyLayoutSettings();
+  }
+
+  function initLayoutSettings() {
+    loadLayoutSettings();
+    layoutSettingsBtn?.removeAttribute("hidden");
+    layoutSettingsOverlay?.removeAttribute("hidden");
+    applyLayoutSettings();
+    layoutSettingsBtn?.addEventListener("click", () => {
+      syncLayoutControls();
+      layoutSettingsOverlay.classList.add("show");
+    });
+    const close = () => layoutSettingsOverlay.classList.remove("show");
+    layoutSettingsCloseBtn?.addEventListener("click", close);
+    layoutSettingsDoneBtn?.addEventListener("click", close);
+    layoutSettingsOverlay?.addEventListener("click", event => {
+      if (event.target === layoutSettingsOverlay) close();
+    });
+    layoutResetBtn?.addEventListener("click", () => {
+      layoutSettings = { ...DEFAULT_LAYOUT_SETTINGS };
+      saveLayoutSettings();
+      applyLayoutSettings();
+      showToast("手机排版已恢复默认");
+    });
+    for (const control of [
+      layoutSafeTop,
+      layoutSafeBottom,
+      layoutTopExtra,
+      layoutBottomExtra,
+      layoutNavMode,
+      layoutFabMode,
+    ]) {
+      control?.addEventListener("input", updateLayoutSettingsFromControls);
+      control?.addEventListener("change", updateLayoutSettingsFromControls);
+    }
+  }
+
+  function initIosInstallHint() {
+    const isIos =
+      /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    const standalone =
+      window.navigator.standalone === true ||
+      window.matchMedia?.("(display-mode: standalone)")?.matches;
+    const dismissed =
+      localStorage.getItem("buaa_pwa_install_dismissed_v1") === "1";
+    if (!iosInstallHint || !isIos || standalone || dismissed) return;
+    iosInstallHint.hidden = false;
+    iosInstallDismiss?.addEventListener("click", () => {
+      iosInstallHint.hidden = true;
+      localStorage.setItem("buaa_pwa_install_dismissed_v1", "1");
+    });
+  }
+
+  window.BUAASetSystemInsets = (top, bottom, left, right) => {
+    nativeSystemInsets = {
+      top: Math.max(0, Number(top) || 0),
+      bottom: Math.max(0, Number(bottom) || 0),
+      left: Math.max(0, Number(left) || 0),
+      right: Math.max(0, Number(right) || 0),
+    };
+    applyLayoutSettings();
+  };
+
+  function setConnectionStatus(online) {
+    if (nativeBridge) {
+      statusEl.classList.remove("offline");
+      try {
+        const info = JSON.parse(nativeBridge.getDeviceInfo() || "{}");
+        statusText.textContent =
+          `手机同步已开启 · ${info.ip}:${info.port}`;
+      } catch {
+        statusText.textContent = "手机同步已开启";
+      }
+      return;
+    }
+    statusEl.classList.toggle("offline", !online);
+    statusText.textContent = online
+      ? "云同步已连接 · 数据已更新"
+      : cloudVaultKey
+        ? "离线模式 · 数据已保存在本机"
+        : "未连接同步 · 点击输入同步码";
+  }
+
+  function render() {
+    if (activePage === "groups") renderGroups();
+    if (
+      activeGroupDetailId &&
+      groupDetailOverlay.classList.contains("show")
+    ) {
+      renderGroupDetail();
+    }
+    const memos = activeRecords();
+    memos.sort((left, right) => {
+      const leftTime = new Date(left.deadline).getTime();
+      const rightTime = new Date(right.deadline).getTime();
+      const now = Date.now();
+      const leftActive = leftTime > now ? 0 : 1;
+      const rightActive = rightTime > now ? 0 : 1;
+      return leftActive - rightActive || leftTime - rightTime;
+    });
+
+    countEl.textContent = `${memos.length} 项`;
+    renderedHistoryCount = historyRecords().length;
+    historyBtn.textContent = `历史 ${renderedHistoryCount}`;
+    listEl.replaceChildren();
+
+    if (!memos.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.innerHTML =
+        '<div class="empty-clock">◷</div>还没有事项<br>现在可以先离线记录，联网后自动同步';
+      listEl.appendChild(empty);
+      return;
+    }
+
+    for (const memo of memos) {
+      const [stateClass, badgeText] = statusOf(memo);
+      const card = document.createElement("article");
+      card.className = `card ${stateClass}`.trim();
+      card.dataset.id = memo.id;
+
+      const head = document.createElement("div");
+      head.className = "card-head";
+      const title = document.createElement("h2");
+      title.className = "card-title";
+      title.textContent = memo.title || "未命名事项";
+      const badge = document.createElement("span");
+      badge.className = "badge";
+      badge.textContent = `${isEvent(memo) ? "事件" : "任务"} · ${badgeText}`;
+      head.append(title, badge);
+      card.appendChild(head);
+
+      if (memo.note) {
+        const note = document.createElement("div");
+        note.className = "note";
+        note.textContent = memo.note;
+        card.appendChild(note);
+      }
+
+      const memoGroupRecord = groupById(memo.group_id);
+      if (memoGroupRecord) {
+        const groupChip = document.createElement("span");
+        groupChip.className = "memo-group-chip";
+        groupChip.textContent = `分组 · ${memoGroupRecord.title}`;
+        card.appendChild(groupChip);
+      }
+
+      if (memo.image_data) {
+        const image = document.createElement("img");
+        image.className = "card-image";
+        image.src = memo.image_data;
+        image.loading = "lazy";
+        image.decoding = "async";
+        image.alt = memo.title || "事项图片";
+        image.addEventListener("click", () => {
+          imageViewerImage.src = memo.image_data;
+          imageViewerOverlay.classList.add("show");
+        });
+        card.appendChild(image);
+      }
+
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      const remainingLabel = document.createElement("span");
+      remainingLabel.className = "meta-label";
+      remainingLabel.textContent = "剩余时间";
+      const remaining = document.createElement("span");
+      remaining.className = "remaining";
+      remaining.dataset.deadline = memo.deadline;
+      remaining.textContent = formatRemaining(memo.deadline);
+      let startLabel = null;
+      let startValue = null;
+      if (isEvent(memo)) {
+        startLabel = document.createElement("span");
+        startLabel.className = "meta-label";
+        startLabel.textContent = "开始时间";
+        startValue = document.createElement("span");
+        startValue.className = "deadline";
+        startValue.textContent = formatDeadline(memo.start_at);
+      }
+      const deadlineLabel = document.createElement("span");
+      deadlineLabel.className = "meta-label";
+      deadlineLabel.textContent = isEvent(memo) ? "结束时间" : "终止时间";
+      const deadline = document.createElement("span");
+      deadline.className = "deadline";
+      deadline.textContent = formatDeadline(memo.deadline);
+      meta.append(remainingLabel, remaining);
+      if (startLabel && startValue) meta.append(startLabel, startValue);
+      meta.append(deadlineLabel, deadline);
+      card.appendChild(meta);
+
+      const actions = document.createElement("div");
+      actions.className = "actions";
+      const editButton = document.createElement("button");
+      editButton.className = "action-btn";
+      editButton.textContent = "编辑";
+      editButton.addEventListener("click", () => openEditor(memo.id));
+      actions.append(editButton);
+      if (!isEvent(memo)) {
+        const completeButton = document.createElement("button");
+        completeButton.className = "action-btn complete";
+        completeButton.textContent = "✓ 完成";
+        completeButton.addEventListener("click", () => completeMemo(memo.id));
+        actions.append(completeButton);
+      }
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "action-btn delete";
+      deleteButton.textContent = "删除";
+      deleteButton.addEventListener("click", () => deleteMemo(memo.id));
+      actions.append(deleteButton);
+      card.appendChild(actions);
+      listEl.appendChild(card);
+    }
+  }
+
+  function refreshMemoGroupOptions(selectedId = "") {
+    const current = selectedId || memoGroup.value;
+    memoGroup.replaceChildren();
+    const none = document.createElement("option");
+    none.value = "";
+    none.textContent = "不分组";
+    memoGroup.appendChild(none);
+    for (const group of groupRecords()) {
+      const option = document.createElement("option");
+      option.value = group.id;
+      option.textContent = group.title;
+      memoGroup.appendChild(option);
+    }
+    memoGroup.value = groupById(current) ? current : "";
+  }
+
+  function setPage(page) {
+    activePage = page === "groups" ? "groups" : "memos";
+    memosPage.classList.toggle("active", activePage === "memos");
+    groupsPage.classList.toggle("active", activePage === "groups");
+    memosTabBtn.classList.toggle("active", activePage === "memos");
+    groupsTabBtn.classList.toggle("active", activePage === "groups");
+    const addButton = document.getElementById("addBtn");
+    addButton.textContent =
+      activePage === "groups" ? "＋ 新建分组" : "＋ 新建事项";
+    addButton.setAttribute(
+      "aria-label",
+      activePage === "groups" ? "新建分组" : "新建事项"
+    );
+    if (activePage === "groups") renderGroups();
+  }
+
+  function renderGroups() {
+    const groups = groupRecords();
+    groupCount.textContent = `${groups.length} 组`;
+    groupList.replaceChildren();
+    if (!groups.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.innerHTML =
+        '<div class="empty-clock">▦</div>还没有分组<br>新建分组后，可把已有事项加入其中';
+      groupList.appendChild(empty);
+      return;
+    }
+    for (const group of groups) {
+      const items = memoRecords()
+        .filter(memo => memo.group_id === group.id)
+        .sort((left, right) => {
+          const leftTime = new Date(left.deadline || 0).getTime();
+          const rightTime = new Date(right.deadline || 0).getTime();
+          return leftTime - rightTime;
+        });
+      const card = document.createElement("article");
+      card.className = "group-card";
+
+      const head = document.createElement("div");
+      head.className = "group-card-head";
+      const title = document.createElement("h2");
+      title.textContent = group.title || "未命名分组";
+      const count = document.createElement("span");
+      count.className = "group-count";
+      count.textContent = `${items.length} 项`;
+      head.append(title, count);
+      card.appendChild(head);
+
+      if (group.note) {
+        const intro = document.createElement("p");
+        intro.className = "group-description";
+        intro.textContent = group.note;
+        card.appendChild(intro);
+      }
+
+      const itemBox = document.createElement("div");
+      itemBox.className = "group-items";
+      if (!items.length) {
+        const text = document.createElement("div");
+        text.className = "group-empty-items";
+        text.textContent = "暂无事项，可在编辑分组时添加。";
+        itemBox.appendChild(text);
+      } else {
+        for (const memo of items.slice(0, 6)) {
+          const line = document.createElement("div");
+          line.className = "group-item-line";
+          const typeText = isEvent(memo)
+            ? "事件"
+            : isCompleted(memo)
+              ? "已完成"
+              : isHistorical(memo)
+                ? "历史"
+                : "任务";
+          line.textContent = `${memo.title || "未命名事项"} · ${typeText}`;
+          itemBox.appendChild(line);
+        }
+        if (items.length > 6) {
+          const more = document.createElement("div");
+          more.className = "group-empty-items";
+          more.textContent = `还有 ${items.length - 6} 项`;
+          itemBox.appendChild(more);
+        }
+      }
+      card.appendChild(itemBox);
+
+      const actions = document.createElement("div");
+      actions.className = "actions";
+      const view = document.createElement("button");
+      view.className = "action-btn";
+      view.textContent = "查看事项";
+      view.addEventListener("click", () => openGroupDetail(group.id));
+      const edit = document.createElement("button");
+      edit.className = "action-btn";
+      edit.textContent = "编辑分组";
+      edit.addEventListener("click", () => openGroupEditor(group.id));
+      const remove = document.createElement("button");
+      remove.className = "action-btn delete";
+      remove.textContent = "删除分组";
+      remove.addEventListener("click", () => deleteGroup(group.id));
+      actions.append(view, edit, remove);
+      card.appendChild(actions);
+      groupList.appendChild(card);
+    }
+  }
+
+  function openGroupEditor(groupId = null) {
+    editingGroupId = groupId;
+    const group = groupId
+      ? records.find(
+          record =>
+            record.id === groupId &&
+            !record.deleted &&
+            isGroupRecord(record)
+        )
+      : null;
+    groupFormTitle.textContent = group ? "编辑分组" : "新建分组";
+    groupNameInput.value = group ? group.title : "";
+    groupIntroInput.value = group ? (group.note || "") : "";
+    groupMemoChoices.replaceChildren();
+    const memos = memoRecords().sort((left, right) =>
+      String(left.title || "").localeCompare(String(right.title || ""), "zh-CN")
+    );
+    if (!memos.length) {
+      const empty = document.createElement("div");
+      empty.className = "group-empty-items";
+      empty.textContent = "目前没有可添加的事项";
+      groupMemoChoices.appendChild(empty);
+    } else {
+      for (const memo of memos) {
+        const label = document.createElement("label");
+        label.className = "group-choice";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = memo.id;
+        checkbox.checked = Boolean(group && memo.group_id === group.id);
+        const text = document.createElement("span");
+        text.textContent = memo.title || "未命名事项";
+        const meta = document.createElement("span");
+        meta.className = "group-choice-meta";
+        meta.textContent = isCompleted(memo)
+          ? "已完成"
+          : isHistorical(memo)
+            ? "历史"
+            : isEvent(memo)
+              ? "事件"
+              : "任务";
+        label.append(checkbox, text, meta);
+        groupMemoChoices.appendChild(label);
+      }
+    }
+    groupOverlay.classList.add("show");
+    setTimeout(() => groupNameInput.focus(), 80);
+  }
+
+  function closeGroupEditor() {
+    groupOverlay.classList.remove("show");
+    editingGroupId = null;
+  }
+
+  function deleteGroup(groupId) {
+    const group = records.find(
+      record =>
+        record.id === groupId &&
+        !record.deleted &&
+        isGroupRecord(record)
+    );
+    if (
+      !group ||
+      !confirm(
+        `确定删除分组「${group.title}」吗？组内事项不会被删除，只会变成未分组。`
+      )
+    ) {
+      return;
+    }
+    const now = new Date().toISOString();
+    group.deleted = true;
+    group.rev = nextRevision(group);
+    group.updated_at = now;
+    for (const memo of memoRecords()) {
+      if (memo.group_id !== groupId) continue;
+      memo.group_id = null;
+      memo.rev = nextRevision(memo);
+      memo.updated_at = now;
+    }
+    persist();
+    render();
+    renderGroups();
+    showToast("分组已删除，组内事项已保留");
+    syncNow();
+  }
+
+  function groupItemState(memo) {
+    if (isCompleted(memo)) return ["已完成", "completed"];
+    const deadline = new Date(memo.deadline).getTime();
+    if (!Number.isFinite(deadline)) return ["时间无效", "expired"];
+    if (deadline <= Date.now()) {
+      if (deadline + HISTORY_GRACE_MS > Date.now()) {
+        return [
+          isEvent(memo) ? "已结束 · 待归档" : "已到期 · 待归档",
+          "expired",
+        ];
+      }
+      return ["已归档", "expired"];
+    }
+    if (isEvent(memo)) {
+      const start = new Date(memo.start_at).getTime();
+      if (Number.isFinite(start) && Date.now() < start) {
+        return ["待开始", ""];
+      }
+    }
+    if (deadline - Date.now() <= 86400000) {
+      return ["24 小时内", ""];
+    }
+    return ["进行中", ""];
+  }
+
+  function renderGroupDetail() {
+    if (!activeGroupDetailId) return;
+    const group = groupById(activeGroupDetailId);
+    if (!group) {
+      closeGroupDetail();
+      return;
+    }
+    const items = memoRecords()
+      .filter(memo => memo.group_id === group.id)
+      .sort((left, right) => {
+        const leftHistorical = isHistorical(left) ? 1 : 0;
+        const rightHistorical = isHistorical(right) ? 1 : 0;
+        return (
+          leftHistorical - rightHistorical ||
+          new Date(left.deadline || 0).getTime() -
+            new Date(right.deadline || 0).getTime()
+        );
+      });
+    const activeCount = items.filter(memo => !isHistorical(memo)).length;
+    groupDetailTitle.textContent = group.title || "分组事项";
+    groupDetailIntro.textContent =
+      `${group.note ? `${group.note}\n` : ""}` +
+      `共 ${items.length} 项 · ${activeCount} 项未结束`;
+    groupDetailList.replaceChildren();
+    if (!items.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.innerHTML =
+        '<div class="empty-clock">◷</div>这个分组还没有事项<br>可在编辑分组时添加已有事项';
+      groupDetailList.appendChild(empty);
+      return;
+    }
+    for (const memo of items) {
+      const [stateText, stateClass] = groupItemState(memo);
+      const card = document.createElement("article");
+      card.className = "group-detail-card";
+      const head = document.createElement("div");
+      head.className = "group-detail-head";
+      const title = document.createElement("h3");
+      title.textContent = memo.title || "未命名事项";
+      const state = document.createElement("span");
+      state.className = `group-detail-state ${stateClass}`.trim();
+      state.textContent = stateText;
+      head.append(title, state);
+      card.appendChild(head);
+      if (memo.note) {
+        const note = document.createElement("div");
+        note.className = "group-detail-note";
+        note.textContent = memo.note;
+        card.appendChild(note);
+      }
+      const meta = document.createElement("div");
+      meta.className = "group-detail-meta";
+      const addMeta = (label, value) => {
+        const key = document.createElement("span");
+        key.textContent = label;
+        const content = document.createElement("span");
+        content.textContent = value;
+        meta.append(key, content);
+      };
+      addMeta("事项类型", isEvent(memo) ? "事件型" : "任务型");
+      addMeta("当前状态", stateText);
+      if (!isHistorical(memo)) {
+        const remaining = document.createElement("span");
+        remaining.className = "remaining";
+        remaining.dataset.deadline = memo.deadline;
+        remaining.textContent = formatRemaining(memo.deadline);
+        const remainingLabel = document.createElement("span");
+        remainingLabel.textContent = "剩余时间";
+        meta.append(remainingLabel, remaining);
+      }
+      if (isEvent(memo)) {
+        addMeta("开始时间", formatDeadline(memo.start_at));
+      }
+      addMeta(isEvent(memo) ? "结束时间" : "终止时间", formatDeadline(memo.deadline));
+      if (memo.completed_at) {
+        addMeta("完成时间", formatDeadline(memo.completed_at));
+      }
+      card.appendChild(meta);
+      if (memo.image_data) {
+        const image = document.createElement("img");
+        image.className = "group-detail-image";
+        image.src = memo.image_data;
+        image.alt = memo.title || "事项图片";
+        image.addEventListener("click", () => {
+          imageViewerImage.src = memo.image_data;
+          imageViewerOverlay.classList.add("show");
+        });
+        card.appendChild(image);
+      }
+      const actions = document.createElement("div");
+      actions.className = "group-detail-actions";
+      if (!isHistorical(memo)) {
+        const edit = document.createElement("button");
+        edit.className = "action-btn";
+        edit.textContent = "编辑事项";
+        edit.addEventListener("click", () => {
+          closeGroupDetail();
+          openEditor(memo.id);
+        });
+        actions.appendChild(edit);
+      }
+      if (actions.childElementCount) card.appendChild(actions);
+      groupDetailList.appendChild(card);
+    }
+  }
+
+  function openGroupDetail(groupId) {
+    activeGroupDetailId = groupId;
+    groupDetailOverlay.classList.add("show");
+    renderGroupDetail();
+  }
+
+  function closeGroupDetail() {
+    groupDetailOverlay.classList.remove("show");
+    activeGroupDetailId = null;
+  }
+
+  function updateCountdowns() {
+    document.querySelectorAll(".remaining[data-deadline]").forEach(element => {
+      element.textContent = formatRemaining(element.dataset.deadline);
+    });
+    document.querySelectorAll(".card").forEach(card => {
+      const memo = records.find(record => record.id === card.dataset.id);
+      if (!memo) return;
+      const [stateClass, badgeText] = statusOf(memo);
+      card.classList.remove("urgent", "expired");
+      card.classList.remove("pending");
+      if (stateClass) card.classList.add(stateClass);
+      const badge = card.querySelector(".badge");
+      if (badge) {
+        badge.textContent = `${isEvent(memo) ? "事件" : "任务"} · ${badgeText}`;
+      }
+    });
+    if (historyRecords().length !== renderedHistoryCount) {
+      render();
+    }
+  }
+
+  function openEditor(memoId = null) {
+    editingId = memoId;
+    const memo = memoId
+      ? records.find(record => record.id === memoId && !record.deleted)
+      : null;
+    formTitle.textContent = memo ? "编辑事项" : "新建事项";
+    titleInput.value = memo ? memo.title : "";
+    noteInput.value = memo ? (memo.note || "") : "";
+    refreshMemoGroupOptions(memo?.group_id || "");
+    setEditingImage(memo ? memo.image_data : null);
+    setEditorType(memo && isEvent(memo) ? "event" : "task");
+    const reminderMinutes = Math.max(
+      1,
+      Number(memo?.reminder_minutes || 15)
+    );
+    reminderEnabled.checked = Boolean(memo?.reminder_enabled);
+    if (reminderMinutes % 1440 === 0) {
+      reminderAmount.value = reminderMinutes / 1440;
+      reminderUnit.value = "days";
+    } else if (reminderMinutes % 60 === 0) {
+      reminderAmount.value = reminderMinutes / 60;
+      reminderUnit.value = "hours";
+    } else {
+      reminderAmount.value = reminderMinutes;
+      reminderUnit.value = "minutes";
+    }
+    const modes = Array.isArray(memo?.reminder_modes)
+      ? memo.reminder_modes
+      : ["notification"];
+    reminderNotify.checked = modes.includes("notification");
+    reminderSound.checked = modes.includes("sound");
+    reminderVibrate.checked = modes.includes("vibration");
+    reminderVolume.value = String(
+      Math.max(10, Math.min(100, Number(memo?.reminder_volume || 100)))
+    );
+    updateReminderVolumeLabel();
+    updateReminderOptionsVisibility();
+    if (memo) {
+      const value = new Date(memo.deadline);
+      if (isEvent(memo)) {
+        const start = new Date(memo.start_at);
+        startDateInput.value = localDateValue(start);
+        startTimeInput.value = `${String(start.getHours()).padStart(2, "0")}:${String(start.getMinutes()).padStart(2, "0")}`;
+        endDateInput.value = localDateValue(value);
+        endTimeInput.value = `${String(value.getHours()).padStart(2, "0")}:${String(value.getMinutes()).padStart(2, "0")}`;
+      } else {
+        dateInput.value = localDateValue(value);
+        timeInput.value = `${String(value.getHours()).padStart(2, "0")}:${String(value.getMinutes()).padStart(2, "0")}`;
+      }
+    } else {
+      defaultDeadline();
+      defaultEventTimes();
+    }
+    overlay.classList.add("show");
+    setTimeout(() => titleInput.focus(), 80);
+  }
+
+  function closeEditor() {
+    overlay.classList.remove("show");
+    editingId = null;
+    setEditingImage(null);
+  }
+
+  function deleteMemo(memoId) {
+    const memo = records.find(record => record.id === memoId);
+    if (!memo || !confirm(`确定删除「${memo.title}」吗？`)) return;
+    memo.deleted = true;
+    memo.rev = nextRevision(memo);
+    memo.updated_at = new Date().toISOString();
+    persist();
+    render();
+    showToast("已删除，联网后同步");
+    syncNow();
+  }
+
+  let waterAudioContext = null;
+
+  function playWaterSinkSound() {
+    try {
+      const AudioContextClass =
+        window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      if (!waterAudioContext) {
+        waterAudioContext = new AudioContextClass();
+      }
+      const context = waterAudioContext;
+      if (context.state === "suspended") {
+        context.resume().catch(() => {});
+      }
+      const now = context.currentTime + 0.015;
+
+      const drop = context.createOscillator();
+      const dropGain = context.createGain();
+      drop.type = "sine";
+      drop.frequency.setValueAtTime(520, now);
+      drop.frequency.exponentialRampToValueAtTime(165, now + 0.28);
+      dropGain.gain.setValueAtTime(0.0001, now);
+      dropGain.gain.exponentialRampToValueAtTime(0.16, now + 0.018);
+      dropGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.42);
+      drop.connect(dropGain).connect(context.destination);
+      drop.start(now);
+      drop.stop(now + 0.44);
+
+      const bubble = context.createOscillator();
+      const bubbleGain = context.createGain();
+      bubble.type = "sine";
+      bubble.frequency.setValueAtTime(760, now + 0.12);
+      bubble.frequency.exponentialRampToValueAtTime(330, now + 0.34);
+      bubbleGain.gain.setValueAtTime(0.0001, now + 0.12);
+      bubbleGain.gain.exponentialRampToValueAtTime(0.045, now + 0.15);
+      bubbleGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.42);
+      bubble.connect(bubbleGain).connect(context.destination);
+      bubble.start(now + 0.12);
+      bubble.stop(now + 0.44);
+
+      const noiseLength = Math.round(context.sampleRate * 0.38);
+      const noiseBuffer = context.createBuffer(
+        1,
+        noiseLength,
+        context.sampleRate
+      );
+      const noiseData = noiseBuffer.getChannelData(0);
+      for (let index = 0; index < noiseLength; index += 1) {
+        noiseData[index] = (Math.random() * 2 - 1) * 0.32;
+      }
+      const noise = context.createBufferSource();
+      const filter = context.createBiquadFilter();
+      const noiseGain = context.createGain();
+      noise.buffer = noiseBuffer;
+      filter.type = "lowpass";
+      filter.frequency.setValueAtTime(920, now);
+      filter.frequency.exponentialRampToValueAtTime(240, now + 0.36);
+      noiseGain.gain.setValueAtTime(0.032, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.38);
+      noise.connect(filter).connect(noiseGain).connect(context.destination);
+      noise.start(now);
+    } catch {
+      // Sound is optional; completion still works when audio is unavailable.
+    }
+  }
+
+  function animateMemoSink(card) {
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const ghost = card.cloneNode(true);
+    ghost.classList.add("sinking-ghost");
+    ghost.removeAttribute("id");
+    ghost.setAttribute("aria-hidden", "true");
+    ghost.inert = true;
+    Object.assign(ghost.style, {
+      left: `${rect.left}px`,
+      top: `${rect.top}px`,
+      width: `${rect.width}px`,
+      height: `${rect.height}px`,
+    });
+    document.body.appendChild(ghost);
+    requestAnimationFrame(() => ghost.classList.add("sinking"));
+    setTimeout(() => ghost.remove(), 1050);
+  }
+
+  function completeMemo(memoId) {
+    const memo = records.find(record => record.id === memoId);
+    if (
+      !memo ||
+      isEvent(memo) ||
+      isCompleted(memo) ||
+      memo.__completing
+    ) {
+      return;
+    }
+    if (!confirm(`将「${memo.title}」标记为已完成？`)) return;
+    memo.__completing = true;
+    const card = Array.from(listEl.querySelectorAll(".card")).find(
+      item => item.dataset.id === memoId
+    );
+    try {
+      animateMemoSink(card);
+    } catch {
+      // Completion must never depend on the visual effect.
+    }
+    playWaterSinkSound();
+
+    const now = new Date().toISOString();
+    memo.completed = true;
+    memo.completed_at = now;
+    memo.updated_at = now;
+    memo.rev = nextRevision(memo);
+    delete memo.__completing;
+    persist();
+    render();
+    showToast("任务已完成，如浮光沉入水面");
+    syncNow();
+  }
+
+  function renderHistory() {
+    historyList.replaceChildren();
+    const items = historyRecords();
+    if (!items.length) {
+      const empty = document.createElement("div");
+      empty.className = "empty";
+      empty.textContent = "暂无历史事项";
+      historyList.appendChild(empty);
+      return;
+    }
+    for (const memo of items) {
+      const row = document.createElement("article");
+      row.className = "history-row";
+      const title = document.createElement("h3");
+      title.textContent = memo.title || "未命名事项";
+      row.appendChild(title);
+      const meta = document.createElement("div");
+      meta.className = "history-meta";
+      if (isEvent(memo)) {
+        meta.textContent =
+          `事件 · 开始 ${formatDeadline(memo.start_at)} · 结束 ${formatDeadline(memo.deadline)}`;
+      } else if (isCompleted(memo)) {
+        meta.textContent =
+          `任务 · 已完成于 ${memo.completed_at ? formatDeadline(memo.completed_at) : "未知"}\n截止 ${formatDeadline(memo.deadline)}`;
+      } else {
+        meta.textContent = `任务 · 已过期 ${formatDeadline(memo.deadline)}`;
+      }
+      row.appendChild(meta);
+      if (memo.image_data) {
+        const image = document.createElement("img");
+        image.className = "card-image";
+        image.src = memo.image_data;
+        row.appendChild(image);
+      }
+      const actions = document.createElement("div");
+      actions.className = "history-actions";
+      const remove = document.createElement("button");
+      remove.className = "action-btn delete";
+      remove.textContent = "删除";
+      remove.addEventListener("click", () => {
+        deleteMemo(memo.id);
+        renderHistory();
+      });
+      actions.appendChild(remove);
+      row.appendChild(actions);
+      historyList.appendChild(row);
+    }
+  }
+
+  function openHistory() {
+    renderHistory();
+    historyOverlay.classList.add("show");
+  }
+
+  function drawWeekView() {
+    const headerContext = weekHeaderCanvas.getContext("2d");
+    const context = weekCanvas.getContext("2d");
+    const scroller = weekOverlay.querySelector(".week-scroll");
+    const width = Math.max(280, Math.floor(scroller?.clientWidth || 340));
+    const axisWidth = width < 350 ? 42 : 48;
+    const headerHeight = 54;
+    const dayWidth = (width - axisWidth) / 3;
+    const totalHeight = Math.max(1, Math.floor((scroller?.clientHeight || 576) - 1));
+    const hourHeight = totalHeight / 24;
+    const pixelRatio = Math.min(3, Math.max(1, window.devicePixelRatio || 1));
+
+    weekHeaderCanvas.style.width = `${width}px`;
+    weekHeaderCanvas.style.height = `${headerHeight}px`;
+    weekHeaderCanvas.width = Math.round(width * pixelRatio);
+    weekHeaderCanvas.height = Math.round(headerHeight * pixelRatio);
+    headerContext.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    headerContext.imageSmoothingEnabled = true;
+    headerContext.imageSmoothingQuality = "high";
+
+    weekCanvas.style.width = `${width}px`;
+    weekCanvas.style.height = `${totalHeight}px`;
+    weekCanvas.width = Math.round(width * pixelRatio);
+    weekCanvas.height = Math.round(totalHeight * pixelRatio);
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = "high";
+    context.fillStyle = "#ffffff";
+    context.fillRect(0, 0, width, totalHeight);
+    headerContext.fillStyle = "#ffffff";
+    headerContext.fillRect(0, 0, width, headerHeight);
+    weekTitle.textContent =
+      `连续三天 · ${localDateValue(weekStart)} — ${localDateValue(new Date(weekStart.getTime() + 2 * 86400000))}`;
+
+    const weekdays = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
+    const today = new Date();
+    for (let index = 0; index < 3; index++) {
+      const date = new Date(weekStart.getTime() + index * 86400000);
+      const x = axisWidth + index * dayWidth;
+      const isToday = localDateValue(date) === localDateValue(today);
+      const dayBackground = isToday ? "#eaf3ff" : "#ffffff";
+      context.fillStyle = dayBackground;
+      context.fillRect(x, 0, dayWidth, totalHeight);
+      headerContext.fillStyle = dayBackground;
+      headerContext.fillRect(x, 0, dayWidth, headerHeight);
+
+      headerContext.fillStyle = isToday ? "#1e66d0" : "#172033";
+      headerContext.font = "bold 15px sans-serif";
+      headerContext.textAlign = "center";
+      headerContext.fillText(weekdays[(date.getDay() + 6) % 7], x + dayWidth / 2, 22);
+      headerContext.font = "12px sans-serif";
+      headerContext.fillText(
+        `${String(date.getMonth() + 1).padStart(2, "0")}/${String(date.getDate()).padStart(2, "0")}`,
+        x + dayWidth / 2,
+        42
+      );
+
+      context.strokeStyle = "#afc1d6";
+      context.lineWidth = 2;
+      context.beginPath();
+      context.moveTo(x, 0);
+      context.lineTo(x, totalHeight);
+      context.stroke();
+      headerContext.strokeStyle = "#afc1d6";
+      headerContext.lineWidth = 2;
+      headerContext.beginPath();
+      headerContext.moveTo(x, 0);
+      headerContext.lineTo(x, headerHeight);
+      headerContext.stroke();
+    }
+    context.strokeStyle = "#afc1d6";
+    context.beginPath();
+    context.moveTo(width - 1, 0);
+    context.lineTo(width - 1, totalHeight);
+    context.stroke();
+    headerContext.strokeStyle = "#afc1d6";
+    headerContext.beginPath();
+    headerContext.moveTo(width - 1, 0);
+    headerContext.lineTo(width - 1, headerHeight);
+    headerContext.stroke();
+
+    for (let hour = 0; hour <= 24; hour++) {
+      const y = hour * hourHeight;
+      context.strokeStyle = hour % 6 === 0 ? "#c4d1e0" : "#e8eef6";
+      context.lineWidth = hour % 6 === 0 ? 2 : 1;
+      context.beginPath();
+      context.moveTo(axisWidth, y);
+      context.lineTo(width, y);
+      context.stroke();
+      const labelInterval = hourHeight < 14 ? 6 : hourHeight < 20 ? 3 : 2;
+      if (hour % labelInterval === 0 || hour === 24) {
+        context.fillStyle = "#6d7d91";
+        context.textAlign = "right";
+        context.font = hour % 6 === 0 ? "bold 11px sans-serif" : "11px sans-serif";
+        const labelY = hour === 0 ? y + 11 : hour === 24 ? y - 5 : y + 4;
+        context.fillText(
+          hour === 24 ? "23:59" : `${String(hour).padStart(2, "0")}:00`,
+          axisWidth - 7,
+          labelY
+        );
+      }
+    }
+
+    const weekEnd = new Date(weekStart.getTime() + 3 * 86400000);
+    for (const memo of records.filter(
+      item =>
+        !item.deleted &&
+        !isGroupRecord(item) &&
+        !isHistorical(item)
+    )) {
+      const end = new Date(memo.deadline);
+      if (isEvent(memo)) {
+        const start = new Date(memo.start_at);
+        for (let index = 0; index < 3; index++) {
+          const dayStart = new Date(weekStart.getTime() + index * 86400000);
+          const dayEnd = new Date(dayStart.getTime() + 86400000);
+          const begin = Math.max(start.getTime(), dayStart.getTime());
+          const finish = Math.min(end.getTime(), dayEnd.getTime());
+          if (finish <= begin) continue;
+          const x = axisWidth + index * dayWidth + 4;
+          const y = ((begin - dayStart.getTime()) / 3600000) * hourHeight;
+          const bottom = ((finish - dayStart.getTime()) / 3600000) * hourHeight;
+          context.fillStyle = "#d7e8ff";
+          context.strokeStyle = "#6e9ed9";
+          context.fillRect(x, y, dayWidth - 8, Math.max(3, bottom - y));
+          context.strokeRect(x, y, dayWidth - 8, Math.max(3, bottom - y));
+          if (bottom - y >= 22) {
+            context.fillStyle = "#174a8c";
+            context.textAlign = "left";
+            context.font = "bold 11px sans-serif";
+            context.fillText(memo.title || "事件", x + 3, y + 14, dayWidth - 14);
+          }
+        }
+      } else if (end >= weekStart && end < weekEnd) {
+        const index = Math.floor((end.getTime() - weekStart.getTime()) / 86400000);
+        const dayStart = new Date(weekStart.getTime() + index * 86400000);
+        const taskWidth = Math.min(60, dayWidth - 10);
+        const taskHeight = Math.max(20, Math.min(26, hourHeight));
+        const x = axisWidth + index * dayWidth + (dayWidth - taskWidth) / 2;
+        const center = ((end.getTime() - dayStart.getTime()) / 3600000) * hourHeight;
+        context.fillStyle = "#e3f6ec";
+        context.strokeStyle = "#247a55";
+        context.fillRect(x, center - taskHeight / 2, taskWidth, taskHeight);
+        context.strokeRect(x, center - taskHeight / 2, taskWidth, taskHeight);
+        context.fillStyle = "#176344";
+        context.textAlign = "center";
+        context.font = "bold 11px sans-serif";
+        context.fillText(memo.title || "任务", x + taskWidth / 2, center + 4, taskWidth - 8);
+      }
+    }
+
+    const now = new Date();
+    const todayIndex = Math.floor(
+      (new Date(localDateValue(now)).getTime() - weekStart.getTime()) / 86400000
+    );
+    if (todayIndex >= 0 && todayIndex < 3) {
+      const y = ((now.getHours() * 60 + now.getMinutes()) / 60) * hourHeight;
+      context.strokeStyle = "#d64a4a";
+      context.lineWidth = 2;
+      context.beginPath();
+      context.moveTo(axisWidth + todayIndex * dayWidth + 2, y);
+      context.lineTo(axisWidth + (todayIndex + 1) * dayWidth - 2, y);
+      context.stroke();
+    }
+  }
+
+  function openWeekView() {
+    nativeBridge?.setLandscape?.(false);
+    weekStart = dayStartOf(new Date());
+    weekOverlay.classList.add("show");
+    setTimeout(() => {
+      drawWeekView();
+    }, 80);
+  }
+
+  function shiftWeek(days) {
+    weekStart = new Date(weekStart.getTime() + days * 86400000);
+    drawWeekView();
+  }
+
+  function closeWeekView() {
+    weekOverlay.classList.remove("show");
+    nativeBridge?.setLandscape?.(false);
+  }
+
+  async function openChangelog() {
+    if (!changelogEntries && bootstrap.changelog) {
+      changelogEntries = bootstrap.changelog;
+    }
+    if (!changelogEntries) {
+      try {
+        const response = await fetch("./changelog.json", { cache: "no-store" });
+        if (response.ok) {
+          changelogEntries = await response.json();
+        }
+      } catch {}
+    }
+    if (!changelogEntries) {
+      changelogEntries = {
+        current_version: bootstrap.mobileVersion || "3.1.0",
+        entries: [],
+      };
+    }
+    versionBtn.textContent = `v${changelogEntries.current_version || "3.1.0"}`;
+    changelogList.replaceChildren();
+    for (const entry of changelogEntries.entries || []) {
+      const card = document.createElement("article");
+      card.className = "version-history-entry";
+      const head = document.createElement("div");
+      head.className = "version-entry-head";
+      const title = document.createElement("h3");
+      title.textContent = `v${entry.version} · ${entry.title || "版本更新"}`;
+      const time = document.createElement("time");
+      time.textContent = entry.date || "";
+      head.append(title, time);
+      const list = document.createElement("ul");
+      for (const change of entry.changes || []) {
+        const item = document.createElement("li");
+        item.textContent = change;
+        list.appendChild(item);
+      }
+      card.append(head, list);
+      changelogList.appendChild(card);
+    }
+    changelogOverlay.classList.add("show");
+  }
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const title = titleInput.value.trim();
+    if (!title) {
+      showToast("请填写事项名称");
+      return;
+    }
+    if (
+      editorType === "event"
+        ? (!startDateInput.value || !startTimeInput.value || !endDateInput.value || !endTimeInput.value)
+        : (!dateInput.value || !timeInput.value)
+    ) {
+      showToast(editorType === "event" ? "请选择事件开始和结束时间" : "请选择截止时间");
+      return;
+    }
+    const deadline = editorType === "event"
+      ? `${endDateInput.value}T${endTimeInput.value}:00`
+      : `${dateInput.value}T${timeInput.value}:00`;
+    const startAt = editorType === "event"
+      ? `${startDateInput.value}T${startTimeInput.value}:00`
+      : null;
+    if (new Date(deadline).getTime() <= Date.now()) {
+      showToast("结束时间需要晚于现在");
+      return;
+    }
+    if (
+      editorType === "event" &&
+      new Date(startAt).getTime() >= new Date(deadline).getTime()
+    ) {
+      showToast("事件开始时间需要早于结束时间");
+      return;
+    }
+    const reminderMinutes = reminderMinutesValue();
+    const reminderModes = reminderModesValue();
+    if (reminderEnabled.checked) {
+      nativeBridge?.requestReminderSystemPermissions?.();
+    }
+    const reminderVolumePercentValue = reminderVolumePercent();
+    if (reminderEnabled.checked && !reminderModes.length) {
+      showToast("请至少选择一种提醒方式");
+      return;
+    }
+    const reminderAnchor = new Date(
+      editorType === "event" ? startAt : deadline
+    );
+    const reminderAt = new Date(
+      reminderAnchor.getTime() - reminderMinutes * 60000
+    );
+    if (
+      reminderEnabled.checked &&
+      reminderAt.getTime() <= Date.now()
+    ) {
+      showToast("提前通知时间已经过去，请缩短提前时间");
+      return;
+    }
+    const selectedGroupId = groupById(memoGroup.value)
+      ? memoGroup.value
+      : null;
+
+    const now = new Date().toISOString();
+    let memo = editingId
+      ? records.find(record => record.id === editingId)
+      : null;
+    if (memo) {
+      memo.title = title;
+      memo.note = noteInput.value.trim();
+      memo.item_type = editorType;
+      memo.start_at = startAt;
+      memo.deadline = deadline;
+      memo.group_id = selectedGroupId;
+      memo.reminder_enabled = reminderEnabled.checked;
+      memo.reminder_minutes = reminderMinutes;
+      memo.reminder_modes = reminderModes;
+      memo.reminder_volume = reminderVolumePercentValue;
+      memo.reminder_at = reminderEnabled.checked
+        ? reminderAt.toISOString()
+        : null;
+      memo.image_data = editingImageData;
+      if (editorType === "event") {
+        memo.completed = false;
+        memo.completed_at = null;
+      }
+      memo.deleted = false;
+      memo.rev = nextRevision(memo);
+      memo.updated_at = now;
+    } else {
+      memo = {
+        id:
+          crypto.randomUUID?.() ||
+          `m-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        title,
+        note: noteInput.value.trim(),
+        item_type: editorType,
+        start_at: startAt,
+        deadline,
+        group_id: selectedGroupId,
+        completed: false,
+        completed_at: null,
+        reminder_enabled: reminderEnabled.checked,
+        reminder_minutes: reminderMinutes,
+        reminder_modes: reminderModes,
+        reminder_volume: reminderVolumePercentValue,
+        reminder_at: reminderEnabled.checked ? reminderAt.toISOString() : null,
+        image_data: editingImageData,
+        created_at: now,
+        updated_at: now,
+        rev: nextRevision(),
+        deleted: false,
+        image: null,
+      };
+      records.push(memo);
+    }
+    persist();
+    closeEditor();
+    render();
+    showToast("已保存到手机，联网后自动同步");
+    syncNow();
+  });
+
+  groupForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const name = groupNameInput.value.trim();
+    const intro = groupIntroInput.value.trim();
+    if (!name) {
+      showToast("请填写分组名称");
+      return;
+    }
+    const duplicate = groupRecords().find(
+      group =>
+        group.id !== editingGroupId &&
+        String(group.title || "").trim().toLocaleLowerCase("zh-CN") ===
+          name.toLocaleLowerCase("zh-CN")
+    );
+    if (duplicate) {
+      showToast("已经有同名分组，请换一个名称");
+      return;
+    }
+
+    const now = new Date().toISOString();
+    let group = editingGroupId
+      ? records.find(
+          record =>
+            record.id === editingGroupId &&
+            !record.deleted &&
+            isGroupRecord(record)
+        )
+      : null;
+    if (group) {
+      group.title = name;
+      group.note = intro;
+      group.rev = nextRevision(group);
+      group.updated_at = now;
+    } else {
+      group = {
+        id:
+          crypto.randomUUID?.() ||
+          `g-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        record_kind: "group",
+        title: name,
+        note: intro,
+        created_at: now,
+        updated_at: now,
+        rev: nextRevision(),
+        deleted: false,
+      };
+      records.push(group);
+    }
+
+    const selectedIds = new Set(
+      [...groupMemoChoices.querySelectorAll('input[type="checkbox"]:checked')]
+        .map(input => input.value)
+    );
+    for (const memo of memoRecords()) {
+      const shouldBelongToGroup = selectedIds.has(memo.id);
+      if (shouldBelongToGroup && memo.group_id !== group.id) {
+        memo.group_id = group.id;
+        memo.rev = nextRevision(memo);
+        memo.updated_at = now;
+      } else if (!shouldBelongToGroup && memo.group_id === group.id) {
+        memo.group_id = null;
+        memo.rev = nextRevision(memo);
+        memo.updated_at = now;
+      }
+    }
+    persist();
+    closeGroupEditor();
+    render();
+    setPage("groups");
+    renderGroups();
+    showToast("分组已保存，联网后自动同步");
+    syncNow();
+  });
+
+  taskTypeBtn.addEventListener("click", () => setEditorType("task"));
+  eventTypeBtn.addEventListener("click", () => setEditorType("event"));
+  reminderEnabled.addEventListener("change", updateReminderOptionsVisibility);
+  reminderVolume.addEventListener("input", updateReminderVolumeLabel);
+  testReminderBtn.addEventListener("click", () => {
+    const modes = reminderModesValue();
+    if (!modes.length) {
+      showToast("请至少选择一种提醒方式");
+      return;
+    }
+    if (!nativeBridge?.testReminder) {
+      showToast("测试提醒功能需要在 Android App 中使用");
+      return;
+    }
+    if (modes.includes("notification")) {
+      nativeBridge?.requestReminderSystemPermissions?.();
+    }
+    nativeBridge.testReminder(
+      modes.includes("notification"),
+      modes.includes("sound"),
+      modes.includes("vibration"),
+      reminderVolumePercent() / 100
+    );
+    showToast("测试提醒将在 3 秒后触发");
+  });
+  imageInput.addEventListener("change", async () => {
+    const file = imageInput.files?.[0];
+    if (!file) {
+      setEditingImage(null);
+      return;
+    }
+    try {
+      setEditingImage(await compressImageFile(file));
+    } catch {
+      showToast("图片读取失败");
+      setEditingImage(null);
+    }
+  });
+  removeImageBtn.addEventListener("click", () => setEditingImage(null));
+
+  function syncViaWebSocket() {
+    return new Promise(resolve => {
+      if (!syncUrl) {
+        resolve(false);
+        return;
+      }
+      let settled = false;
+      let socket;
+      let timer;
+      const finish = ok => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        try {
+          socket?.close();
+        } catch {}
+        resolve(ok);
+      };
+      try {
+        socket = new WebSocket(syncUrl);
+      } catch {
+        resolve(false);
+        return;
+      }
+      timer = setTimeout(() => finish(false), 4500);
+      socket.onopen = () => {
+        socket.send(JSON.stringify({ type: "sync", records }));
+      };
+      socket.onmessage = event => {
+        try {
+          const payload = JSON.parse(event.data);
+          if (payload.type !== "synced" || !Array.isArray(payload.records)) {
+            finish(false);
+            return;
+          }
+          records = mergeRecords(records, payload.records);
+          persist();
+          render();
+          finish(true);
+        } catch {
+          finish(false);
+        }
+      };
+      socket.onerror = () => finish(false);
+      socket.onclose = () => finish(false);
+    });
+  }
+
+  async function syncViaCloud() {
+    if (!cloudSyncUrl || !cloudPublishableKey || !cloudVaultKey) {
+      return false;
+    }
+    try {
+      const outgoing = records.filter(
+        record => Number(record.rev || 0) > cloudPushRev
+      );
+      const outgoingMax = outgoing.reduce(
+        (maximum, record) => Math.max(maximum, Number(record.rev || 0)),
+        cloudPushRev
+      );
+      const response = await fetch(cloudSyncUrl, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${cloudPublishableKey}`,
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        body: JSON.stringify({
+          p_vault_key: cloudVaultKey,
+          p_since: cloudCursor,
+          p_records: outgoing,
+        }),
+      });
+      if (!response.ok) return false;
+      const payload = await response.json();
+      const incoming = Array.isArray(payload)
+        ? payload
+        : Array.isArray(payload.records)
+          ? payload.records
+          : [];
+      if (!Array.isArray(incoming)) return false;
+      if (outgoingMax > cloudPushRev) {
+        cloudPushRev = outgoingMax;
+      }
+      const nextCursor = Number(payload?.cursor || cloudCursor);
+      if (Number.isFinite(nextCursor) && nextCursor >= cloudCursor) {
+        cloudCursor = nextCursor;
+      }
+      saveCloudProgress();
+      records = mergeRecords(records, incoming);
+      persist();
+      render();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function deriveHttpUrl() {
+    try {
+      const url = new URL(syncUrl);
+      const token = url.pathname.split("/").filter(Boolean).pop();
+      if (!token) return "";
+      return `${url.protocol === "wss:" ? "https:" : "http:"}//${url.host}/t/${token}/api/sync`;
+    } catch {
+      return bootstrap.syncHttpUrl || "";
+    }
+  }
+
+  async function syncViaHttp() {
+    const target = deriveHttpUrl();
+    if (!target) return false;
+    try {
+      const response = await fetch(target, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ records }),
+      });
+      const payload = await response.json();
+      if (!response.ok || !Array.isArray(payload.records)) return false;
+      records = mergeRecords(records, payload.records);
+      persist();
+      render();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  async function syncNow() {
+    if (nativeBridge) {
+      setConnectionStatus(true);
+      setTimeout(syncNow, 5000);
+      return;
+    }
+    if (syncing) return;
+    syncing = true;
+    let online = false;
+    try {
+      online = await syncViaCloud();
+      if (!online) online = await syncViaWebSocket();
+      if (!online) online = await syncViaHttp();
+    } finally {
+      syncing = false;
+      setConnectionStatus(online);
+      setTimeout(syncNow, online ? 300000 : 600000);
+    }
+  }
+
+  statusEl.style.cursor = "pointer";
+  statusEl.title = "点击输入云同步码";
+  statusEl.addEventListener("click", () => {
+    if (nativeBridge) {
+      try {
+        const info = JSON.parse(nativeBridge.getDeviceInfo() || "{}");
+        nativeBridge.showToast(`电脑请连接 ${info.ip}:${info.port}`);
+      } catch {
+        nativeBridge.showToast("同步服务正在启动");
+      }
+      return;
+    }
+    syncCodeInput.value = cloudVaultKey;
+    syncOverlay.classList.add("show");
+    setTimeout(() => syncCodeInput.focus(), 80);
+  });
+  document.getElementById("syncCancelBtn").addEventListener("click", () => {
+    syncOverlay.classList.remove("show");
+  });
+  document.getElementById("syncSaveBtn").addEventListener("click", () => {
+    const normalized = normalizeVaultKey(syncCodeInput.value);
+    if (normalized.length >= 20) {
+      const changed = switchCloudVault(normalized);
+      if (changed) {
+        loadRecords();
+        render();
+      }
+      syncOverlay.classList.remove("show");
+      showToast("同步码已保存");
+      syncNow();
+    } else {
+      showToast("同步码格式不正确");
+    }
+  });
+  syncOverlay.addEventListener("click", event => {
+    if (event.target === syncOverlay) {
+      syncOverlay.classList.remove("show");
+    }
+  });
+  syncBtn.addEventListener("click", () => {
+    if (nativeBridge) {
+      try {
+        const info = JSON.parse(nativeBridge.getDeviceInfo() || "{}");
+        syncGuideAddress.textContent = `${info.ip}:${info.port}`;
+        syncGuideCode.textContent = info.pairing_code || "正在生成";
+      } catch {
+        syncGuideAddress.textContent = "同步服务正在启动";
+        syncGuideCode.textContent = "正在生成";
+      }
+      nativeBridge.requestSync?.();
+      syncTutorialOverlay.classList.add("show");
+      return;
+    }
+    showToast("正在同步…");
+    syncNow();
+  });
+  document.getElementById("syncTutorialClose").addEventListener("click", () => {
+    syncTutorialOverlay.classList.remove("show");
+  });
+  syncTutorialOverlay.addEventListener("click", event => {
+    if (event.target === syncTutorialOverlay) {
+      syncTutorialOverlay.classList.remove("show");
+    }
+  });
+  historyBtn.addEventListener("click", openHistory);
+  document.getElementById("historyCloseBtn").addEventListener("click", () => {
+    historyOverlay.classList.remove("show");
+  });
+  historyOverlay.addEventListener("click", event => {
+    if (event.target === historyOverlay) historyOverlay.classList.remove("show");
+  });
+  weekBtn.addEventListener("click", openWeekView);
+  document.getElementById("weekPrevBtn").addEventListener("click", () => shiftWeek(-3));
+  document.getElementById("weekNextBtn").addEventListener("click", () => shiftWeek(3));
+  document.getElementById("weekTodayBtn").addEventListener("click", () => {
+    weekStart = dayStartOf(new Date());
+    drawWeekView();
+  });
+  document.getElementById("weekCloseBtn").addEventListener("click", closeWeekView);
+  weekOverlay.addEventListener("click", event => {
+    if (event.target === weekOverlay) closeWeekView();
+  });
+  versionBtn.addEventListener("click", openChangelog);
+  document.getElementById("changelogCloseBtn").addEventListener("click", () => {
+    changelogOverlay.classList.remove("show");
+  });
+  changelogOverlay.addEventListener("click", event => {
+    if (event.target === changelogOverlay) changelogOverlay.classList.remove("show");
+  });
+  document.getElementById("imageViewerCloseBtn").addEventListener("click", () => {
+    imageViewerOverlay.classList.remove("show");
+  });
+  imageViewerOverlay.addEventListener("click", event => {
+    if (event.target === imageViewerOverlay) imageViewerOverlay.classList.remove("show");
+  });
+  window.addEventListener("resize", () => {
+    if (weekOverlay.classList.contains("show")) {
+      drawWeekView();
+    }
+  });
+
+  document.getElementById("addBtn").addEventListener("click", () => {
+    if (activePage === "groups") {
+      openGroupEditor();
+    } else {
+      openEditor();
+    }
+  });
+  memosTabBtn.addEventListener("click", () => setPage("memos"));
+  groupsTabBtn.addEventListener("click", () => setPage("groups"));
+  newGroupBtn.addEventListener("click", () => openGroupEditor());
+  groupCancelBtn.addEventListener("click", closeGroupEditor);
+  groupOverlay.addEventListener("click", event => {
+    if (event.target === groupOverlay) closeGroupEditor();
+  });
+  groupDetailCloseBtn.addEventListener("click", closeGroupDetail);
+  groupDetailOverlay.addEventListener("click", event => {
+    if (event.target === groupDetailOverlay) closeGroupDetail();
+  });
+  document.getElementById("cancelBtn").addEventListener("click", closeEditor);
+  overlay.addEventListener("click", event => {
+    if (event.target === overlay) closeEditor();
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      syncNow();
+      checkLatestVersionStatus();
+    }
+  });
+
+  function compareVersions(left, right) {
+    const parse = value =>
+      String(value).replace(/^v/i, "").split(".").map(Number);
+    const a = parse(left);
+    const b = parse(right);
+    const length = Math.max(a.length, b.length);
+    for (let index = 0; index < length; index += 1) {
+      const difference = (a[index] || 0) - (b[index] || 0);
+      if (difference) return difference;
+    }
+    return 0;
+  }
+
+  function normalizeVersion(value) {
+    const match = String(value || "").match(/v?(\d+\.\d+\.\d+)/i);
+    return match ? match[1] : "";
+  }
+
+  function extractPlatformVersion(html) {
+    const source = String(html || "");
+    const releaseMatch = source.match(
+      /class=["'][^"']*\brelease-version\b[^"']*["'][^>]*>\s*v?(\d+\.\d+\.\d+)/i
+    );
+    if (releaseMatch) return releaseMatch[1];
+    const currentMatch = source.match(
+      /当前版本[\s\S]{0,1600}?v?(\d+\.\d+\.\d+)/i
+    );
+    return currentMatch ? currentMatch[1] : "";
+  }
+
+  function applyLiveUpdateButtonState() {
+    if (!checkUpdateBtn) return;
+    const updateOperationActive = Boolean(updateDownloadVersion);
+    checkUpdateBtn.disabled = updateOperationActive;
+    checkUpdateBtn.classList.toggle("update-available", liveUpdateAvailable);
+    checkUpdateBtn.classList.toggle(
+      "is-latest",
+      updateCheckState === "latest"
+    );
+    checkUpdateBtn.classList.toggle(
+      "check-failed",
+      updateCheckState === "failed"
+    );
+    checkUpdateBtn.classList.toggle(
+      "login-required",
+      updateCheckState === "login"
+    );
+    checkUpdateBtn.classList.toggle(
+      "checking",
+      updateCheckState === "checking"
+    );
+    checkUpdateBtn.textContent = updateOperationActive
+      ? updateInstallWaiting
+        ? "等待安装"
+        : `下载更新 ${updateDownloadPercent}%`
+      : liveUpdateAvailable
+        ? "可以更新"
+      : updateCheckState === "latest"
+        ? "已是最新版"
+        : updateCheckState === "failed"
+          ? "检查失败"
+          : updateCheckState === "login"
+            ? "需登录检查"
+          : updateCheckState === "offline"
+            ? "等待联网"
+            : "正在检查";
+    checkUpdateBtn.setAttribute(
+      "aria-label",
+      updateOperationActive
+        ? updateInstallWaiting
+          ? "更新包已下载，等待打开系统安装器"
+          : `正在下载更新 ${updateDownloadPercent}%`
+        : liveUpdateAvailable
+        ? `发现新版本 ${latestRemoteVersion}，点击获取更新`
+        : updateCheckState === "latest"
+          ? `当前已是最新版 ${CURRENT_MOBILE_VERSION}`
+          : updateCheckState === "failed"
+            ? "版本检查失败，点击重试或打开国内平台"
+            : updateCheckState === "login"
+              ? "请先登录国内平台，登录后自动检查最新版本"
+            : updateCheckState === "offline"
+              ? "当前离线，联网后将自动检查版本"
+              : "正在检查最新版本"
+    );
+  }
+
+  window.BUAASetPwaUpdateReady = () => {
+    latestRemoteVersion = latestRemoteVersion || "新版本";
+    liveUpdateAvailable = true;
+    updateCheckState = "available";
+    applyLiveUpdateButtonState();
+  };
+
+  function requestNativeLatestVersion() {
+    if (!nativeBridge?.checkLatestVersion) {
+      return Promise.resolve(null);
+    }
+    return new Promise(resolve => {
+      if (nativeUpdateResolution) {
+        nativeUpdateResolution(null);
+      }
+      nativeUpdateResolution = resolve;
+      clearTimeout(nativeUpdateTimer);
+      nativeUpdateTimer = setTimeout(() => {
+        if (nativeUpdateResolution === resolve) {
+          nativeUpdateResolution = null;
+          resolve(null);
+        }
+      }, 14000);
+      try {
+        nativeBridge.checkLatestVersion();
+      } catch {
+        clearTimeout(nativeUpdateTimer);
+        nativeUpdateResolution = null;
+        resolve(null);
+      }
+    });
+  }
+
+  window.BUAANativeUpdateResult = payload => {
+    if (!nativeUpdateResolution) return;
+    let result = null;
+    try {
+      result =
+        typeof payload === "string" ? JSON.parse(payload) : payload || null;
+    } catch {
+      result = null;
+    }
+    const resolve = nativeUpdateResolution;
+    nativeUpdateResolution = null;
+    clearTimeout(nativeUpdateTimer);
+    resolve(result);
+  };
+
+  async function readPlatformVersion() {
+    const response = await fetch(
+      `${UPDATE_PORTAL_URL}?version_check=${Date.now()}`,
+      { cache: "no-store", credentials: "omit" }
+    );
+    if (!response.ok) return "";
+    return extractPlatformVersion(await response.text());
+  }
+
+  async function readManifestVersion(manifestUrl) {
+    const response = await fetch(
+      `${manifestUrl}${manifestUrl.includes("?") ? "&" : "?"}t=${Date.now()}`,
+      { cache: "no-store" }
+    );
+    if (!response.ok) return "";
+    let manifest = await response.json();
+    if (manifest.content && manifest.encoding === "base64") {
+      const binary = atob(manifest.content.replace(/\s/g, ""));
+      const bytes = Uint8Array.from(binary, character =>
+        character.charCodeAt(0)
+      );
+      manifest = JSON.parse(new TextDecoder().decode(bytes));
+    }
+    return normalizeVersion(manifest.version);
+  }
+
+  async function performLatestVersionCheck() {
+    let remoteVersion = "";
+    const nativeResult = await requestNativeLatestVersion();
+    if (nativeResult?.ok) {
+      remoteVersion = normalizeVersion(nativeResult.version);
+    }
+    if (nativeResult?.auth_required) {
+      liveUpdateAvailable = false;
+      updateCheckState = "login";
+      applyLiveUpdateButtonState();
+      return false;
+    }
+    if (!remoteVersion) {
+      try {
+        remoteVersion = await readPlatformVersion();
+      } catch {}
+    }
+    for (const manifestUrl of LIVE_UPDATE_MANIFEST_URLS) {
+      if (remoteVersion) break;
+      try {
+        remoteVersion = await readManifestVersion(manifestUrl);
+      } catch {}
+    }
+    if (!remoteVersion) {
+      liveUpdateAvailable = false;
+      updateCheckState = "failed";
+      applyLiveUpdateButtonState();
+      return false;
+    }
+    latestRemoteVersion = remoteVersion;
+    liveUpdateAvailable =
+      compareVersions(latestRemoteVersion, CURRENT_MOBILE_VERSION) > 0;
+    updateCheckState = liveUpdateAvailable ? "available" : "latest";
+    applyLiveUpdateButtonState();
+    return liveUpdateAvailable;
+  }
+
+  async function checkLatestVersionStatus() {
+    if (!checkUpdateBtn) return false;
+    if (!navigator.onLine) {
+      liveUpdateAvailable = false;
+      updateCheckState = "offline";
+      applyLiveUpdateButtonState();
+      return false;
+    }
+    if (versionCheckPromise) return versionCheckPromise;
+    liveUpdateAvailable = false;
+    updateCheckState = "checking";
+    applyLiveUpdateButtonState();
+    versionCheckPromise = performLatestVersionCheck();
+    try {
+      return await versionCheckPromise;
+    } finally {
+      versionCheckPromise = null;
+    }
+  }
+
+  function startLiveUpdateMonitor() {
+    checkLatestVersionStatus();
+    if (liveUpdateTimer) clearInterval(liveUpdateTimer);
+    liveUpdateTimer = setInterval(() => {
+      if (!document.hidden && navigator.onLine) checkLatestVersionStatus();
+    }, 60000);
+  }
+
+  function desktopDownloadMessage() {
+    return (
+      "BUAA浮光电脑版下载\n\n" +
+      `下载页面：${UPDATE_PORTAL_URL}\n` +
+      `Windows 安装包：${DESKTOP_DOWNLOAD_URL}\n\n` +
+      "在电脑浏览器打开链接并登录平台，然后在“版本下载”中选择 Windows 版。"
+    );
+  }
+
+  async function copyText(text) {
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {}
+    }
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    let copied = false;
+    try {
+      copied = document.execCommand("copy");
+    } catch {}
+    textarea.remove();
+    return copied;
+  }
+
+  async function copyDesktopDownloadLink() {
+    const copied = await copyText(desktopDownloadMessage());
+    showToast(
+      copied
+        ? "电脑版下载链接已复制，可发送到电脑"
+        : "复制失败，请长按下载页面地址手动复制"
+    );
+  }
+
+  async function shareDesktopDownloadLink() {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "BUAA浮光电脑版",
+          text: desktopDownloadMessage(),
+          url: UPDATE_PORTAL_URL,
+        });
+        return;
+      } catch (error) {
+        if (error?.name === "AbortError") return;
+      }
+    }
+    await copyDesktopDownloadLink();
+  }
+
+  window.BUAANativeUpdateDownloadStarted = () => {
+    if (!updateDownloadVersion) {
+      updateDownloadVersion = latestRemoteVersion;
+    }
+    updateDownloadPercent = 0;
+    updateInstallWaiting = false;
+    applyLiveUpdateButtonState();
+    showToast(`开始下载 v${updateDownloadVersion}，完成后将自动打开安装器`);
+  };
+
+  window.BUAANativeUpdateDownloadProgress = (version, percent) => {
+    updateDownloadVersion = normalizeVersion(version) || updateDownloadVersion;
+    updateDownloadPercent = Math.max(
+      0,
+      Math.min(100, Math.round(Number(percent) || 0))
+    );
+    updateInstallWaiting = false;
+    applyLiveUpdateButtonState();
+  };
+
+  window.BUAANativeUpdateDownloaded = version => {
+    updateDownloadVersion = normalizeVersion(version) || updateDownloadVersion;
+    updateDownloadPercent = 100;
+    updateInstallWaiting = true;
+    applyLiveUpdateButtonState();
+    showToast("更新包下载完成，正在准备安装");
+  };
+
+  window.BUAANativeUpdatePermissionRequired = () => {
+    updateInstallWaiting = true;
+    applyLiveUpdateButtonState();
+    showToast("请允许 BUAA浮光安装应用，返回 App 后会自动继续");
+  };
+
+  window.BUAANativeUpdateInstallerReady = () => {
+    updateInstallWaiting = true;
+    applyLiveUpdateButtonState();
+    showToast("已打开系统安装器，请点击“安装”完成更新");
+  };
+
+  window.BUAANativeUpdateDownloadFailed = message => {
+    const detail = String(message || "更新下载失败，请稍后重试");
+    updateDownloadVersion = "";
+    updateDownloadPercent = 0;
+    updateInstallWaiting = false;
+    if (detail.includes("已是最新版")) {
+      liveUpdateAvailable = false;
+      updateCheckState = "latest";
+    } else {
+      liveUpdateAvailable = Boolean(latestRemoteVersion);
+      updateCheckState = liveUpdateAvailable ? "available" : "failed";
+    }
+    applyLiveUpdateButtonState();
+    showToast(detail);
+  };
+
+  async function checkMobileUpdate() {
+    if (!checkUpdateBtn) return;
+    if (updateCheckState === "checking") {
+      showToast("正在读取国内平台版本，请稍候");
+      return;
+    }
+    if (updateCheckState === "login" && nativeBridge?.openUpdateLogin) {
+      nativeBridge.openUpdateLogin();
+      return;
+    }
+    if (updateCheckState === "failed" || updateCheckState === "offline") {
+      await checkLatestVersionStatus();
+    }
+    if (updateCheckState === "login" && nativeBridge?.openUpdateLogin) {
+      nativeBridge.openUpdateLogin();
+      return;
+    }
+    if (
+      liveUpdateAvailable &&
+      typeof window.BUAAApplyPwaUpdate === "function"
+    ) {
+      try {
+        const applied = await window.BUAAApplyPwaUpdate();
+        if (applied) {
+          checkUpdateBtn.disabled = true;
+          checkUpdateBtn.textContent = "正在应用更新";
+          showToast("正在载入新版本，请稍候");
+          return;
+        }
+      } catch {}
+    }
+    if (
+      liveUpdateAvailable &&
+      nativeBridge?.downloadAndInstallUpdate
+    ) {
+      updateDownloadVersion = latestRemoteVersion;
+      updateDownloadPercent = 0;
+      updateInstallWaiting = false;
+      applyLiveUpdateButtonState();
+      try {
+        nativeBridge.downloadAndInstallUpdate();
+      } catch {
+        window.BUAANativeUpdateDownloadFailed(
+          "无法启动更新下载，请稍后重试"
+        );
+      }
+      return;
+    }
+    const updateHint = liveUpdateAvailable
+      ? `已检测到新版本 v${latestRemoteVersion}。\n\n`
+      : updateCheckState === "latest"
+        ? `当前已是最新版 v${CURRENT_MOBILE_VERSION}。\n\n`
+        : "暂时无法确认最新版本，也可以直接打开国内平台手动检查。\n\n";
+    const proceed = confirm(
+      `${updateHint}更新由“学业支持中心开源平台”提供。\n\n` +
+        "未登录时会先跳转到平台登录页；登录后在项目页面的“版本下载”中下载最新版。\n\n" +
+        "是否打开更新页面？"
+    );
+    if (!proceed) return;
+    if (nativeBridge?.openUrl) {
+      nativeBridge.openUrl(UPDATE_PORTAL_URL);
+    } else {
+      window.open(UPDATE_PORTAL_URL, "_blank", "noopener,noreferrer");
+    }
+    showToast("请先登录平台，然后在“版本下载”中安装最新版");
+  }
+
+  checkUpdateBtn?.addEventListener("click", checkMobileUpdate);
+  copyDesktopLinkBtn?.addEventListener("click", copyDesktopDownloadLink);
+  shareDesktopLinkBtn?.addEventListener("click", shareDesktopDownloadLink);
+  desktopDownloadBtn?.addEventListener("click", () => {
+    desktopDownloadOverlay?.classList.add("show");
+  });
+  desktopDownloadCloseBtn?.addEventListener("click", () => {
+    desktopDownloadOverlay?.classList.remove("show");
+  });
+  desktopDownloadOverlay?.addEventListener("click", event => {
+    if (event.target === desktopDownloadOverlay) {
+      desktopDownloadOverlay.classList.remove("show");
+    }
+  });
+  if (desktopDownloadPageLink) {
+    desktopDownloadPageLink.href = UPDATE_PORTAL_URL;
+  }
+  if (directDesktopDownload) {
+    directDesktopDownload.href = DESKTOP_DOWNLOAD_URL;
+  }
+  window.addEventListener("online", () => checkLatestVersionStatus());
+  window.addEventListener("offline", () => {
+    liveUpdateAvailable = false;
+    updateCheckState = "offline";
+    applyLiveUpdateButtonState();
+  });
+  window.BUAARetryUpdateCheck = () => checkLatestVersionStatus();
+  applyLiveUpdateButtonState();
+  startLiveUpdateMonitor();
+  rescheduleAllReminders();
+  initLayoutSettings();
+  initIosInstallHint();
+
+  window.BUAAReloadRecords = () => {
+    loadRecords();
+    render();
+  };
+  window.BUAACloseTopOverlay = () => {
+    if (weekOverlay.classList.contains("show")) {
+      closeWeekView();
+      return true;
+    }
+    for (const element of [
+      historyOverlay,
+      layoutSettingsOverlay,
+      groupDetailOverlay,
+      groupOverlay,
+      desktopDownloadOverlay,
+      changelogOverlay,
+      imageViewerOverlay,
+      syncTutorialOverlay,
+      syncOverlay,
+      overlay
+    ]) {
+      if (element.classList.contains("show")) {
+        if (element === overlay) {
+          closeEditor();
+        } else {
+          element.classList.remove("show");
+        }
+        return true;
+      }
+    }
+    return false;
+  };
+
+  if (bootstrap.mobileVersion) {
+    versionBtn.textContent = `v${bootstrap.mobileVersion}`;
+  }
+  loadRecords();
+  render();
+  setPage("memos");
+  setConnectionStatus(false);
+  setInterval(updateCountdowns, 1000);
+  window.addEventListener("storage", event => {
+    if (
+      event.key === recordsStorageKey ||
+      event.key === LAYOUT_SETTINGS_KEY
+    ) {
+      loadRecords();
+      render();
+    }
+  });
+  syncNow();
+})();
+
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  let pwaRegistration = null;
+  let pwaReloading = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (pwaReloading) return;
+    pwaReloading = true;
+    location.reload();
+  });
+  async function applyPwaUpdate() {
+    if (!pwaRegistration) return false;
+    await pwaRegistration.update();
+    if (!pwaRegistration.waiting) {
+      await new Promise(resolve => setTimeout(resolve, 1200));
+    }
+    if (!pwaRegistration.waiting) return false;
+    pwaRegistration.waiting.postMessage({ type: 'SKIP_WAITING' });
+    return true;
+  }
+  window.BUAAApplyPwaUpdate = applyPwaUpdate;
+  window.addEventListener('load', async () => {
+    try {
+      pwaRegistration =
+        await navigator.serviceWorker.register('./sw.js');
+      if (pwaRegistration.waiting) {
+        window.BUAASetPwaUpdateReady && window.BUAASetPwaUpdateReady();
+      }
+      pwaRegistration.addEventListener('updatefound', () => {
+        const worker = pwaRegistration.installing;
+        if (!worker) return;
+        worker.addEventListener('statechange', () => {
+          if (
+            worker.state === 'installed' &&
+            navigator.serviceWorker.controller
+          ) {
+            window.BUAASetPwaUpdateReady &&
+              window.BUAASetPwaUpdateReady();
+          }
+        });
+      });
+    } catch {}
+  });
+  window.addEventListener('online', () => {
+    pwaRegistration && pwaRegistration.update().catch(() => {});
+  });
+}
+</script>
+</body>
+</html>

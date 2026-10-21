@@ -4,11 +4,22 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.1/BUAA-Memo-Windows-v4.1.1.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.1/BUAA-Memo-macOS-v4.1.1.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.1/BUAA-Memo-Android-v4.1.1.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.1/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.1/update-manifest.json)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/BUAA-Memo-Windows-v4.1.2.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/BUAA-Memo-macOS-v4.1.2.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/BUAA-Memo-Android-v4.1.2.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/BUAA-Memo-iOS-v4.1.2-source.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/BUAA-Memo-iOS-PWA-v4.1.2.zip)
+
+#### iOS 版当前限制
+
+- iOS 原生版不能直接安装压缩包中的 IPA，必须使用 Apple 开发者证书签名，或通过 macOS 和 Xcode 安装。
+- PWA 版需要通过 Safari 的“分享 → 添加到主屏幕”安装，且网站必须支持 HTTPS。
+- PWA 关闭后不能像 Android 一样执行后台定时通知，也不能持续提供局域网同步。
+- iOS PWA 不能自行下载安装新版本；“检查更新”只能载入网页新版或跳转国内平台。
+- 清除 Safari 网站数据可能同时删除 PWA 内的本地事项。
+- 部分功能受 iOS 系统版本、Safari 设置和省电策略影响。
 
 Windows 版解压后双击 `BUAA浮光.exe` 运行，不需要安装 Python。
 电脑版使用与手机版一致的一体化星夜和江面界面，并以独立桌面窗口运行。
@@ -62,6 +73,10 @@ Android 版检测到新版本后，点击“可以更新”即可在 App 内自�
 通知栏、响铃和振动，并可任意组合。提醒由 Android 系统定时器执行，App
 关闭后仍然有效；手机重启后会自动重新安排尚未到期的提醒。
 
+手机锁屏或熄屏时，提前通知会短时点亮屏幕并显示全屏提醒卡片。首次使用
+需要在系统设置中允许精确闹钟和全屏提醒；Android 14 及以上系统会由 App
+自动打开对应授权页面。
+
 v3.5.2 起，弹窗只负责显示通知，响铃改为内置的柔和双水滴音效并通过
 系统闹钟音频通道播放，振动使用闹钟用途属性，不再依赖旧通知渠道的声音
 和振动设置。编辑事项时可在“提前通知”区域独立设置 10%–100% 的提醒音量，
@@ -69,6 +84,21 @@ v3.5.2 起，弹窗只负责显示通知，响铃改为内置的柔和双水滴�
 
 手机周视图采用竖屏三列课程表，今天、明天和后天的 `00:00–23:59`
 会在同一屏幕内完整显示，无需上下或左右滚动。
+
+## iOS 版
+
+仓库同时提供原生 iOS Xcode 工程。界面、事项图片、分组、历史事项、周视图、
+本地通知和局域网同步均已接入。由于 Apple 要求使用有效开发者证书签名，
+iOS App 需要在 macOS 上使用 Xcode 构建，或通过 TestFlight 分发给内测用户。
+
+iOS 会在锁屏显示本地通知，但是否自动点亮屏幕由用户的通知设置和系统版本决定。
+iOS 不允许第三方 App 自行下载安装新版本，也不允许像 Android 一样显示全屏
+Intent 或让 App 持续在后台提供局域网同步服务。
+
+如果无法加入 Apple Developer Program，可以使用 iOS PWA 静态包。把压缩包内的
+全部文件部署到支持 HTTPS 的静态网站，然后让用户在 iPhone Safari 中打开网址，
+点击“分享 → 添加到主屏幕”。PWA 数据保存在本机，不需要数据库，也不需要按
+用户数量支付服务器费用。
 
 ## 数据说明
 
@@ -84,4 +114,4 @@ v3.5.2 起，弹窗只负责显示通知，响铃改为内置的柔和双水滴�
 
 ## 当前版本
 
-v4.1.1
+v4.1.2

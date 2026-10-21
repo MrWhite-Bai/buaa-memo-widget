@@ -4,14 +4,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.4/BUAA-Memo-Windows-v4.1.4.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.4/BUAA-Memo-macOS-v4.1.4.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.4/BUAA-Memo-Android-v4.1.4.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.4/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.4/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.4/BUAA-Memo-iOS-v4.1.4-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.5/BUAA-Memo-Windows-v4.1.5.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.5/BUAA-Memo-macOS-v4.1.5.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.5/BUAA-Memo-Android-v4.1.5.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.5/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.5/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.5/BUAA-Memo-iOS-v4.1.5-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.4/BUAA-Memo-iOS-PWA-v4.1.4.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.5/BUAA-Memo-iOS-PWA-v4.1.5.zip)
 
 #### iOS 版当前限制
 
@@ -64,9 +64,18 @@ Android 版检测到新版本后，点击“可以更新”即可在 App 内自�
 下载手机版不要求手机与电脑连接同一 Wi-Fi 或热点。登录平台后从
 “版本下载”中安装最新版 APK。手机 App 可以独立运行，不需要云端服务器。
 
-只有手机与电脑同步数据时，才需要连接同一局域网或手机热点。首次同步时，
-在手机 App 点击“同步”并记下 6 位配对码，再输入电脑端。未配对设备会收到
-401 拒绝。
+只有手机与电脑同步数据时，才需要连接同一局域网或手机热点。同步步骤：
+
+1. 手机和电脑连接同一个 Wi-Fi，或让电脑连接手机热点。
+2. 打开 Android 手机版，点击底部鲜艳的“同步”按钮。
+3. 记下手机显示的 6 位配对码和 `IP:端口`，并保持页面打开。
+4. 在电脑版点击“同步”，输入配对码。
+5. 电脑能自动发现手机时无需填写地址；校园网无法发现时，填写手机显示的
+   `IP:端口`。
+6. 同步成功后两端数据会合并；任何一端离线时仍会各自保存。
+
+首次配对成功后，电脑会记住局域网地址和同步令牌。手机端显示的同步页面可
+用来核对地址和配对码；未授权设备会收到 401 拒绝。
 
 手机版主页提供“电脑版下载”区域，可复制下载链接或通过系统分享发送到电脑。
 在电脑浏览器打开链接并登录平台后，即可下载 Windows 或 macOS 版本。
@@ -117,4 +126,4 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v4.1.4
+v4.1.5

@@ -4,9 +4,9 @@
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v3.5.3.zip)
-- [macOS 浏览器版](BUAA-Memo-macOS-v3.5.3.zip)
-- [Android APK](BUAA-Memo-Android-v3.5.3.apk)
+- [Windows 完整版](BUAA-Memo-Windows-v3.5.4.zip)
+- [macOS 浏览器版](BUAA-Memo-macOS-v3.5.4.zip)
+- [Android APK](BUAA-Memo-Android-v3.5.4.apk)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 
@@ -21,6 +21,10 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 手机版和电脑版联网启动后会优先从“学业支持中心开源平台”检查最新版本。
 更新按钮会明确显示“正在检查”“已是最新版”“可以更新”或“检查失败”。
 检查失败时可以点按钮重试，也可以直接打开国内平台手动下载。
+
+Android 版检测到新版本后，点击“可以更新”即可在 App 内自动下载并打开
+系统安装器。首次更新只需授权一次“安装未知应用”，授权后会自动继续。
+同步服务不会在通知栏显示通知，通知栏只保留用户设置的事项提醒。
 
 旧版手机离线 HTML 仍可作为备用方案。
 
@@ -66,4 +70,4 @@ v3.5.2 起，弹窗只负责显示通知，响铃改为内置的柔和双水滴�
 
 ## 当前版本
 
-v3.5.3
+v3.5.4

@@ -4,11 +4,11 @@
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v4.1.1.zip)
-- [macOS 浏览器版](BUAA-Memo-macOS-v4.1.1.zip)
-- [Android APK](BUAA-Memo-Android-v4.1.1.apk)
-- [手机离线版 HTML](BUAA-Memo-Offline.html)
-- [版本更新清单](update-manifest.json)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.1/BUAA-Memo-Windows-v4.1.1.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.1/BUAA-Memo-macOS-v4.1.1.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.1/BUAA-Memo-Android-v4.1.1.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.1/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.1/update-manifest.json)
 
 Windows 版解压后双击 `BUAA浮光.exe` 运行，不需要安装 Python。
 电脑版使用与手机版一致的一体化星夜和江面界面，并以独立桌面窗口运行。

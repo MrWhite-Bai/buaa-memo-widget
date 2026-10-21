@@ -10,12 +10,14 @@
 - [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/BUAA-Memo-Offline.html)
 - [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/update-manifest.json)
 - [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/BUAA-Memo-iOS-v4.1.2-source.zip)
+- [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
 - [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.2/BUAA-Memo-iOS-PWA-v4.1.2.zip)
 
 #### iOS 版当前限制
 
 - iOS 原生版不能直接安装压缩包中的 IPA，必须使用 Apple 开发者证书签名，或通过 macOS 和 Xcode 安装。
 - PWA 版需要通过 Safari 的“分享 → 添加到主屏幕”安装，且网站必须支持 HTTPS。
+- GitHub Pages 地址需要能够正常访问；部分国内网络环境可能加载缓慢。
 - PWA 关闭后不能像 Android 一样执行后台定时通知，也不能持续提供局域网同步。
 - iOS PWA 不能自行下载安装新版本；“检查更新”只能载入网页新版或跳转国内平台。
 - 清除 Safari 网站数据可能同时删除 PWA 内的本地事项。

@@ -1,29 +1,29 @@
 {
-  "version": "3.5.1",
+  "version": "3.5.2",
   "published_at": "2026-10-21",
   "notes": [
-    "弹窗提醒现在只负责显示通知，不再依赖通知渠道播放声音和振动。",
-    "响铃由 App 直接播放默认通知铃声，振动由 App 直接触发。",
-    "使用新的弹窗通知渠道，避免旧渠道被系统静音后继续影响提醒。",
-    "通知栏、响铃、振动仍可任意组合使用。",
-    "新建或编辑事项的提前通知区域新增“测试当前提醒”按钮。",
-    "点击测试按钮后会在 3 秒后按当前勾选方式触发一次提醒。",
-    "原有准时闹钟、事项和分组数据保持不变。"
+    "提醒铃声改为内置的“咳嗽两声”音效。",
+    "咳嗽音效使用系统闹钟音频通道播放。",
+    "响铃改为使用 MediaPlayer 直接播放内置音频。",
+    "振动改用闹钟用途属性，并延长为三段振动。",
+    "在支持振动用途属性的系统上优先使用闹钟振动通道。",
+    "保留“测试当前提醒”按钮，安装后可直接验证声音和振动。",
+    "原有提醒时间、事项和分组数据保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.5.1-app-patch.zip?ref=main",
-    "sha256": "b0a46e54eb46cf4ac341fcb7fcf253855566d43fff75915880fe6995d47fc9f9",
-    "size": 1348207
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.5.2-app-patch.zip?ref=main",
+    "sha256": "df20aae232c06695e8aea5861f7b13552d4a98be36a4d4055fa7d2d2f27eee65",
+    "size": 1479211
   },
   "mobile": {
-    "version": "3.5.1",
+    "version": "3.5.2",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "cb66b6e078293c6ce05b0e84b60d762f2b98dc76670705a4fc674661c642da83",
-    "size": 137573
+    "sha256": "175fd5fad3b20cd49f26d150f1d6d1965be8bd1b693c8eb59bf711d08b2fffe5",
+    "size": 138140
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.5.1.apk?ref=main",
-    "sha256": "d803973e002656f797d878898769632e1cdeb981a4d1d372d0aa0a2ff175fcae",
-    "size": 82593
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.5.2.apk?ref=main",
+    "sha256": "2780af6b60ca86ef89e1dd274ae546c24883fc594da9df413306ea132b4fe006",
+    "size": 201446
   }
 }

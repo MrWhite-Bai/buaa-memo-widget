@@ -1,39 +1,39 @@
 {
-  "version": "4.1.9",
+  "version": "4.1.10",
   "published_at": "2026-10-22",
   "notes": [
-    "修复手机点击“连接电脑并同步”后提示“控制页地址无效”的问题。",
-    "手机与电脑配对成功后，改为读取电脑的令牌化局域网数据地址。",
-    "手机写回电脑时同步改用对应的令牌化写入地址。",
-    "电脑连接手机、手机连接电脑两种方向均支持选择性双向同步。",
-    "同一 Wi-Fi 和电脑连接手机热点均可使用。"
+    "同步变更预览会明确标识“当前事项”和“历史事项”。",
+    "已完成、到期迁移、恢复和删除的历史事项都会参与双向同步。",
+    "历史事项与当前事项一样支持同步全部或逐项选择。",
+    "同步摘要新增历史事项数量，方便确认历史记录是否已包含。",
+    "手机与电脑均保留双端主动同步、热点重连和选择性同步功能。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.1.9-app-patch.zip?ref=main",
-    "sha256": "1df684c710767865b65b5976338108393146a8b399eb4aa582f32c5426d49bb6",
-    "size": 20395346
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.1.10-app-patch.zip?ref=main",
+    "sha256": "a47699f6675052a55ba56d28df5f7e4d066797287da332de12d8685db497a526",
+    "size": 20674724
   },
   "mobile": {
-    "version": "4.1.9",
+    "version": "4.1.10",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "fe5e615e507d72cd0a22b0fcb4aea07f925294b79ab01ccc66491f53d59304ba",
-    "size": 214093
+    "sha256": "5395b8d1651535e4202797e5c8aecb47d4a5202811372a1f399f3f0ddb65f28a",
+    "size": 215187
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.1.9.apk?ref=main",
-    "sha256": "c2b4a19e2edea0b32332073768d83a809324b227e8f9e147d56d796e9ec4cf3b",
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.1.10.apk?ref=main",
+    "sha256": "72933c45f8543de110234afaf129fc2c7d19a14ad5642a7f4152b074bb6cd95c",
     "size": 2245814
   },
   "ios": {
-    "source_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-v4.1.9-source.zip?ref=main",
-    "sha256": "880e302a5c098bdc4279b2e76252b34b3e074fa4b257548a836d77d9736f342e",
-    "size": 4402333,
+    "source_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-v4.1.10-source.zip?ref=main",
+    "sha256": "1e455317eec38df0a7d698ced4e1f1140ddeff545441daa5fe0e377d62497026",
+    "size": 4402748,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-PWA-v4.1.9.zip?ref=main",
-    "sha256": "14216a78facd711773c0a7222a3c7aa8389877b1450bd5236c312927db911b06",
-    "size": 1703872,
+    "package_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-PWA-v4.1.10.zip?ref=main",
+    "sha256": "605a530aa397f1a9b561c9cac4b3bb887898a2f0580364551a8b42b6f9f57b4a",
+    "size": 1704554,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

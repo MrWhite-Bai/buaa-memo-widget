@@ -4,14 +4,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.9/BUAA-Memo-Windows-v4.1.9.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.9/BUAA-Memo-macOS-v4.1.9.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.9/BUAA-Memo-Android-v4.1.9.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.9/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.9/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.9/BUAA-Memo-iOS-v4.1.9-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.10/BUAA-Memo-Windows-v4.1.10.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.10/BUAA-Memo-macOS-v4.1.10.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.10/BUAA-Memo-Android-v4.1.10.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.10/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.10/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.10/BUAA-Memo-iOS-v4.1.10-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.9/BUAA-Memo-iOS-PWA-v4.1.9.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.10/BUAA-Memo-iOS-PWA-v4.1.10.zip)
 
 #### iOS 版当前限制
 
@@ -76,6 +76,8 @@ Android 版检测到新版本后，点击“可以更新”即可在 App 内自�
 
 首次配对成功后，电脑会记住局域网地址和同步令牌。手机端显示的同步页面可
 用来核对地址和配对码；未授权设备会收到 401 拒绝。
+当前事项和历史事项都会进入同步预览。完成、到期迁移和删除历史事项时，
+可同步全部变更，也可逐项选择需要应用到另一端的历史记录。
 
 手机版主页提供“电脑版下载”区域，可复制下载链接或通过系统分享发送到电脑。
 在电脑浏览器打开链接并登录平台后，即可下载 Windows 或 macOS 版本。
@@ -126,4 +128,4 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v4.1.9
+v4.1.10

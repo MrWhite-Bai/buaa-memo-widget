@@ -1,29 +1,28 @@
 {
-  "version": "3.5.2",
+  "version": "3.5.3",
   "published_at": "2026-10-21",
   "notes": [
-    "提醒铃声改为内置的“咳嗽两声”音效。",
-    "咳嗽音效使用系统闹钟音频通道播放。",
-    "响铃改为使用 MediaPlayer 直接播放内置音频。",
-    "振动改用闹钟用途属性，并延长为三段振动。",
-    "在支持振动用途属性的系统上优先使用闹钟振动通道。",
-    "保留“测试当前提醒”按钮，安装后可直接验证声音和振动。",
+    "提醒铃声改为柔和的双水滴滴落音效。",
+    "水滴音效使用系统闹钟音频通道播放。",
+    "新建和编辑事项时可在插件内部单独设置提醒音量，范围为 10% 到 100%。",
+    "提醒音量会随事项保存并在多端同步。",
+    "“测试当前提醒”会按设置的音量、响铃和振动方式执行。",
     "原有提醒时间、事项和分组数据保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.5.2-app-patch.zip?ref=main",
-    "sha256": "df20aae232c06695e8aea5861f7b13552d4a98be36a4d4055fa7d2d2f27eee65",
-    "size": 1479211
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.5.3-app-patch.zip?ref=main",
+    "sha256": "f7ed4d93405fd76486acecf247bc2592fe537390f95cefec4b4b310205b2bb07",
+    "size": 1708831
   },
   "mobile": {
-    "version": "3.5.2",
+    "version": "3.5.3",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "175fd5fad3b20cd49f26d150f1d6d1965be8bd1b693c8eb59bf711d08b2fffe5",
-    "size": 138140
+    "sha256": "985d91b9811d84e96131d528bb5fcebda9587cfc0282aaaec86a9762810b6d33",
+    "size": 140305
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.5.2.apk?ref=main",
-    "sha256": "2780af6b60ca86ef89e1dd274ae546c24883fc594da9df413306ea132b4fe006",
-    "size": 201446
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.5.3.apk?ref=main",
+    "sha256": "259c7b73c7560c220b7f9fca16fb62a00edfa0b2c712a05714d42dc194dbc5bf",
+    "size": 299824
   }
 }

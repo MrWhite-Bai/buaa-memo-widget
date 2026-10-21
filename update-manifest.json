@@ -1,29 +1,29 @@
 {
-  "version": "3.4.9",
-  "published_at": "2026-10-20",
+  "version": "3.5.0",
+  "published_at": "2026-10-21",
   "notes": [
-    "事项主页继续作为第一个界面，新增独立的第二个“分组”界面。",
-    "支持新建、编辑和删除分组，并可设置分组名称和简介。",
-    "编辑分组时可以勾选已有事项加入分组，也可取消勾选移出分组。",
-    "新建或编辑事项时可以选择所属分组，也可以选择不分组。",
-    "删除分组不会删除组内事项，事项会自动变为未分组。",
-    "分组记录随现有局域网和离线同步一起更新，电脑和手机均可查看。",
-    "原有倒计时、任务完成、事件、图片、提前通知和同步功能保持不变。"
+    "每个分组新增“查看事项”入口，可打开该分组的完整事项详情。",
+    "分组详情显示组内全部事项，包括进行中、已完成和已过期事项。",
+    "每个事项显示任务或事件类型、当前状态、剩余时间、起止时间和备注。",
+    "分组内有图片的事项可在详情中查看原图。",
+    "手机端可从分组详情直接编辑仍在进行中的事项。",
+    "电脑端新增对应的分组事项详情窗口，并会随数据变化刷新。",
+    "原有分组管理、事项倒计时、同步和提前通知功能保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.4.9-app-patch.zip?ref=main",
-    "sha256": "268a402b4bacbde1294f19d61710c6b0e9ca5911d77d1f3a56510e9dec42fd19",
-    "size": 1195194
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.5.0-app-patch.zip?ref=main",
+    "sha256": "067734d6f2d0d7e6e44d907b75f48ad7feabfef0d42f0028b4087dee794bd699",
+    "size": 1272811
   },
   "mobile": {
-    "version": "3.4.9",
+    "version": "3.5.0",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "287c91d8951d688f312657c199b42bdb75966fe2d9c4ccc355eec46fd4526b64",
-    "size": 126702
+    "sha256": "417187815f0f14dabc3b5941505c50d25bf8ec4d1f690e9344a3c98e7b568f6c",
+    "size": 135919
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.4.9.apk?ref=main",
-    "sha256": "92f93778b5bc2b213eeab7a4a0e30897ea5b721d503115b39eeea278d3994e5d",
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.5.0.apk?ref=main",
+    "sha256": "5c776dc399cc13da91061cde57a00f279e13a0ca7eabdd2532c52867916ce119",
     "size": 78497
   }
 }

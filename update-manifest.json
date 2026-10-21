@@ -1,30 +1,31 @@
 {
-  "version": "4.0.0",
+  "version": "4.1.0",
   "published_at": "2026-10-21",
   "notes": [
-    "电脑版和手机版应用显示名称统一升级为“BUAA浮光”。",
-    "电脑主窗口、各类子窗口、手机页面标题和提醒通知同步使用新名称。",
-    "Windows、Android、macOS、浏览器和 PWA 图标统一替换为海面月光与 B 字样图案。",
-    "Windows 启动程序更名为“BUAA浮光.exe”，并嵌入新应用图标。",
-    "Android 安装包显示名称、桌面图标和圆形图标同步更新。",
-    "macOS 应用名称升级为“BUAA浮光.app”，系统图标同步替换。",
-    "内部包名和 BUAA-Memo 发布文件名保持不变，确保覆盖安装和数据兼容。",
-    "原有事项、分组、图片、提醒、同步令牌和排版设置保持不变。"
+    "电脑版和手机版整体配色升级为淡蓝水面、柔光与简化印象派风格。",
+    "电脑版卡片、导航和背景改用低饱和海蓝色与米白水面配色。",
+    "手机版加入淡蓝水波纹理、柔光渐变和半透明水面卡片。",
+    "电脑版首页标语改为“浮光跃金，静影沉璧”。",
+    "手机版首页标语同步改为“浮光跃金，静影沉璧”。",
+    "点击任务型事项的“完成”后，卡片会向下漂移、逐渐褪成水色并缩小消失。",
+    "完成动画同时显示扩散水波涟漪，并播放柔和的水滴入水声。",
+    "电脑端使用内置水滴入水 WAV，手机端使用本地合成的低频水滴与水波声音。",
+    "完成时间、历史事项、多端同步和原有事项数据保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.0.0-app-patch.zip?ref=main",
-    "sha256": "309dcda84ccfa25935c32d37c62a192cba00e9054ddc663d9338f72fb5217269",
-    "size": 2517030
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.1.0-app-patch.zip?ref=main",
+    "sha256": "e7e3c7b319d74dbfb8fb674fd89aa491c986c6dc4485fb3fcea0b3aec1677a42",
+    "size": 2562008
   },
   "mobile": {
-    "version": "4.0.0",
+    "version": "4.1.0",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "6bd503cfcf848b22d91d14ec378501a59cf56bda9a9e203532a3a4fe4852c5e5",
-    "size": 162286
+    "sha256": "6929ee54f54caf961f51f2519310fc5be9a5f4ba1a967bba8b3d82b083704fc7",
+    "size": 168497
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.0.0.apk?ref=main",
-    "sha256": "192e0d0e13ad66befebe6d50f4a6587e53c461218905eab9a123d334f724751c",
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.1.0.apk?ref=main",
+    "sha256": "48b835aaef605039e2f2f4319499bcfaa77bfaaa104d478159b3506010f09fed",
     "size": 906032
   }
 }

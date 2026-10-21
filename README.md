@@ -4,9 +4,9 @@
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v4.0.0.zip)
-- [macOS 浏览器版](BUAA-Memo-macOS-v4.0.0.zip)
-- [Android APK](BUAA-Memo-Android-v4.0.0.apk)
+- [Windows 完整版](BUAA-Memo-Windows-v4.1.0.zip)
+- [macOS 浏览器版](BUAA-Memo-macOS-v4.1.0.zip)
+- [Android APK](BUAA-Memo-Android-v4.1.0.apk)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 
@@ -70,4 +70,4 @@ v3.5.2 起，弹窗只负责显示通知，响铃改为内置的柔和双水滴�
 
 ## 当前版本
 
-v4.0.0
+v4.1.0

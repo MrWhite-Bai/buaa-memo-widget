@@ -4,14 +4,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.6/BUAA-Memo-Windows-v4.1.6.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.6/BUAA-Memo-macOS-v4.1.6.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.6/BUAA-Memo-Android-v4.1.6.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.6/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.6/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.6/BUAA-Memo-iOS-v4.1.6-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.7/BUAA-Memo-Windows-v4.1.7.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.7/BUAA-Memo-macOS-v4.1.7.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.7/BUAA-Memo-Android-v4.1.7.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.7/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.7/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.7/BUAA-Memo-iOS-v4.1.7-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.6/BUAA-Memo-iOS-PWA-v4.1.6.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.1.7/BUAA-Memo-iOS-PWA-v4.1.7.zip)
 
 #### iOS 版当前限制
 
@@ -126,4 +126,4 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v4.1.6
+v4.1.7

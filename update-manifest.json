@@ -1,29 +1,29 @@
 {
-  "version": "3.5.0",
+  "version": "3.5.1",
   "published_at": "2026-10-21",
   "notes": [
-    "每个分组新增“查看事项”入口，可打开该分组的完整事项详情。",
-    "分组详情显示组内全部事项，包括进行中、已完成和已过期事项。",
-    "每个事项显示任务或事件类型、当前状态、剩余时间、起止时间和备注。",
-    "分组内有图片的事项可在详情中查看原图。",
-    "手机端可从分组详情直接编辑仍在进行中的事项。",
-    "电脑端新增对应的分组事项详情窗口，并会随数据变化刷新。",
-    "原有分组管理、事项倒计时、同步和提前通知功能保持不变。"
+    "弹窗提醒现在只负责显示通知，不再依赖通知渠道播放声音和振动。",
+    "响铃由 App 直接播放默认通知铃声，振动由 App 直接触发。",
+    "使用新的弹窗通知渠道，避免旧渠道被系统静音后继续影响提醒。",
+    "通知栏、响铃、振动仍可任意组合使用。",
+    "新建或编辑事项的提前通知区域新增“测试当前提醒”按钮。",
+    "点击测试按钮后会在 3 秒后按当前勾选方式触发一次提醒。",
+    "原有准时闹钟、事项和分组数据保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.5.0-app-patch.zip?ref=main",
-    "sha256": "067734d6f2d0d7e6e44d907b75f48ad7feabfef0d42f0028b4087dee794bd699",
-    "size": 1272811
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-3.5.1-app-patch.zip?ref=main",
+    "sha256": "b0a46e54eb46cf4ac341fcb7fcf253855566d43fff75915880fe6995d47fc9f9",
+    "size": 1348207
   },
   "mobile": {
-    "version": "3.5.0",
+    "version": "3.5.1",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "417187815f0f14dabc3b5941505c50d25bf8ec4d1f690e9344a3c98e7b568f6c",
-    "size": 135919
+    "sha256": "cb66b6e078293c6ce05b0e84b60d762f2b98dc76670705a4fc674661c642da83",
+    "size": 137573
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.5.0.apk?ref=main",
-    "sha256": "5c776dc399cc13da91061cde57a00f279e13a0ca7eabdd2532c52867916ce119",
-    "size": 78497
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v3.5.1.apk?ref=main",
+    "sha256": "d803973e002656f797d878898769632e1cdeb981a4d1d372d0aa0a2ff175fcae",
+    "size": 82593
   }
 }

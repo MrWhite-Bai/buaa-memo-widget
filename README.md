@@ -4,9 +4,9 @@
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v3.5.0.zip)
-- [macOS 浏览器版](BUAA-Memo-macOS-v3.5.0.zip)
-- [Android APK](BUAA-Memo-Android-v3.5.0.apk)
+- [Windows 完整版](BUAA-Memo-Windows-v3.5.1.zip)
+- [macOS 浏览器版](BUAA-Memo-macOS-v3.5.1.zip)
+- [Android APK](BUAA-Memo-Android-v3.5.1.apk)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 
@@ -51,6 +51,10 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 通知栏、响铃和振动，并可任意组合。提醒由 Android 系统定时器执行，App
 关闭后仍然有效；手机重启后会自动重新安排尚未到期的提醒。
 
+v3.5.1 起，弹窗只负责显示通知，响铃和振动由 App 直接执行，不再受旧
+通知渠道静音设置影响。编辑事项时可在“提前通知”区域点击“测试当前提醒”，
+按当前勾选方式触发一次 3 秒后的测试提醒。
+
 手机周视图采用竖屏三列课程表，今天、明天和后天的 `00:00–23:59`
 会在同一屏幕内完整显示，无需上下或左右滚动。
 
@@ -61,4 +65,4 @@ Windows 版解压后双击 `BUAA备忘.exe` 运行，不需要安装 Python。
 
 ## 当前版本
 
-v3.5.0
+v3.5.1

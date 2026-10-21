@@ -4,13 +4,20 @@
 
 ## 下载
 
-- [Windows 完整版](BUAA-Memo-Windows-v4.1.0.zip)
-- [macOS 浏览器版](BUAA-Memo-macOS-v4.1.0.zip)
-- [Android APK](BUAA-Memo-Android-v4.1.0.apk)
+- [Windows 完整版](BUAA-Memo-Windows-v4.1.1.zip)
+- [macOS 浏览器版](BUAA-Memo-macOS-v4.1.1.zip)
+- [Android APK](BUAA-Memo-Android-v4.1.1.apk)
 - [手机离线版 HTML](BUAA-Memo-Offline.html)
 - [版本更新清单](update-manifest.json)
 
 Windows 版解压后双击 `BUAA浮光.exe` 运行，不需要安装 Python。
+电脑版使用与手机版一致的一体化星夜和江面界面，并以独立桌面窗口运行。
+
+## 历史事项
+
+事项到达截止时间或结束时间后，会继续保留在主页 24 小时，并显示距离
+自动归档的剩余时间。满 24 小时后会自动进入历史事项。到期后的这 24 小时
+内，任务仍可手动标记为完成；主动完成的任务会立即进入历史事项。
 
 ## 更新方式
 
@@ -68,6 +75,13 @@ v3.5.2 起，弹窗只负责显示通知，响铃改为内置的柔和双水滴�
 备忘录数据只保存在用户自己的电脑和手机中，不会上传到本仓库。
 本仓库只保存程序、更新清单和公开的通用离线页面。
 
+## 视觉素材
+
+界面使用了以下公有领域画作作为背景素材，并通过裁切、调色和合成用于界面：
+
+- Vincent van Gogh, *The Starry Night*, 1889, Wikimedia Commons.
+- Claude Monet, *Water Lilies*, 1906, Wikimedia Commons.
+
 ## 当前版本
 
-v4.1.0
+v4.1.1

@@ -1,31 +1,33 @@
 {
-  "version": "4.1.0",
+  "version": "4.1.1",
   "published_at": "2026-10-21",
   "notes": [
-    "电脑版和手机版整体配色升级为淡蓝水面、柔光与简化印象派风格。",
-    "电脑版卡片、导航和背景改用低饱和海蓝色与米白水面配色。",
-    "手机版加入淡蓝水波纹理、柔光渐变和半透明水面卡片。",
-    "电脑版首页标语改为“浮光跃金，静影沉璧”。",
-    "手机版首页标语同步改为“浮光跃金，静影沉璧”。",
-    "点击任务型事项的“完成”后，卡片会向下漂移、逐渐褪成水色并缩小消失。",
-    "完成动画同时显示扩散水波涟漪，并播放柔和的水滴入水声。",
-    "电脑端使用内置水滴入水 WAV，手机端使用本地合成的低频水滴与水波声音。",
-    "完成时间、历史事项、多端同步和原有事项数据保持不变。"
+    "手机版顶部改为克莱因蓝星夜，夜空与江面之间使用清晰的渐变水平分界。",
+    "江面背景改用连续的莫奈睡莲水面素材，完整覆盖事项列表和卡片之间的空白。",
+    "事项卡片保持原有奶油白配色和操作布局，阅读性与可点击区域不变。",
+    "电脑版改用与手机一致的一体化桌面界面，去掉原先割裂的水带和工具栏。",
+    "电脑版窗口扩大为适合桌面使用的宽屏布局，事项列表与顶部内容居中对齐。",
+    "事项到期后先在主页面保留 24 小时，并实时显示距离归档的剩余时间。",
+    "到期满 24 小时后自动进入历史事项；主动完成的任务仍会立即归档。",
+    "到期后 24 小时内的任务仍可手动点击“完成”。",
+    "修复点击“完成”后偶尔无响应的问题，完成状态会先保存和同步，再播放松水动画。",
+    "减少背景重绘并启用图片延迟加载，改善低性能手机打开和滚动时的流畅度。",
+    "原有分组、图片、提醒、同步、更新检查与周视图功能保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.1.0-app-patch.zip?ref=main",
-    "sha256": "e7e3c7b319d74dbfb8fb674fd89aa491c986c6dc4485fb3fcea0b3aec1677a42",
-    "size": 2562008
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.1.1-app-patch.zip?ref=main",
+    "sha256": "d98c2cc94c7082dfa4b519af8f49e7c5400d811d15b55e19d5b90f37e13d807f",
+    "size": 18420489
   },
   "mobile": {
-    "version": "4.1.0",
+    "version": "4.1.1",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "6929ee54f54caf961f51f2519310fc5be9a5f4ba1a967bba8b3d82b083704fc7",
-    "size": 168497
+    "sha256": "ca92e534539d874a8ede08c32ef30aa88ec66dd473edac5c8347df8db73c8126",
+    "size": 175361
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.1.0.apk?ref=main",
-    "sha256": "48b835aaef605039e2f2f4319499bcfaa77bfaaa104d478159b3506010f09fed",
-    "size": 906032
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.1.1.apk?ref=main",
+    "sha256": "d21aed0bf93e818220cf25353be2e22c58471bc53b91eb9908f99454ce5e643c",
+    "size": 2233526
   }
 }

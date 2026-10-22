@@ -1,42 +1,39 @@
 {
-  "version": "4.4.0",
+  "version": "4.4.1",
   "published_at": "2026-10-22",
   "notes": [
-    "新建事件时，确认开始日期后会自动把结束日期同步到同一天。",
-    "提前提醒新增可配置的默认搭配，支持默认提前时间以及通知栏、响铃、振动方式。",
-    "每次新建事项都可以选择使用默认提醒搭配，或改用单独设置。",
-    "新建和编辑事项新增可选地点字段，电脑端与手机端会同步显示地点。",
-    "新建事项和已有事项均可选择置顶或取消置顶，置顶数量不限。",
-    "置顶事项会排在主页最前面，并在卡片上显示金色置顶标记。",
-    "手机端同步成功后隐藏 IP、端口和设备编号，只显示“手机同步已开启”。",
-    "green:特别鸣谢 26 级本科生于林毅，本次所有修改均采纳自他的建议。"
+    "修复测试提前提醒时因 WakeLock 锁级别组合无效而导致的闪退。",
+    "锁屏提醒改为在亮屏锁和普通局部锁之间正确二选一。",
+    "通知栏、亮屏和全屏提醒增加异常隔离，单个厂商限制不会再终止整个 App。",
+    "测试提醒现在可以正常执行通知栏、水滴响铃和振动组合。",
+    "原有事项、分组、图片、同步令牌和提醒设置保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.4.0-app-patch.zip?ref=main",
-    "sha256": "472ed375d8c21b987c26e17bd06374381825f4bca2a663834a433e7ca26bddbc",
-    "size": 22092580
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.4.1-app-patch.zip?ref=main",
+    "sha256": "953aaec4d75e7becd7cc733e8628d7e2717049244674fb6fe7c787a1e1645ca0",
+    "size": 22371906
   },
   "mobile": {
-    "version": "4.4.0",
+    "version": "4.4.1",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "0f3e2791245d6e0caa9a1317f6588af0de52b828fee2b5a3a3c92cedbf08b5ea",
-    "size": 254503
+    "sha256": "1ea6cccbfdac74706b066b260e68695f23dd5f68434dc1d1eea949ef642d73e1",
+    "size": 255024
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.4.0.apk?ref=main",
-    "sha256": "44bf0834f776cb0e97dc0dcfc60005f543d869c1a1e53c1db6ac0fcc1455ad25",
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.4.1.apk?ref=main",
+    "sha256": "f3e5149ca15e8d44c7b6f4d6a0997adcf683f5f519eedb85354399b076210f88",
     "size": 2262280
   },
   "ios": {
-    "source_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-v4.4.0-source.zip?ref=main",
-    "sha256": "710a2e7842c5b28d01651b2f30f17b97d6385bc58ed88f1a0071deaf004cbbb7",
-    "size": 4414701,
+    "source_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-v4.4.1-source.zip?ref=main",
+    "sha256": "ab8e0426ef7d3f9b3faf6ded86fab92c697f6d8bd8c43070128302ed3ba59ae8",
+    "size": 4415125,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-PWA-v4.4.0.zip?ref=main",
-    "sha256": "673ae2d12d3141d77e586e9fd8d4206e9ce3c5cb06eddaa0e2996bb14cc5cdc6",
-    "size": 1725619,
+    "package_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-PWA-v4.4.1.zip?ref=main",
+    "sha256": "b41cbdf4b7deb83990b3cd695e2d2484b1dd927dbc03283d14b31ba685365ee2",
+    "size": 1726277,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

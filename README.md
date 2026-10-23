@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v4.4.1 为内测版本。首次在每台设备上打开时，需要输入管理员分配的内测密钥；验证成功后会显示“内测用户”身份。
+> v4.7.4 为内测版本。首次在每台设备上打开时，需要输入管理员分配的内测密钥；验证成功后会显示“内测用户”身份。
 
 ## 手机版下载选择
 
@@ -10,7 +10,7 @@
 [国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
 并登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v4.4.1.apk`，允许系统安装未知来源应用，安装后用内测密钥登录。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v4.7.4.apk`，允许系统安装未知来源应用，安装后用内测密钥登录。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开并用内测密钥登录。
@@ -20,14 +20,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.4.1/BUAA-Memo-Windows-v4.4.1.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.4.1/BUAA-Memo-macOS-v4.4.1.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.4.1/BUAA-Memo-Android-v4.4.1.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.4.1/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.4.1/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.4.1/BUAA-Memo-iOS-v4.4.1-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.7.4/BUAA-Memo-Windows-v4.7.4.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.7.4/BUAA-Memo-macOS-v4.7.4.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.7.4/BUAA-Memo-Android-v4.7.4.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.7.4/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.7.4/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.7.4/BUAA-Memo-iOS-v4.7.4-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.4.1/BUAA-Memo-iOS-PWA-v4.4.1.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v4.7.4/BUAA-Memo-iOS-PWA-v4.7.4.zip)
 
 #### iOS 版当前限制
 
@@ -116,6 +116,22 @@ v3.5.2 起，弹窗只负责显示通知，响铃改为内置的柔和双水滴�
 
 v4.4.1 修复了 Android 测试提醒因 WakeLock 锁级别组合无效而闪退的问题。
 
+## Android 局域网好友
+
+v4.5.0 开放 Android 与 iOS 之间的好友内测。底部导航为“事项 / 分组 / 我的”三栏，好友功能集中在“我的”页面。每台手机根据配对码和设备私密密钥生成独立好友码，原始配对码不会作为好友码公开。
+
+“我的”页面支持设置最多 20 个字符的账号昵称。昵称保存在本机，并会通过加密好友消息同步给已添加的好友；好友离线时会在下一次连接或 Android 中继补发时更新。
+
+Android 和 iOS 原生 App 的好友双方需连接同一 Wi-Fi 或热点。输入好友码并发出请求后，对方必须手动确认。好友可以发送端到端加密的文字消息，也可以把单个事项分享给对方。好友离线时，消息保存在发送方待发队列中，双方同时在线后自动补发。iOS PWA 受系统后台限制，不提供独立好友监听服务。
+
+Android 还可以临时充当局域网中继：iOS 离线时，Android 先保存加密消息；iOS 下一次打开并连接同一网络时主动拉取。若 Android 离线，iOS 发出的消息保留在 iOS 本地，直到两端再次同时在线。
+
+Android 14 及以上系统建议保持“闹钟和提醒”权限开启。浮光现在使用高优先级精确闹钟，并会在用户从系统授权页返回后立即重新调度所有未到期提醒，避免提醒被系统延迟到下次打开 App。
+
+Android 首次启动会显示“开启提醒保障”页面，逐项说明并引导开启通知权限、闹钟和提醒、电池不受限制及自启动。未开启时页面会写明提醒延迟或不响的后果；选择稍后设置后，下次启动仍会继续提醒。
+
+电脑版和普通浏览器版暂不启用好友协议，界面会显示功能说明；Android 与 iOS 已使用同一身份和消息格式。
+
 手机周视图采用竖屏三列课程表，今天、明天和后天的 `00:00–23:59`
 会在同一屏幕内完整显示，无需上下或左右滚动。
 
@@ -149,4 +165,4 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v4.4.1
+v4.7.4

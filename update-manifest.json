@@ -1,41 +1,40 @@
 {
-  "version": "4.7.4",
+  "version": "4.7.6",
   "published_at": "2026-10-23",
   "notes": [
-    "Android 札记编辑窗口改为随软键盘自动缩放，不再让键盘直接覆盖编辑区域。",
-    "札记编辑页会读取手机实际可视高度，在键盘弹出、尺寸变化时同步调整页面高度。",
-    "点击正文、切换光标和输入文字后，会自动把当前编辑位置滚动到键盘上方。",
-    "键盘弹出动画期间会连续校正光标位置，避免第一次滚动后仍被键盘挡住。",
-    "札记规则栏新增醒目的“粘贴”按钮，可直接打开智能粘贴、纯文字粘贴和取消选项。",
-    "使用粘贴按钮时会先记住当前光标并收起键盘，粘贴完成后再恢复编辑。",
-    "双击选字、三连击粘贴、长按或右键编辑公式的规则保持不变。"
+    "修复粘贴解析器遇到中文时提前截断 LaTeX 公式的问题。",
+    "花括号组现在支持嵌套，并允许 \\text{...} 中包含中文。",
+    "新增 \\boxed 和 \\fbox 框线公式识别。",
+    "对于被复制应用截断的未闭合公式，会自动补齐缺失的结束花括号。",
+    "包含中文说明文字的完整公式不会再被拆成公式片段和普通文本。",
+    "已验证“Ax=b 的通解 = 一个特解 + Ax=0 的通解”框线公式可完整粘贴和渲染。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.7.4-app-patch.zip?ref=main",
-    "sha256": "61b06f4fec5e3cf0a759ec2dd97cd074a32a7b9c223fab36895c178cf0bb7f10",
-    "size": 23504480
+    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.7.6-app-patch.zip?ref=main",
+    "sha256": "6c9d6bc3d0965efa6e7b7e38399ed763a11b7db5df576c574f0ffb0dee083ec3",
+    "size": 23507360
   },
   "mobile": {
-    "version": "4.7.4",
+    "version": "4.7.6",
     "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "e4d11179a6db3dbf9c7ce5b40d5d7f315d5f06726a98aec8da96679e90948192",
-    "size": 1241439
+    "sha256": "467866401b68026201ee40433b7a99382d880352d4c246de4759953edd67c195",
+    "size": 1244137
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.7.4.apk?ref=main",
-    "sha256": "3a1df91ce8430e63382999c3c24154d43ea6c77232e210c4c6a6491a349c0af6",
-    "size": 2702739
+    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.7.6.apk?ref=main",
+    "sha256": "fd5ad134e28884646767f15283e1ae7313f1d78199ed15e104873bc5ea49b298",
+    "size": 2706835
   },
   "ios": {
-    "source_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-v4.7.4-source.zip?ref=main",
-    "sha256": "32eaecbbc3fc18931c0f1975d253440bf73d6a6d59f947c26e10edab6156f686",
-    "size": 4846931,
+    "source_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-v4.7.6-source.zip?ref=main",
+    "sha256": "e9bb50c6ac709bd3110c45d855ece5387044973153ec5f7d14bdeed2ab278479",
+    "size": 4848211,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-PWA-v4.7.4.zip?ref=main",
-    "sha256": "ddb963ee111b80e4d61d42ae0b8a94cd50f68712159f90f0d3b9ccae7671f972",
-    "size": 2223757,
+    "package_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-PWA-v4.7.6.zip?ref=main",
+    "sha256": "1e5fa1337dd59a9c635ae4c4ccab00336c8204434a2c9352a4876bed1d392c26",
+    "size": 2225876,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

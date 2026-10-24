@@ -2,7 +2,9 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.0 公测正式开始。应用无需内测密钥，下载或打开后即可直接使用。开发者兑换码仍可自愿用于解锁开发者身份。
+> v6.0.2 修复札记编辑时的正文抖动，以及触摸选区手柄拖到底部后持续滚入空白区域的问题。应用继续无需内测密钥，下载或打开后即可直接使用。
+
+本次修复札记正文在输入、选择文字、长文滚动和键盘高度变化时反复上下抖动的问题；在触摸设备上，选区手柄触底后会暂时阻止自动滚动，松手后恢复。现有札记数据与排版保持不变。
 
 ## 手机版下载选择
 
@@ -10,7 +12,7 @@
 [国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
 并登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.0.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.2.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -20,14 +22,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-Windows-v6.0.0.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-macOS-v6.0.0.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-Android-v6.0.0.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-iOS-v6.0.0-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-Windows-v6.0.2.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-macOS-v6.0.2.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-Android-v6.0.2.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-iOS-v6.0.2-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-iOS-PWA-v6.0.0.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-iOS-PWA-v6.0.2.zip)
 
 #### iOS 版当前限制
 
@@ -233,7 +235,13 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.0.0
+v6.0.2
+
+- 修复触摸屏上双击选择文字后，将选区手柄拖向编辑区底部时页面持续滚动到空白区域的问题。
+- 选区手柄触底后短暂锁定当前正文位置，松手约 0.65 秒后自动恢复手动滚动。
+- 修复札记正文在输入、选择文字、长文滚动和键盘高度变化时反复上下抖动的问题。
+- 停止逐键强制校正编辑区滚动位置，键盘可视区域变化时只同步一次高度并保持当前位置。
+- 修正键盘和网页可视区域同时变化时重复扣减高度的问题，改善中文输入法候选栏切换时的跳动。
 
 - **公测正式开始。**
 - 移除启动密钥验证，所有用户打开应用后即可直接使用。

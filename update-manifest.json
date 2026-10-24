@@ -1,40 +1,44 @@
 {
-  "version": "4.7.6",
-  "published_at": "2026-10-23",
+  "version": "6.0.0",
+  "published_at": "2026-10-24",
   "notes": [
-    "修复粘贴解析器遇到中文时提前截断 LaTeX 公式的问题。",
-    "花括号组现在支持嵌套，并允许 \\text{...} 中包含中文。",
-    "新增 \\boxed 和 \\fbox 框线公式识别。",
-    "对于被复制应用截断的未闭合公式，会自动补齐缺失的结束花括号。",
-    "包含中文说明文字的完整公式不会再被拆成公式片段和普通文本。",
-    "已验证“Ax=b 的通解 = 一个特解 + Ax=0 的通解”框线公式可完整粘贴和渲染。"
+    "公测正式开始",
+    "移除所有平台启动时的内测密钥验证，打开应用后可以直接使用。",
+    "默认用户身份更新为“公测用户”，无需填写或保存任何激活密钥。",
+    "开发者兑换码仍可用于升级开发者身份，原有事项、札记、分组和展柜数据保持不变。"
   ],
   "desktop": {
-    "patch_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-4.7.6-app-patch.zip?ref=main",
-    "sha256": "6c9d6bc3d0965efa6e7b7e38399ed763a11b7db5df576c574f0ffb0dee083ec3",
-    "size": 23507360
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-6.0.0-app-patch.zip",
+    "sha256": "034af4ad4f4cd62a3c6b0bec6597edabf7cec1f745e543de7ce83ef4d09d4b2d",
+    "size": 66573881
   },
   "mobile": {
-    "version": "4.7.6",
-    "offline_html_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Offline.html?ref=main",
-    "sha256": "467866401b68026201ee40433b7a99382d880352d4c246de4759953edd67c195",
-    "size": 1244137
+    "version": "6.0.0",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-Offline.html",
+    "sha256": "fb655a069fac8006236fb2dbbae9772b014af4592d9ff0c62ddc109d9a18cb0c",
+    "size": 31018216
   },
   "android": {
-    "apk_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-Android-v4.7.6.apk?ref=main",
-    "sha256": "fd5ad134e28884646767f15283e1ae7313f1d78199ed15e104873bc5ea49b298",
-    "size": 2706835
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-Android-v6.0.0.apk",
+    "sha256": "a6b8063e091a522f17b386b0d0d0463061fee15eb36a296a0719655808da2e57",
+    "size": 23900001
+  },
+  "macos": {
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-macOS-v6.0.0.zip",
+    "sha256": "0222f899216bd947a1818dcd1c3db39b53c10dd21aea6a86c3b44cd6d0dab54e",
+    "size": 49889026,
+    "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-v4.7.6-source.zip?ref=main",
-    "sha256": "e9bb50c6ac709bd3110c45d855ece5387044973153ec5f7d14bdeed2ab278479",
-    "size": 4848211,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-iOS-v6.0.0-source.zip",
+    "sha256": "8c6db4b9e4d70436f104a8a48714971f8a262fba50605bee312f326d0ebac767",
+    "size": 26760545,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://api.github.com/repos/MrWhite-Bai/buaa-memo-widget/contents/BUAA-Memo-iOS-PWA-v4.7.6.zip?ref=main",
-    "sha256": "1e5fa1337dd59a9c635ae4c4ccab00336c8204434a2c9352a4876bed1d392c26",
-    "size": 2225876,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.0/BUAA-Memo-iOS-PWA-v6.0.0.zip",
+    "sha256": "5af9c5decf97b0a05c4d40daf470dcc1488b1ad6dbe50a19fa431ca9d664b8f4",
+    "size": 24199001,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

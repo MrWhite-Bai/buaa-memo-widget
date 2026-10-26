@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.11 新增章节内事项与札记管理，并支持按日期下限筛选分组和章节中的已有札记。应用继续无需内测密钥，下载或打开后即可直接使用。
+> v6.0.12 在目录页直接管理章节，并支持从章节中批量加入尚未归档的事项和札记。应用继续无需内测密钥，下载或打开后即可直接使用。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
 并登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.9.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.12.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -22,14 +22,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-Windows-v6.0.9.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-macOS-v6.0.9.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-Android-v6.0.9.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-iOS-v6.0.9-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-Windows-v6.0.12.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-macOS-v6.0.12.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-Android-v6.0.12.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-iOS-v6.0.12-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-iOS-PWA-v6.0.9.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-iOS-PWA-v6.0.12.zip)
 
 #### iOS 版当前限制
 
@@ -235,7 +235,14 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.0.11
+v6.0.12
+
+- 在分组中打开目录后，可直接新增章节或删除目录中的章节。
+- 删除章节时，章节中的事项和札记会自动迁移到当前目录的第一个章节。
+- 章节的“添加已有事项或札记”会排除已经属于任意章节的内容。
+- 事项和札记支持多选，并可一次添加到当前章节。
+- 新增全选、已选数量和批量添加操作。
+- 修复章节页“新增事项”和“新增札记”编辑器被遮挡的问题。
 
 - 打开目录章节后可直接新增事项或札记，创建时自动带入当前分组、目录和章节。
 - 章节中的札记卡片新增删除按钮，事项和札记删除后章节立即刷新。

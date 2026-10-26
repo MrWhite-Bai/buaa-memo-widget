@@ -1,47 +1,47 @@
 {
-  "version": "6.0.11",
+  "version": "6.0.12",
   "published_at": "2026-10-26",
   "notes": [
-    "打开目录章节后新增“新增事项”和“新增札记”按钮，创建时会自动带入当前分组、目录和章节。",
-    "章节中的札记卡片新增“删除札记”按钮；事项继续可通过卡片删除，删除后章节页面立即刷新。",
-    "分组“添加已有事项”候选只显示尚未结束的事项和未删除的札记；过期任务、已结束事件及历史事项不再出现。",
-    "分组“添加已有事项”新增“札记日期下限”，只筛选札记，不影响任务和事件候选；可一键恢复全部日期。",
-    "章节页新增“添加已有札记”。在弹出的札记列表中同样可以设置日期下限，过滤很久以前的札记，并将选中的札记直接移动到当前章节。",
-    "目录和章节操作按钮在手机端独立换行，默认目录重命名入口保持可见。",
-    "编辑已有分组时，候选事项和札记默认不勾选；未勾选保存不会移除现有成员。"
+    "在分组中打开目录后，可直接新增章节或删除目录中的章节，无需返回分组编辑器。",
+    "删除章节时，章节中的事项和札记会自动迁移到当前目录的第一个章节，不会丢失内容。",
+    "章节的“添加已有事项或札记”会排除已经属于任意章节的内容，避免重复归档。",
+    "章节内容选择器现在同时列出可加入的事项和札记，并支持一次勾选多项。",
+    "新增“全选当前列表”“已选数量”和“添加选中项到本章节”操作。",
+    "修复章节页“新增事项”和“新增札记”编辑器被分组全屏层遮挡的问题。",
+    "札记日期下限继续只过滤札记，事项候选和批量选择状态不受影响。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-6.0.11-app-patch.zip",
-    "sha256": "65080c5115322e01ba49a09daa406d7783fd9f30c01adbf94f371eef21612f1d",
-    "size": 72639493
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-6.0.12-app-patch.zip",
+    "sha256": "de5544122ed314a938c69ee8ef788fa2071282accad407b44529987eed95ce12",
+    "size": 72645059
   },
   "mobile": {
-    "version": "6.0.11",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-Offline.html",
-    "sha256": "713aec61fc0d0ed495e6267d568548eae59cb84bd01aa59811017848334d3c1d",
-    "size": 35188959
+    "version": "6.0.12",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-Offline.html",
+    "sha256": "f9e78816087207fb9d9fbbf6e135c2dc1be7e6c8d4ba850045eee47ad329169c",
+    "size": 35202858
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-Android-v6.0.11.apk",
-    "sha256": "f0a700a4776e567ff498b3267fd90a6d883454cb26324c616b7f451f51407154",
-    "size": 26941241
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-Android-v6.0.12.apk",
+    "sha256": "c7e4f9310885eda289cb3917e6951f4d98e4c96e87fa9de6ed81a54679eb75bf",
+    "size": 26945337
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-macOS-v6.0.11.zip",
-    "sha256": "a4b4c585752b82ca3069f229b95231c067c5ba1e4eb2230ec8b644d03445c84d",
-    "size": 55944201,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-macOS-v6.0.12.zip",
+    "sha256": "ec068aa8621cda9ba63e56040e83e64a7f5fa40f681b9b0e5c9cefadfcb28e2c",
+    "size": 55947331,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-iOS-v6.0.11-source.zip",
-    "sha256": "b20dc9101950fcdbec47fe73ac5eb6be969ffcbdcaac699b1dd773b8b0634bae",
-    "size": 29796450,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-iOS-v6.0.12-source.zip",
+    "sha256": "5d0795570921b3393ee6ab27e12ac8ab75c9d42101f4a88c7f72f42c1eec0ccf",
+    "size": 29799267,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-iOS-PWA-v6.0.11.zip",
-    "sha256": "6755f99e204d92d16c3c588954645f80f749d150fdb9824c8caf7f10c819fc70",
-    "size": 27265776,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.12/BUAA-Memo-iOS-PWA-v6.0.12.zip",
+    "sha256": "538b6f93ffab942302c4e03c4931f96b53ae2ba61efd02e0f017e1814b681a03",
+    "size": 27271174,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

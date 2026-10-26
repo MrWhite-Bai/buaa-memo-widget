@@ -32,5 +32,6 @@
 - `calendar-half-year.svg`：Delapouite
 - `eclipse-flare.svg`：Lorc
 - `open-treasure-chest.svg`：Skoll
+- `flower-pot.svg`：Lorc
 
 Icons made by Lorc, Delapouite, Caro Asercion and Skoll.

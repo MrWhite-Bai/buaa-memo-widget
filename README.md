@@ -2,9 +2,9 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.8 新增长按拖动排序、分组页全文搜索和未定事项。分组、目录、章节都可以长按后上下拖动；搜索“矩阵”会同时显示“过渡矩阵”“转置矩阵”和正文包含该词的札记。
+> v6.0.9 新增隐藏成就“朝花夕拾”、六位其它印象派画家的画作与对应信纸，并加入海淀区天气、紧凑事项卡片和事项详情页。应用继续无需内测密钥，下载或打开后即可直接使用。
 
-“事项”页新增“未定事项”入口，适合记录暂时没有截止日期、没有持续时间、也不需要提醒的待办事项。未定事项仍可编辑、置顶、添加图片、加入分组和章节，完成后会进入历史事项。
+未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
 ## 手机版下载选择
 
@@ -12,7 +12,7 @@
 [国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
 并登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.8.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.9.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -22,14 +22,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-Windows-v6.0.8.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-macOS-v6.0.8.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-Android-v6.0.8.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-iOS-v6.0.8-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-Windows-v6.0.9.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-macOS-v6.0.9.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-Android-v6.0.9.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-iOS-v6.0.9-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-iOS-PWA-v6.0.8.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-iOS-PWA-v6.0.9.zip)
 
 #### iOS 版当前限制
 
@@ -235,52 +235,26 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.0.8
+v6.0.9
 
-- 长按分组卡片后可拖动调整分组顺序，顺序会持久保存。
-- 分组编辑中的目录与章节可分别长按拖动排序，保存分组后生效。
-- 分组页搜索覆盖事项标题、备注、地点，以及札记标题、简介和正文。
-- 搜索支持多关键词匹配，标题命中会优先显示，并可点击直达编辑或阅读。
-- 事项页新增“未定事项”按钮，不要求截止日期、持续时间或提醒。
-- 事项编辑器新增“未定 · 无截止时间”类型，可与其他事项类型切换。
-- 未定事项支持置顶、图片、分组和章节，并可通过“完成”进入历史事项。
+- “未定事项”不再作为任务型、事件型和定期型之外的第四个类型按钮。
+- 未定事项只在独立页面中显示，可在该页面新增、查看、编辑、置顶、完成和删除。
+- 新增隐藏成就“朝花夕拾”，累计完成十次处于历史迁移宽限期内的过期事项后解锁。
+- 新成就使用晨光摇曳与飘落花瓣动态勋章；系统开启“减少动态效果”时自动停止动画。
+- 画廊新增雷诺阿、德加、毕沙罗、莫里索、卡萨特和西斯莱六幅公版画作及对应信纸。
+- 画廊总数扩展为 18 幅，收藏目标与“满藏星辉”隐藏成就同步更新。
+- 天气改为北京市海淀区坐标和地名，显示海淀区当前温度及当日高低温。
+- “事项”主页只显示标题、简介、地点和剩余时间；点击卡片进入详情页后再查看和操作其它信息。
+- 长按拖动分组、目录或章节时，周边卡片会平滑让位并跟随换位。
+- 目录和章节使用更大的拖动握把和触摸容差，长按时轻微手指偏移不会取消拖动。
+- 拖动卡片增加轻微缩放、阴影和振动反馈，松手后立即保存并同步顺序。
+- 系统开启“减少动态效果”时自动关闭位移动画。
 
-- 图片大小滑杆为 100% 时，图片宽度自动补偿正文左右内边距并贴到屏幕边缘。
-- 阅读札记时 100% 图片会同时补偿阅读页外层与正文内边距。
-- 20%–99% 图片继续保持正文内居中缩放，不影响文字排版。
-- 100% 图片取消左右圆角，右下角缩放手柄保持可用。
-- 已有 100% 图片自动适配，无需重新插入或调整。
-
-- 正常成就和高级成就升级为初级、中级、高级三个阶段。
-- 每次升级自动提升勋章光环、星环、高光扫过和粒子效果的华丽程度。
-- 中级奖励为初级 4 倍，高级奖励为初级 16 倍。
-- 新增章节目录、图片札记、跨功能里程碑和好友规模四类高级成就。
-- 新增同一章节积累、图片札记、单日完成、四种内容和全画作收藏五项隐藏成就。
-- 新增档案、书卷、藏图、奖杯、星轮、时轮、蚀日和秘藏宝箱八种动态勋章素材。
-- 旧成就自动迁移到初级，已发放的奖励不会重复扣除或发放。
-
-- 分组目录新增章节层级，导航顺序为分组、目录、章节、事项与札记。
-- 目录打开后仅显示章节，不会再提前显示事项或札记。
-- 进入章节后显示完整事项卡片和札记标题、简介摘要。
-- 分组编辑支持为每个目录新增、重命名和删除章节。
-- 事项、札记和历史事项加入分组时都可选择目录与章节。
-- 旧数据自动迁移到每个目录的默认章节，原有内容不会丢失。
-- 札记阅读和编辑页面都能打开全屏图片，图片左右铺满手机屏幕。
-
-- 智能粘贴优先读取 MathML `alttext`、KaTeX TeX 标注和公式数据属性。
-- 自动修复矩阵中被压缩成单个反斜杠的 `\\1`、`\\2` 换行。
-- 自动兼容 `\\[2pt]`、`\\ [2pt]`、`\[2pt]` 等行距写法，不再把 `[2pt]` 显示成矩阵元素。
-- 自动整理 `\sum_i=1^n` 等残缺上下限，恢复为上下排列。
-- 清理复制器误加的逗号，例如将 `x=A,y` 恢复为 `x=Ay`。
-- 已保存的旧札记在打开和阅读时自动应用公式结构修复。
-- 打开已有札记时底部立即显示“内容已就绪”，不再错误提示“内容不能为空”。
-
-- 札记编辑页新增“图片”按钮，支持从本机选择、粘贴和拖入图片。
-- 图片在本机自动压缩后嵌入札记，不依赖外部图床，断网时仍可查看。
-- 选中图片后可用 20%–100% 滑杆或右下角手柄调整宽度。
-- 支持原始比例、1:1、4:3、3:2 和 16:9，切换比例后自动居中裁切填充。
-- 图片宽度、比例和位置会随札记保存，重新编辑与阅读时保持一致。
-- 只有图片的札记也可正常保存，图片可与文字和公式混合排版。
+- 修复触摸屏上双击选择文字后，将选区手柄拖向编辑区底部时页面持续滚动到空白区域的问题。
+- 选区手柄触底后短暂锁定当前正文位置，松手约 0.65 秒后自动恢复手动滚动。
+- 修复札记正文在输入、选择文字、长文滚动和键盘高度变化时反复上下抖动的问题。
+- 停止逐键强制校正编辑区滚动位置，键盘可视区域变化时只同步一次高度并保持当前位置。
+- 修正键盘和网页可视区域同时变化时重复扣减高度的问题，改善中文输入法候选栏切换时的跳动。
 
 - **公测正式开始。**
 - 移除启动密钥验证，所有用户打开应用后即可直接使用。

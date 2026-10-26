@@ -1,4 +1,4 @@
-const CACHE_NAME = "buaa-memo-cloud-20261024221741";
+const CACHE_NAME = "buaa-memo-cloud-20261026112036";
 const ASSETS = [
   "./",
   "./index.html",
@@ -39,8 +39,13 @@ const ASSETS = [
   "./assets/fonts/LICENSE-SmileySans.txt",
   "./assets/fonts/LICENSE-ZCOOLXiaoWei.txt",
   "./assets/fonts/README.txt",
+  "./assets/badge-art/archive.svg",
+  "./assets/badge-art/atlas.svg",
   "./assets/badge-art/beta.svg",
   "./assets/badge-art/bloom.svg",
+  "./assets/badge-art/chrono.svg",
+  "./assets/badge-art/cycle.svg",
+  "./assets/badge-art/eclipse.svg",
   "./assets/badge-art/ember.svg",
   "./assets/badge-art/gold.svg",
   "./assets/badge-art/ink.svg",
@@ -52,9 +57,12 @@ const ASSETS = [
   "./assets/badge-art/moonrise.svg",
   "./assets/badge-art/orbit.svg",
   "./assets/badge-art/prism.svg",
+  "./assets/badge-art/quill.svg",
   "./assets/badge-art/star.svg",
   "./assets/badge-art/sun.svg",
   "./assets/badge-art/tide.svg",
+  "./assets/badge-art/treasure.svg",
+  "./assets/badge-art/trophy.svg",
   "./icon-192.png",
   "./icon-180.png",
   "./icon-512.png"

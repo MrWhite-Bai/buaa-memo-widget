@@ -1,44 +1,51 @@
 {
-  "version": "6.0.2",
-  "published_at": "2026-10-24",
+  "version": "6.0.8",
+  "published_at": "2026-10-26",
   "notes": [
-    "修复触摸屏上双击选择文字后，将选区手柄拖向编辑区底部时页面持续滚动到空白区域的问题。",
-    "文字选区存在时暂时阻止系统继续向下推动正文，选区手柄触底后不会把页面带离当前内容。",
-    "松开选区手柄约 0.65 秒后自动解除保护，手动滚动、继续输入和正常编辑不受影响。",
-    "保留 v6.0.1 对输入、键盘高度变化和光标跟随的滚动稳定性修复。"
+    "长按分组卡片约 0.43 秒后可上下拖动，分组顺序会持久保存并参与多端同步。",
+    "编辑分组时长按目录或章节可分别拖动调整顺序，保存分组后永久生效。",
+    "目录和章节增加拖动排序握把，长按后提供轻微振动与拖动高亮反馈。",
+    "“分组”页面新增关键词搜索，可同时搜索全部事项和札记。",
+    "搜索覆盖事项标题、备注、地点，以及札记标题、简介和正文；输入“矩阵”可以同时找到“过渡矩阵”“转置矩阵”等相关内容。",
+    "搜索结果显示所属分组、目录和章节，点击事项直接进入编辑，点击札记直接进入阅读。",
+    "搜索支持多个关键词同时匹配，标题完全匹配、前缀匹配和标题命中会优先显示。",
+    "“事项”页面新增“未定事项”按钮，可直接创建没有截止日期、持续时间或提醒时间的事项。",
+    "事项编辑器新增“未定 · 无截止时间”类型，之后也可以与任务、事件和定期事项互相切换。",
+    "未定事项可以置顶、编辑、添加图片、加入分组与章节，也可以通过“完成”进入历史事项。",
+    "未定事项不会被误判为已过期，主页和分组详情会明确显示“未定 · 无截止时间”。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-6.0.2-app-patch.zip",
-    "sha256": "8a36ccb2ba5ffde8ec7e931299d2b2fde2f5adbcf73df390e0155c3140714efb",
-    "size": 66576876
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-6.0.8-app-patch.zip",
+    "sha256": "d1bb409ccd21bc81d20a0e83342db47bd83d286b0eb2412dba0ac0d2681b8be3",
+    "size": 66637632
   },
   "mobile": {
-    "version": "6.0.2",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-Offline.html",
-    "sha256": "853e0664c7573ea1ab381013310b34c438569ba0573eb3d5bb51d68ee9c73a3c",
-    "size": 31022401
+    "version": "6.0.8",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-Offline.html",
+    "sha256": "26a1f983f5bc3fc9307f7d48b87071d522c10d01773a455acb8664486da47a39",
+    "size": 31145479
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-Android-v6.0.2.apk",
-    "sha256": "b656d75c5f903b28da2c08b6a0c24f6bf58aa9e047b5ade27a46e76812102df2",
-    "size": 23900001
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-Android-v6.0.8.apk",
+    "sha256": "a68bfacbff28c715460fdf14c4ea16e0ec387fab20e17d68e9e223b1dc7e9aab",
+    "size": 23933410
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-macOS-v6.0.2.zip",
-    "sha256": "d30a066fc8ae03021b6be1aea2dcca184d6a1fce9c1ce0e4469561b7ed04cb95",
-    "size": 49890341,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-macOS-v6.0.8.zip",
+    "sha256": "9e49635cdeab430df60b24ca6a965c2f84d3b7b88770730ff19f5f71de90ee5f",
+    "size": 49925720,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-iOS-v6.0.2-source.zip",
-    "sha256": "076d1a6dba67b8c51bc7efd5fdf03cbeee22c13845c7ca4ed204b9c3e681bd96",
-    "size": 26762294,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-iOS-v6.0.8-source.zip",
+    "sha256": "34fef157080d6acf432db6e0d175181fcf3b26a3db71ee57c821bd0dbf9bc982",
+    "size": 26794208,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.2/BUAA-Memo-iOS-PWA-v6.0.2.zip",
-    "sha256": "1a75b759a8bb711fc9b67e68114947e29f02e60ec81ad36d9efcdb3b9288b323",
-    "size": 24202036,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.8/BUAA-Memo-iOS-PWA-v6.0.8.zip",
+    "sha256": "8f8f6f0b1dfa43fffb23fbc69003c4fc750ccf240730a4b7e48467a71a156fc3",
+    "size": 24254832,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

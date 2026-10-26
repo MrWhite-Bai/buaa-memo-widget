@@ -24,5 +24,13 @@
 - `maze.svg`：Lorc
 - `flower-emblem.svg`：Delapouite
 - `jewel-crown.svg`：Delapouite
+- `archive-research.svg`：Delapouite
+- `scroll-quill.svg`：Delapouite
+- `treasure-map.svg`：Lorc
+- `diamond-trophy.svg`：Delapouite
+- `star-cycle.svg`：Lorc
+- `calendar-half-year.svg`：Delapouite
+- `eclipse-flare.svg`：Lorc
+- `open-treasure-chest.svg`：Skoll
 
-Icons made by Lorc, Delapouite and Caro Asercion.
+Icons made by Lorc, Delapouite, Caro Asercion and Skoll.

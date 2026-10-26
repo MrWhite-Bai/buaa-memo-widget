@@ -1,48 +1,47 @@
 {
-  "version": "6.0.10",
+  "version": "6.0.11",
   "published_at": "2026-10-26",
   "notes": [
-    "智能粘贴现在会把裸 LaTeX 候选交给 KaTeX 实际解析；只要整段能被 KaTeX 正确识别，就会自动转换为公式。",
-    "新增 \\implies、\\iff、\\Longrightarrow、\\longrightarrow、\\mapsto、\\xrightarrow 等常用箭头和关系命令支持。",
-    "BC=O \\implies BCD=OD \\implies B=O 这类多步推导会作为一条完整公式显示，不再残留反斜杠源码。",
-    "普通文字中的 Windows 路径，例如 C:\\Users\\demo\\note，会先经过 KaTeX 校验，无法作为公式解析时继续保持普通文本。",
-    "重排目录和章节的重命名、删除与新增章节按钮，移动端会放入独立换行区域，默认目录的“重命名”按钮不再被挤出屏幕。",
-    "编辑已有分组时，“添加已有事项”中的事项和札记默认全部不勾选，必须由用户主动勾选后才会加入或移动到分组。",
-    "已在当前分组中的事项和札记会显示“已在组内”，并新增独立的“移出本组”按钮；未勾选直接保存不会移除任何已有成员。",
-    "保留原有数学结构修复、上下标识别、公式编辑、图片札记和减少动态效果行为。"
+    "打开目录章节后新增“新增事项”和“新增札记”按钮，创建时会自动带入当前分组、目录和章节。",
+    "章节中的札记卡片新增“删除札记”按钮；事项继续可通过卡片删除，删除后章节页面立即刷新。",
+    "分组“添加已有事项”候选只显示尚未结束的事项和未删除的札记；过期任务、已结束事件及历史事项不再出现。",
+    "分组“添加已有事项”新增“札记日期下限”，只筛选札记，不影响任务和事件候选；可一键恢复全部日期。",
+    "章节页新增“添加已有札记”。在弹出的札记列表中同样可以设置日期下限，过滤很久以前的札记，并将选中的札记直接移动到当前章节。",
+    "目录和章节操作按钮在手机端独立换行，默认目录重命名入口保持可见。",
+    "编辑已有分组时，候选事项和札记默认不勾选；未勾选保存不会移除现有成员。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-6.0.10-app-patch.zip",
-    "sha256": "a16bce282ac4dcb728719d4c42a1cb50031897425786e56b07504c40603203ea",
-    "size": 72633973
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-6.0.11-app-patch.zip",
+    "sha256": "65080c5115322e01ba49a09daa406d7783fd9f30c01adbf94f371eef21612f1d",
+    "size": 72639493
   },
   "mobile": {
-    "version": "6.0.10",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-Offline.html",
-    "sha256": "40425a08563360b2fd48e90bf87f0e50d11ef48cec47062234e6718c72ceb4ca",
-    "size": 35173982
+    "version": "6.0.11",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-Offline.html",
+    "sha256": "713aec61fc0d0ed495e6267d568548eae59cb84bd01aa59811017848334d3c1d",
+    "size": 35188959
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-Android-v6.0.10.apk",
-    "sha256": "6f1e329a07ca9fecf4f4ee98acf029c59f1f1d6546e33ad145bb9a66176836a9",
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-Android-v6.0.11.apk",
+    "sha256": "f0a700a4776e567ff498b3267fd90a6d883454cb26324c616b7f451f51407154",
     "size": 26941241
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-macOS-v6.0.10.zip",
-    "sha256": "c1a2fef9b71ee5869f0222a23db65381183691ef63a7e5196a933e21299700ce",
-    "size": 55941415,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-macOS-v6.0.11.zip",
+    "sha256": "a4b4c585752b82ca3069f229b95231c067c5ba1e4eb2230ec8b644d03445c84d",
+    "size": 55944201,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-iOS-v6.0.10-source.zip",
-    "sha256": "2db057fa30bfb1157b4335a3499bc60ac948829031162dee2a8e2d5dbfbdd026",
-    "size": 29793591,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-iOS-v6.0.11-source.zip",
+    "sha256": "b20dc9101950fcdbec47fe73ac5eb6be969ffcbdcaac699b1dd773b8b0634bae",
+    "size": 29796450,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-iOS-PWA-v6.0.10.zip",
-    "sha256": "eb00e3d51236b9f305ab3566947e7ac368285b92dce911e6206caad27593f2ab",
-    "size": 27260370,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.11/BUAA-Memo-iOS-PWA-v6.0.11.zip",
+    "sha256": "6755f99e204d92d16c3c588954645f80f749d150fdb9824c8caf7f10c819fc70",
+    "size": 27265776,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

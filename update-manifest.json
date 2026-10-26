@@ -1,56 +1,48 @@
 {
-  "version": "6.0.9",
+  "version": "6.0.10",
   "published_at": "2026-10-26",
   "notes": [
-    "“未定事项”不再作为任务型、事件型和定期型之外的第四个类型按钮，普通事项编辑器只保留任务、事件和定期三种类型。",
-    "未定事项从普通事项主列表、分组目录、分组编辑候选和关键词搜索结果中分离，只在“未定事项”入口中显示。",
-    "点击“未定事项”后会进入独立页面，可集中新增、查看、编辑、置顶、完成和删除全部未定事项。",
-    "未定事项编辑器会锁定为未定类型，不再提供切换到任务、事件或定期事项的入口；关闭后返回未定事项独立页面。",
-    "新增隐藏成就“朝花夕拾”：累计完成 10 个已经过期、但仍处于 24 小时历史迁移宽限期内的任务型事项后解锁。",
-    "“朝花夕拾”使用 Game Icons 的 flower-pot 图标，并加入晨光光晕、轻柔摇曳和飘落花瓣动态效果。",
-    "艺展画廊新增雷诺阿、德加、毕沙罗、莫里索、卡萨特和西斯莱六位印象派画家的六幅公版画作。",
-    "新增六幅画作各自对应的 3:4 信纸，需先收藏对应画作后才能购买；画廊总数由 12 幅扩展为 18 幅。",
-    "“满藏星辉”和画廊相关等级目标同步扩展至 18 幅画作。",
-    "天气数据改为北京市海淀区坐标，事项页会显示“北京市海淀区”的当前天气和当日高低温。",
-    "“事项”主页卡片改为紧凑布局，只展示标题、简介、地点和剩余时间，同一手机屏幕可同时看到更多事项。",
-    "点击紧凑事项卡片会进入完整详情页，分组、目录、章节、起止时间、重复规则、图片和操作按钮均集中在该页面。",
-    "长按拖动分组、目录或章节时，相关卡片会平滑让位并跟随换位，不再瞬间跳换。",
-    "目录和章节使用更大的拖动握把与触摸容差，并加入指针捕获，轻微手指偏移不会取消长按拖动。",
-    "拖动卡片增加轻微缩放、阴影和振动反馈，松手后立即保存并同步顺序。",
-    "系统开启“减少动态效果”时自动关闭位移动画，只保留即时排序结果。"
+    "智能粘贴现在会把裸 LaTeX 候选交给 KaTeX 实际解析；只要整段能被 KaTeX 正确识别，就会自动转换为公式。",
+    "新增 \\implies、\\iff、\\Longrightarrow、\\longrightarrow、\\mapsto、\\xrightarrow 等常用箭头和关系命令支持。",
+    "BC=O \\implies BCD=OD \\implies B=O 这类多步推导会作为一条完整公式显示，不再残留反斜杠源码。",
+    "普通文字中的 Windows 路径，例如 C:\\Users\\demo\\note，会先经过 KaTeX 校验，无法作为公式解析时继续保持普通文本。",
+    "重排目录和章节的重命名、删除与新增章节按钮，移动端会放入独立换行区域，默认目录的“重命名”按钮不再被挤出屏幕。",
+    "编辑已有分组时，“添加已有事项”中的事项和札记默认全部不勾选，必须由用户主动勾选后才会加入或移动到分组。",
+    "已在当前分组中的事项和札记会显示“已在组内”，并新增独立的“移出本组”按钮；未勾选直接保存不会移除任何已有成员。",
+    "保留原有数学结构修复、上下标识别、公式编辑、图片札记和减少动态效果行为。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-6.0.9-app-patch.zip",
-    "sha256": "e11f21ae609f70ab8e7bb28aba0493aee8d1d9c0382ac4f5d6a320966db076c9",
-    "size": 72630743
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-6.0.10-app-patch.zip",
+    "sha256": "a16bce282ac4dcb728719d4c42a1cb50031897425786e56b07504c40603203ea",
+    "size": 72633973
   },
   "mobile": {
-    "version": "6.0.9",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-Offline.html",
-    "sha256": "689415042d6ed61127f0a2a4ba47f9682c9840325986b6a43f96bc15ddad936e",
-    "size": 35168374
+    "version": "6.0.10",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-Offline.html",
+    "sha256": "40425a08563360b2fd48e90bf87f0e50d11ef48cec47062234e6718c72ceb4ca",
+    "size": 35173982
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-Android-v6.0.9.apk",
-    "sha256": "45547ac4dfe46d653a059a36bfb95f2e273f38bfe2e3d1fbcdc40232768a6752",
-    "size": 26937145
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-Android-v6.0.10.apk",
+    "sha256": "6f1e329a07ca9fecf4f4ee98acf029c59f1f1d6546e33ad145bb9a66176836a9",
+    "size": 26941241
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-macOS-v6.0.9.zip",
-    "sha256": "3d007dc3d97cee2489b3a3c83640a2ce9c571a90bdcacf054f8ccb9f3b62f165",
-    "size": 55940026,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-macOS-v6.0.10.zip",
+    "sha256": "c1a2fef9b71ee5869f0222a23db65381183691ef63a7e5196a933e21299700ce",
+    "size": 55941415,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-iOS-v6.0.9-source.zip",
-    "sha256": "47ddc93b2a6d000f599c8946f7424f78a4d25b3c284f7ddbad733ca5fe5cf488",
-    "size": 29791779,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-iOS-v6.0.10-source.zip",
+    "sha256": "2db057fa30bfb1157b4335a3499bc60ac948829031162dee2a8e2d5dbfbdd026",
+    "size": 29793591,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.9/BUAA-Memo-iOS-PWA-v6.0.9.zip",
-    "sha256": "01a419b658f137ec834c7df56e26048a4e60e8e19e013f27357d192b4261c6bc",
-    "size": 27257269,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.10/BUAA-Memo-iOS-PWA-v6.0.10.zip",
+    "sha256": "eb00e3d51236b9f305ab3566947e7ac368285b92dce911e6206caad27593f2ab",
+    "size": 27260370,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

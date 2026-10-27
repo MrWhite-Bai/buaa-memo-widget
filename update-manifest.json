@@ -1,48 +1,48 @@
 {
-  "version": "6.0.13",
-  "published_at": "2026-10-26",
+  "version": "6.0.19",
+  "published_at": "2026-10-27",
   "notes": [
-    "好友页新增“我的好友地址”，显示当前设备的局域网 IP 和端口，点击即可复制。",
-    "好友码和好友地址可分别复制，方便连同好友码发送给对方手动添加。",
-    "好友称呼优先使用对方个人主页设置的昵称，不再使用设备名代替。",
-    "每位好友新增备注功能，可设置或清空只保存在本机的备注；备注后仍显示对方的个人主页昵称。",
-    "好友列表、聊天标题、赠送、分享和删除确认统一使用备注优先的显示名称。",
-    "修正分组页说明，明确分组用于整理事项和札记，目录与章节排序在分组编辑器中操作。",
-    "修复章节长按拖动，编辑分组和目录详情中的章节现在都可拖动排序并持久保存。",
-    "提高触摸拖动容差并限定“⋮⋮”握把触发，轻微手指偏移不会取消拖动。"
+    "检查更新新增“更新路径：国内 / GitHub”二选一控件，选择结果会保存在当前设备。",
+    "检查更新按钮会明确显示当前路径，例如“已是最新版 · GitHub”或“可以更新 · 国内”。",
+    "GitHub 路径直接读取公开更新清单，不需要登录；适合可访问 GitHub 的北航校园网环境。",
+    "国内路径只检查北航学业支持中心开源平台；未登录或登录失效时会提示登录，原始账号和密码均为学号。",
+    "两条路径不再自动互相兜底，用户选择的路径与实际检查、下载来源保持一致。",
+    "Android 原生更新支持按路径工作：GitHub 可直接读取版本号并下载 APK，国内路径继续使用平台登录与镜像。",
+    "iOS 原生桥同步支持 GitHub 公开版本检查；PWA、离线 HTML、Windows 和 macOS 共用同一路径选择。",
+    "保留 v6.0.18 的账号卡紧凑布局及此前全部功能。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.13/BUAA-Memo-6.0.13-app-patch.zip",
-    "sha256": "5867c42f9fe31f185e5b90a95dcb4e4d78d5a334f1c96837a816e5870e977fac",
-    "size": 72649817
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.19/BUAA-Memo-6.0.19-app-patch.zip",
+    "sha256": "b6f91a95fb35c588adfbe99efd1b9242e43727e7dbc483c55f58ce92517d531f",
+    "size": 72678140
   },
   "mobile": {
-    "version": "6.0.13",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.13/BUAA-Memo-Offline.html",
-    "sha256": "7a7019b96a8c7069f10cbe26bbd5b888850d9d9f45bc409fb89c901c0fcca362",
-    "size": 35214762
+    "version": "6.0.19",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.19/BUAA-Memo-Offline.html",
+    "sha256": "623c76f85ac174df87b9ed87ef56a93dde970d4d70d183bb5fcc018a65cd5c83",
+    "size": 35274637
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.13/BUAA-Memo-Android-v6.0.13.apk",
-    "sha256": "bfc4904ea6002b9c51ba732ee2259bee3866b508c285d3ba101f7e5e5d944588",
-    "size": 26949433
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.19/BUAA-Memo-Android-v6.0.19.apk",
+    "sha256": "9cd2cae924eef3ab6dd42d33891d9bc62d66e18bbafd74d54ecc80414b2c9994",
+    "size": 26965817
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.13/BUAA-Memo-macOS-v6.0.13.zip",
-    "sha256": "8f882e6ec385f42ecf568ca5b53682e84808a17ae28845b4117de10e866f6040",
-    "size": 55949777,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.19/BUAA-Memo-macOS-v6.0.19.zip",
+    "sha256": "8c49e1c3125d301d131e9914553547282b3c7921d205a18540d0434cb54f806c",
+    "size": 55962384,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.13/BUAA-Memo-iOS-v6.0.13-source.zip",
-    "sha256": "5cab2bdd02e28f77f7730d876f2250147b42bfc24f58528ad49d6a134763fcd9",
-    "size": 29801796,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.19/BUAA-Memo-iOS-v6.0.19-source.zip",
+    "sha256": "b58e06d2d6ba51c88260d5bdfeb26b42f86812cd3602e325ad281b4cdff31880",
+    "size": 29816813,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.13/BUAA-Memo-iOS-PWA-v6.0.13.zip",
-    "sha256": "521d4c940213052501c0c3d2969c49d57d014fdf9612e1892731a4529603f20a",
-    "size": 27275888,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.19/BUAA-Memo-iOS-PWA-v6.0.19.zip",
+    "sha256": "0b294e31b55cdfc1a57eb3f4919fbc2d47cbe03ddf62fe6be527f690a9bfd4f3",
+    "size": 27303245,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

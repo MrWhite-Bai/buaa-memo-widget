@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.20 将国内与 GitHub 更新路径说明放入选择菜单，修复事项时间选择器遮挡问题，并在更新日志以蓝色显示“6.20是开发者生日”。应用继续无需内测密钥。
+> v6.0.21 修复更新路径菜单越界，新增成就解锁提醒和邮件删除规则，并保留蓝色生日日志与事项时间选择器修复。应用继续无需内测密钥。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
 并登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.20.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.21.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -22,14 +22,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.20/BUAA-Memo-Windows-v6.0.20.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.20/BUAA-Memo-macOS-v6.0.20.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.20/BUAA-Memo-Android-v6.0.20.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.20/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.20/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.20/BUAA-Memo-iOS-v6.0.20-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.21/BUAA-Memo-Windows-v6.0.21.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.21/BUAA-Memo-macOS-v6.0.21.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.21/BUAA-Memo-Android-v6.0.21.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.21/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.21/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.21/BUAA-Memo-iOS-v6.0.21-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.20/BUAA-Memo-iOS-PWA-v6.0.20.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.21/BUAA-Memo-iOS-PWA-v6.0.21.zip)
 
 #### iOS 版当前限制
 
@@ -235,12 +235,12 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.0.20
+v6.0.21
 
-- 更新路径选择改为展开菜单，两个选项直接显示对应说明。
-- GitHub 需加速器、发布同步且所有人可用；国内更新较慢且仅北航学生可用。
-- 修复事项时间选择器和默认提前提醒被事项编辑器遮挡的问题。
-- 更新日志以蓝色显示“6.20是开发者生日”。
+- 更新路径下拉菜单按屏幕边界动态定位，窄屏不再裁切说明。
+- 新成就和成就升级显示解锁横幅，并可发送系统通知。
+- 已读且无待领取物品的邮件可以删除，存在未领取物品时必须先领取。
+- 保留蓝色“6.20是开发者生日”和事项时间选择器修复。
 
 - 好友页显示本机好友地址，好友码和地址都可点击复制。
 - 好友称呼使用对方个人主页昵称，并支持只保存在本机的备注。

@@ -1,44 +1,45 @@
 {
-  "version": "6.0.25",
-  "published_at": "2026-10-27",
+  "version": "6.0.26",
+  "published_at": "2026-10-28",
   "notes": [
-    "修复选择“国内”更新路径后界面立即跳回 GitHub 的问题。",
-    "切换更新路径时先保存用户选择，再刷新路径标签和检查更新状态，避免旧设置覆盖新设置。",
-    "国内路径现在会稳定保留到下一次启动，并继续用于国内平台版本检查与下载。",
-    "保留 v6.0.24 的 43 项独立动态成就勋章、分级奖励和全部现有功能。"
+    "札记正文工具栏新增“PDF”按钮，可选择、拖入或粘贴 PDF 文件。",
+    "PDF 会以附件卡片插入正文，显示文件名和大小；点击卡片即可打开。",
+    "Android 使用系统 PDF 阅读器，iOS 使用系统快速预览，桌面和 PWA 使用浏览器 PDF 查看器。",
+    "编辑札记时可移除 PDF；图片与 PDF 共享本地附件容量，单个 PDF 上限为 2.4 MB。",
+    "保留 v6.0.25 的更新路径切换修复和全部现有功能。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-6.0.25-app-patch.zip",
-    "sha256": "08fbf83ef12617fc16fafdf5c7dc885728b6ada4e9f912838c693734d16f8217",
-    "size": 72779234
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-6.0.26-app-patch.zip",
+    "sha256": "505c41f1200e451cabdc102f35be9ad6ebd2894b2ba3d940277639e64df08bf2",
+    "size": 72786725
   },
   "mobile": {
-    "version": "6.0.25",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-Offline.html",
-    "sha256": "ea4fda3b41023b5685c491d296ba2e264aa3cd3663e478aa42966a1c663c3f6a",
-    "size": 35333217
+    "version": "6.0.26",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-Offline.html",
+    "sha256": "fd649fc7ec73c499235a5d059b3fd7ec9fbda4234cb3cb6849d784813cbea571",
+    "size": 35351338
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-Android-v6.0.25.apk",
-    "sha256": "25e52b18ad15cc1dcc9a84ba979b6877ace1a8bba28fcf6f36dfe67703ec9366",
-    "size": 27018923
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-Android-v6.0.26.apk",
+    "sha256": "2f80ac2ab98aa37f186e99cd29b2f7bb34d3721d637ff03cffd46ac6024076e2",
+    "size": 27023019
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-macOS-v6.0.25.zip",
-    "sha256": "881413d7d333ca87c1c53c55debfa4da17c5abe815c91aa02f8f18b30685fb92",
-    "size": 56017263,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-macOS-v6.0.26.zip",
+    "sha256": "3657353de3ee4f05e158025b978a80ce928598572bb0761f8087081ee2b9d24f",
+    "size": 56020637,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-iOS-v6.0.25-source.zip",
-    "sha256": "d2c8fe9ec1e139303d71435b75e4d9f2d28b0c7c53f08756dadad8697c1cf3ba",
-    "size": 29870710,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-iOS-v6.0.26-source.zip",
+    "sha256": "c692f92d3fa532752ddceb1e527a275bfd6fe43c8749181c5c8549492908f5fb",
+    "size": 29875014,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-iOS-PWA-v6.0.25.zip",
-    "sha256": "41628d26be305a185358d2a9dcb5f9257e2cd5aaf6299c05bc4f9b02fa4a29af",
-    "size": 27367445,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-iOS-PWA-v6.0.26.zip",
+    "sha256": "e0aedcae151fca344a4e536390ea747e7c6aed9e2273de2261c824df505008bf",
+    "size": 27374084,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

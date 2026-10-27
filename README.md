@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.25 修复更新路径无法切换到“国内”的问题，保留 v6.0.24 的 43 项独立动态成就勋章和此前全部功能。应用继续无需内测密钥。
+> v6.0.26 为札记新增 PDF 附件，可在正文中插入、打开和移除 PDF；保留 v6.0.25 的更新路径切换修复和全部现有功能。应用继续无需内测密钥。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
 并登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.25.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.26.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -22,14 +22,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-Windows-v6.0.25.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-macOS-v6.0.25.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-Android-v6.0.25.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-iOS-v6.0.25-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-Windows-v6.0.26.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-macOS-v6.0.26.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-Android-v6.0.26.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-iOS-v6.0.26-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-iOS-PWA-v6.0.25.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.26/BUAA-Memo-iOS-PWA-v6.0.26.zip)
 
 #### iOS 版当前限制
 
@@ -235,12 +235,12 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.0.25
+v6.0.26
 
-- 修复选择“国内”更新路径后界面立即跳回 GitHub 的问题。
-- 更新路径现在先保存选择，再刷新按钮、菜单和版本检查状态。
-- 国内路径会稳定保留到下一次启动，并用于国内平台版本检查与下载。
-- 保留 43 项独立动态成就勋章、分级奖励和此前全部功能。
+- 札记正文工具栏新增“PDF”按钮。
+- PDF 会以附件卡片插入正文，显示文件名和大小，点击即可打开。
+- Android 使用系统 PDF 阅读器，iOS 使用系统快速预览，桌面和 PWA 使用浏览器 PDF 查看器。
+- 编辑札记时可移除 PDF；单个 PDF 上限为 2.4 MB，并与图片共享附件容量。
 
 - 好友页显示本机好友地址，好友码和地址都可点击复制。
 - 好友称呼使用对方个人主页昵称，并支持只保存在本机的备注。

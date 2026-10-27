@@ -1,49 +1,47 @@
 {
-  "version": "6.0.23",
+  "version": "6.0.24",
   "published_at": "2026-10-27",
   "notes": [
-    "重构功能简介为固定标题栏、独立滚动正文和固定底部导航，修复手机端标题被挤到屏幕外和底部大面积空白。",
-    "手机端流程图、层级图改为两列网格并隐藏横向箭头，不再需要左右滑动，也不会裁切首尾节点。",
-    "补充事项页所有按钮与入口的图解说明，包括同步、历史、未定事项、签到/月视图、版本日志、功能简介、更新路径、检查更新、校区天气、底部导航、新建按钮和事项卡片。",
-    "新增月视图与签到专题，说明月份日期布局、每天事项查看、签到奖励、连续签到和日期明细。",
-    "简介正文适配顶部与底部安全区，Android 状态栏、刘海和系统导航栏不会遮挡标题或底部按钮。",
-    "长期任务新增“五阁成书”“五友同游”“月满三十”“十二馆藏”“五帧留影”，分别覆盖分组、好友、签到、艺展和札记画框。",
-    "新增分级成就“框里有光”“鸿雁有信”“笺上流年”，以及隐藏成就“纸上三境”“四类同屏”。",
-    "新成就继续使用初级、中级、高级动态勋章，并接入新成就解锁横幅与后台通知。",
-    "保留 v6.0.22 的六章功能简介、新用户首次自动打开和此前全部功能。"
+    "为全部 43 项成就建立独立的 Game Icons SVG 图标映射，不再让多个成就共享同一枚基础勋章图标。",
+    "新增卷轴、书堆、文件夹、调色板、画架、星轨、沙漏、纸船、日历、花盆、信笺等与成就名称匹配的图标。",
+    "每项成就会根据自身 ID 生成不同的光晕周期、扫光时长和延迟，以及图标缩放浮动节奏。",
+    "原有初级、中级、高级勋章的强度递增、粒子、旋转光效与“减少动态效果”设置继续保留。",
+    "所有 43 个 SVG 均在本地打包，离线使用时也能显示完整图标和动态效果。",
+    "补充 Game Icons、Iconify 与 CC BY 3.0 素材来源和作者说明。",
+    "保留 v6.0.23 的功能简介移动布局、事项按钮/月视图说明和新增任务成就。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-6.0.23-app-patch.zip",
-    "sha256": "e9d743982824140d239b87772d86f492f9e663097a38c7686884eeed48d19d0b",
-    "size": 72701795
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-6.0.24-app-patch.zip",
+    "sha256": "891756c48912211f9f644b1d86adadc93038cbd5ff6f5ea95940e1a2fb22c1b6",
+    "size": 72778707
   },
   "mobile": {
-    "version": "6.0.23",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-Offline.html",
-    "sha256": "759777ada194f1e4173d83893fe612c02a778fb5c46e963879a4096f49a0ed03",
-    "size": 35325777
+    "version": "6.0.24",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-Offline.html",
+    "sha256": "490d3c468cf8d7d7fb02465906a497596120b36a3dc74a9205db8ecedeb013e9",
+    "size": 35332498
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-Android-v6.0.23.apk",
-    "sha256": "478b47abc859d46aaca6c90fcbbdb4482451743178d1a6bf1a9c4b931ac028da",
-    "size": 26978105
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-Android-v6.0.24.apk",
+    "sha256": "f9b9c6119e38e3feb027426504941d6c1c380277c8b66c6234166394321faad3",
+    "size": 27018923
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-macOS-v6.0.23.zip",
-    "sha256": "2413935572e665bfdaacd7304a07e13ec665c1fadd563c1f020dad4ff2392a9d",
-    "size": 55973351,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-macOS-v6.0.24.zip",
+    "sha256": "e5dc32c99f1efbbfac56f4573e121bfc798c8cc1a05ecf565780bcab2f59e839",
+    "size": 56017046,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-iOS-v6.0.23-source.zip",
-    "sha256": "6a041812c11bdf86029046a419528538c1fe83ee4cf272aef32485ee34e8fbe1",
-    "size": 29829260,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-iOS-v6.0.24-source.zip",
+    "sha256": "f832dfae2a6d2d1bcadc430165dff82bddcfb2b72c1f45fd8db5d1b697e13ca2",
+    "size": 29870372,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-iOS-PWA-v6.0.23.zip",
-    "sha256": "72deaaa4b5d1ab8b86b9cea61a4bc52bcb64d6dcf65b95e39a41f6348546fec5",
-    "size": 27326618,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-iOS-PWA-v6.0.24.zip",
+    "sha256": "48d113afbd6d065953c709c3595f1d076f39322fd2d867ae8ab1191f16d51161",
+    "size": 27366915,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

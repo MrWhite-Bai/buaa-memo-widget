@@ -35,3 +35,13 @@
 - `flower-pot.svg`：Lorc
 
 Icons made by Lorc, Delapouite, Caro Asercion and Skoll.
+
+## 独立成就图标
+
+`unique/` 目录中的 43 个 SVG 通过 Iconify 的 Game Icons 公开接口获取，按成就 ID
+一一映射，包含卷轴、书堆、文件夹、调色板、画架、星轨、沙漏、纸船、日历、
+花盆和信笺等图标。素材仍遵循上方 Game Icons 与 CC BY 3.0 授权。
+
+- Iconify 图标集合：https://iconify.design/icon-sets/game-icons/
+- API 导出地址：https://api.iconify.design/game-icons/
+- 图标作者：Lorc、Delapouite、Caro Asercion、Skoll 及其他 Game Icons 贡献者

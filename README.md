@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.24 为全部 43 项成就分别配置独立 Game Icons SVG 图标与个性化动态渲染，不再出现多个成就共用同一枚勋章图标。应用继续无需内测密钥。
+> v6.0.25 修复更新路径无法切换到“国内”的问题，保留 v6.0.24 的 43 项独立动态成就勋章和此前全部功能。应用继续无需内测密钥。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
 并登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.24.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.25.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -22,14 +22,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-Windows-v6.0.24.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-macOS-v6.0.24.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-Android-v6.0.24.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-iOS-v6.0.24-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-Windows-v6.0.25.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-macOS-v6.0.25.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-Android-v6.0.25.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-iOS-v6.0.25-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.24/BUAA-Memo-iOS-PWA-v6.0.24.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.25/BUAA-Memo-iOS-PWA-v6.0.25.zip)
 
 #### iOS 版当前限制
 
@@ -235,11 +235,12 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.0.24
+v6.0.25
 
-- 全部 43 项成就各自使用独立 Game Icons 图标。
-- 每项成就使用不同周期的光晕、扫光和图标浮动效果。
-- 所有素材本地打包，离线仍可显示，并继续保留分阶段勋章强度。
+- 修复选择“国内”更新路径后界面立即跳回 GitHub 的问题。
+- 更新路径现在先保存选择，再刷新按钮、菜单和版本检查状态。
+- 国内路径会稳定保留到下一次启动，并用于国内平台版本检查与下载。
+- 保留 43 项独立动态成就勋章、分级奖励和此前全部功能。
 
 - 好友页显示本机好友地址，好友码和地址都可点击复制。
 - 好友称呼使用对方个人主页昵称，并支持只保存在本机的备注。

@@ -1,49 +1,49 @@
 {
-  "version": "6.0.22",
+  "version": "6.0.23",
   "published_at": "2026-10-27",
   "notes": [
-    "事项页新增“所有功能简介”按钮，可随时打开完整的图解式新手引导。",
-    "简介分为总览、事项、札记、分组、我的、数据与更新六个章节，并提供上一步、下一步和开始使用操作。",
-    "使用流程图、手机示意图、层级图和功能卡片展示事项类型、提醒、历史、未定事项和完整操作方式。",
-    "介绍札记图片缩放、比例裁切、公式、字体、信纸、画框、关键词搜索和日期筛选。",
-    "介绍分组、目录、章节三级归档，长按拖动、批量加入和搜索定位。",
-    "介绍个人主页、头像框称号、等级特权、任务成就、艺展展柜、好友邮件和背包兑换码。",
-    "介绍本地保存、局域网与云同步、GitHub/国内更新路径、版本日志和离线使用。",
-    "新用户首次打开浮光时自动显示一次功能简介；已有使用记录的用户不会在升级后被误触发。",
-    "保留 v6.0.21 的更新菜单边界修复、成就提醒、邮件删除规则和此前全部功能。"
+    "重构功能简介为固定标题栏、独立滚动正文和固定底部导航，修复手机端标题被挤到屏幕外和底部大面积空白。",
+    "手机端流程图、层级图改为两列网格并隐藏横向箭头，不再需要左右滑动，也不会裁切首尾节点。",
+    "补充事项页所有按钮与入口的图解说明，包括同步、历史、未定事项、签到/月视图、版本日志、功能简介、更新路径、检查更新、校区天气、底部导航、新建按钮和事项卡片。",
+    "新增月视图与签到专题，说明月份日期布局、每天事项查看、签到奖励、连续签到和日期明细。",
+    "简介正文适配顶部与底部安全区，Android 状态栏、刘海和系统导航栏不会遮挡标题或底部按钮。",
+    "长期任务新增“五阁成书”“五友同游”“月满三十”“十二馆藏”“五帧留影”，分别覆盖分组、好友、签到、艺展和札记画框。",
+    "新增分级成就“框里有光”“鸿雁有信”“笺上流年”，以及隐藏成就“纸上三境”“四类同屏”。",
+    "新成就继续使用初级、中级、高级动态勋章，并接入新成就解锁横幅与后台通知。",
+    "保留 v6.0.22 的六章功能简介、新用户首次自动打开和此前全部功能。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.22/BUAA-Memo-6.0.22-app-patch.zip",
-    "sha256": "0401bdb1742afde2d08a1a9c046f6253f79f4348037045a2b7efa57c527702f8",
-    "size": 72695978
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-6.0.23-app-patch.zip",
+    "sha256": "e9d743982824140d239b87772d86f492f9e663097a38c7686884eeed48d19d0b",
+    "size": 72701795
   },
   "mobile": {
-    "version": "6.0.22",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.22/BUAA-Memo-Offline.html",
-    "sha256": "0f60c1198b43d1bd922cb74b5eecb306a3770f1632316eed107d66688d4e58d9",
-    "size": 35313578
+    "version": "6.0.23",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-Offline.html",
+    "sha256": "759777ada194f1e4173d83893fe612c02a778fb5c46e963879a4096f49a0ed03",
+    "size": 35325777
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.22/BUAA-Memo-Android-v6.0.22.apk",
-    "sha256": "836a9a3d249540a11b621df86621c1b25fcce57b51c0e83c9da9f9e1ff9c5d3f",
-    "size": 26974009
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-Android-v6.0.23.apk",
+    "sha256": "478b47abc859d46aaca6c90fcbbdb4482451743178d1a6bf1a9c4b931ac028da",
+    "size": 26978105
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.22/BUAA-Memo-macOS-v6.0.22.zip",
-    "sha256": "3683f5194f842ef42ab71bb2263220eb46b3ea67b4d0050ee01063ae0c97a782",
-    "size": 55970625,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-macOS-v6.0.23.zip",
+    "sha256": "2413935572e665bfdaacd7304a07e13ec665c1fadd563c1f020dad4ff2392a9d",
+    "size": 55973351,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.22/BUAA-Memo-iOS-v6.0.22-source.zip",
-    "sha256": "0fdfdafbfe345f3035dde8690ba797a3991a8582400f87dd4d9dbd3dafa8d4f0",
-    "size": 29826126,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-iOS-v6.0.23-source.zip",
+    "sha256": "6a041812c11bdf86029046a419528538c1fe83ee4cf272aef32485ee34e8fbe1",
+    "size": 29829260,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.22/BUAA-Memo-iOS-PWA-v6.0.22.zip",
-    "sha256": "841bc6494d2450e70087ee7e14d0d308a8ea439ea2544890ba86014b7d8b084d",
-    "size": 27320874,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.23/BUAA-Memo-iOS-PWA-v6.0.23.zip",
+    "sha256": "72deaaa4b5d1ab8b86b9cea61a4bc52bcb64d6dcf65b95e39a41f6348546fec5",
+    "size": 27326618,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

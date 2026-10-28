@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.28 修复好友确认单边成功、请求失效和地址变化问题，接受好友现在支持地址恢复与幂等重试；保留 v6.0.27 的全部功能。应用继续无需内测密钥。
+> v6.0.30 完善好友公开主页，新增头像框展示、开发者专属隐藏成就“浮光秘冕”和全用户系统纪念邮件；本次更新日志以彩色字体标注“这是一次神秘的更新”。应用继续无需内测密钥。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
 并登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.28.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.30.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -22,14 +22,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.28/BUAA-Memo-Windows-v6.0.28.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.28/BUAA-Memo-macOS-v6.0.28.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.28/BUAA-Memo-Android-v6.0.28.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.28/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.28/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.28/BUAA-Memo-iOS-v6.0.28-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-Windows-v6.0.30.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-macOS-v6.0.30.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-Android-v6.0.30.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-iOS-v6.0.30-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.28/BUAA-Memo-iOS-PWA-v6.0.28.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-iOS-PWA-v6.0.30.zip)
 
 #### iOS 版当前限制
 
@@ -235,7 +235,22 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.0.28
+v6.0.30
+
+- 更新日志以流动彩虹渐变字体显示“这是一次神秘的更新”。
+- 好友主页新增头像框同步与展示，当前头像框会随其他公开资料一起端到端加密发送。
+- 新增开发者专属隐藏成就“浮光秘冕”，普通用户无法点亮；解锁奖励固定为 1 光斑和 1 经验。
+- “浮光秘冕”采用 Game Icons 帝国皇冠素材，并加入彩虹星云、双层轨道、动态扫光、脉冲星光和彩色光晕。
+- 所有更新到本版本的用户会收到“好友系统完善纪念礼”系统邮件，内含 100 光斑和 100 经验。
+- 系统邮件从送达时起 10 天内可领取，过期后奖励锁定并显示截止时间。
+- 邮件正文提醒好友系统已支持称号、头像框、等级、展柜和成就勋章查看。
+
+- 好友列表和聊天标题栏新增“主页”按钮，可直接查看对方公开主页。
+- 好友主页显示昵称、备注、当前称号、浮光等级、三格展柜和已佩戴的成就勋章。
+- 展柜画作显示缩略图与标题，点击可打开画作查看器；勋章保留独立动态图标和分级光效。
+- 好友资料通过现有的端到端加密消息同步；称号、等级、展柜或佩戴勋章变化后自动更新。
+- 只同步对方主动展示的主页信息，不读取好友的事项、札记正文、图片或其他本地资料。
+- 兼容旧版好友资料，尚未同步完整主页时会显示等待提示。
 
 - 接受好友前会重新发现对方当前地址，避免旧 IP 或端口导致连接失败。
 - 接受按钮在确认期间禁用，防止连续点击产生失效请求。

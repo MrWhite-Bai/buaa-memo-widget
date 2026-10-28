@@ -11,36 +11,36 @@
   ],
   "desktop": {
     "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-6.0.32-app-patch.zip",
-    "sha256": "4fe3e4380b68990d7df5ead406c8e43b88d5b05013e56604600bfeda949333a8",
-    "size": 72870577
+    "sha256": "9bf5d517984dfa7cd98a4fb5e9d729b2c98740f31f50b76f3ae8322ea9c1b679",
+    "size": 72870603
   },
   "mobile": {
     "version": "6.0.32",
     "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-Offline.html",
-    "sha256": "7c70e700661b94670789f880c4de87b054f40d56acd59872fc717e444f93fe8c",
-    "size": 35528402
+    "sha256": "cd96a00d444d49e25893dc09e770caba240421870876f2f701a5a2fc2057cd8a",
+    "size": 35528527
   },
   "android": {
     "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-Android-v6.0.32.apk",
-    "sha256": "485f8a6e737fb05f82b4f5ace0542b1aa18c237321f256ba27e6d171ff146e7e",
+    "sha256": "168497f4a365fbadaef1ad16518dc0e18a899024d9872a97587863072a00e390",
     "size": 27068347
   },
   "macos": {
     "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-macOS-v6.0.32.zip",
-    "sha256": "4f3d28f0a9bc999ac8aaba0043ee6436cfec0359ce310bbb60a2962e00fd7ec1",
-    "size": 56123722,
+    "sha256": "4d0429cf1f4b4ab8a4f37caa43a4e374aa4429cab105a6578750d8464ab5b9ab",
+    "size": 56123750,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
     "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-iOS-v6.0.32-source.zip",
-    "sha256": "8a2f8d315006de2e13ed35767079c23eb921f4b78acd46044a29d48715f70643",
-    "size": 29917641,
+    "sha256": "becb7687491f35e4d601150750ae7560d82941896e6f4c601745e373ccc77628",
+    "size": 29917677,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
     "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-iOS-PWA-v6.0.32.zip",
-    "sha256": "d9b993434eced02231bc3f594dcae9a8a3b4c76155056ae25264429c07b38216",
-    "size": 27427643,
+    "sha256": "dd7cd997e9b5eda6cc2493ce698e868e3eda16de1f82e1a16909a397b8e8a802",
+    "size": 27427715,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

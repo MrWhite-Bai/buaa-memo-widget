@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.30 完善好友公开主页，新增头像框展示、开发者专属隐藏成就“浮光秘冕”和全用户系统纪念邮件；本次更新日志以彩色字体标注“这是一次神秘的更新”。应用继续无需内测密钥。
+> v6.0.32 新增 Gitee 国内直连更新路径，无需登录、实名认证或加速器，非北航用户也能使用；同时保留 GitHub 与国内学支平台路径。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
 并登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.30.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.32.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -22,14 +22,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-Windows-v6.0.30.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-macOS-v6.0.30.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-Android-v6.0.30.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-iOS-v6.0.30-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-Windows-v6.0.32.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-macOS-v6.0.32.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-Android-v6.0.32.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-iOS-v6.0.32-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-iOS-PWA-v6.0.30.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-iOS-PWA-v6.0.32.zip)
 
 #### iOS 版当前限制
 
@@ -235,7 +235,19 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.0.30
+v6.0.32
+
+- 更新路径新增第三种“Gitee”，可与 GitHub 和国内学支平台自由切换。
+- Gitee 路径无需登录、无需实名认证，也不需要加速器，非北航用户可直接使用。
+- Gitee 使用独立公开清单，所有下载地址直接指向 `Mr_White1037/buaa-memo-widget` 的 Gitee Release。
+- Gitee 仓库从 GitHub 镜像同步，Android、iOS、电脑版、网页和 PWA 均支持检查更新。
+
+- 修复桌面版生成页面时误替换开场动画脚本、导致一直停留在进场画面的问题。
+- 桌面版现在只替换旧版应用启动脚本，开场画面约两秒后正常淡出并移除。
+- 内置 Allura 英文手写花体字体，“Life is an art”在 Android、iPhone 和电脑版上保持一致。
+- 英文花体改为更流畅的 Allura 字形，通过轻微字距和适度横向扩展，与中文标题“生活是门艺术”左右对齐。
+- 花体字体随应用离线打包，不依赖设备安装额外系统字体。
+- 补充 Allura 的 SIL Open Font License 1.1 授权说明。
 
 - 更新日志以流动彩虹渐变字体显示“这是一次神秘的更新”。
 - 好友主页新增头像框同步与展示，当前头像框会随其他公开资料一起端到端加密发送。

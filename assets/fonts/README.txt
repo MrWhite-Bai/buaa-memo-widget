@@ -28,4 +28,11 @@ BUAA浮光内置字体说明
    - 文件：buaa-shoujin.woff2
    - 来源及许可说明：LICENSE-Shoujin.txt
 
+5. BUAA Script（开场英文花体）
+   - 文件：buaa-script.woff2
+   - 来源：Allura（Google Fonts）
+   - 来源项目：https://github.com/google/fonts/tree/main/ofl/allura
+   - 许可证：SIL Open Font License 1.1
+   - 许可全文：LICENSE-Allura.txt
+
 以上字体均随应用离线分发，不依赖用户设备是否安装对应字体。

@@ -1,0 +1,46 @@
+{
+  "version": "6.0.32",
+  "published_at": "2026-10-28",
+  "notes": [
+    "更新路径新增第三种“Gitee”，可与 GitHub 和国内学支平台自由切换。",
+    "Gitee 路径无需登录、无需实名认证，也不需要加速器，非北航用户可以直接检查并下载更新。",
+    "Gitee 使用独立公开更新清单，安装包下载地址直接指向 Gitee Release，不会跳回 GitHub。",
+    "Android 和 iOS 原生更新检查同步支持 Gitee；网页版、电脑版和 PWA 也可直接读取 Gitee 清单。",
+    "Gitee 仓库从 GitHub 镜像同步，发布版本保持一致。",
+    "保留 v6.0.31 的桌面开场修复、Allura 花体字体和此前全部功能。"
+  ],
+  "desktop": {
+    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-6.0.32-app-patch.zip",
+    "sha256": "4fe3e4380b68990d7df5ead406c8e43b88d5b05013e56604600bfeda949333a8",
+    "size": 72870577
+  },
+  "mobile": {
+    "version": "6.0.32",
+    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-Offline.html",
+    "sha256": "7c70e700661b94670789f880c4de87b054f40d56acd59872fc717e444f93fe8c",
+    "size": 35528402
+  },
+  "android": {
+    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-Android-v6.0.32.apk",
+    "sha256": "485f8a6e737fb05f82b4f5ace0542b1aa18c237321f256ba27e6d171ff146e7e",
+    "size": 27068347
+  },
+  "macos": {
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-macOS-v6.0.32.zip",
+    "sha256": "4f3d28f0a9bc999ac8aaba0043ee6436cfec0359ce310bbb60a2962e00fd7ec1",
+    "size": 56123722,
+    "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
+  },
+  "ios": {
+    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-iOS-v6.0.32-source.zip",
+    "sha256": "8a2f8d315006de2e13ed35767079c23eb921f4b78acd46044a29d48715f70643",
+    "size": 29917641,
+    "note": "需在 macOS 上使用 Xcode 签名后安装。"
+  },
+  "ios_pwa": {
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-iOS-PWA-v6.0.32.zip",
+    "sha256": "d9b993434eced02231bc3f594dcae9a8a3b4c76155056ae25264429c07b38216",
+    "size": 27427643,
+    "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
+  }
+}

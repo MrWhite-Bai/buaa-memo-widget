@@ -2,47 +2,40 @@
   "version": "6.0.30",
   "published_at": "2026-10-28",
   "notes": [
-    "rainbow:这是一次神秘的更新",
-    "好友主页现在同步并展示对方当前佩戴的头像框，与称号、等级、展柜和勋章共同构成完整公开主页。",
-    "新增隐藏成就“浮光秘冕”，只有开发者身份可以点亮，固定奖励为 1 光斑和 1 经验。",
-    "“浮光秘冕”使用 Game Icons 帝国皇冠素材、独立动态图标、彩虹星云光晕、双层轨道、扫光和脉冲星光渲染。",
-    "所有更新到本版本的用户会收到一封“好友系统完善纪念礼”系统邮件，内含 100 光斑和 100 经验。",
-    "系统邮件自送达起 10 天内可领取，过期后奖励保持锁定并显示截止时间。",
-    "邮件提醒说明好友主页已支持称号、头像框、等级、展柜与成就勋章的查看。",
-    "保留 v6.0.29 的好友公开主页、加密同步和此前全部功能。"
+    "rainbow:这是一次神秘的更新"
   ],
   "desktop": {
     "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-6.0.30-app-patch.zip",
-    "sha256": "8b661c57394d4398249ba247055b8bcf53e5c6b17a4f0e25a27d6a7cdb14865d",
-    "size": 72810738
+    "sha256": "3cb01bdad1185aeaab1e7463a8cb1cde04a5d54f7efc7523bc85f0da577991dc",
+    "size": 72809911
   },
   "mobile": {
     "version": "6.0.30",
     "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-Offline.html",
-    "sha256": "4251ddc8c8ffea9d4ae24678dd9284cc04256ffebe9f82423d86f402fb64ad1a",
-    "size": 35485538
+    "sha256": "bf275b7d49701eec394ae204e2bd37f0b5bbb674b9890048af82512ab714be01",
+    "size": 35484713
   },
   "android": {
     "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-Android-v6.0.30.apk",
-    "sha256": "de73330c4c49a80f61ca2873abc1ac925c6ebdfb7a813b9b12a748cc257b7e06",
+    "sha256": "21ac356203a6c57d12b3ea33650a33c6cca915122cd9fd7693642f5f39b5effa",
     "size": 27035412
   },
   "macos": {
     "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-macOS-v6.0.30.zip",
-    "sha256": "18c82e8d10dbf51415a57a914c5be87782b4223ecd35a0ecf583b7070ac1df08",
-    "size": 56066651,
+    "sha256": "616c09da445d6a4c9df63a716d783d260a7ab61a04494467025d057b1952e9b0",
+    "size": 56066449,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
     "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-iOS-v6.0.30-source.zip",
-    "sha256": "68e8caf29e13b78a64a938a398337a74c639953e669359bc7e7ef86f8dea78c7",
-    "size": 29887626,
+    "sha256": "a0a150afbaa098db268a9f3b90c60af99e8735ce23acfa40c70948a2b43d6fa5",
+    "size": 29887080,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
     "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.30/BUAA-Memo-iOS-PWA-v6.0.30.zip",
-    "sha256": "2ae250f196500f81ca634cee980b7f8c6f44f371020a3b7f67a5a9e47dce7120",
-    "size": 27397151,
+    "sha256": "ac87451eb655c8f8250d25f59113eb4d0cdf1972ed254f364284e7f29ac02cee",
+    "size": 27396340,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

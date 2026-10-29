@@ -1,4 +1,4 @@
-const CACHE_NAME = "buaa-memo-cloud-20261028204949";
+const CACHE_NAME = "buaa-memo-cloud-20261030002143";
 const ASSETS = [
   "./",
   "./index.html",
@@ -98,6 +98,7 @@ const ASSETS = [
   "./assets/badge-art/unique/sands-of-time.svg",
   "./assets/badge-art/unique/scroll-quill.svg",
   "./assets/badge-art/unique/scroll-unfurled.svg",
+  "./assets/badge-art/unique/six-title-laurel.svg",
   "./assets/badge-art/unique/sparkles.svg",
   "./assets/badge-art/unique/star-formation.svg",
   "./assets/badge-art/unique/stick-frame.svg",

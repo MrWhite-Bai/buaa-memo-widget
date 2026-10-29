@@ -1,46 +1,45 @@
 {
-  "version": "6.0.32",
-  "published_at": "2026-10-28",
+  "version": "6.0.33",
+  "published_at": "2026-10-30",
   "notes": [
-    "更新路径新增第三种“Gitee”，可与 GitHub 和国内学支平台自由切换。",
-    "Gitee 路径无需登录、无需实名认证，也不需要加速器，非北航用户可以直接检查并下载更新。",
-    "Gitee 使用独立公开更新清单，安装包下载地址直接指向 Gitee Release，不会跳回 GitHub。",
-    "Android 和 iOS 原生更新检查同步支持 Gitee；网页版、电脑版和 PWA 也可直接读取 Gitee 清单。",
-    "Gitee 仓库从 GitHub 镜像同步，发布版本保持一致。",
-    "保留 v6.0.31 的桌面开场修复、Allura 花体字体和此前全部功能。"
+    "单个 PDF 附件上限由 2.4 MB 提高至 5.20 MB，网页、Android 与 iOS 使用相同的打开校验。",
+    "浮光艺展“道具”新增 4 个等级称号：青衿学子、云程问道、星槎远航和北辰执灯。",
+    "等级称号分别要求达到 5、15、30、45 级后才能购买，未达到等级时显示当前等级与解锁条件。",
+    "新增一项隐藏成就，并为其制作独立动态勋章与多阶段流光、星环、冠冕浮动特效。",
+    "保留 v6.0.32 的 Gitee 更新路径、好友系统、艺展、等级特权和全部现有功能。"
   ],
   "desktop": {
-    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-6.0.32-app-patch.zip",
-    "sha256": "9bf5d517984dfa7cd98a4fb5e9d729b2c98740f31f50b76f3ae8322ea9c1b679",
-    "size": 72870603
+    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-6.0.33-app-patch.zip",
+    "sha256": "a8af0afade84a6b2d7b09cf02c0655f06606de74c98df5e30860919578b00e89",
+    "size": 72880498
   },
   "mobile": {
-    "version": "6.0.32",
-    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-Offline.html",
-    "sha256": "cd96a00d444d49e25893dc09e770caba240421870876f2f701a5a2fc2057cd8a",
-    "size": 35528527
+    "version": "6.0.33",
+    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-Offline.html",
+    "sha256": "2dc357c534a0efef63d5d332b78e2c6dcaa02f04ecd77172db3a822e901d9173",
+    "size": 35553607
   },
   "android": {
-    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-Android-v6.0.32.apk",
-    "sha256": "168497f4a365fbadaef1ad16518dc0e18a899024d9872a97587863072a00e390",
-    "size": 27068347
+    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-Android-v6.0.33.apk",
+    "sha256": "4f461b9264fbab0e6163d4a4585b309d94829f5137dc1f7a70cd9b678beb724a",
+    "size": 27072540
   },
   "macos": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-macOS-v6.0.32.zip",
-    "sha256": "4d0429cf1f4b4ab8a4f37caa43a4e374aa4429cab105a6578750d8464ab5b9ab",
-    "size": 56123750,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-macOS-v6.0.33.zip",
+    "sha256": "f1480b17f04047f57d306d6a57616cb2e65d04eec114552c2212ef684f8aacad",
+    "size": 56134462,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-iOS-v6.0.32-source.zip",
-    "sha256": "becb7687491f35e4d601150750ae7560d82941896e6f4c601745e373ccc77628",
-    "size": 29917677,
+    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-iOS-v6.0.33-source.zip",
+    "sha256": "179172e54e722d3088ba52b762895bc092f54c98033b62df2d0f65c074ace1a1",
+    "size": 29948976,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.32/BUAA-Memo-iOS-PWA-v6.0.32.zip",
-    "sha256": "dd7cd997e9b5eda6cc2493ce698e868e3eda16de1f82e1a16909a397b8e8a802",
-    "size": 27427715,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-iOS-PWA-v6.0.33.zip",
+    "sha256": "81bc7de77345fb7c44784401875e371cb6e5813a0f95cba8865cf3e7c82b8731",
+    "size": 27441929,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

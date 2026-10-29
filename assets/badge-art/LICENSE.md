@@ -34,6 +34,7 @@
 - `open-treasure-chest.svg`：Skoll
 - `flower-pot.svg`：Lorc
 - `imperial-crown.svg`：Delapouite（“浮光秘冕”开发者专属勋章）
+- `laurel-crown.svg`：Lorc（“六印同辉”隐藏成就勋章）
 
 Icons made by Lorc, Delapouite, Caro Asercion and Skoll.
 

@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.33 将单个 PDF 附件上限提升到 5.20 MB，并在艺展道具中加入四个等级称号与一项独立动态隐藏成就。
+> v6.0.34 精简重复成就，新增四项隐藏成就与独立动态勋章，并让“管理勋章”只显示已解锁的可佩戴勋章。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
 并登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.33.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.34.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -22,14 +22,14 @@
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-Windows-v6.0.33.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-macOS-v6.0.33.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-Android-v6.0.33.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.33/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-iOS-v6.0.33-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-Windows-v6.0.34.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-macOS-v6.0.34.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-Android-v6.0.34.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-iOS-v6.0.34-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.33/BUAA-Memo-iOS-PWA-v6.0.33.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-iOS-PWA-v6.0.34.zip)
 
 #### iOS 版当前限制
 
@@ -235,7 +235,13 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.0.33
+v6.0.34
+
+- 移除重复的“落笔生光”，并移除“八方同游”“群星同游”两项高级成就。
+- 新增隐藏成就“雪落知行”“力挽狂澜”“神机妙算”“星夜葵心”，更新日志只显示名称，不公开触发条件。
+- “力挽狂澜”接替并收紧了原“一日圆满”的同条件统计，只计算截止日期当天完成的任务。
+- “星夜葵心”使用向日葵与星涡组合勋章，加入蓝色星夜、金色葵心、旋转星光和脉冲光晕。
+- 点击“管理勋章”后，只显示已解锁且可佩戴的勋章，不再混入未解锁成就。
 
 - 单个 PDF 附件上限提高至 5.20 MB。
 - 艺展道具新增青衿学子、云程问道、星槎远航和北辰执灯四个等级称号。

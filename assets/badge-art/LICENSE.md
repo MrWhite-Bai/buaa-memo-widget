@@ -35,12 +35,17 @@
 - `flower-pot.svg`：Lorc
 - `imperial-crown.svg`：Delapouite（“浮光秘冕”开发者专属勋章）
 - `laurel-crown.svg`：Lorc（“六印同辉”隐藏成就勋章）
+- `snowing.svg`：Lorc（“雪落知行”隐藏成就勋章）
+- `high-tide.svg`：Delapouite（“力挽狂澜”隐藏成就勋章）
+- `stopwatch.svg`：Lorc（“神机妙算”隐藏成就勋章）
+- `star-swirl.svg` 与 `sunflower.svg`：Lorc、Delapouite
+  （“星夜葵心”隐藏成就勋章的星涡与向日葵组合）
 
 Icons made by Lorc, Delapouite, Caro Asercion and Skoll.
 
 ## 独立成就图标
 
-`unique/` 目录中的 44 个 SVG 通过 Iconify 的 Game Icons 公开接口获取，按成就 ID
+`unique/` 目录中的 45 个 SVG 通过 Iconify 的 Game Icons 公开接口获取，按成就 ID
 一一映射，包含卷轴、书堆、文件夹、调色板、画架、星轨、沙漏、纸船、日历、
 花盆和信笺等图标。素材仍遵循上方 Game Icons 与 CC BY 3.0 授权。
 

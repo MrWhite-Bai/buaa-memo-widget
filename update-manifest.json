@@ -1,45 +1,45 @@
 {
-  "version": "6.0.49",
+  "version": "6.0.50",
   "published_at": "2026-10-31",
   "notes": [
-    "iOS 原生课表导入窗口新增“教程”按钮，可随时重新打开导入说明。",
-    "首次进入 iOS 课表导入窗口时自动显示五步教程，包括官方登录、等待读取、刷新重试、预览确认和课程表位置。",
-    "教程明确浮光不读取或保存北航学号和密码，登录凭据只提交给北航官方统一认证页面。",
-    "教程说明课程只进入课程表，不会混入普通事项、历史事项或月视图。",
-    "保留 v6.0.48 的更新路径菜单居中显示和 PWA 课表导入码功能。"
+    "iOS 课表导入教程显示完整的北航课表网站地址。",
+    "教程新增“打开北航课表网站”按钮，点击后关闭教程并在当前导入窗口加载官方入口。",
+    "教程第一步改为从教程按钮进入北航统一认证，避免用户不知道需要打开哪个网站。",
+    "网站入口继续使用北航官方地址，浮光不读取或保存学号密码。",
+    "保留 v6.0.49 的首次自动教程、五步说明和“教程”按钮重看功能。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.49/BUAA-Memo-6.0.49-app-patch.zip",
-    "sha256": "3fcb8213ce90070b378164d614ac6236f256ec14fc9821d1d9505e670090f4a0",
-    "size": 72979530
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-6.0.50-app-patch.zip",
+    "sha256": "54fe07b1fbe104773f3ce779ce275e793f7a68ebd89638be2a4afc38ed87ef75",
+    "size": 72980044
   },
   "mobile": {
-    "version": "6.0.49",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.49/BUAA-Memo-Offline.html",
-    "sha256": "a751fd9e8393d273f35e671d3bec51977bf84d9567ed14aeb9b0d85e81c16163",
-    "size": 35750360
+    "version": "6.0.50",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-Offline.html",
+    "sha256": "7abbc52c4914db8c53c53566d8b9ea40958ce828dad34c75b7e8ffda66502905",
+    "size": 35750942
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.49/BUAA-Memo-Android-v6.0.49.apk",
-    "sha256": "6c5d0b2e8e638a1c434388e3a2431a65d1ca19bf0d8ea4b4e6c88519e2208815",
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-Android-v6.0.50.apk",
+    "sha256": "14faf6ba3780aae84258d199cf191510b9c20d775a362a83ee72502c96a134fe",
     "size": 27126290
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.49/BUAA-Memo-macOS-v6.0.49.zip",
-    "sha256": "bf204dfebf1b8515d7073e2e84a76ece312d27cf520153edf7b4d30b91cec71d",
-    "size": 56183989,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-macOS-v6.0.50.zip",
+    "sha256": "7067bd44d41fe581869da9dee84128bc41076891b4748706f8d353ee457dd407",
+    "size": 56184169,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.49/BUAA-Memo-iOS-v6.0.49-source.zip",
-    "sha256": "be55ce8f09593401b6189304b2c404dad80d31cf5d8d532613cd32dd8a458584",
-    "size": 29999933,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-iOS-v6.0.50-source.zip",
+    "sha256": "0f5dee67240c26ad356ed3d8fd4d1b8910dd3c84ac7f139c03cdeb5ea07bcd39",
+    "size": 30000535,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.49/BUAA-Memo-iOS-PWA-v6.0.49.zip",
-    "sha256": "6ced3e2d7f997e30dfa5936bee82f7819a3af8d723b9d6c45f8c93a02a78cf6a",
-    "size": 27526266,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-iOS-PWA-v6.0.50.zip",
+    "sha256": "7729bec9701eed3c3da1a280f05450671536ce47eefb83f31d9dde6c037dc635",
+    "size": 27526786,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

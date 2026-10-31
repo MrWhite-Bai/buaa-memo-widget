@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.38 完善札记公式与图片的行内排版，新增传送门统计成就，并全面更新功能简介与纪念邮件奖励。
+> v6.0.41 课表强制中文显示，并将课程记录从普通事项与历史事项中独立出来。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [Gitee 最新版本页](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/latest)，
 无需登录。请根据自己的手机选择：
 
-- **安卓手机：** 从 Gitee 下载 `BUAA-Memo-Android-v6.0.38.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 从 Gitee 下载 `BUAA-Memo-Android-v6.0.41.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 从 Gitee 下载对应的 iPhone / iPad 安装包，并按包内说明安装。
 
 完整的安卓 APK、iOS 原生源码、macOS 和 Windows 版本位于下方“下载”区域。
@@ -21,14 +21,14 @@ Gitee 为应用内手机版和电脑版下载的主入口，GitHub 同时保留�
 ## 下载
 
 - [Gitee 最新版本页](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/latest)
-- [Windows 完整版（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.38/BUAA-Memo-Windows-v6.0.38.zip)
-- [macOS 浏览器版（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.38/BUAA-Memo-macOS-v6.0.38.zip)
-- [Android APK（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.38/BUAA-Memo-Android-v6.0.38.apk)
-- [手机离线版 HTML（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.38/BUAA-Memo-Offline.html)
-- [版本更新清单（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.38/gitee-update-manifest.json)
-- [iOS Xcode 工程（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.38/BUAA-Memo-iOS-v6.0.38-source.zip)
+- [Windows 完整版（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-Windows-v6.0.41.zip)
+- [macOS 浏览器版（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-macOS-v6.0.41.zip)
+- [Android APK（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-Android-v6.0.41.apk)
+- [手机离线版 HTML（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-Offline.html)
+- [版本更新清单（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/gitee-update-manifest.json)
+- [iOS Xcode 工程（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-iOS-v6.0.41-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.38/BUAA-Memo-iOS-PWA-v6.0.38.zip)
+- [iOS PWA 静态包（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-iOS-PWA-v6.0.41.zip)
 
 #### iOS 版当前限制
 

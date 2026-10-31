@@ -40,6 +40,7 @@
 - `stopwatch.svg`：Lorc（“神机妙算”隐藏成就勋章）
 - `star-swirl.svg` 与 `sunflower.svg`：Lorc、Delapouite
   （“星夜葵心”隐藏成就勋章的星涡与向日葵组合）
+- `magic-portal.svg`：Lorc（札记传送门卡片图标）
 
 Icons made by Lorc, Delapouite, Caro Asercion and Skoll.
 

@@ -2,34 +2,33 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.34 精简重复成就，新增四项隐藏成就与独立动态勋章，并让“管理勋章”只显示已解锁的可佩戴勋章。
+> v6.0.37 完善札记双位置索引与传送门，点击索引会移动编辑光标并显示三秒终点光效；手机版和电脑版下载统一使用 Gitee。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
 ## 手机版下载选择
 
 扫描浮光“手机版下载”中的固定二维码，或直接打开
-[国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
-并登录。请根据自己的手机选择：
+[Gitee 最新版本页](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/latest)，
+无需登录。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.0.34.apk`，允许系统安装未知来源应用，安装后直接使用。
-- **iPhone / iPad：** 使用 Safari 打开
-  [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
-  点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
+- **安卓手机：** 从 Gitee 下载 `BUAA-Memo-Android-v6.0.37.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **iPhone / iPad：** 使用 Safari 从 Gitee 下载对应的 iPhone / iPad 安装包，并按包内说明安装。
 
 完整的安卓 APK、iOS 原生源码、macOS 和 Windows 版本位于下方“下载”区域。
-国内平台会保留镜像下载入口，GitHub 链接仅作为备用来源。
+Gitee 为应用内手机版和电脑版下载的主入口，GitHub 同时保留相同版本的发布包。
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-Windows-v6.0.34.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-macOS-v6.0.34.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-Android-v6.0.34.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-iOS-v6.0.34-source.zip)
+- [Gitee 最新版本页](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/latest)
+- [Windows 完整版（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.37/BUAA-Memo-Windows-v6.0.37.zip)
+- [macOS 浏览器版（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.37/BUAA-Memo-macOS-v6.0.37.zip)
+- [Android APK（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.37/BUAA-Memo-Android-v6.0.37.apk)
+- [手机离线版 HTML（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.37/BUAA-Memo-Offline.html)
+- [版本更新清单（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.37/gitee-update-manifest.json)
+- [iOS Xcode 工程（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.37/BUAA-Memo-iOS-v6.0.37-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.0.34/BUAA-Memo-iOS-PWA-v6.0.34.zip)
+- [iOS PWA 静态包（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.37/BUAA-Memo-iOS-PWA-v6.0.37.zip)
 
 #### iOS 版当前限制
 
@@ -52,13 +51,9 @@ Windows 版解压后双击 `BUAA浮光.exe` 运行，不需要安装 Python。
 
 ## 更新方式
 
-手机端或电脑端点击“检查更新”后，会打开“学业支持中心开源平台”
-的项目 5。未登录时需先登录平台，登录后在“版本下载”中获取最新版。
-插件不会保存或上传平台账号与密码。
-
-手机版和电脑版联网启动后会优先从“学业支持中心开源平台”检查最新版本。
-更新按钮会明确显示“正在检查”“已是最新版”“可以更新”或“检查失败”。
-检查失败时可以点按钮重试，也可以直接打开国内平台手动下载。
+检查更新可以在 Gitee、GitHub 和国内学支平台之间切换。Gitee 无需登录、
+无需实名认证，也不需要加速器，非北航用户同样可用。GitHub 与最新发布同步，
+但需要加速器；国内学支平台更新频率较慢，并且仅北航学生可用。
 
 Android 版检测到新版本后，点击“可以更新”即可在 App 内自动下载并打开
 系统安装器。首次更新只需授权一次“安装未知应用”，授权后会自动继续。
@@ -100,8 +95,8 @@ Android 版检测到新版本后，点击“可以更新”即可在 App 内自�
 当前事项和历史事项都会进入同步预览。完成、到期迁移和删除历史事项时，
 可同步全部变更，也可逐项选择需要应用到另一端的历史记录。
 
-手机版主页提供“电脑版下载”区域，可复制下载链接或通过系统分享发送到电脑。
-在电脑浏览器打开链接并登录平台后，即可下载 Windows 或 macOS 版本。
+手机版主页提供“电脑版下载教程”，可复制 Gitee 链接或通过系统分享发送到电脑。
+在电脑浏览器打开链接后无需登录，即可下载 Windows 或 macOS 版本。
 
 新建手机事项时可设置提前通知，时间单位支持分钟、小时和天，提醒方式支持
 通知栏、响铃和振动，并可任意组合。提醒由 Android 系统定时器执行，App

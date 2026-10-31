@@ -1,4 +1,4 @@
-const CACHE_NAME = "buaa-memo-cloud-20261030221802";
+const CACHE_NAME = "buaa-memo-cloud-20261031135423";
 const ASSETS = [
   "./",
   "./index.html",
@@ -55,6 +55,7 @@ const ASSETS = [
   "./assets/badge-art/labyrinth.svg",
   "./assets/badge-art/leaf.svg",
   "./assets/badge-art/LICENSE.md",
+  "./assets/badge-art/magic-portal.svg",
   "./assets/badge-art/moon.svg",
   "./assets/badge-art/moonrise.svg",
   "./assets/badge-art/orbit.svg",

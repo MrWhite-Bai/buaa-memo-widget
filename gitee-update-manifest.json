@@ -1,45 +1,47 @@
 {
-  "version": "6.0.50",
+  "version": "6.0.51",
   "published_at": "2026-10-31",
   "notes": [
-    "iOS 课表导入教程显示完整的北航课表网站地址。",
-    "教程新增“打开北航课表网站”按钮，点击后关闭教程并在当前导入窗口加载官方入口。",
-    "教程第一步改为从教程按钮进入北航统一认证，避免用户不知道需要打开哪个网站。",
-    "网站入口继续使用北航官方地址，浮光不读取或保存学号密码。",
-    "保留 v6.0.49 的首次自动教程、五步说明和“教程”按钮重看功能。"
+    "Android、iOS、Windows 和 PWA 的课表导入窗口按当前平台独立显示，不再把原生登录和 PWA 导入码混在同一入口。",
+    "“打开北航官方登录”按钮改为高对比蓝绿色主按钮，不再使用容易让人误解为不可点击的灰色。",
+    "课程型事项改为单次课程：设置课程开始与结束日期、开始与结束时间，不再按每周、单周或双周自动重复。",
+    "单次课程只显示在课程表对应日期中，不进入普通事项、历史事项和月视图。",
+    "新增隐藏成就“课表初启”“临席听风”“三秋有课”；解锁条件保持隐藏。",
+    "三项隐藏成就使用从 Game Icons 获取的日历、书包和学期太阳历勋章素材，并加入独立动态渲染。",
+    "保留 v6.0.50 的 iOS 课表导入教程和北航课表网站入口。"
   ],
   "desktop": {
-    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-6.0.50-app-patch.zip",
-    "sha256": "54fe07b1fbe104773f3ce779ce275e793f7a68ebd89638be2a4afc38ed87ef75",
-    "size": 72980044
+    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-6.0.51-app-patch.zip",
+    "sha256": "f489565520c8a9da8a9e19b610edc711484f5f805121ba8b61bc4e8fddec55f4",
+    "size": 72990506
   },
   "mobile": {
-    "version": "6.0.50",
-    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-Offline.html",
-    "sha256": "7abbc52c4914db8c53c53566d8b9ea40958ce828dad34c75b7e8ffda66502905",
-    "size": 35750942
+    "version": "6.0.51",
+    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-Offline.html",
+    "sha256": "2d48bbeace7f73e2617d6193f50508db75ad581be2e193843602dbfbefe614f6",
+    "size": 35769385
   },
   "android": {
-    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-Android-v6.0.50.apk",
-    "sha256": "14faf6ba3780aae84258d199cf191510b9c20d775a362a83ee72502c96a134fe",
-    "size": 27126290
+    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-Android-v6.0.51.apk",
+    "sha256": "d03af087ae6cf51032595f8365912e1f3c0084449a6ff4537af85219f0cca5e4",
+    "size": 27130691
   },
   "macos": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-macOS-v6.0.50.zip",
-    "sha256": "7067bd44d41fe581869da9dee84128bc41076891b4748706f8d353ee457dd407",
-    "size": 56184169,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-macOS-v6.0.51.zip",
+    "sha256": "88c330ac6b13e137fd7c44720d9322442a55c4aaf67d3adc1b492dc730ed886a",
+    "size": 56191540,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-iOS-v6.0.50-source.zip",
-    "sha256": "0f5dee67240c26ad356ed3d8fd4d1b8910dd3c84ac7f139c03cdeb5ea07bcd39",
-    "size": 30000535,
+    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-iOS-v6.0.51-source.zip",
+    "sha256": "fcf3e9d0ebb0b510af2b11a9886396a43f85d66831fd69a91ae545cc2727e7f4",
+    "size": 30005950,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.50/BUAA-Memo-iOS-PWA-v6.0.50.zip",
-    "sha256": "7729bec9701eed3c3da1a280f05450671536ce47eefb83f31d9dde6c037dc635",
-    "size": 27526786,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-iOS-PWA-v6.0.51.zip",
+    "sha256": "a97241b86b18d1f5856dd2f250199c9783cff647f6402089c128a956d7f95903",
+    "size": 27534248,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

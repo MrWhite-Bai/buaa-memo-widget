@@ -41,12 +41,15 @@
 - `star-swirl.svg` 与 `sunflower.svg`：Lorc、Delapouite
   （“星夜葵心”隐藏成就勋章的星涡与向日葵组合）
 - `magic-portal.svg`：Lorc（札记传送门卡片图标）
+- `calendar.svg`：Delapouite（“课表初启”隐藏成就勋章）
+- `school-bag.svg`：Delapouite（“临席听风”隐藏成就勋章）
+- `aztec-calendar-sun.svg`：Lorc（“三秋有课”隐藏成就勋章）
 
 Icons made by Lorc, Delapouite, Caro Asercion and Skoll.
 
 ## 独立成就图标
 
-`unique/` 目录中的 45 个 SVG 通过 Iconify 的 Game Icons 公开接口获取，按成就 ID
+`unique/` 目录中的 52 个 SVG 通过 Iconify 的 Game Icons 公开接口获取，按成就 ID
 一一映射，包含卷轴、书堆、文件夹、调色板、画架、星轨、沙漏、纸船、日历、
 花盆和信笺等图标。素材仍遵循上方 Game Icons 与 CC BY 3.0 授权。
 

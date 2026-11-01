@@ -1,47 +1,48 @@
 {
-  "version": "6.0.51",
-  "published_at": "2026-10-31",
+  "version": "6.1.9",
+  "published_at": "2026-11-01",
   "notes": [
-    "Android、iOS、Windows 和 PWA 的课表导入窗口按当前平台独立显示，不再把原生登录和 PWA 导入码混在同一入口。",
-    "“打开北航官方登录”按钮改为高对比蓝绿色主按钮，不再使用容易让人误解为不可点击的灰色。",
-    "课程型事项改为单次课程：设置课程开始与结束日期、开始与结束时间，不再按每周、单周或双周自动重复。",
-    "单次课程只显示在课程表对应日期中，不进入普通事项、历史事项和月视图。",
-    "新增隐藏成就“课表初启”“临席听风”“三秋有课”；解锁条件保持隐藏。",
-    "三项隐藏成就使用从 Game Icons 获取的日历、书包和学期太阳历勋章素材，并加入独立动态渲染。",
-    "保留 v6.0.50 的 iOS 课表导入教程和北航课表网站入口。"
+    "重做手机版 i北航布局：下一节课改为紧凑全宽卡片，考试、作业、成绩、图书馆和博雅课程改为清晰的全宽列表。",
+    "修复功能简介中点击“i北航”后仍返回总览的问题，并补回上一步、下一步中的 i北航章节。",
+    "手机版功能简介标签改为完整换行展示，所有章节无需横向滑动即可直接打开。",
+    "固定功能简介顶部标题、标签栏和章节摘要高度，切换章节时蓝色分界与首个内容区块保持同一基线。",
+    "手机版 i北航蓝色状态卡压缩到原高度一半以下，在线状态、同步结果和操作按钮合并为紧凑布局。",
+    "手机版分组页缩短说明与搜索区，将札记日期筛选改为紧凑横排，并减小分组卡片、目录按钮和操作区留白。",
+    "修复 macOS 包可能沿用上一轮离线网页的问题，构建时会先生成当前版本的完整网页。",
+    "i北航模块图标恢复高对比度文字，模块状态统一排列在卡片右侧。"
   ],
   "desktop": {
-    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-6.0.51-app-patch.zip",
-    "sha256": "f489565520c8a9da8a9e19b610edc711484f5f805121ba8b61bc4e8fddec55f4",
-    "size": 72990506
+    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-6.1.9-app-patch.zip",
+    "sha256": "e01f4a65f5be126c4fa3360b1dc4f51496c9efe0e2e9d59681de5e5aa6f28ea8",
+    "size": 73081420
   },
   "mobile": {
-    "version": "6.0.51",
-    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-Offline.html",
-    "sha256": "2d48bbeace7f73e2617d6193f50508db75ad581be2e193843602dbfbefe614f6",
-    "size": 35769385
+    "version": "6.1.9",
+    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-Offline.html",
+    "sha256": "8cb56a715dd611d18526af16c8c9e4363a5e500d037511eddc2338a6dd5e1957",
+    "size": 35853248
   },
   "android": {
-    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-Android-v6.0.51.apk",
-    "sha256": "d03af087ae6cf51032595f8365912e1f3c0084449a6ff4537af85219f0cca5e4",
-    "size": 27130691
+    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-Android-v6.1.9.apk",
+    "sha256": "91db2b74779ccb4fa9d0c3dbbdccff13daa93e0d7860cc350532323c5b3b2a18",
+    "size": 27184083
   },
   "macos": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-macOS-v6.0.51.zip",
-    "sha256": "88c330ac6b13e137fd7c44720d9322442a55c4aaf67d3adc1b492dc730ed886a",
-    "size": 56191540,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-macOS-v6.1.9.zip",
+    "sha256": "4b4e82e6a329b562beb65db184fd09ec8a02feaff5c5cf0a84ba8c6dc1ca935d",
+    "size": 56234308,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-iOS-v6.0.51-source.zip",
-    "sha256": "fcf3e9d0ebb0b510af2b11a9886396a43f85d66831fd69a91ae545cc2727e7f4",
-    "size": 30005950,
+    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-iOS-v6.1.9-source.zip",
+    "sha256": "5f807612fedaeacc0a483a89dbb0d779fff90bcf68325bef34e1a63714da03a8",
+    "size": 30049739,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.51/BUAA-Memo-iOS-PWA-v6.0.51.zip",
-    "sha256": "a97241b86b18d1f5856dd2f250199c9783cff647f6402089c128a956d7f95903",
-    "size": 27534248,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-iOS-PWA-v6.1.9.zip",
+    "sha256": "9d24b12de76716c05b9bc5c6b6fdd45b73d4b4def3b17a16626520917b473e63",
+    "size": 27584968,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

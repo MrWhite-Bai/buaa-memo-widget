@@ -1,9 +1,11 @@
-const CACHE_NAME = "buaa-memo-cloud-20261031200621";
+const CACHE_NAME = "buaa-memo-cloud-20261101212533";
 const ASSETS = [
   "./",
   "./index.html",
   "./manifest.json",
   "./changelog.json",
+  "./assets/ibuaa.js",
+  "./assets/ibuaa_sources.js",
   "./starry-sky-v2.jpg",
   "./river-material-v3.jpg",
   "./mobile-download-qr.png",

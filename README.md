@@ -2,33 +2,35 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.0.41 课表强制中文显示，并将课程记录从普通事项与历史事项中独立出来。
+> v6.1.9 重做手机版 i北航排版，并修复“所有功能简介”中的 i北航章节无法打开的问题。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
 ## 手机版下载选择
 
 扫描浮光“手机版下载”中的固定二维码，或直接打开
-[Gitee 最新版本页](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/latest)，
-无需登录。请根据自己的手机选择：
+[国内平台项目页](https://cysyforum.muzermat.online/cy-platform/projects/5)
+并登录。请根据自己的手机选择：
 
-- **安卓手机：** 从 Gitee 下载 `BUAA-Memo-Android-v6.0.41.apk`，允许系统安装未知来源应用，安装后直接使用。
-- **iPhone / iPad：** 使用 Safari 从 Gitee 下载对应的 iPhone / iPad 安装包，并按包内说明安装。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.1.9.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **iPhone / iPad：** 使用 Safari 打开
+  [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
+  点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
 
 完整的安卓 APK、iOS 原生源码、macOS 和 Windows 版本位于下方“下载”区域。
-Gitee 为应用内手机版和电脑版下载的主入口，GitHub 同时保留相同版本的发布包。
+国内平台会保留镜像下载入口，GitHub 链接仅作为备用来源。
 
 ## 下载
 
-- [Gitee 最新版本页](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/latest)
-- [Windows 完整版（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-Windows-v6.0.41.zip)
-- [macOS 浏览器版（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-macOS-v6.0.41.zip)
-- [Android APK（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-Android-v6.0.41.apk)
-- [手机离线版 HTML（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-Offline.html)
-- [版本更新清单（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/gitee-update-manifest.json)
-- [iOS Xcode 工程（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-iOS-v6.0.41-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-Windows-v6.1.9.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-macOS-v6.1.9.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-Android-v6.1.9.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-iOS-v6.1.9-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包（Gitee）](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.0.41/BUAA-Memo-iOS-PWA-v6.0.41.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-iOS-PWA-v6.1.9.zip)
+- [GitHub Pages PWA 发布包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-PWA-GitHubPages-v6.1.9.zip)
 
 #### iOS 版当前限制
 
@@ -51,9 +53,13 @@ Windows 版解压后双击 `BUAA浮光.exe` 运行，不需要安装 Python。
 
 ## 更新方式
 
-检查更新可以在 Gitee、GitHub 和国内学支平台之间切换。Gitee 无需登录、
-无需实名认证，也不需要加速器，非北航用户同样可用。GitHub 与最新发布同步，
-但需要加速器；国内学支平台更新频率较慢，并且仅北航学生可用。
+手机端或电脑端点击“检查更新”后，会打开“学业支持中心开源平台”
+的项目 5。未登录时需先登录平台，登录后在“版本下载”中获取最新版。
+插件不会保存或上传平台账号与密码。
+
+手机版和电脑版联网启动后会优先从“学业支持中心开源平台”检查最新版本。
+更新按钮会明确显示“正在检查”“已是最新版”“可以更新”或“检查失败”。
+检查失败时可以点按钮重试，也可以直接打开国内平台手动下载。
 
 Android 版检测到新版本后，点击“可以更新”即可在 App 内自动下载并打开
 系统安装器。首次更新只需授权一次“安装未知应用”，授权后会自动继续。
@@ -95,8 +101,8 @@ Android 版检测到新版本后，点击“可以更新”即可在 App 内自�
 当前事项和历史事项都会进入同步预览。完成、到期迁移和删除历史事项时，
 可同步全部变更，也可逐项选择需要应用到另一端的历史记录。
 
-手机版主页提供“电脑版下载教程”，可复制 Gitee 链接或通过系统分享发送到电脑。
-在电脑浏览器打开链接后无需登录，即可下载 Windows 或 macOS 版本。
+手机版主页提供“电脑版下载”区域，可复制下载链接或通过系统分享发送到电脑。
+在电脑浏览器打开链接并登录平台后，即可下载 Windows 或 macOS 版本。
 
 新建手机事项时可设置提前通知，时间单位支持分钟、小时和天，提醒方式支持
 通知栏、响铃和振动，并可任意组合。提醒由 Android 系统定时器执行，App
@@ -230,13 +236,60 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.0.34
+v6.1.9
 
-- 移除重复的“落笔生光”，并移除“八方同游”“群星同游”两项高级成就。
-- 新增隐藏成就“雪落知行”“力挽狂澜”“神机妙算”“星夜葵心”，更新日志只显示名称，不公开触发条件。
-- “力挽狂澜”接替并收紧了原“一日圆满”的同条件统计，只计算截止日期当天完成的任务。
-- “星夜葵心”使用向日葵与星涡组合勋章，加入蓝色星夜、金色葵心、旋转星光和脉冲光晕。
-- 点击“管理勋章”后，只显示已解锁且可佩戴的勋章，不再混入未解锁成就。
+- 手机版下一节课改为紧凑的全宽卡片。
+- 考试、作业、成绩、图书馆和博雅课程改为清晰的全宽列表。
+- 修复“所有功能简介”中点击“i北航”后仍返回总览的问题。
+- 手机版功能简介标签完整换行显示，无需横向滑动。
+- 功能简介顶部标题、标签和章节摘要高度固定，切换章节时分界线不再跳动。
+- i北航蓝色状态卡在手机端压缩到原高度一半以下。
+- 分组页压缩说明、搜索、日期筛选和分组卡片的垂直留白。
+- i北航模块图标恢复高对比度文字，状态统一排列在右侧。
+- 从 i北航登录窗口返回时恢复主 WebView、渲染计时器和焦点。
+- 主页面未就绪时暂存同步结果，加载完成后再应用，修复黑屏。
+- 预取从今天起近七天的空教室数据。
+- 近七天日期直接使用缓存筛选，避免再次等待网络。
+- 日期控件限制为今天起七天内。
+- 博雅已有已选课程时跳过可选课程列表请求。
+- Android 空教室按用户选择日期重新查询官方接口。
+- 无明确空闲节次的数据不再显示为可用。
+- 查询结果会排除与本人已导入课程冲突的教室。
+- 作业卡片直接打开北航官网作业库。
+- 图书馆卡片直接打开图书馆移动端座位与预约系统。
+- 删除“校历与学期”卡片。
+- i北航登录只继续同步博雅课程和空教室，并固定使用手机版官网标识。
+- 作业库成功返回空列表时正常显示已同步，不再误报失败。
+- 当统一作业库没有返回数据时，按当前学期获取本人课程并逐门读取作业。
+- 作业按编号去重，并使用课程信息补齐缺失的课程名称。
+- 移除 SPOC 与希冀的独立入口和同步阶段。
+- 新增统一的“作业”模块，从北航官网作业库同步标题、课程、截止时间和提交状态。
+- 作业模块只保留“打开北航作业库”入口。
+- 图书馆恢复 v6.0.66 的 WebView 同源同步通道。
+- SPOC 与希冀继续使用 Android 原生后台同步。
+- Android 的 SPOC、希冀和图书馆改为原生后台 HTTP 同步，不再依赖 WebView 内的 JavaScript/XHR。
+- 原生同步使用当前官网 Cookie 与登录令牌，并在独立线程执行超时控制。
+- SPOC、图书馆和希冀请求使用独立硬超时，不再依赖可能不触发的浏览器 timeout 事件。
+- 希冀页面请求改用 XHR 通道，并优先自动打开统一认证入口。
+- SPOC 学期接口超过 7 秒无响应时自动按当前学年继续，不会卡在“读取学期”。
+- 图书馆与官网一致使用 XHR 调用 space/index、space/pick 和 member/seat。
+- 希冀检测到统一认证入口后会自动打开登录页。
+- i北航窗口会显示 SPOC、希冀、图书馆等模块当前正在读取的具体数据。
+- SPOC 旧作业分页接口失败时自动切换官网现行作业库接口。
+- 图书馆使用 space/pick 与 member/seat 现行接口读取座位和预约。
+- 需要重新认证时点击 i北航窗口中的“登录/刷新”。
+- SPOC 复用官网 localStorage 中的有效登录令牌与角色信息。
+- 图书馆复用 H5 页面 sessionStorage 中的有效 JWT，不再强制重新兑换 CAS。
+- 已登录校园系统不再被误判为未登录。
+- 修复 Android 图书馆同步后的 JavaBridge 线程异常。
+- 希冀改为先激活统一认证会话，再读取课程和作业。
+- SPOC 对瞬时 HTTP 500 自动重试，课程元数据失败时仍继续同步作业。
+- 博雅首次打开会等待登录令牌初始化，减少刷新后才成功的问题。
+- Android 与 iOS 固定使用移动版官网布局。
+- 自动识别校园网限制并切换到 WebVPN。
+- 所有教务与校园数据通过 WebVPN 路径转换。
+- WebVPN 登录后自动继续原同步步骤。
+- 保留令牌捕获、自动重试和空教室筛选。
 
 - 单个 PDF 附件上限提高至 5.20 MB。
 - 艺展道具新增青衿学子、云程问道、星槎远航和北辰执灯四个等级称号。

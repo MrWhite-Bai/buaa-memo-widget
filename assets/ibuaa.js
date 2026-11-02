@@ -9,7 +9,7 @@
     score: "https://app.buaa.edu.cn/buaascore/wap/default/index",
     homework: "https://spoc.buaa.edu.cn/spocnew/",
     library: "https://booking.lib.buaa.edu.cn/h5/",
-    bykc: "https://bykc.buaa.edu.cn",
+    bykc: "https://bykc.buaa.edu.cn/sscv/",
   });
 
   const page = document.getElementById("ibuaaPage");
@@ -24,6 +24,7 @@
   const refreshButton = document.getElementById("iBuaaRefreshBtn");
   const nextClassTitle = document.getElementById("iBuaaNextClassTitle");
   const nextClassCopy = document.getElementById("iBuaaNextClassCopy");
+  const todaySchedule = document.getElementById("iBuaaTodaySchedule");
   const checkinButton = document.getElementById("iBuaaCheckinBtn");
   const examSummary = document.getElementById("iBuaaExamSummary");
   const assignmentSummary = document.getElementById("iBuaaAssignmentSummary");
@@ -98,11 +99,8 @@
   function readRecords() {
     const recordsById = new Map();
     const anonymous = [];
-    for (let index = 0; index < localStorage.length; index += 1) {
-      const key = localStorage.key(index);
-      if (!key || !key.startsWith(RECORDS_KEY_PREFIX)) continue;
-      const records = parseJson(localStorage.getItem(key), []);
-      if (!Array.isArray(records)) continue;
+    const ingest = records => {
+      if (!Array.isArray(records)) return;
       for (const record of records) {
         if (!record || typeof record !== "object") continue;
         if (!record.id) {
@@ -120,6 +118,20 @@
           recordsById.set(String(record.id), record);
         }
       }
+    };
+    for (let index = 0; index < localStorage.length; index += 1) {
+      const key = localStorage.key(index);
+      if (!key || !key.startsWith(RECORDS_KEY_PREFIX)) continue;
+      const records = parseJson(localStorage.getItem(key), []);
+      ingest(records);
+    }
+    try {
+      const nativeRecords =
+        window.AndroidMemo?.readRecords?.() ||
+        window.BUAADesktopBridge?.readRecords?.();
+      if (nativeRecords) ingest(parseJson(nativeRecords, []));
+    } catch {
+      // Keep browser-local records available if the native store is busy.
     }
     return [...recordsById.values(), ...anonymous];
   }
@@ -476,7 +488,9 @@
   }
 
   function deriveLocalSchedule() {
-    const records = readRecords().filter(isCourseRecord);
+    const records = readRecords().filter(
+      record => !record.deleted && isCourseRecord(record)
+    );
     const today = localDateValue(new Date());
     const courses = records
       .map(record => {
@@ -508,18 +522,16 @@
     return courses;
   }
 
-  function nextCourseState() {
-    const courses = deriveLocalSchedule();
+  function nextCourseState(courses = deriveLocalSchedule()) {
     const now = Date.now();
-    const upcoming = courses.find(item => item.start.getTime() >= now);
-    if (upcoming) return upcoming;
     const current = courses.find(
       item =>
         item.end &&
         item.start.getTime() <= now &&
         item.end.getTime() >= now
     );
-    return current || courses[0] || null;
+    if (current) return current;
+    return courses.find(item => item.start.getTime() >= now) || null;
   }
 
   function checkinWindow(course) {
@@ -556,23 +568,79 @@
   }
 
   function updateNextClass() {
-    nextCourse = nextCourseState();
+    const courses = deriveLocalSchedule();
+    const todayCourses = courses.filter(item => item.sameDay);
+    nextCourse = nextCourseState(courses);
     const window = checkinWindow(nextCourse);
+    renderTodaySchedule(todayCourses, nextCourse);
     if (!nextCourse) {
-      nextClassTitle.textContent = "暂无课程";
+      nextClassTitle.textContent = todayCourses.length
+        ? "今日课程已结束"
+        : "暂无课程";
       nextClassCopy.textContent =
-        "同步课表后可查看下一节课与课前签到窗口。";
+        todayCourses.length
+          ? `今天共 ${todayCourses.length} 节课，课程签到窗口已关闭。`
+          : "同步课表后可查看今日课程与课前签到窗口。";
       checkinButton.disabled = true;
       checkinButton.textContent = "课前签到";
       return;
     }
     nextClassTitle.textContent = nextCourse.title;
+    const datePrefix = nextCourse.sameDay
+      ? ""
+      : `${formatDate(nextCourse.start)} · `;
     nextClassCopy.textContent =
-      `${formatClock(nextCourse.start)}–${formatClock(nextCourse.end)} · ` +
+      `${datePrefix}${formatClock(nextCourse.start)}–${formatClock(nextCourse.end)} · ` +
       `${nextCourse.location} · ${window.detail}`;
     checkinButton.disabled = !window.enabled;
     checkinButton.textContent = window.label;
     checkinButton.dataset.courseId = nextCourse.id;
+  }
+
+  function renderTodaySchedule(courses, nextCourse) {
+    if (!todaySchedule) return;
+    todaySchedule.replaceChildren();
+    if (!courses.length) {
+      const empty = document.createElement("span");
+      empty.className = "ibuaa-today-empty";
+      empty.textContent = "今天没有课程安排";
+      todaySchedule.appendChild(empty);
+      return;
+    }
+    const now = Date.now();
+    for (const course of courses) {
+      const row = document.createElement("div");
+      row.className = "ibuaa-today-course";
+      if (course.id === nextCourse?.id) row.classList.add("next");
+      if (course.start.getTime() <= now && course.end?.getTime() >= now) {
+        row.classList.add("current");
+      } else if (course.end?.getTime() < now) {
+        row.classList.add("past");
+      }
+      const time = document.createElement("span");
+      time.className = "ibuaa-today-course-time";
+      time.textContent = `${formatClock(course.start)}-${formatClock(course.end)}`;
+      const copy = document.createElement("span");
+      copy.className = "ibuaa-today-course-copy";
+      const title = document.createElement("strong");
+      title.textContent = course.title;
+      const detail = document.createElement("small");
+      detail.textContent = [
+        course.location,
+        row.classList.contains("current")
+          ? "进行中"
+          : row.classList.contains("next")
+            ? "下一节"
+            : row.classList.contains("past")
+              ? "已结束"
+              : "",
+      ]
+        .filter(Boolean)
+        .join(" · ");
+      copy.append(title, detail);
+      row.append(time, copy);
+      todaySchedule.appendChild(row);
+    }
   }
 
   function upcomingExams() {

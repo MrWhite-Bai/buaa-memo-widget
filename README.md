@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.1.9 重做手机版 i北航排版，并修复“所有功能简介”中的 i北航章节无法打开的问题。
+> v6.2.0 修复 i北航今日课表与 App 内课前签到，并新增每月任务。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [Gitee 最新版本页](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/latest)，
 无需登录或实名认证。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.1.9.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.2.0.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -23,15 +23,15 @@ Gitee 作为国内直连主入口，GitHub 作为最新版本备用来源；
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-Windows-v6.1.9.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-macOS-v6.1.9.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-Android-v6.1.9.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-iOS-v6.1.9-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.0/BUAA-Memo-Windows-v6.2.0.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.0/BUAA-Memo-macOS-v6.2.0.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.0/BUAA-Memo-Android-v6.2.0.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.0/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.0/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.0/BUAA-Memo-iOS-v6.2.0-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-iOS-PWA-v6.1.9.zip)
-- [GitHub Pages PWA 发布包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.1.9/BUAA-Memo-PWA-GitHubPages-v6.1.9.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.0/BUAA-Memo-iOS-PWA-v6.2.0.zip)
+- [GitHub Pages PWA 发布包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.0/BUAA-Memo-PWA-GitHubPages-v6.2.0.zip)
 
 #### iOS 版当前限制
 
@@ -237,16 +237,15 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.1.9
+v6.2.0
 
-- 手机版下一节课改为紧凑的全宽卡片。
-- 考试、作业、成绩、图书馆和博雅课程改为清晰的全宽列表。
-- 修复“所有功能简介”中点击“i北航”后仍返回总览的问题。
-- 手机版功能简介标签完整换行显示，无需横向滑动。
-- 功能简介顶部标题、标签和章节摘要高度固定，切换章节时分界线不再跳动。
-- i北航蓝色状态卡在手机端压缩到原高度一半以下。
-- 分组页压缩说明、搜索、日期筛选和分组卡片的垂直留白。
-- i北航模块图标恢复高对比度文字，状态统一排列在右侧。
+- 修复 Android 原生课程数据未被 i北航读取的问题。
+- i北航新增完整今日课程列表和课程状态。
+- 课前签到改为在 App 内打开博雅官方页面并复用登录状态。
+- 新增每月任务，每月 1 日 00:00 重置。
+- “新藏入柜”从每周任务迁移到每月任务。
+- 新增月度记录、执行、签到、札记、整理、回望、策展和艺展任务。
+- 新增隐藏成就“天光拾色”。
 - 从 i北航登录窗口返回时恢复主 WebView、渲染计时器和焦点。
 - 主页面未就绪时暂存同步结果，加载完成后再应用，修复黑屏。
 - 预取从今天起近七天的空教室数据。

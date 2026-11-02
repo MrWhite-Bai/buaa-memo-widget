@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="五种天气">
+  <defs>
+    <radialGradient id="sky" cx="36%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#fff7bd"/>
+      <stop offset=".35" stop-color="#8ee8f4"/>
+      <stop offset=".72" stop-color="#4b76c9"/>
+      <stop offset="1" stop-color="#182d68"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="18" y1="12" x2="108" y2="116">
+      <stop stop-color="#fff9cf"/>
+      <stop offset=".45" stop-color="#8ef4ea"/>
+      <stop offset="1" stop-color="#8ea9ff"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="64" cy="64" r="55" fill="url(#sky)" stroke="url(#rim)" stroke-width="5"/>
+  <circle cx="64" cy="64" r="48" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width="1.5" stroke-dasharray="3 5"/>
+  <g filter="url(#glow)">
+    <circle cx="42" cy="42" r="11" fill="#fff2a0"/>
+    <g stroke="#fff6b0" stroke-width="3" stroke-linecap="round">
+      <path d="M42 24v-6"/>
+      <path d="M42 66v-6"/>
+      <path d="M24 42h-6"/>
+      <path d="M66 42h-6"/>
+      <path d="m29 29-5-5"/>
+      <path d="m60 60-5-5"/>
+    </g>
+    <path d="M45 66c2-8 8-13 16-13 7 0 13 4 15 10 8-1 14 4 14 11 0 7-6 12-14 12H42c-8 0-14-4-14-11 0-6 6-10 17-9Z" fill="#f5fdff" fill-opacity=".94"/>
+    <g fill="#a9edff">
+      <path d="M45 94c0 5-3 9-7 9s-7-4-7-9c0-4 7-12 7-12s7 8 7 12Z"/>
+      <path d="M64 98c0 4-2 7-6 7s-6-3-6-7c0-3 6-10 6-10s6 7 6 10Z"/>
+    </g>
+    <g stroke="#f7fdff" stroke-width="2.8" stroke-linecap="round">
+      <path d="M82 82v20"/>
+      <path d="m74 86 16 12"/>
+      <path d="m90 86-16 12"/>
+      <path d="m74 92 16 0"/>
+      <path d="M82 82l-4 5m4-5 4 5m-4 15-4-5m4 5 4-5"/>
+    </g>
+    <path d="m101 51-9 17h7l-5 16 14-21h-8l7-12Z" fill="#ffe36b"/>
+  </g>
+  <circle cx="64" cy="64" r="58" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="1"/>
+</svg>

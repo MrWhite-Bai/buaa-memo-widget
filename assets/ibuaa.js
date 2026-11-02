@@ -2,7 +2,6 @@
   "use strict";
 
   const STORAGE_KEY = "buaa_ibuaa_cache_v1";
-  const CHECKIN_ATTEMPTS_KEY = "buaa_ibuaa_checkin_attempts_v1";
   const RECORDS_KEY_PREFIX = "buaa_memo_records_v2";
   const OFFICIAL = Object.freeze({
     byxt: "https://byxt.buaa.edu.cn/jwapp/sys/byrhmhsy/index.do",
@@ -25,7 +24,6 @@
   const nextClassTitle = document.getElementById("iBuaaNextClassTitle");
   const nextClassCopy = document.getElementById("iBuaaNextClassCopy");
   const todaySchedule = document.getElementById("iBuaaTodaySchedule");
-  const checkinButton = document.getElementById("iBuaaCheckinBtn");
   const examSummary = document.getElementById("iBuaaExamSummary");
   const assignmentSummary = document.getElementById("iBuaaAssignmentSummary");
   const academicSummary = document.getElementById("iBuaaAcademicSummary");
@@ -534,44 +532,10 @@
     return courses.find(item => item.start.getTime() >= now) || null;
   }
 
-  function checkinWindow(course) {
-    if (!course) return { enabled: false, label: "暂无课程", detail: "" };
-    const now = Date.now();
-    const remaining = course.start.getTime() - now;
-    if (remaining > 10 * 60 * 1000) {
-      const minutes = Math.ceil(remaining / 60000);
-      return {
-        enabled: false,
-        label: `${minutes} 分钟后开放`,
-        detail: "仅在上课前十分钟内开放签到入口",
-      };
-    }
-    if (remaining >= 0) {
-      return {
-        enabled: true,
-        label: "进入签到",
-        detail: "当前处于课前十分钟签到窗口",
-      };
-    }
-    if (course.end && course.end.getTime() >= now) {
-      return {
-        enabled: false,
-        label: "课程已开始",
-        detail: "课前十分钟签到窗口已结束",
-      };
-    }
-    return {
-      enabled: false,
-      label: "签到窗口已结束",
-      detail: "请切换到下一节课或联系任课教师",
-    };
-  }
-
   function updateNextClass() {
     const courses = deriveLocalSchedule();
     const todayCourses = courses.filter(item => item.sameDay);
     nextCourse = nextCourseState(courses);
-    const window = checkinWindow(nextCourse);
     renderTodaySchedule(todayCourses, nextCourse);
     if (!nextCourse) {
       nextClassTitle.textContent = todayCourses.length
@@ -579,10 +543,8 @@
         : "暂无课程";
       nextClassCopy.textContent =
         todayCourses.length
-          ? `今天共 ${todayCourses.length} 节课，课程签到窗口已关闭。`
-          : "同步课表后可查看今日课程与课前签到窗口。";
-      checkinButton.disabled = true;
-      checkinButton.textContent = "课前签到";
+          ? `今天共 ${todayCourses.length} 节课。`
+          : "同步课表后可查看今日课程。";
       return;
     }
     nextClassTitle.textContent = nextCourse.title;
@@ -591,10 +553,7 @@
       : `${formatDate(nextCourse.start)} · `;
     nextClassCopy.textContent =
       `${datePrefix}${formatClock(nextCourse.start)}–${formatClock(nextCourse.end)} · ` +
-      `${nextCourse.location} · ${window.detail}`;
-    checkinButton.disabled = !window.enabled;
-    checkinButton.textContent = window.label;
-    checkinButton.dataset.courseId = nextCourse.id;
+      `${nextCourse.location}`;
   }
 
   function renderTodaySchedule(courses, nextCourse) {
@@ -724,9 +683,8 @@
     librarySummary.textContent = "打开图书馆系统";
     const bykc = object(state.bykc);
     const selected = array(bykc.selected || bykc.courses).length;
-    const signin = array(bykc.signin || bykc.attendance).length;
     bykcSummary.textContent = selected
-      ? `${selected} 门已选${signin ? ` · ${signin} 项签到` : ""}`
+      ? `${selected} 门已选`
       : state.sourceErrors["博雅课程"]
         ? "同步失败"
         : "官方入口";
@@ -1000,7 +958,7 @@
   function showBykc() {
     openDetail(
       "博雅课程",
-      "可查看已选课程、开选时间与签到状态。选课、退课和签到均在官方系统内由本人确认。",
+      "可查看已选课程与开选时间。选课和退课均在官方系统内由本人确认。",
       body => {
         renderSyncErrors(body, ["博雅课程"]);
         const bykc = object(state.bykc);
@@ -1018,7 +976,7 @@
             [
               text(value.coursePosition || value.location),
               text(value.courseTeacher || value.teacher),
-              text(value.statusName || value.status || value.checkin),
+              text(value.statusName || value.status),
             ]
               .filter(Boolean)
               .join(" · ") || "详情待同步"
@@ -1283,41 +1241,6 @@
 
   loginButton?.addEventListener("click", () => beginRefresh(true));
   refreshButton?.addEventListener("click", () => beginRefresh(false));
-  checkinButton?.addEventListener("click", () => {
-    if (!nextCourse || checkinButton.disabled) return;
-    const attempts = parseJson(
-      localStorage.getItem(CHECKIN_ATTEMPTS_KEY),
-      {}
-    );
-    const key = `${nextCourse.id}:${localDateValue(nextCourse.start)}`;
-    attempts[key] = new Date().toISOString();
-    try {
-      localStorage.setItem(CHECKIN_ATTEMPTS_KEY, JSON.stringify(attempts));
-    } catch {}
-    const bridge = window.AndroidMemo;
-    if (bridge?.openIBuaaCheckin) {
-      bridge.openIBuaaCheckin(
-        JSON.stringify({
-          courseId: nextCourse.id,
-          title: nextCourse.title,
-          startAt: nextCourse.start.toISOString(),
-        })
-      );
-      return;
-    }
-    if (window.BUAADesktopBridge?.openIBuaaCheckin) {
-      window.BUAADesktopBridge.openIBuaaCheckin(
-        JSON.stringify({
-          courseId: nextCourse.id,
-          title: nextCourse.title,
-          startAt: nextCourse.start.toISOString(),
-        })
-      );
-      return;
-    }
-    openExternal(OFFICIAL.bykc);
-    showToast("已打开北航博雅签到入口，请完成官方签到");
-  });
   page.addEventListener("click", event => {
     const module = event.target.closest("[data-ibuaa-module]");
     if (module) openModule(module.dataset.ibuaaModule);

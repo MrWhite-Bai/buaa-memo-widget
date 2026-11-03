@@ -5415,6 +5415,31 @@
       white-space: nowrap;
     }
 
+    .group-chapter-edit {
+      border: 0;
+      border-radius: 9px;
+      padding: 5px 7px;
+      color: #315f73;
+      background: #e3eff2;
+      font: inherit;
+      font-size: 8px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .group-node-edit-delete {
+      width: 100%;
+      margin-top: 14px;
+      border: 1px solid rgba(181, 101, 94, .24);
+      border-radius: 11px;
+      padding: 10px;
+      color: #975b55;
+      background: #faecea;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
     .group-chapter-card strong {
       color: #244b60;
       font-size: 15px;
@@ -5564,6 +5589,10 @@
 
     #chapterNotePickerOverlay {
       z-index: 1300;
+    }
+
+    #groupNodeEditOverlay {
+      z-index: 1325;
     }
 
     #groupDetailOverlay .group-detail-sheet {
@@ -14778,6 +14807,27 @@
     </div>
   </div>
 
+  <div class="overlay" id="groupNodeEditOverlay">
+    <div class="sheet" style="max-width:420px">
+      <div class="week-toolbar">
+        <h2 id="groupNodeEditTitle">编辑目录</h2>
+        <button type="button" id="groupNodeEditCloseBtn">关闭</button>
+      </div>
+      <form id="groupNodeEditForm">
+        <div class="field">
+          <label for="groupNodeEditName" id="groupNodeEditNameLabel">目录名称</label>
+          <input id="groupNodeEditName" maxlength="30" autocomplete="off" required>
+        </div>
+        <div class="form-hint" id="groupNodeEditHint"></div>
+        <button type="button" class="group-node-edit-delete" id="groupNodeEditDeleteBtn">删除目录</button>
+        <div class="sheet-actions">
+          <button class="cancel" type="button" id="groupNodeEditCancelBtn">取消</button>
+          <button class="save" type="submit">保存</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="overlay" id="groupDetailOverlay">
     <div class="sheet group-detail-sheet" id="groupDetailSheet">
       <div class="week-toolbar">
@@ -16447,6 +16497,27 @@
   );
   const groupMemoChoices = document.getElementById("groupMemoChoices");
   const groupCancelBtn = document.getElementById("groupCancelBtn");
+  const groupNodeEditOverlay = document.getElementById(
+    "groupNodeEditOverlay"
+  );
+  const groupNodeEditTitle = document.getElementById(
+    "groupNodeEditTitle"
+  );
+  const groupNodeEditForm = document.getElementById("groupNodeEditForm");
+  const groupNodeEditNameLabel = document.getElementById(
+    "groupNodeEditNameLabel"
+  );
+  const groupNodeEditName = document.getElementById("groupNodeEditName");
+  const groupNodeEditHint = document.getElementById("groupNodeEditHint");
+  const groupNodeEditDeleteBtn = document.getElementById(
+    "groupNodeEditDeleteBtn"
+  );
+  const groupNodeEditCloseBtn = document.getElementById(
+    "groupNodeEditCloseBtn"
+  );
+  const groupNodeEditCancelBtn = document.getElementById(
+    "groupNodeEditCancelBtn"
+  );
   const groupDetailOverlay = document.getElementById("groupDetailOverlay");
   const groupDetailSheet = document.getElementById("groupDetailSheet");
   const groupDetailTitle = document.getElementById("groupDetailTitle");
@@ -17374,6 +17445,7 @@
   let activeGroupDetailId = null;
   let activeGroupDirectoryId = null;
   let activeGroupChapterId = null;
+  let activeGroupNodeEdit = null;
   let groupChoiceDraftSelection = new Map();
   let chapterNotePickerContext = null;
   let chapterContentPickerSelection = new Set();
@@ -27094,6 +27166,254 @@
     renderGroupChapterItems();
   }
 
+  function groupNodeEditorContext() {
+    const context = activeGroupNodeEdit;
+    if (!context) return null;
+    const group = groupById(context.groupId);
+    const directory = groupDirectoryById(group, context.directoryId);
+    if (!group || !directory) return null;
+    const chapter = context.chapterId
+      ? groupChapterById(directory, context.chapterId)
+      : null;
+    if (context.chapterId && !chapter) return null;
+    return { ...context, group, directory, chapter };
+  }
+
+  function openGroupNodeEditor({
+    groupId,
+    directoryId,
+    chapterId = "",
+  }) {
+    const group = groupById(groupId);
+    const directory = groupDirectoryById(group, directoryId);
+    const chapter = chapterId
+      ? groupChapterById(directory, chapterId)
+      : null;
+    if (!group || !directory || (chapterId && !chapter)) {
+      showToast("目录或章节不存在，请刷新后重试");
+      return;
+    }
+    activeGroupNodeEdit = {
+      groupId: group.id,
+      directoryId: directory.id,
+      chapterId: chapter?.id || "",
+    };
+    const editingChapter = Boolean(chapter);
+    groupNodeEditTitle.textContent = editingChapter
+      ? "编辑章节"
+      : "编辑目录";
+    groupNodeEditNameLabel.textContent = editingChapter
+      ? "章节名称"
+      : "目录名称";
+    groupNodeEditName.value = editingChapter
+      ? chapter.title
+      : directory.title;
+    groupNodeEditHint.textContent = editingChapter
+      ? "重命名会更新当前章节及其内容归属；删除章节时，内容会迁移到此目录的第一个章节。"
+      : "重命名会同步更新目录入口；删除目录时，内容会迁移到第一个可用目录的首个章节。";
+    groupNodeEditDeleteBtn.textContent = editingChapter
+      ? "删除章节"
+      : "删除目录";
+    groupNodeEditOverlay.classList.add("show");
+    setTimeout(() => {
+      groupNodeEditName.focus();
+      groupNodeEditName.select();
+    }, 60);
+  }
+
+  function closeGroupNodeEditor() {
+    groupNodeEditOverlay.classList.remove("show");
+    activeGroupNodeEdit = null;
+  }
+
+  function saveGroupNodeEditor(event) {
+    event.preventDefault();
+    const context = groupNodeEditorContext();
+    if (!context) {
+      closeGroupNodeEditor();
+      showToast("目录或章节不存在，请刷新后重试");
+      return;
+    }
+    const { group, directory, chapter } = context;
+    const clean = groupNodeEditName.value.trim().slice(0, 30);
+    if (!clean) {
+      showToast(chapter ? "章节名称不能为空" : "目录名称不能为空");
+      groupNodeEditName.focus();
+      return;
+    }
+    const duplicate = chapter
+      ? normalizedGroupChapters(directory).some(
+          item =>
+            item.id !== chapter.id &&
+            item.title.toLocaleLowerCase("zh-CN") ===
+              clean.toLocaleLowerCase("zh-CN")
+        )
+      : normalizedGroupDirectories(group).some(
+          item =>
+            item.id !== directory.id &&
+            item.title.toLocaleLowerCase("zh-CN") ===
+              clean.toLocaleLowerCase("zh-CN")
+        );
+    if (duplicate) {
+      showToast(
+        chapter ? "同一目录内不能有同名章节" : "不能有两个同名目录"
+      );
+      groupNodeEditName.focus();
+      return;
+    }
+
+    const previousDirectories = group.directories;
+    const previousRevision = group.rev;
+    const previousUpdatedAt = group.updated_at;
+    const now = new Date().toISOString();
+    group.directories = normalizedGroupDirectories(group).map(item => {
+      if (item.id !== directory.id) return item;
+      if (!chapter) {
+        return { ...item, title: clean, updated_at: now };
+      }
+      return {
+        ...item,
+        chapters: normalizedGroupChapters(item).map(child =>
+          child.id === chapter.id
+            ? { ...child, title: clean, updated_at: now }
+            : child
+        ),
+        updated_at: now,
+      };
+    });
+    group.rev = nextRevision(group);
+    group.updated_at = now;
+    if (!persist()) {
+      group.directories = previousDirectories;
+      group.rev = previousRevision;
+      group.updated_at = previousUpdatedAt;
+      showToast(chapter ? "章节保存失败，请重试" : "目录保存失败，请重试");
+      return;
+    }
+    closeGroupNodeEditor();
+    render();
+    renderGroups();
+    recordDailyAction("group_saved");
+    showToast(chapter ? "章节名称已更新" : "目录名称已更新");
+    syncNow(false);
+  }
+
+  function deleteGroupNode() {
+    const context = groupNodeEditorContext();
+    if (!context) {
+      closeGroupNodeEditor();
+      showToast("目录或章节不存在，请刷新后重试");
+      return;
+    }
+    const { group, directory, chapter } = context;
+    if (chapter) {
+      const chapters = normalizedGroupChapters(directory);
+      if (chapters.length <= 1) {
+        showToast("每个目录至少需要保留一个章节");
+        return;
+      }
+      if (
+        !confirm(
+          `删除章节「${chapter.title}」？章节中的事项和札记会移到第一个章节。`
+        )
+      ) {
+        return;
+      }
+    } else {
+      const directories = normalizedGroupDirectories(group);
+      if (directories.length <= 1) {
+        showToast("分组至少需要保留一个目录");
+        return;
+      }
+      if (
+        !confirm(
+          `删除目录「${directory.title}」？目录中的章节以及事项和札记会移到第一个目录。`
+        )
+      ) {
+        return;
+      }
+    }
+
+    const remainingDirectories = chapter
+      ? normalizedGroupDirectories(group)
+      : normalizedGroupDirectories(group).filter(
+          item => item.id !== directory.id
+        );
+    const targetDirectory = chapter
+      ? remainingDirectories.find(item => item.id === directory.id)
+      : remainingDirectories[0];
+    if (!targetDirectory) return;
+    const remainingChapters = chapter
+      ? normalizedGroupChapters(targetDirectory).filter(
+          item => item.id !== chapter.id
+        )
+      : normalizedGroupChapters(targetDirectory);
+    const fallbackChapter = remainingChapters[0];
+    if (!fallbackChapter) return;
+
+    const affected = records.filter(
+      record =>
+        !record.deleted &&
+        !isGroupRecord(record) &&
+        record.group_id === group.id &&
+        record.group_directory_id === directory.id &&
+        (!chapter || record.group_chapter_id === chapter.id)
+    );
+    const assignmentSnapshot = affected.map(record => ({
+      record,
+      directoryId: record.group_directory_id,
+      chapterId: record.group_chapter_id,
+      rev: record.rev,
+      updatedAt: record.updated_at,
+    }));
+    const previousDirectories = group.directories;
+    const previousRevision = group.rev;
+    const previousUpdatedAt = group.updated_at;
+    const now = new Date().toISOString();
+    group.directories = chapter
+      ? remainingDirectories.map(item =>
+          item.id === targetDirectory.id
+            ? { ...item, chapters: remainingChapters, updated_at: now }
+            : item
+        )
+      : remainingDirectories;
+    group.rev = nextRevision(group);
+    group.updated_at = now;
+    for (const record of affected) {
+      record.group_directory_id =
+        chapter ? directory.id : targetDirectory.id;
+      record.group_chapter_id =
+        chapter ? fallbackChapter.id : normalizedGroupChapters(targetDirectory)[0].id;
+      record.rev = nextRevision(record);
+      record.updated_at = now;
+    }
+    if (!persist()) {
+      group.directories = previousDirectories;
+      group.rev = previousRevision;
+      group.updated_at = previousUpdatedAt;
+      for (const snapshot of assignmentSnapshot) {
+        snapshot.record.group_directory_id = snapshot.directoryId;
+        snapshot.record.group_chapter_id = snapshot.chapterId;
+        snapshot.record.rev = snapshot.rev;
+        snapshot.record.updated_at = snapshot.updatedAt;
+      }
+      showToast(chapter ? "章节删除失败，请重试" : "目录删除失败，请重试");
+      return;
+    }
+    activeGroupDirectoryId = null;
+    activeGroupChapterId = null;
+    closeGroupNodeEditor();
+    render();
+    renderGroups();
+    renderNotes();
+    showToast(
+      chapter
+        ? "章节已删除，原有内容已迁移"
+        : "目录已删除，原有内容已迁移"
+    );
+    syncNow(false);
+  }
+
   function renderGroupChapterList(group, directory) {
     groupDetailBackBtn.hidden = true;
     const chapters = normalizedGroupChapters(directory);
@@ -27126,6 +27446,16 @@
     groupDetailList.appendChild(heading);
     const chapterActions = document.createElement("div");
     chapterActions.className = "group-chapter-quick-actions";
+    const editDirectoryButton = document.createElement("button");
+    editDirectoryButton.type = "button";
+    editDirectoryButton.className = "action-btn";
+    editDirectoryButton.textContent = "编辑目录";
+    editDirectoryButton.addEventListener("click", () =>
+      openGroupNodeEditor({
+        groupId: group.id,
+        directoryId: directory.id,
+      })
+    );
     const addChapterButton = document.createElement("button");
     addChapterButton.type = "button";
     addChapterButton.className = "action-btn";
@@ -27166,7 +27496,7 @@
       showToast("章节已新增，联网后自动同步");
       syncNow(false);
     });
-    chapterActions.appendChild(addChapterButton);
+    chapterActions.append(editDirectoryButton, addChapterButton);
     groupDetailList.appendChild(chapterActions);
     const grid = document.createElement("div");
     grid.className = "group-chapter-grid";
@@ -27207,82 +27537,19 @@
           openChapter();
         }
       });
-      const deleteChapter = document.createElement("button");
-      deleteChapter.type = "button";
-      deleteChapter.className = "group-chapter-delete";
-      deleteChapter.textContent = "删除章节";
-      deleteChapter.addEventListener("click", event => {
+      const editChapterButton = document.createElement("button");
+      editChapterButton.type = "button";
+      editChapterButton.className = "group-chapter-edit";
+      editChapterButton.textContent = "编辑";
+      editChapterButton.addEventListener("click", event => {
         event.stopPropagation();
-        const currentChapters = normalizedGroupChapters(directory);
-        if (currentChapters.length <= 1) {
-          showToast("每个目录至少需要保留一个章节");
-          return;
-        }
-        if (
-          !confirm(
-            `删除章节「${chapter.title}」？章节中的内容会移到第一个章节。`
-          )
-        ) {
-          return;
-        }
-        const remainingChapters = currentChapters.filter(
-          item => item.id !== chapter.id
-        );
-        const fallbackChapter = remainingChapters[0];
-        const now = new Date().toISOString();
-        const affected = records.filter(
-          record =>
-            !record.deleted &&
-            !isGroupRecord(record) &&
-            record.group_id === group.id &&
-            record.group_directory_id === directory.id &&
-            record.group_chapter_id === chapter.id
-        );
-        const previousAssignments = affected.map(record => ({
-          record,
-          chapter_id: record.group_chapter_id,
-          rev: record.rev,
-          updated_at: record.updated_at,
-        }));
-        const previousDirectories = group.directories;
-        const previousRevision = group.rev;
-        const previousUpdatedAt = group.updated_at;
-        group.directories = normalizedGroupDirectories(group).map(item =>
-          item.id === directory.id
-            ? {
-                ...item,
-                chapters: remainingChapters,
-                updated_at: now,
-              }
-            : item
-        );
-        group.rev = nextRevision(group);
-        group.updated_at = now;
-        for (const record of affected) {
-          record.group_chapter_id = fallbackChapter.id;
-          record.rev = nextRevision(record);
-          record.updated_at = now;
-        }
-        if (!persist()) {
-          group.directories = previousDirectories;
-          group.rev = previousRevision;
-          group.updated_at = previousUpdatedAt;
-          for (const snapshot of previousAssignments) {
-            snapshot.record.group_chapter_id = snapshot.chapter_id;
-            snapshot.record.rev = snapshot.rev;
-            snapshot.record.updated_at = snapshot.updated_at;
-          }
-          showToast("章节删除失败，请重试");
-          return;
-        }
-        activeGroupChapterId = null;
-        renderGroups();
-        renderNotes();
-        renderGroupDirectoryDetail();
-        showToast("章节已删除，原有内容已移到第一个章节");
-        syncNow(false);
+        openGroupNodeEditor({
+          groupId: group.id,
+          directoryId: directory.id,
+          chapterId: chapter.id,
+        });
       });
-      card.append(chapterGrip, button, deleteChapter);
+      card.append(chapterGrip, button, editChapterButton);
       grid.appendChild(card);
     }
     groupDetailList.appendChild(grid);
@@ -27357,6 +27624,17 @@
     groupDetailList.appendChild(heading);
     const chapterActions = document.createElement("div");
     chapterActions.className = "group-chapter-quick-actions";
+    const editChapter = document.createElement("button");
+    editChapter.type = "button";
+    editChapter.className = "action-btn";
+    editChapter.textContent = "编辑章节";
+    editChapter.addEventListener("click", () =>
+      openGroupNodeEditor({
+        groupId: group.id,
+        directoryId: directory.id,
+        chapterId: chapter.id,
+      })
+    );
     const addMemo = document.createElement("button");
     addMemo.type = "button";
     addMemo.className = "action-btn";
@@ -27390,7 +27668,7 @@
         chapterId: chapter.id,
       })
     );
-    chapterActions.append(addMemo, addNote, addExistingNote);
+    chapterActions.append(editChapter, addMemo, addNote, addExistingNote);
     groupDetailList.appendChild(chapterActions);
     if (!items.length) {
       const empty = document.createElement("div");
@@ -40944,6 +41222,13 @@
   groupCancelBtn.addEventListener("click", closeGroupEditor);
   groupOverlay.addEventListener("click", event => {
     if (event.target === groupOverlay) closeGroupEditor();
+  });
+  groupNodeEditForm.addEventListener("submit", saveGroupNodeEditor);
+  groupNodeEditDeleteBtn.addEventListener("click", deleteGroupNode);
+  groupNodeEditCloseBtn.addEventListener("click", closeGroupNodeEditor);
+  groupNodeEditCancelBtn.addEventListener("click", closeGroupNodeEditor);
+  groupNodeEditOverlay.addEventListener("click", event => {
+    if (event.target === groupNodeEditOverlay) closeGroupNodeEditor();
   });
   groupDetailCloseBtn.addEventListener("click", closeGroupDetail);
   groupDetailBackBtn.addEventListener("click", returnToGroupChapters);

@@ -26786,7 +26786,6 @@
         view.className = "action-btn view";
         view.textContent = "查看札记";
         view.addEventListener("click", () => {
-          closeGroupDetail();
           openNoteView(memo.id);
         });
         actions.appendChild(view);
@@ -26943,7 +26942,6 @@
 
   function openGroupDirectoryRecord(record) {
     if (!record) return;
-    closeGroupDetail();
     if (isNoteRecord(record)) {
       openNoteView(record.id);
       return;
@@ -27383,7 +27381,9 @@
       record.group_directory_id =
         chapter ? directory.id : targetDirectory.id;
       record.group_chapter_id =
-        chapter ? fallbackChapter.id : normalizedGroupChapters(targetDirectory)[0].id;
+        chapter
+          ? fallbackChapter.id
+          : normalizedGroupChapters(targetDirectory)[0].id;
       record.rev = nextRevision(record);
       record.updated_at = now;
     }
@@ -43182,8 +43182,8 @@
       friendChatOverlay,
       addFriendOverlay,
       friendRemarkOverlay,
+      groupNodeEditOverlay,
       chapterNotePickerOverlay,
-      groupDetailOverlay,
       groupOverlay,
       desktopDownloadOverlay,
       mobileDownloadOverlay,
@@ -43207,6 +43207,14 @@
         }
         return true;
       }
+    }
+    if (groupDetailOverlay?.classList.contains("show")) {
+      if (activeGroupChapterId) {
+        returnToGroupChapters();
+      } else {
+        closeGroupDetail();
+      }
+      return true;
     }
     return false;
   };

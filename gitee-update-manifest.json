@@ -9,36 +9,36 @@
   ],
   "desktop": {
     "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.1/BUAA-Memo-6.2.1-app-patch.zip",
-    "sha256": "94f6f75e7a3cae9384ba729e8b120a898089a685000027d96a8998e9e1b82246",
-    "size": 73091310
+    "sha256": "2480f911159cc19f3ade54db83bfeb53f0d0eda3274ac84447bbcd8037dbf687",
+    "size": 73094695
   },
   "mobile": {
     "version": "6.2.1",
     "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.1/BUAA-Memo-Offline.html",
-    "sha256": "1f0b651129d0abf5e7d3d90b8d142b0b318b0a091043801d3d1dfd77dd7cae83",
-    "size": 35882424
+    "sha256": "7a6a4d990df60fe16c1ceef9b5dbacc04148fc230681d38b2cc3aed14eeb9a07",
+    "size": 35892173
   },
   "android": {
     "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.1/BUAA-Memo-Android-v6.2.1.apk",
-    "sha256": "4cf6cf89f0d8b2650884aaa1cb77d53f9afc902267d8818458a42e8c9e506663",
+    "sha256": "48b645f30de9de3ed7af4c741e20502a772bc3ef9329e665258c03498887c064",
     "size": 27192373
   },
   "macos": {
     "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.1/BUAA-Memo-macOS-v6.2.1.zip",
-    "sha256": "73851fdb8f32a9d7323ad72f22165610778861171884a1633d5856a1e271fbda",
-    "size": 56241351,
+    "sha256": "86a2b6672964782e7f523bd4b879680e8b2a1db8eba6dc7ff88daf73dba62ffa",
+    "size": 56243299,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
     "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.1/BUAA-Memo-iOS-v6.2.1-source.zip",
-    "sha256": "50335cfd912e4c34689c215dc9bfdae6829f5764765034a6cf8095d50970a3d3",
-    "size": 30055338,
+    "sha256": "16e93b362dc5ae522b562b943eab0174e411748ca5f369c6583b77144b193d63",
+    "size": 30057046,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
     "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.1/BUAA-Memo-iOS-PWA-v6.2.1.zip",
-    "sha256": "2567f81cb3bf6271396edd2881612378ae10202147a803d85f172c8590ac35fe",
-    "size": 27594538,
+    "sha256": "55a1413fe945982285330396d4c12589c244d214749de975d47943d7bae3b5cd",
+    "size": 27597954,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

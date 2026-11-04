@@ -31,7 +31,7 @@
   },
   "ios": {
     "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-iOS-v6.2.2-source.zip",
-    "sha256": "f69f5a703b87e1c23f0dc741c011a8cb3993578b23b2ca036daf973be7379bca",
+    "sha256": "dfe0e8f8e91acf0620c49c4820d551306e149192857ebb7214d0e038873762dd",
     "size": 30058100,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },

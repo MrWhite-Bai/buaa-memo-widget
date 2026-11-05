@@ -1,42 +1,41 @@
 {
-  "version": "6.2.3",
+  "version": "6.2.4",
   "published_at": "2026-11-05",
   "notes": [
-    "修复从分组章节点击札记后，札记页面已打开却被分组详情层遮挡、看起来无法打开的问题。",
-    "札记阅读页现在稳定显示在分组章节之上，返回时仍会回到原章节。"
+    "使用 ID 选择器将札记阅读页层级固定为 1600，修复通用 overlay 样式覆盖后仍无法在分组章节中打开札记的问题。"
   ],
   "desktop": {
-    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-6.2.3-app-patch.zip",
-    "sha256": "001c70677a3130b8b2904676047c222bbcc8c27fc22ef3561250271ac386be8c",
-    "size": 73097077
+    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.4/BUAA-Memo-6.2.4-app-patch.zip",
+    "sha256": "1b3e96c7f4402b8b71ce24b9344e6b06e34c49deed6d6e85a41cda0a4f88384d",
+    "size": 73097330
   },
   "mobile": {
-    "version": "6.2.3",
-    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-Offline.html",
-    "sha256": "8d9621ff32fb053b0584855e0774db6fb625bcb7b52f310f756d961c42c6a1d4",
-    "size": 35897014
+    "version": "6.2.4",
+    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.4/BUAA-Memo-Offline.html",
+    "sha256": "29e66e2d80d95a47aba5fa24e3fb9e18b909479c93d49f0d11b8180685c2ddb7",
+    "size": 35897304
   },
   "android": {
-    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-Android-v6.2.3.apk",
-    "sha256": "c02fa2dd3928b483d92eaf08b81ae127f482888f7977fd81a16395e952d27270",
+    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.4/BUAA-Memo-Android-v6.2.4.apk",
+    "sha256": "5bde4ff23de5d5c1b7294080f218f93e611ae9edf38f811eb74d4844cfb907d3",
     "size": 27192373
   },
   "macos": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-macOS-v6.2.3.zip",
-    "sha256": "57e238b1fec64d1d4b660fff51b542f25f60f89e4f7a35ce83c2fd11122e2236",
-    "size": 56244314,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.4/BUAA-Memo-macOS-v6.2.4.zip",
+    "sha256": "5eccd0a27b32745d49111a4b99375071320d5c12b3e2ba666f86d6089905b9f2",
+    "size": 56244376,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-iOS-v6.2.3-source.zip",
-    "sha256": "1450b857d4596d606051bb19d417109396ce128ab3328a14db10f1a4a99dff4a",
-    "size": 30058292,
+    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.4/BUAA-Memo-iOS-v6.2.4-source.zip",
+    "sha256": "73e809ef83a72891961b55052ba5ccc69c16647c77eb41f8c90bab97f3dd26c2",
+    "size": 30058451,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-iOS-PWA-v6.2.3.zip",
-    "sha256": "3e3494d367d17e10d20af04232ca33f7a1e5a748f2eef57bfbfda89ca79affe2",
-    "size": 27600137,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.2.4/BUAA-Memo-iOS-PWA-v6.2.4.zip",
+    "sha256": "a5ff2973a342b0886a979bfecc2b5e38ebb4e948175d96fe7f52d1c139206ba3",
+    "size": 27600376,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

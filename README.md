@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.2.2 新增札记置顶，修复课程型事项无法创建，并优化分组章节与章节札记的返回层级。
+> v6.2.3 修复分组章节中的札记阅读层级，并保留札记置顶、课程创建和分层返回修复。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [Gitee 最新版本页](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/latest)，
 无需登录或实名认证。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.2.2.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.2.3.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -23,15 +23,15 @@ Gitee 作为国内直连主入口，GitHub 作为最新版本备用来源；
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-Windows-v6.2.2.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-macOS-v6.2.2.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-Android-v6.2.2.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-iOS-v6.2.2-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-Windows-v6.2.3.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-macOS-v6.2.3.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-Android-v6.2.3.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-iOS-v6.2.3-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-iOS-PWA-v6.2.2.zip)
-- [GitHub Pages PWA 发布包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-PWA-GitHubPages-v6.2.2.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-iOS-PWA-v6.2.3.zip)
+- [GitHub Pages PWA 发布包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-PWA-GitHubPages-v6.2.3.zip)
 
 #### iOS 版当前限制
 
@@ -237,8 +237,10 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.2.2
+v6.2.3
 
+- 修复分组章节中的札记被分组详情层遮挡、点击后看起来无法打开的问题。
+- 札记阅读页稳定显示在章节之上，返回后仍回到原章节。
 - 新增札记置顶，札记列表、阅读页和分组章节均优先显示置顶札记。
 - 修复课程型事项无法创建的问题。
 - 修复分组章节与章节内札记的 Android 返回层级。

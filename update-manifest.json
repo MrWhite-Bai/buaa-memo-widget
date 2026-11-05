@@ -1,44 +1,42 @@
 {
-  "version": "6.2.2",
+  "version": "6.2.3",
   "published_at": "2026-11-05",
   "notes": [
-    "新增札记置顶功能：札记列表与札记阅读页均可置顶或取消置顶，置顶札记优先显示。",
-    "修复课程型事项因时间节次函数作用域异常而无法保存的问题，现在可以正常创建自定义课程。",
-    "修复分组章节和章节内札记的 Android 返回层级：札记先返回当前章节，章节再返回章节列表，不再直接回到主页。",
-    "分组章节内的札记支持置顶，并按照置顶优先规则显示。"
+    "修复从分组章节点击札记后，札记页面已打开却被分组详情层遮挡、看起来无法打开的问题。",
+    "札记阅读页现在稳定显示在分组章节之上，返回时仍会回到原章节。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-6.2.2-app-patch.zip",
-    "sha256": "50a410e81a1255642c52e60b0e2017b6d92c3519d33a1c9440d2e19d6c58132e",
-    "size": 73096815
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-6.2.3-app-patch.zip",
+    "sha256": "001c70677a3130b8b2904676047c222bbcc8c27fc22ef3561250271ac386be8c",
+    "size": 73097077
   },
   "mobile": {
-    "version": "6.2.2",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-Offline.html",
-    "sha256": "11f32318b4ab5eec24de2ddb211a3bbdb0921fbbc342a0ddc590f2511984deb1",
-    "size": 35896671
+    "version": "6.2.3",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-Offline.html",
+    "sha256": "8d9621ff32fb053b0584855e0774db6fb625bcb7b52f310f756d961c42c6a1d4",
+    "size": 35897014
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-Android-v6.2.2.apk",
-    "sha256": "6a5d3c40bfdfbd0616289eb93fafcc7ca64cdce73e873fa0ca35ac895583331f",
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-Android-v6.2.3.apk",
+    "sha256": "c02fa2dd3928b483d92eaf08b81ae127f482888f7977fd81a16395e952d27270",
     "size": 27192373
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-macOS-v6.2.2.zip",
-    "sha256": "bb94f5ecbf0235a2fdf3defeedc3e3c179e95777a6831a43a50ec5b621225274",
-    "size": 56244237,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-macOS-v6.2.3.zip",
+    "sha256": "57e238b1fec64d1d4b660fff51b542f25f60f89e4f7a35ce83c2fd11122e2236",
+    "size": 56244314,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-iOS-v6.2.2-source.zip",
-    "sha256": "dfe0e8f8e91acf0620c49c4820d551306e149192857ebb7214d0e038873762dd",
-    "size": 30058100,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-iOS-v6.2.3-source.zip",
+    "sha256": "1450b857d4596d606051bb19d417109396ce128ab3328a14db10f1a4a99dff4a",
+    "size": 30058292,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.2/BUAA-Memo-iOS-PWA-v6.2.2.zip",
-    "sha256": "9870f89ec64a8e1ca2f1aa74daea54254d374a31185b01ac3f460848f3cec6db",
-    "size": 27599853,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.3/BUAA-Memo-iOS-PWA-v6.2.3.zip",
+    "sha256": "3e3494d367d17e10d20af04232ca33f7a1e5a748f2eef57bfbfda89ca79affe2",
+    "size": 27600137,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

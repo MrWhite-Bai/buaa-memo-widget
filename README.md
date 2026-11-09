@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.2.5 优化札记保存后的查看状态，并修复好友主页返回层级。
+> v6.2.6 修复提醒校验提示遮挡，并优化兑换码页面的开发者联系方式。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [Gitee 最新版本页](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/latest)，
 无需登录或实名认证。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.2.5.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.2.6.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -23,15 +23,15 @@ Gitee 作为国内直连主入口，GitHub 作为最新版本备用来源；
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.5/BUAA-Memo-Windows-v6.2.5.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.5/BUAA-Memo-macOS-v6.2.5.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.5/BUAA-Memo-Android-v6.2.5.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.5/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.5/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.5/BUAA-Memo-iOS-v6.2.5-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.6/BUAA-Memo-Windows-v6.2.6.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.6/BUAA-Memo-macOS-v6.2.6.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.6/BUAA-Memo-Android-v6.2.6.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.6/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.6/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.6/BUAA-Memo-iOS-v6.2.6-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.5/BUAA-Memo-iOS-PWA-v6.2.5.zip)
-- [GitHub Pages PWA 发布包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.5/BUAA-Memo-PWA-GitHubPages-v6.2.5.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.6/BUAA-Memo-iOS-PWA-v6.2.6.zip)
+- [GitHub Pages PWA 发布包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.6/BUAA-Memo-PWA-GitHubPages-v6.2.6.zip)
 
 #### iOS 版当前限制
 
@@ -237,8 +237,10 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.2.5
+v6.2.6
 
+- 修复提前通知校验提示被编辑弹窗和软键盘遮挡的问题，提示改为在编辑页内显示并自动滚动到可见位置。
+- 兑换码页面新增公测用户礼包说明，点击开发者 QQ 号码可直接复制。
 - 札记保存后直接进入当前札记的只读查看状态，不再返回主页。
 - 好友主页返回改为：好友主页 → 好友列表 → “我的”页面。
 - 使用 ID 选择器将札记阅读页层级固定为 1600，防止被通用 overlay 样式覆盖。

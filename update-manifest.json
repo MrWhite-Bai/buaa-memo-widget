@@ -1,44 +1,49 @@
 {
-  "version": "6.2.7",
-  "published_at": "2026-11-09",
+  "version": "6.2.8",
+  "published_at": "2026-11-11",
   "notes": [
-    "接入每小时动态公测礼包兑换码：当前小时只会有一个兑换码有效，跨小时后自动失效。",
-    "兑换成功后自动开启公测用户礼包，解锁隐藏成就“公测之光”，并发放对应奖励。",
-    "每台设备只能领取一次公测礼包，重复输入当前兑换码不会重复发放奖励。",
-    "App 内只保存逐小时兑换码的不可逆哈希，不包含兑换码生成密钥。"
+    "札记公式会识别不完整的上下标写法，例如把误写成 x{n+1} 的下标自动修复为 x_{n+1}。",
+    "求和、累乘、极限等运算符后的遗漏上下限会自动补全，例如把 \\sum{k=1}^n 修复为 \\sum_{k=1}^n。",
+    "带编号公式会识别 \\tag、\\eqno 和 equation 环境，并自动切换为可显示编号的独立公式。",
+    "公式中的常见 label、ref 与 eqref 写法会自动兼容，避免因文档宏包命令而显示为红色源码。",
+    "公式预览、插入内容以及重新打开的旧札记统一使用自动修复后的 LaTeX。",
+    "分组、目录、章节和札记标题支持 Unicode、行内 LaTeX 与纯 LaTeX，并在桌面端和手机端正常排版。",
+    "修复校园网设备隔离时无法接受新好友的问题：确认结果改由发起方主动轮询，不再依赖对方反向连接。",
+    "新好友确认继续兼容旧版本；已建立好友的状态更新和邮件队列逻辑保持不变。",
+    "通过系统邮件向所有用户发放 100 光斑与 1111 经验，邮件领取有效期为 7 天。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.7/BUAA-Memo-6.2.7-app-patch.zip",
-    "sha256": "356dd347314e9db75bb4aab1946e42a27de8b420b0798dd62daea04352972733",
-    "size": 73816291
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-6.2.8-app-patch.zip",
+    "sha256": "d5bfd387dda5fae55f292ad234cb27bf565f55b009299d760760642a47231f93",
+    "size": 73823438
   },
   "mobile": {
-    "version": "6.2.7",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.7/BUAA-Memo-Offline.html",
-    "sha256": "b07e4e65223888979af8202110d62cfc89a40ff983d6a207699346f46227d3ad",
-    "size": 36375385
+    "version": "6.2.8",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-Offline.html",
+    "sha256": "d391ef2c118d5c05ad952f4372d17c6bbd018212e15cbfc31f644c72c423b739",
+    "size": 36389400
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.7/BUAA-Memo-Android-v6.2.7.apk",
-    "sha256": "f522fde5de426eeb9c9fb79f378d29a6cb065c05b2f41edac3de68cd447a195b",
-    "size": 27552821
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-Android-v6.2.8.apk",
+    "sha256": "deadba7466223f759d7f8f874305e40f4d90c1104ac3e2fac11005e2ca394a42",
+    "size": 27556917
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.7/BUAA-Memo-macOS-v6.2.7.zip",
-    "sha256": "303ffc13d084f4f49a95f4ce327695c8129e956538ee4b0dc6aab2fa1a559d79",
-    "size": 56602924,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-macOS-v6.2.8.zip",
+    "sha256": "a50c52fc5d8771349a399014a67af795024fc82dc17537929cdc4f47417fefac",
+    "size": 56605986,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.7/BUAA-Memo-iOS-v6.2.7-source.zip",
-    "sha256": "cc21f05f093641257ff8f17c901de233303bbe49f356288a62d62f4e3cc40eac",
-    "size": 30417606,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-iOS-v6.2.8-source.zip",
+    "sha256": "48c9456c815ae40182a861dac64a5764596ab66c2a010d6a9a2849c893967b4b",
+    "size": 30421783,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.7/BUAA-Memo-iOS-PWA-v6.2.7.zip",
-    "sha256": "31898461dbb905c2e674d9c25cff0539392ee2260d6094f4527e50d03a09466b",
-    "size": 28318260,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-iOS-PWA-v6.2.8.zip",
+    "sha256": "1d535ff64268197f8c4c3ea637b9b84ac10935dab979220e613e7bab4bd946d4",
+    "size": 28325122,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

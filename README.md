@@ -2,7 +2,7 @@
 
 一个带倒计时、图片附件、事项分组和手机独立版的浮光备忘录。
 
-> v6.2.8 重点优化札记数学符号功能，并通过系统邮件发放 100 光斑与 1111 经验，邮件领取有效期为 7 天。
+> v6.2.9 修复数学标题被拆成竖排的问题；v6.2.8 起同步优化札记数学符号功能，并向用户发放 100 光斑与 1111 经验。
 
 未定事项不再与任务型、事件型和定期型并列，也不会出现在普通事项主列表、分组目录或搜索结果中。点击“未定事项”后可集中新增、查看和编辑；长按拖动时会显示实时让位、缩放和阴影反馈。
 
@@ -12,7 +12,7 @@
 [Gitee 最新版本页](https://gitee.com/mrwhite1037/buaa-memo-widget/releases/latest)，
 无需登录或实名认证。请根据自己的手机选择：
 
-- **安卓手机：** 下载 `BUAA-Memo-Android-v6.2.8.apk`，允许系统安装未知来源应用，安装后直接使用。
+- **安卓手机：** 下载 `BUAA-Memo-Android-v6.2.9.apk`，允许系统安装未知来源应用，安装后直接使用。
 - **iPhone / iPad：** 使用 Safari 打开
   [BUAA浮光在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)，
   点击“分享 → 添加到主屏幕”，再从主屏幕打开即可使用。
@@ -23,15 +23,15 @@ Gitee 作为国内直连主入口，GitHub 作为最新版本备用来源；
 
 ## 下载
 
-- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-Windows-v6.2.8.zip)
-- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-macOS-v6.2.8.zip)
-- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-Android-v6.2.8.apk)
-- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-Offline.html)
-- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/update-manifest.json)
-- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-iOS-v6.2.8-source.zip)
+- [Windows 完整版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.9/BUAA-Memo-Windows-v6.2.9.zip)
+- [macOS 浏览器版](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.9/BUAA-Memo-macOS-v6.2.9.zip)
+- [Android APK](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.9/BUAA-Memo-Android-v6.2.9.apk)
+- [手机离线版 HTML](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.9/BUAA-Memo-Offline.html)
+- [版本更新清单](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.9/update-manifest.json)
+- [iOS Xcode 工程](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.9/BUAA-Memo-iOS-v6.2.9-source.zip)
 - [iOS PWA 在线版](https://mrwhite-bai.github.io/buaa-memo-widget/)
-- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-iOS-PWA-v6.2.8.zip)
-- [GitHub Pages PWA 发布包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.8/BUAA-Memo-PWA-GitHubPages-v6.2.8.zip)
+- [iOS PWA 静态包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.9/BUAA-Memo-iOS-PWA-v6.2.9.zip)
+- [GitHub Pages PWA 发布包](https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.2.9/BUAA-Memo-PWA-GitHubPages-v6.2.9.zip)
 
 #### iOS 版当前限制
 
@@ -237,7 +237,7 @@ Intent 或让 App 持续在后台提供局域网同步服务。
 
 ## 当前版本
 
-v6.2.8
+v6.2.9
 
 - 接入每小时动态公测礼包兑换码，跨小时后自动失效。
 - App 只保存兑换码不可逆哈希，不包含生成密钥。

@@ -1,58 +1,50 @@
 {
-  "version": "6.4.1",
+  "version": "6.4.2",
   "published_at": "2026-11-14",
   "notes": [
-    "修复札记较多时点击“学习工具”长时间无响应甚至像死机的问题。",
-    "知识图谱改为一次读取全部传送门并线性统计反向链接、孤立札记和失效传送门，避免对每篇札记重复扫描整个知识库。",
-    "回收站版本历史改为一次读取版本索引，避免札记数量增加后反复解析同一份版本数据。",
-    "学习工具窗口现在会先显示，再在下一帧渲染当前标签内容；即使数据较多，也不会出现点击后整个界面没有任何反应。",
-    "修复主页面顶部栏样式误作用到“今日学习台”和“学习工具”内部标题栏的问题，子标题不再套用天空背景或粘性定位。",
-    "学习工具标题和说明文字提高字号、字重与对比度；手机端关闭按钮和标题使用 Android 原生安全区，不再与系统状态栏重叠。",
-    "“今日学习台”的日期说明改为深色高对比文字，长按/阅读时不再看不清。",
-    "为 6.4.0 新增的 17 枚成就重新配置专属图标，不再复用低辨识度的通用款式。",
-    "新勋章采用 Game Icons 开放素材，统一增加分层金属底盘、内圈刻度、动态光晕、扫光、轨道环、星点和图标浮耀效果。",
-    "17 枚新勋章在已解锁、未解锁、展柜佩戴和好友主页中保持一致的专属渲染效果。",
-    "全局搜索的“最近可访问内容”改为只显示最近 30 天更新或创建的内容，并按时间从新到旧排列；旧内容输入关键词后仍可正常搜索。",
-    "“导入北航课表”移入月视图/课程表的课程表页面，并可在导入窗口关闭后返回原课程表。",
-    "“同步”和“排版设置”移入“我的 → 其它”，事项页顶部工具栏只保留事项、签到、版本、搜索和功能简介入口。",
-    "天气卡片并入今日学习台，校区切换、高低温与刷新功能保持原样。",
-    "修复更新路径说明菜单被今日学习台覆盖的问题；菜单移到页面顶层并提高显示层级。",
-    "移除主页面顶部“手机同步已开启 / 未连接手机”状态行及其占用的高度，标题区更紧凑。",
-    "使用 1200 篇札记、400 条传送门连接和 2000 个历史版本快照完成性能回归，知识图谱、回收站和公式库均能正常打开。",
-    "Android 版本提升至 versionCode 193，iOS build 提升至 583，确保旧版本能够收到本次热修复。"
+    "“导入北航课表”已移入月视图/课程表的课程表页面，并可在导入窗口关闭后返回原课程表。",
+    "“同步”和“排版设置”已移入“我的 → 其它”，事项主页顶部工具栏更精简。",
+    "移除主页面顶部同步状态行及其占用的高度，标题区域更加紧凑。",
+    "天气卡片已并入今日学习台，校区切换、高低温与刷新功能保持原样。",
+    "修复更新路径说明菜单被今日学习台覆盖的问题；菜单提升为页面顶层显示。",
+    "全局搜索默认只显示最近 30 天更新的内容，并按时间从新到旧排列；旧内容输入关键词后仍可搜索。",
+    "6.4.0 新增的 17 枚成就全部配置独立 Game Icons 素材，不再复用低辨识度的通用图标。",
+    "新勋章加入分层金属底盘、内圈刻度、动态光晕、扫光、轨道环、星点和图标浮耀效果，并适配未解锁、展柜与好友主页。",
+    "修复学习工具在大量札记下因重复扫描知识图谱和版本历史而卡死的问题。",
+    "Android 版本提升至 versionCode 194，iOS build 提升至 584。"
   ],
   "desktop": {
-    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-6.4.1-app-patch.zip",
-    "sha256": "fa0322609a8a7890e255f5ec56aa8497490b059efeb136b0fca9632abf7b7c52",
-    "size": 73914790
+    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.2/BUAA-Memo-6.4.2-app-patch.zip",
+    "sha256": "5c324b38d41ca0c6033a92e37307f1ce27d31cf6cce119ed113a5aba5ae4e73f",
+    "size": 73915334
   },
   "mobile": {
-    "version": "6.4.1",
-    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-Offline.html",
-    "sha256": "7478e07d1d0358ae1e73ff02056cb5b412bdd4dd5ea67bca27d5ebe6cccb0594",
-    "size": 36550983
+    "version": "6.4.2",
+    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.2/BUAA-Memo-Offline.html",
+    "sha256": "4d53c2fc32089ff2892b472d2f91d3d5409285de9271ec3c6f4a1d98dc75fa82",
+    "size": 36552225
   },
   "android": {
-    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-Android-v6.4.1.apk",
-    "sha256": "c3f664670c3260868387792dbf6ad2c592325e6b0c6aac144282c95b19a4cce2",
+    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.2/BUAA-Memo-Android-v6.4.2.apk",
+    "sha256": "29c8550626f4ee69dda1c7babefa6ba6fb2f229f00a83deca953b4cb19d781ab",
     "size": 27607753
   },
   "macos": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-macOS-v6.4.1.zip",
-    "sha256": "261c208356c9915a8f7480b24ab1811fe2a842ca89e260d13025bf7b1581167d",
-    "size": 56666626,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.2/BUAA-Memo-macOS-v6.4.2.zip",
+    "sha256": "8a3740ae46aa27f7f7308f9c8d0909271438220b55d1aaade0d597d79d767eea",
+    "size": 56666806,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-iOS-v6.4.1-source.zip",
-    "sha256": "4a7df31117caf401ae4e0c65bf5dbc65e9f572277f9e24291a0d88a549a9449e",
-    "size": 30469771,
+    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.2/BUAA-Memo-iOS-v6.4.2-source.zip",
+    "sha256": "d66cef90e2466c1eb8bdf0d1efdf223a76ca403efd0e1143b12faa0938dc1ed5",
+    "size": 30470120,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-iOS-PWA-v6.4.1.zip",
-    "sha256": "68e87c12dc3eb2468e7e654fce4dd94755f1bb430ce5c6d18ed2f89346e17b2a",
-    "size": 28399367,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.2/BUAA-Memo-iOS-PWA-v6.4.2.zip",
+    "sha256": "7bb703504483ad06b35b7e59cc4238d296d99b80a004b861e541073cafb09421",
+    "size": 28399886,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

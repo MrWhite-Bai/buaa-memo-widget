@@ -1,46 +1,47 @@
 {
-  "version": "6.4.3",
+  "version": "6.4.4",
   "published_at": "2026-11-14",
   "notes": [
-    "品牌标题、标语和身份标记上移到蓝色区域顶部。",
-    "更新路径、检查更新和版本号按钮并排固定在蓝色区域底部。",
-    "“月视图/课程表”和“未定事项”移入今日学习台标题行中部。",
-    "压缩今日学习台面板、天气区、标题行和数据卡片的高度。",
-    "在新的顶栏结构下重新检查 320px 与 390px 手机宽度，未发现横向溢出或按钮遮挡。",
-    "Android 版本提升至 versionCode 195，iOS build 提升至 585。"
+    "更新路径、检查更新和版本号按钮与“事项清单”并排，移除蓝色区域底部操作条。",
+    "品牌标题区域压缩为紧凑高度，并继续避让 Android 原生状态栏。",
+    "月视图/课程表菜单的说明文字改为高对比浅色，不再使用看不清的灰色。",
+    "札记编辑信息页和全屏写作页新增删除入口；删除后仍进入 30 天回收站。",
+    "全局搜索改为固定标题与搜索框、结果列表独立滚动，可正常向下浏览和选择更多结果。",
+    "重新检查 320px 与 390px 手机宽度，顶栏按钮、札记删除按钮和搜索结果区均无横向溢出或遮挡。",
+    "Android 版本提升至 versionCode 196，iOS build 提升至 586。"
   ],
   "desktop": {
-    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.3/BUAA-Memo-6.4.3-app-patch.zip",
-    "sha256": "9cd7a33efb20d6559fd0c2ec9c49725f7e094143d9523d94e724f382b4e33b22",
-    "size": 73917240
+    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.4/BUAA-Memo-6.4.4-app-patch.zip",
+    "sha256": "a4f955b29127be0955af9c493f5ec75aecf38b81fda017efd3e1e6bd21afe7b1",
+    "size": 73918215
   },
   "mobile": {
-    "version": "6.4.3",
-    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.3/BUAA-Memo-Offline.html",
-    "sha256": "26865b4cf685c49defa6894b695b356593f1bda70b666a971ac94edf4765c415",
-    "size": 36556290
+    "version": "6.4.4",
+    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.4/BUAA-Memo-Offline.html",
+    "sha256": "bf5ca9e33e47ada7ccfb8af1d518990373a33d4af4134c9cc42633bc2274c528",
+    "size": 36558053
   },
   "android": {
-    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.3/BUAA-Memo-Android-v6.4.3.apk",
-    "sha256": "2350e75146fdc12c743206fbba158f1f1b0c9f2ad65c6e2998365a78cd1df889",
+    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.4/BUAA-Memo-Android-v6.4.4.apk",
+    "sha256": "aa0836bd0f8721f7f70a20a946bf4d9ebeb5f2c092c4cc5df3072115d8c05d5a",
     "size": 27607753
   },
   "macos": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.3/BUAA-Memo-macOS-v6.4.3.zip",
-    "sha256": "044487090ac31710ee4bf7fd3f6c68f25cd9b6d61f69a9a206fba3d7c3aee0b3",
-    "size": 56667369,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.4/BUAA-Memo-macOS-v6.4.4.zip",
+    "sha256": "887480f66e8e3084d4ce218b95b2b3826969a635e1d3ae324e08ab7bcb7dfb38",
+    "size": 56667750,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.3/BUAA-Memo-iOS-v6.4.3-source.zip",
-    "sha256": "0d8aee3e194c9cc19431764411ced6a6e7a8ac4aef75ad67b870d62d09798694",
-    "size": 30471092,
+    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.4/BUAA-Memo-iOS-v6.4.4-source.zip",
+    "sha256": "2672c7dc806374db2cd8491ef0c7fb51889333baf64ccc20aa3970c792b13dcd",
+    "size": 30471694,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.3/BUAA-Memo-iOS-PWA-v6.4.3.zip",
-    "sha256": "697782b1ff693acd7a9e94ac1309b5f445119129cc5768bd77a82d0f01602304",
-    "size": 28401592,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.4/BUAA-Memo-iOS-PWA-v6.4.4.zip",
+    "sha256": "c174e8158200d67927fbeb4a30948c919130db34e0d4585eafaeea221aabf5fb",
+    "size": 28402575,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

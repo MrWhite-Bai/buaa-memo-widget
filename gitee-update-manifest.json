@@ -1,64 +1,53 @@
 {
-  "version": "6.4.0",
+  "version": "6.4.1",
   "published_at": "2026-11-14",
   "notes": [
-    "主页新增今日学习台，集中显示下一节课、今日待办、签到、专注、札记和邮件状态。",
-    "新增全局搜索，可检索事项、札记、公式、分组和课程，并支持 #分组、@未完成、before:日期 条件。",
-    "新增 30 天回收站，事项、札记、分组和章节可恢复或永久删除；札记保留最近 20 个版本。",
-    "新增公式收藏库，可保存、搜索、复制并重新插入常用 LaTeX。",
-    "新增札记知识图谱、反向链接统计、孤立札记和失效传送门检查。",
-    "札记和事项可关联课程，课程详情可直接创建课程札记与课程待办。",
-    "新增专注计时、任务绑定、专注历史和计时结束自动完成任务选项。",
-    "新增周回顾和月回顾，统计任务、札记与专注数据，并重新推荐旧札记。",
-    "新增完整 JSON 备份导出与恢复，覆盖记录、签到、等级、任务、公式、专注和收藏数据。",
-    "新增好友共学邀请，可通过好友聊天发送共学邀请并记录共同专注。",
-    "新增万卷寻踪、静水流深、一页知秋、经纬在手、课书相映、式簿成章、旧卷新声、归舟有迹、同窗同灯九枚分级成就。",
-    "新增星河闭环、课堂无遗、断线重连、一页纳万象、七日灯河、旧约未忘、无痕搬迁、双灯同页八枚隐藏成就。",
-    "学习工具弹层已调整到成就横幅和课程表之上，手机端标题与关闭按钮会避让系统安全区。",
-    "手机端公式库和搜索结果的操作按钮会自动换行，窄屏学习工具标签会分行显示，不再横向裁切。",
-    "“我的”页面六个入口在桌面显示为六列、手机显示为三列，长昵称与光斑数量不会挤出屏幕。",
-    "从课程详情创建札记或待办时会先关闭课程表，避免后台弹层遮住编辑界面。",
-    "“课堂无遗”现在按当前学期正式课程计算，不再被单次临时课程干扰，并兼容缺少删除标记或学期代码的旧课程记录。",
-    "全局搜索中的事项时间改为紧凑的月日与时分显示，不再出现冗长的 ISO 时间字符串。",
-    "修正全局搜索筛选：@未完成和@已完成只返回事项，不再混入札记、分组或课程；before:日期会排除无日期内容。",
-    "完整备份现在同时覆盖昵称、头像框与称号、成就、课程导入统计、提醒与排版偏好；恢复时会清理备份中不存在的旧学习数据，确保真正覆盖当前状态。",
-    "回收站“永久删除”和 30 天到期清理现在会真正移除标题、正文、附件数据和札记版本，仅保留同步删除所需的最小墓碑。",
-    "备份恢复失败时会自动回滚已经写入的本地数据，避免出现只恢复了一部分的状态。",
-    "同一周或同一月重复生成回顾时会刷新最新任务、札记与专注统计，不再显示第一次生成时的旧数据。",
-    "“所有功能简介”新增独立学习工具章节，并同步补充条件搜索、公式自动修复、数学标题、课程联动、版本历史、完整备份、隐私删除、好友共学和新增成就说明。"
+    "修复札记较多时点击“学习工具”长时间无响应甚至像死机的问题。",
+    "知识图谱改为一次读取全部传送门并线性统计反向链接、孤立札记和失效传送门，避免对每篇札记重复扫描整个知识库。",
+    "回收站版本历史改为一次读取版本索引，避免札记数量增加后反复解析同一份版本数据。",
+    "学习工具窗口现在会先显示，再在下一帧渲染当前标签内容；即使数据较多，也不会出现点击后整个界面没有任何反应。",
+    "修复主页面顶部栏样式误作用到“今日学习台”和“学习工具”内部标题栏的问题，子标题不再套用天空背景或粘性定位。",
+    "学习工具标题和说明文字提高字号、字重与对比度；手机端关闭按钮和标题使用 Android 原生安全区，不再与系统状态栏重叠。",
+    "“今日学习台”的日期说明改为深色高对比文字，长按/阅读时不再看不清。",
+    "为 6.4.0 新增的 17 枚成就重新配置专属图标，不再复用低辨识度的通用款式。",
+    "新勋章采用 Game Icons 开放素材，统一增加分层金属底盘、内圈刻度、动态光晕、扫光、轨道环、星点和图标浮耀效果。",
+    "17 枚新勋章在已解锁、未解锁、展柜佩戴和好友主页中保持一致的专属渲染效果。",
+    "全局搜索的“最近可访问内容”改为只显示最近 30 天更新或创建的内容，并按时间从新到旧排列；旧内容输入关键词后仍可正常搜索。",
+    "使用 1200 篇札记、400 条传送门连接和 2000 个历史版本快照完成性能回归，知识图谱、回收站和公式库均能正常打开。",
+    "Android 版本提升至 versionCode 193，iOS build 提升至 583，确保旧版本能够收到本次热修复。"
   ],
   "desktop": {
-    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.0/BUAA-Memo-6.4.0-app-patch.zip",
-    "sha256": "be6b48175de929206f63d957e7472e72723827f964c84721d26296b1b02c2f7b",
-    "size": 73874509
+    "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-6.4.1-app-patch.zip",
+    "sha256": "d8718586d9cb65e5f0f0ae9be0c776510ceab01de16c9b50189b4b75eae50b67",
+    "size": 73914330
   },
   "mobile": {
-    "version": "6.4.0",
-    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.0/BUAA-Memo-Offline.html",
-    "sha256": "de6701a8c1d3485b2bcbb7103470995878454897948d74fb8627e9bb8c3d5651",
-    "size": 36501340
+    "version": "6.4.1",
+    "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-Offline.html",
+    "sha256": "ed42d929e8b6497f9bc43085fdd77bf549951168a5a0d74bee8f5ffd87a0f6e3",
+    "size": 36550074
   },
   "android": {
-    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.0/BUAA-Memo-Android-v6.4.0.apk",
-    "sha256": "5c8d340aeba7004d11de2432d05d27f994af513f01f30223d19b193f4abae391",
-    "size": 27585589
+    "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-Android-v6.4.1.apk",
+    "sha256": "17e08d51318a3eb35ea3c4e5154e483e7d46ccef85c0a79bc7b9365150f4c2d7",
+    "size": 27607753
   },
   "macos": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.0/BUAA-Memo-macOS-v6.4.0.zip",
-    "sha256": "a55096a8b34ab36a62e5dda0e53be14230a51ded50e08eaa222df70b0ee9d6cb",
-    "size": 56630511,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-macOS-v6.4.1.zip",
+    "sha256": "3c86f5406417b7652756e84539374d90334328cb9fd0055fa166f239587b34c6",
+    "size": 56666486,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.0/BUAA-Memo-iOS-v6.4.0-source.zip",
-    "sha256": "efad4ea7ccc8f728a97cbae479df947c765245e457185f83bb8943219e0e2ff2",
-    "size": 30448333,
+    "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-iOS-v6.4.1-source.zip",
+    "sha256": "dc94dee04a0fd94e94f2eae3198e8f132b2fff283c4567612a48064033b96060",
+    "size": 30469459,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.0/BUAA-Memo-iOS-PWA-v6.4.0.zip",
-    "sha256": "9768e2b45b3130510c48ed47c1761ec73d27d5619a7c040742d804f9f7e33506",
-    "size": 28376218,
+    "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-iOS-PWA-v6.4.1.zip",
+    "sha256": "60c16776929ea7cab2c1f22240309a6246ddda40da5f5d613afff01861bf5015",
+    "size": 28398975,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

@@ -13,41 +13,46 @@
     "新勋章采用 Game Icons 开放素材，统一增加分层金属底盘、内圈刻度、动态光晕、扫光、轨道环、星点和图标浮耀效果。",
     "17 枚新勋章在已解锁、未解锁、展柜佩戴和好友主页中保持一致的专属渲染效果。",
     "全局搜索的“最近可访问内容”改为只显示最近 30 天更新或创建的内容，并按时间从新到旧排列；旧内容输入关键词后仍可正常搜索。",
+    "“导入北航课表”移入月视图/课程表的课程表页面，并可在导入窗口关闭后返回原课程表。",
+    "“同步”和“排版设置”移入“我的 → 其它”，事项页顶部工具栏只保留事项、签到、版本、搜索和功能简介入口。",
+    "天气卡片并入今日学习台，校区切换、高低温与刷新功能保持原样。",
+    "修复更新路径说明菜单被今日学习台覆盖的问题；菜单移到页面顶层并提高显示层级。",
+    "移除主页面顶部“手机同步已开启 / 未连接手机”状态行及其占用的高度，标题区更紧凑。",
     "使用 1200 篇札记、400 条传送门连接和 2000 个历史版本快照完成性能回归，知识图谱、回收站和公式库均能正常打开。",
     "Android 版本提升至 versionCode 193，iOS build 提升至 583，确保旧版本能够收到本次热修复。"
   ],
   "desktop": {
     "patch_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-6.4.1-app-patch.zip",
-    "sha256": "d8718586d9cb65e5f0f0ae9be0c776510ceab01de16c9b50189b4b75eae50b67",
-    "size": 73914330
+    "sha256": "fa0322609a8a7890e255f5ec56aa8497490b059efeb136b0fca9632abf7b7c52",
+    "size": 73914790
   },
   "mobile": {
     "version": "6.4.1",
     "offline_html_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-Offline.html",
-    "sha256": "ed42d929e8b6497f9bc43085fdd77bf549951168a5a0d74bee8f5ffd87a0f6e3",
-    "size": 36550074
+    "sha256": "7478e07d1d0358ae1e73ff02056cb5b412bdd4dd5ea67bca27d5ebe6cccb0594",
+    "size": 36550983
   },
   "android": {
     "apk_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-Android-v6.4.1.apk",
-    "sha256": "17e08d51318a3eb35ea3c4e5154e483e7d46ccef85c0a79bc7b9365150f4c2d7",
+    "sha256": "c3f664670c3260868387792dbf6ad2c592325e6b0c6aac144282c95b19a4cce2",
     "size": 27607753
   },
   "macos": {
     "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-macOS-v6.4.1.zip",
-    "sha256": "3c86f5406417b7652756e84539374d90334328cb9fd0055fa166f239587b34c6",
-    "size": 56666486,
+    "sha256": "261c208356c9915a8f7480b24ab1811fe2a842ca89e260d13025bf7b1581167d",
+    "size": 56666626,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
     "source_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-iOS-v6.4.1-source.zip",
-    "sha256": "dc94dee04a0fd94e94f2eae3198e8f132b2fff283c4567612a48064033b96060",
-    "size": 30469459,
+    "sha256": "4a7df31117caf401ae4e0c65bf5dbc65e9f572277f9e24291a0d88a549a9449e",
+    "size": 30469771,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
     "package_url": "https://gitee.com/mrwhite1037/buaa-memo-widget/releases/download/v6.4.1/BUAA-Memo-iOS-PWA-v6.4.1.zip",
-    "sha256": "60c16776929ea7cab2c1f22240309a6246ddda40da5f5d613afff01861bf5015",
-    "size": 28398975,
+    "sha256": "68e87c12dc3eb2468e7e654fce4dd94755f1bb430ce5c6d18ed2f89346e17b2a",
+    "size": 28399367,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

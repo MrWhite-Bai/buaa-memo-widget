@@ -1,46 +1,49 @@
 {
-  "version": "6.4.5",
+  "version": "6.4.6",
   "published_at": "2026-11-14",
   "notes": [
-    "更新路径、检查更新和版本号三个按钮恢复到蓝色区域顶部，并在同一行完整显示。",
-    "历史、全局搜索和所有功能简介三个按钮移动到“事项清单”同一行右侧。",
-    "品牌标题与身份标记继续位于蓝色区域顶部，并压缩品牌名上方的大片无效留白。",
-    "调整两行按钮的宽度、间距和字号，避免 Gitee 名称、最新版状态或功能名称被截断。",
-    "重新验证 320px 与 390px 手机宽度，蓝色区域更新按钮与事项清单功能按钮均无重叠、溢出或裁切。",
-    "Android 版本提升至 versionCode 197，iOS build 提升至 587。"
+    "手机端札记全屏编辑页的工具栏固定为两行排列，返回、标题与保存独占第一行。",
+    "字体、公式、图片、PDF、索引和传送门六个按钮在第二行单行并排，文字不再被截断。",
+    "“粘贴”从手势说明和功能按钮中拆出，独占一行全宽显示。",
+    "移除编辑页重复叠加的系统安全区高度，工具栏只保留真实的顶部间距。",
+    "重新验证窄屏与常规手机宽度，工具栏按钮无横向溢出、裁切或相互遮挡。",
+    "知识图谱改为按“起点 → 目标札记”展示连接路径，只绘制有关联的札记。",
+    "孤立札记不再挤入图谱；失效传送门单独标红，断开的目标札记会明确提示。",
+    "大量连接时最多展开 24 个高连接起点，其余内容仍可通过札记列表查看。",
+    "Android 版本提升至 versionCode 198，iOS build 提升至 588。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.5/BUAA-Memo-6.4.5-app-patch.zip",
-    "sha256": "87f2105e28ccc019a96f1d81b6cea41d0076f49dd13069391a77a896e37ab2e9",
-    "size": 73919188
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.6/BUAA-Memo-6.4.6-app-patch.zip",
+    "sha256": "0185d396a4fdbc5f20a58c9f7eb84280e683c81970cdcd0c51e418850b479432",
+    "size": 73921652
   },
   "mobile": {
-    "version": "6.4.5",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.5/BUAA-Memo-Offline.html",
-    "sha256": "412069fc0e96c1de7be3f54fb14dc92a70d4415a8d9c2e47d5019167dcc54286",
-    "size": 36559966
+    "version": "6.4.6",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.6/BUAA-Memo-Offline.html",
+    "sha256": "56810290cf0ecc3a21a7d691e01926f8108b4e78a30eed679888e41290fb587b",
+    "size": 36565575
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.5/BUAA-Memo-Android-v6.4.5.apk",
-    "sha256": "d3521276e770dd2191e036cd5316e9314de23c43aacc4a7a9ec1a4cd7733c0a3",
-    "size": 27607753
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.6/BUAA-Memo-Android-v6.4.6.apk",
+    "sha256": "5f91f3eb35333473b4012f0bcc95e1792c32a3f9a9c8054255485e7d5bf480e3",
+    "size": 27611849
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.5/BUAA-Memo-macOS-v6.4.5.zip",
-    "sha256": "6e4a83766ab7207e46d7c3da826caaf6cfdeac7c408e3b6ec230eb3c98a29486",
-    "size": 56668054,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.6/BUAA-Memo-macOS-v6.4.6.zip",
+    "sha256": "d2f01c24a7b2d16b2f87dfb383f2dfee79207089a715e1b78e09eefbdc1edc92",
+    "size": 56668830,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.5/BUAA-Memo-iOS-v6.4.5-source.zip",
-    "sha256": "db458bfd12666b269a01e0cd1c5f9a2ebe5903d771e3d08bbcd31ed156b2fa98",
-    "size": 30472216,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.6/BUAA-Memo-iOS-v6.4.6-source.zip",
+    "sha256": "c3f7b77ce3109226efd5c897dd1d80dbc141d049ec42c840a5511780f8d06100",
+    "size": 30473570,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.5/BUAA-Memo-iOS-PWA-v6.4.5.zip",
-    "sha256": "9a18702e500508b3cab85d444a4cb876aba757831f4a55e56e9cfc73badd964a",
-    "size": 28403411,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.6/BUAA-Memo-iOS-PWA-v6.4.6.zip",
+    "sha256": "c6b8b4a2df43591514c924fa4a4d2ef32bee1552866a3be2543c807663bbe3ac",
+    "size": 28405758,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

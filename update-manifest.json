@@ -1,45 +1,52 @@
 {
-  "version": "6.4.7",
+  "version": "6.4.8",
   "published_at": "2026-11-14",
   "notes": [
-    "札记编辑页重新读取手机真实顶部安全区，返回、标题和保存不再与通知栏重叠。",
-    "顶部按钮仍保持返回与保存同排，字体、公式、图片、PDF、索引和传送门保持单行并排。",
-    "“粘贴”按钮恢复到手势说明同一行右侧，不再占用整行高度。",
-    "重新验证手机宽度下工具栏、粘贴行和正文区域没有裁切或遮挡。",
-    "Android 版本提升至 versionCode 199，iOS build 提升至 589。"
+    "新增外部文件夹自动备份：固定使用“BUAA浮光用户数据备份”，保留最近 7 个每日备份和 4 个每周备份，也可随时立即备份。",
+    "备份升级为 v2，完整覆盖事项、分组、札记、图片、PDF、成长数据与好友存储；恢复前显示内容统计并逐项校验附件 SHA-256，失败时完整回滚。",
+    "永久删除与备份恢复前会优先生成外部安全快照；卸载 App 后仍可从系统“文件”或云盘中的备份文件恢复。",
+    "画廊新增 20 幅世界名画，每幅画均提供整幅展示图和对应的 3:4 局部信纸。",
+    "新画作与局部信纸已接入艺展、藏品页、札记与分组信纸选择及背包库存。",
+    "好友主页会始终显示好友称号；旧版好友资料缺少称号字段时，会按好友等级补全等级称号。",
+    "新增高级成就“长灯不熄”，按历史最高连续签到天数解锁 7 / 30 / 100 天三档。",
+    "新增隐藏成就“移序成章”。",
+    "新增隐藏成就“挥金如土”。",
+    "修复部分成就勋章在未解锁时仍显示彩色的问题；未解锁勋章统一使用黑白灰效果。",
+    "“诸艺通明”改为列出 8 项累计记录的具体门槛，并明确初级完成任意 4 项、中级完成任意 6 项、高级完成全部 8 项。",
+    "Android 版本提升至 versionCode 200，iOS build 提升至 590。"
   ],
   "desktop": {
-    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.7/BUAA-Memo-6.4.7-app-patch.zip",
-    "sha256": "a31188f2e7e6de34fd99e2c1ef19d35d70fdd67a1c9567f7d0d271a18c5646e5",
-    "size": 73922003
+    "patch_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.8/BUAA-Memo-6.4.8-app-patch.zip",
+    "sha256": "6b02230ec2c4ec79d2f04986ffa753837beda28a6933263e31d2aa22b6bac14a",
+    "size": 94184005
   },
   "mobile": {
-    "version": "6.4.7",
-    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.7/BUAA-Memo-Offline.html",
-    "sha256": "4b34e27ff0261e11f87cc75a552e0c6744f32c726aee569fb9a43e56b1e4bb17",
-    "size": 36565907
+    "version": "6.4.8",
+    "offline_html_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.8/BUAA-Memo-Offline.html",
+    "sha256": "e4f938ca0efe07130ecafc039e5b697eed87ac148f25ab1cbbe0349f4cd38333",
+    "size": 50225999
   },
   "android": {
-    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.7/BUAA-Memo-Android-v6.4.7.apk",
-    "sha256": "7093c592d27f99a60a8b59e1f2050db9954e4b5e0fcac31152eacfaff652e092",
-    "size": 27611849
+    "apk_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.8/BUAA-Memo-Android-v6.4.8.apk",
+    "sha256": "8527c74e1c0f7357a20fb9133e2595ab902b64f2749db51c2edb40115dcc0d0b",
+    "size": 37847629
   },
   "macos": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.7/BUAA-Memo-macOS-v6.4.7.zip",
-    "sha256": "894745df43484a020991314aee63520e8841ab68530315ffd26d814f588d277d",
-    "size": 56668893,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.8/BUAA-Memo-macOS-v6.4.8.zip",
+    "sha256": "7abafb3111157cd8c19651f059020c30bde40edf0e40f215db352373bf64a2cf",
+    "size": 77013478,
     "note": "解压后双击 BUAA浮光.app；首次打开如被 macOS 拦截，请右键选择“打开”。"
   },
   "ios": {
-    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.7/BUAA-Memo-iOS-v6.4.7-source.zip",
-    "sha256": "d72daf9553b7c8c184023d3c8d6c1b35cc181246a2b5f8781d2de831f8070c1b",
-    "size": 30473813,
+    "source_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.8/BUAA-Memo-iOS-v6.4.8-source.zip",
+    "sha256": "93bbedf0ee2d2a816e627dc78ea1b4fa10272be000041c669a1c63b533c07c75",
+    "size": 40607298,
     "note": "需在 macOS 上使用 Xcode 签名后安装。"
   },
   "ios_pwa": {
-    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.7/BUAA-Memo-iOS-PWA-v6.4.7.zip",
-    "sha256": "16a68daff837dbd418076c9104cd6b59b1c8930a19ffd1099ee6a9bca1516474",
-    "size": 28406133,
+    "package_url": "https://github.com/MrWhite-Bai/buaa-memo-widget/releases/download/v6.4.8/BUAA-Memo-iOS-PWA-v6.4.8.zip",
+    "sha256": "228046fa805677659d00967aa060d69c2004e4658c8a5cf252b2f551bbc36e06",
+    "size": 38548258,
     "note": "上传到任意 HTTPS 静态站点后，从 Safari 添加到主屏幕。"
   }
 }

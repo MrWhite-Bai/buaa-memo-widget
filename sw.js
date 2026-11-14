@@ -1,4 +1,4 @@
-const CACHE_NAME = "buaa-memo-cloud-20261114113442";
+const CACHE_NAME = "buaa-memo-cloud-20261114115547";
 const ASSETS = [
   "./",
   "./index.html",

@@ -205,12 +205,60 @@
         item.exam_time ||
         item.kssj
     );
-    let startAt = text(item.startAt || item.start_at || item.start);
+    const clockPattern = /(\d{1,2})\s*[:：]\s*(\d{2})/g;
+    const clocks = [...timeText.matchAll(clockPattern)].map(match =>
+      `${String(match[1]).padStart(2, "0")}:${match[2]}`
+    );
+    const startClock = clocks[0] || "";
+    const endClock = clocks[1] || "";
+    let startAt = text(
+      item.startAt ||
+        item.start_at ||
+        item.start ||
+        item.examStart ||
+        item.exam_start
+    );
+    const dateInStart = startAt.match(/^(\d{4}-\d{2}-\d{2})/)?.[1] || "";
+    const clockInStart = startAt.match(clockPattern)?.[0] || "";
     if (!startAt && dateText) {
-      startAt =
-        dateText.includes("T") || /\d{1,2}:\d{2}/.test(dateText)
-          ? dateText
-          : `${dateText}T${timeText || "00:00"}`;
+      startAt = `${dateText}T${startClock || "00:00"}`;
+    } else if (dateText && !dateInStart && startClock) {
+      startAt = `${dateText}T${startClock}`;
+    } else if (dateInStart && !clockInStart && startClock) {
+      startAt = `${dateInStart}T${startClock}`;
+    } else if (clockInStart && startAt.includes("-")) {
+      startAt = startAt.replace(
+        new RegExp(
+          `${clockInStart.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}` +
+            "\\s*(?:-|–|—|~|至|到)\\s*\\d{1,2}\\s*[:：]\\s*\\d{2}",
+          "g"
+        ),
+        clockInStart
+      );
+    }
+    let endAt = text(
+      item.endAt ||
+        item.end_at ||
+        item.end ||
+        item.endTime ||
+        item.examEnd ||
+        item.exam_end ||
+        item.finishTime ||
+        item.jssj
+    );
+    if (/^\d{1,2}\s*[:：]\s*\d{2}/.test(endAt) && dateText) {
+      const clock = endAt.match(clockPattern)?.[0] || "";
+      endAt = `${dateText}T${clock}`;
+    } else if (!endAt && dateText && endClock) {
+      endAt = `${dateText}T${endClock}`;
+    }
+    if (!endAt) {
+      const parsedStart = parseDate(startAt);
+      if (parsedStart) {
+        endAt = new Date(
+          parsedStart.getTime() + 2 * 60 * 60 * 1000
+        ).toISOString();
+      }
     }
     return {
       id: text(item.id || item.examId || item.code, `${dateText}-${text(item.name)}`),
@@ -223,6 +271,7 @@
         "未命名考试"
       ),
       startAt,
+      endAt,
       timeText,
       location: text(
         item.location ||
@@ -603,7 +652,17 @@
   }
 
   function upcomingExams() {
+    const now = Date.now();
     return state.exams
+      .filter(exam => {
+        const end = parseDate(exam.endAt || exam.end_at);
+        if (end) return end.getTime() > now;
+        const start = parseDate(exam.startAt || exam.start_at);
+        return (
+          !start ||
+          start.getTime() + 2 * 60 * 60 * 1000 > now
+        );
+      })
       .slice()
       .sort(
         (left, right) =>

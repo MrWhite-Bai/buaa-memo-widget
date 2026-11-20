@@ -1,4 +1,4 @@
-const CACHE_NAME = "buaa-memo-cloud-20261119104635";
+const CACHE_NAME = "buaa-memo-cloud-20261120193519";
 const ASSETS = [
   "./",
   "./index.html",
@@ -32,6 +32,9 @@ const ASSETS = [
   "./assets/katex/katex.min.css",
   "./assets/katex/katex.min.js",
   "./assets/katex/LICENSE",
+  "./assets/pdfjs/LICENSE",
+  "./assets/pdfjs/pdf.min.js",
+  "./assets/pdfjs/pdf.worker.min.js",
   "./assets/fonts/buaa-hei.woff2",
   "./assets/fonts/buaa-kai.woff2",
   "./assets/fonts/buaa-script.woff2",

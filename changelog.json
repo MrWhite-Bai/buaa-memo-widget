@@ -1,6 +1,18 @@
 {
-  "current_version": "6.5.0",
+  "current_version": "6.5.1",
   "entries": [
+    {
+      "version": "6.5.1",
+      "date": "2026-11-20",
+      "title": "PDF 阅读性能优化",
+      "changes": [
+        "Android 的札记 PDF 改由系统 PdfRenderer 原生阅读页渲染，翻页、缩放和触摸操作不再占用 WebView 主线程。",
+        "iOS 继续使用内置 Quick Look；HTTPS 网页与 PWA 使用独立 PDF Worker 解析，单文件离线版保留主线程兼容回退。",
+        "PDF 画布限制设备像素超采样和最大缩放倍率，减少高分辨率页面造成的持续内存占用与掉帧。",
+        "修复在 `file://` WebView 中创建 Blob Worker 导致 PDF 一直停留在载入状态的问题。",
+        "Android 版本提升至 versionCode 203，iOS build 提升至 593。"
+      ]
+    },
     {
       "version": "6.5.0",
       "date": "2026-11-20",
